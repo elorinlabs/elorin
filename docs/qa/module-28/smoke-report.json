@@ -1,0 +1,24 @@
+{
+  "checks": [
+    "tests/fixtures/documents/basic.pdf real content loaded",
+    "tests/fixtures/documents/basic.docx real content loaded",
+    "test-fixtures/publishing/basic.epub real content loaded",
+    "tests/fixtures/markdown/basic.md real content loaded",
+    "tests/fixtures/json/basic.json real content loaded",
+    "tests/fixtures/csv/basic.csv real content loaded",
+    "tests/fixtures/spreadsheets/basic.xlsx real content loaded",
+    "test-fixtures/media/audio/basic.wav real content loaded",
+    "tests/fixtures/module28/damaged.psd real content loaded",
+    "test-fixtures/3d/mesh/basic.stl real content loaded"
+  ],
+  "errors": [],
+  "started": "2026-10-09T11:22:05.521Z",
+  "executableSha256": "1b73d5de4e1b29eb2c1623621128e5e366c7f8c96934fa10b12a3b7425fa298a",
+  "status": "PASS",
+  "cleanup": {
+    "personalDataUnchanged": true,
+    "frozenInstallerUnchanged": true,
+    "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+    "processesRemaining": []
+  }
+}

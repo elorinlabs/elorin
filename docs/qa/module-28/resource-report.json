@@ -1,0 +1,12 @@
+{
+  "started": "2026-10-09T11:20:57.624Z",
+  "status": "PASS",
+  "check": "3DS ../secret.png is rejected before decode and an existing unselected sibling remains PERMISSION_DENIED",
+  "executableSha256": "1b73d5de4e1b29eb2c1623621128e5e366c7f8c96934fa10b12a3b7425fa298a",
+  "cleanup": {
+    "personalDataUnchanged": true,
+    "frozenInstallerUnchanged": true,
+    "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+    "processesRemaining": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "started": "2026-10-09T11:02:30.165Z",
+  "checks": [
+    "PSD native image viewer: real red pixel, dimensions, zoom and fit",
+    "PSD PackBits sample produces actual image content"
+  ],
+  "samples": [
+    {
+      "format": "psd",
+      "fixture": "quadrants.psd",
+      "viewer": "image",
+      "content": "64x64 quadrants with actual red RGBA pixel",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "executableSha256": "87ef46e5db2fea19ca6111f410e3f675a5909d222d4f2b01fad58f7cb57ff206",
+  "status": "FAIL",
+  "failure": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('gridcell', { name: '1.25', exact: true }) to be visible\u001b[22m\n\n    at D:\\elorin\\docs\\qa\\module-28\\native-qa.cjs:14:83",
+  "cleanup": {
+    "personalDataUnchanged": true,
+    "frozenInstallerUnchanged": true,
+    "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+    "processesRemaining": []
+  }
+}

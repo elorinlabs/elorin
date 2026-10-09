@@ -3,7 +3,9 @@
   "generated_from": [
     "src/formats/catalogue.json",
     "src/viewer/builtins.ts",
-    "docs/qa/module-22-capability-evidence.json"
+    "src/formats/content-adapters.json",
+    "docs/qa/module-22-capability-evidence.json",
+    "docs/qa/module-28/content-evidence.json"
   ],
   "levels": {
     "L0": "Content-based identification",
@@ -16,6 +18,13 @@
   "formats": [
     {
       "format_id": "parquet",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "parquet"
       ],
@@ -93,6 +102,13 @@
     },
     {
       "format_id": "arrow",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "arrow"
       ],
@@ -170,6 +186,13 @@
     },
     {
       "format_id": "feather",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "feather"
       ],
@@ -247,6 +270,13 @@
     },
     {
       "format_id": "hdf5",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "h5",
         "hdf5"
@@ -325,6 +355,13 @@
     },
     {
       "format_id": "netcdf",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "nc",
         "netcdf"
@@ -403,6 +440,23 @@
     },
     {
       "format_id": "mat",
+      "catalogue_registered": true,
+      "content_adapter": {
+        "id": "mat-level4",
+        "formats": [
+          "mat"
+        ],
+        "viewer": "scientific",
+        "projection": "ScientificDataset",
+        "module": "src/viewer/plugins/data/mat4-reader.ts",
+        "worker": "src/viewer/plugins/data/data.worker.ts",
+        "scope": "Level 4 full numeric real/complex IEEE little/big endian matrices, paged; no sparse/text/v5 (v7.3 keeps existing HDF5 path)"
+      },
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": true,
+      "sample_verified": true,
       "extensions": [
         "mat"
       ],
@@ -421,7 +475,7 @@
           "src/viewer/plugins/data/data.plugins.tsx"
         ]
       },
-      "capability_level": null,
+      "capability_level": "L3",
       "capability_flags": {
         "playback": null,
         "seeking": null,
@@ -446,23 +500,67 @@
         "save": false
       },
       "limitations": [
-        "Existing viewer limits apply; recognition does not validate the entire document.",
-        "NOT_VERIFIED: no executed content evidence; not L0 by extension."
+        "Level 4 full numeric real/complex IEEE little/big endian matrices, paged; no sparse/text/v5 (v7.3 keeps existing HDF5 path)"
       ],
-      "test_fixtures": [],
-      "test_status": "NOT_VERIFIED",
-      "test_evidence": [],
+      "test_fixtures": [
+        "tests/fixtures/module28/signals.mat",
+        "tests/fixtures/module28/big-endian.mat"
+      ],
+      "test_status": "passed-declared-scope",
+      "test_evidence": [
+        {
+          "format_id": "mat",
+          "fixture": "tests/fixtures/module28/signals.mat",
+          "fixture_sha256": "52efeb1964ebd1ff8e6231ec54e584af100fc74e3b3565b46676137d0e973b07",
+          "level": 3,
+          "flags": [],
+          "test_file": "tests/module-28.test.ts",
+          "assertions": [
+            "signal 1.25/2.5/3.75 and 10/20/30 plus complex vector",
+            "actual native Viewer content and basic reading operations",
+            "corrupted fixture rejects content; workers released after close"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Probable"
+          },
+          "resolved_viewer": "scientific",
+          "report_file": "docs/qa/module-28/content-evidence.json",
+          "validation_run": "2026-10-09T11:15:57.571Z"
+        },
+        {
+          "format_id": "mat",
+          "fixture": "tests/fixtures/module28/big-endian.mat",
+          "fixture_sha256": "9451d862edc048e0ec5bf48b7d82376106cd7a58200fcba25bb81706c01f5879",
+          "level": 3,
+          "flags": [],
+          "test_file": "tests/module-28.test.ts",
+          "assertions": [
+            "IEEE big endian matrix -2/3 and 40/50",
+            "actual native Viewer content and basic reading operations",
+            "corrupted fixture rejects content; workers released after close"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Probable"
+          },
+          "resolved_viewer": "scientific",
+          "report_file": "docs/qa/module-28/content-evidence.json",
+          "validation_run": "2026-10-09T11:15:57.571Z"
+        }
+      ],
       "dependency_requirements": [
-        "existing scientific backend"
+        "src/viewer/plugins/data/mat4-reader.ts"
       ],
       "decoder": {
         "implementation_source": [
-          "src/viewer/plugins/data/data.plugins.tsx"
+          "src/viewer/plugins/data/mat4-reader.ts",
+          "src/viewer/plugins/data/data.worker.ts"
         ],
         "dependency_requirements": [
-          "existing scientific backend"
+          "src/viewer/plugins/data/mat4-reader.ts"
         ],
-        "availability": "not-runtime-verified"
+        "availability": "verified-for-listed-fixtures"
       },
       "metadata_provider": {
         "implementation_source": [
@@ -472,7 +570,7 @@
       },
       "preview": {
         "viewer": "scientific",
-        "verified_level": null
+        "verified_level": "L3"
       },
       "resource_ownership_source": [
         "src/viewer/plugins/data/data.plugins.tsx"
@@ -480,6 +578,13 @@
     },
     {
       "format_id": "stl",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "stl"
       ],
@@ -557,6 +662,13 @@
     },
     {
       "format_id": "obj",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "obj"
       ],
@@ -634,6 +746,13 @@
     },
     {
       "format_id": "ply",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ply"
       ],
@@ -711,6 +830,13 @@
     },
     {
       "format_id": "gltf",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "gltf"
       ],
@@ -788,6 +914,13 @@
     },
     {
       "format_id": "glb",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "glb"
       ],
@@ -865,6 +998,13 @@
     },
     {
       "format_id": "step",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "step"
       ],
@@ -942,6 +1082,13 @@
     },
     {
       "format_id": "stp",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "stp"
       ],
@@ -1019,6 +1166,13 @@
     },
     {
       "format_id": "iges",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "iges"
       ],
@@ -1096,6 +1250,13 @@
     },
     {
       "format_id": "igs",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "igs"
       ],
@@ -1173,6 +1334,13 @@
     },
     {
       "format_id": "jt",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "jt"
       ],
@@ -1250,6 +1418,13 @@
     },
     {
       "format_id": "skp",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "skp"
       ],
@@ -1327,6 +1502,13 @@
     },
     {
       "format_id": "3dm",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "3dm"
       ],
@@ -1404,6 +1586,13 @@
     },
     {
       "format_id": "sldprt",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "sldprt"
       ],
@@ -1481,6 +1670,13 @@
     },
     {
       "format_id": "sldasm",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "sldasm"
       ],
@@ -1558,6 +1754,13 @@
     },
     {
       "format_id": "catpart",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "catpart"
       ],
@@ -1635,6 +1838,13 @@
     },
     {
       "format_id": "catproduct",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "catproduct"
       ],
@@ -1712,6 +1922,13 @@
     },
     {
       "format_id": "fbx",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "fbx"
       ],
@@ -1789,6 +2006,13 @@
     },
     {
       "format_id": "dae",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "dae"
       ],
@@ -1866,6 +2090,13 @@
     },
     {
       "format_id": "usd",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "usd"
       ],
@@ -1943,6 +2174,13 @@
     },
     {
       "format_id": "usda",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "usda"
       ],
@@ -2020,6 +2258,13 @@
     },
     {
       "format_id": "usdc",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "usdc"
       ],
@@ -2097,6 +2342,13 @@
     },
     {
       "format_id": "usdz",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "usdz"
       ],
@@ -2174,6 +2426,23 @@
     },
     {
       "format_id": "3ds",
+      "catalogue_registered": true,
+      "content_adapter": {
+        "id": "three-ds-static",
+        "formats": [
+          "3ds"
+        ],
+        "viewer": "scene",
+        "projection": "GeometryDocument",
+        "module": "src/viewer/plugins/geometry/three-ds-adapter.ts",
+        "worker": "src/viewer/plugins/geometry/parser.worker.ts",
+        "scope": "3DS bounded static triangle meshes via Three TDSLoader; no external textures or keyframe animation"
+      },
+      "identification_verified": true,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": true,
+      "sample_verified": true,
       "extensions": [
         "3ds"
       ],
@@ -2192,7 +2461,7 @@
           "src/viewer/plugins/geometry/geometry.plugin.tsx"
         ]
       },
-      "capability_level": null,
+      "capability_level": "L3",
       "capability_flags": {
         "playback": null,
         "seeking": null,
@@ -2202,14 +2471,14 @@
         "frame_navigation": null,
         "page_navigation": null,
         "layers": null,
-        "scene_graph": null,
+        "scene_graph": true,
         "metadata": null,
         "color_profile": null,
         "high_bit_depth": null,
         "animation": null,
         "external_resources": null
       },
-      "declared_preview_level": "detection-only",
+      "declared_preview_level": "partial",
       "declared_interactions": {
         "inspect": true,
         "search": false,
@@ -2217,23 +2486,48 @@
         "save": false
       },
       "limitations": [
-        "Recognized only; no specialized parser is implemented.",
-        "NOT_VERIFIED: no executed content evidence; not L0 by extension."
+        "3DS bounded static triangle meshes via Three TDSLoader; no external textures or keyframe animation"
       ],
-      "test_fixtures": [],
-      "test_status": "NOT_VERIFIED",
-      "test_evidence": [],
+      "test_fixtures": [
+        "tests/fixtures/module28/tetrahedron.3ds"
+      ],
+      "test_status": "passed-declared-scope",
+      "test_evidence": [
+        {
+          "format_id": "3ds",
+          "fixture": "tests/fixtures/module28/tetrahedron.3ds",
+          "fixture_sha256": "b48e02af0b26b428c9428f7eaf01f25f8685ec0fbfa6013d5ef3d226f335dc51",
+          "level": 3,
+          "flags": [
+            "scene_graph"
+          ],
+          "test_file": "tests/module-28.test.ts",
+          "assertions": [
+            "tetrahedron mesh",
+            "actual native Viewer content and basic reading operations",
+            "corrupted fixture rejects content; workers released after close"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Confirmed"
+          },
+          "resolved_viewer": "scene",
+          "report_file": "docs/qa/module-28/content-evidence.json",
+          "validation_run": "2026-10-09T11:15:57.571Z"
+        }
+      ],
       "dependency_requirements": [
-        "existing scene backend"
+        "src/viewer/plugins/geometry/three-ds-adapter.ts"
       ],
       "decoder": {
         "implementation_source": [
-          "src/viewer/plugins/geometry/geometry.plugin.tsx"
+          "src/viewer/plugins/geometry/three-ds-adapter.ts",
+          "src/viewer/plugins/geometry/parser.worker.ts"
         ],
         "dependency_requirements": [
-          "existing scene backend"
+          "src/viewer/plugins/geometry/three-ds-adapter.ts"
         ],
-        "availability": "not-runtime-verified"
+        "availability": "verified-for-listed-fixtures"
       },
       "metadata_provider": {
         "implementation_source": [
@@ -2243,7 +2537,7 @@
       },
       "preview": {
         "viewer": "scene",
-        "verified_level": null
+        "verified_level": "L3"
       },
       "resource_ownership_source": [
         "src/viewer/plugins/geometry/geometry.plugin.tsx"
@@ -2251,6 +2545,13 @@
     },
     {
       "format_id": "c4d",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "c4d"
       ],
@@ -2328,6 +2629,13 @@
     },
     {
       "format_id": "blend",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "blend"
       ],
@@ -2405,6 +2713,13 @@
     },
     {
       "format_id": "max",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "max"
       ],
@@ -2482,6 +2797,13 @@
     },
     {
       "format_id": "dxf",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "dxf"
       ],
@@ -2559,6 +2881,13 @@
     },
     {
       "format_id": "dwg",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "dwg"
       ],
@@ -2636,6 +2965,13 @@
     },
     {
       "format_id": "text",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "txt",
         "log"
@@ -2714,6 +3050,13 @@
     },
     {
       "format_id": "markdown",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "md",
         "markdown",
@@ -2795,6 +3138,13 @@
     },
     {
       "format_id": "json",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "json",
         "geojson",
@@ -2880,6 +3230,13 @@
     },
     {
       "format_id": "yaml",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "yaml",
         "yml"
@@ -2958,6 +3315,13 @@
     },
     {
       "format_id": "xml",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "xml"
       ],
@@ -3035,6 +3399,13 @@
     },
     {
       "format_id": "toml",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "toml"
       ],
@@ -3112,6 +3483,13 @@
     },
     {
       "format_id": "javascript",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "js",
         "mjs",
@@ -3191,6 +3569,13 @@
     },
     {
       "format_id": "typescript",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ts",
         "mts",
@@ -3270,6 +3655,13 @@
     },
     {
       "format_id": "jsx",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "jsx"
       ],
@@ -3347,6 +3739,13 @@
     },
     {
       "format_id": "tsx",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "tsx"
       ],
@@ -3424,6 +3823,13 @@
     },
     {
       "format_id": "python",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "py",
         "pyw"
@@ -3502,6 +3908,13 @@
     },
     {
       "format_id": "c",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "c",
         "h"
@@ -3580,6 +3993,13 @@
     },
     {
       "format_id": "cpp",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "cpp",
         "cc",
@@ -3660,6 +4080,13 @@
     },
     {
       "format_id": "java",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "java"
       ],
@@ -3737,6 +4164,13 @@
     },
     {
       "format_id": "go",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "go"
       ],
@@ -3814,6 +4248,13 @@
     },
     {
       "format_id": "rust",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "rs"
       ],
@@ -3891,6 +4332,13 @@
     },
     {
       "format_id": "html",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "htm",
         "html"
@@ -3969,6 +4417,13 @@
     },
     {
       "format_id": "css",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "css"
       ],
@@ -4046,6 +4501,13 @@
     },
     {
       "format_id": "csv",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "csv"
       ],
@@ -4123,6 +4585,13 @@
     },
     {
       "format_id": "tsv",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "tsv",
         "tab"
@@ -4201,6 +4670,13 @@
     },
     {
       "format_id": "mp3",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "mp3"
       ],
@@ -4297,6 +4773,13 @@
     },
     {
       "format_id": "wav",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "wav"
       ],
@@ -4393,6 +4876,13 @@
     },
     {
       "format_id": "flac",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "flac"
       ],
@@ -4489,6 +4979,13 @@
     },
     {
       "format_id": "aac",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "aac"
       ],
@@ -4566,6 +5063,13 @@
     },
     {
       "format_id": "m4a",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "m4a"
       ],
@@ -4662,6 +5166,13 @@
     },
     {
       "format_id": "ogg",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "ogg"
       ],
@@ -4758,6 +5269,13 @@
     },
     {
       "format_id": "opus",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "opus"
       ],
@@ -4854,6 +5372,13 @@
     },
     {
       "format_id": "wma",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "wma"
       ],
@@ -4931,6 +5456,13 @@
     },
     {
       "format_id": "aiff",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "aiff",
         "aif"
@@ -5009,6 +5541,13 @@
     },
     {
       "format_id": "mp4",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "mp4"
       ],
@@ -5086,6 +5625,13 @@
     },
     {
       "format_id": "webm",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "webm"
       ],
@@ -5163,6 +5709,13 @@
     },
     {
       "format_id": "mov",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "mov"
       ],
@@ -5240,6 +5793,13 @@
     },
     {
       "format_id": "mkv",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "mkv"
       ],
@@ -5317,6 +5877,13 @@
     },
     {
       "format_id": "avi",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "avi"
       ],
@@ -5394,6 +5961,13 @@
     },
     {
       "format_id": "mpeg",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "mpeg",
         "mpg"
@@ -5472,6 +6046,13 @@
     },
     {
       "format_id": "m4v",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "m4v"
       ],
@@ -5549,6 +6130,13 @@
     },
     {
       "format_id": "epub",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "epub"
       ],
@@ -5630,6 +6218,13 @@
     },
     {
       "format_id": "eml",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "eml"
       ],
@@ -5707,6 +6302,13 @@
     },
     {
       "format_id": "msg",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "msg"
       ],
@@ -5784,6 +6386,13 @@
     },
     {
       "format_id": "xlsx",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "xlsx"
       ],
@@ -5861,6 +6470,13 @@
     },
     {
       "format_id": "xlsm",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "xlsm"
       ],
@@ -5938,6 +6554,13 @@
     },
     {
       "format_id": "xls",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "xls"
       ],
@@ -6015,6 +6638,13 @@
     },
     {
       "format_id": "xlsb",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "xlsb"
       ],
@@ -6092,6 +6722,13 @@
     },
     {
       "format_id": "ods",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ods"
       ],
@@ -6169,6 +6806,13 @@
     },
     {
       "format_id": "pptx",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "pptx"
       ],
@@ -6246,6 +6890,13 @@
     },
     {
       "format_id": "pptm",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "pptm"
       ],
@@ -6323,6 +6974,13 @@
     },
     {
       "format_id": "ppsx",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ppsx"
       ],
@@ -6400,6 +7058,13 @@
     },
     {
       "format_id": "potx",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "potx"
       ],
@@ -6477,6 +7142,13 @@
     },
     {
       "format_id": "ppt",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ppt"
       ],
@@ -6554,6 +7226,13 @@
     },
     {
       "format_id": "odp",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "odp"
       ],
@@ -6631,6 +7310,13 @@
     },
     {
       "format_id": "pdf",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "pdf"
       ],
@@ -6736,6 +7422,13 @@
     },
     {
       "format_id": "docx",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "docx"
       ],
@@ -6817,6 +7510,13 @@
     },
     {
       "format_id": "odt",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "odt"
       ],
@@ -6894,6 +7594,13 @@
     },
     {
       "format_id": "rtf",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "rtf"
       ],
@@ -6971,6 +7678,13 @@
     },
     {
       "format_id": "doc",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "doc"
       ],
@@ -7048,6 +7762,13 @@
     },
     {
       "format_id": "png",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "png"
       ],
@@ -7159,6 +7880,13 @@
     },
     {
       "format_id": "jpeg",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "jpg",
         "jpeg"
@@ -7237,6 +7965,13 @@
     },
     {
       "format_id": "gif",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "gif"
       ],
@@ -7314,6 +8049,13 @@
     },
     {
       "format_id": "webp",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "webp"
       ],
@@ -7391,6 +8133,13 @@
     },
     {
       "format_id": "svg",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "svg"
       ],
@@ -7468,6 +8217,13 @@
     },
     {
       "format_id": "avif",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "avif"
       ],
@@ -7545,6 +8301,13 @@
     },
     {
       "format_id": "bmp",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "bmp"
       ],
@@ -7622,6 +8385,13 @@
     },
     {
       "format_id": "ico",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ico"
       ],
@@ -7699,6 +8469,13 @@
     },
     {
       "format_id": "tiff",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": true,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": true,
+      "sample_verified": true,
       "extensions": [
         "tif",
         "tiff"
@@ -7718,7 +8495,7 @@
           "src/viewer/plugins/image/image.plugin.tsx"
         ]
       },
-      "capability_level": null,
+      "capability_level": "L3",
       "capability_flags": {
         "playback": null,
         "seeking": null,
@@ -7743,12 +8520,33 @@
         "save": false
       },
       "limitations": [
-        "Existing viewer limits apply; recognition does not validate the entire document.",
-        "NOT_VERIFIED: no executed content evidence; not L0 by extension."
+        "Existing viewer limits apply; recognition does not validate the entire document."
       ],
-      "test_fixtures": [],
-      "test_status": "NOT_VERIFIED",
-      "test_evidence": [],
+      "test_fixtures": [
+        "tests/fixtures/module28/big-endian.tiff"
+      ],
+      "test_status": "passed-declared-scope",
+      "test_evidence": [
+        {
+          "format_id": "tiff",
+          "fixture": "tests/fixtures/module28/big-endian.tiff",
+          "fixture_sha256": "2f300aadd2df86e6491a0f0dd58d8b7ac726daf2596c64993c1800408d0e32fb",
+          "level": 3,
+          "flags": [],
+          "test_file": "tests/module-28.test.ts",
+          "assertions": [
+            "8x8 cyan raster; TIFF signature outranks 3DS",
+            "actual native Viewer content and basic reading operations"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Confirmed"
+          },
+          "resolved_viewer": "image",
+          "report_file": "docs/qa/module-28/content-evidence.json",
+          "validation_run": "2026-10-09T11:15:57.571Z"
+        }
+      ],
       "dependency_requirements": [
         "existing image backend"
       ],
@@ -7759,7 +8557,7 @@
         "dependency_requirements": [
           "existing image backend"
         ],
-        "availability": "not-runtime-verified"
+        "availability": "verified-for-listed-fixtures"
       },
       "metadata_provider": {
         "implementation_source": [
@@ -7769,7 +8567,7 @@
       },
       "preview": {
         "viewer": "image",
-        "verified_level": null
+        "verified_level": "L3"
       },
       "resource_ownership_source": [
         "src/viewer/plugins/image/image.plugin.tsx"
@@ -7777,6 +8575,13 @@
     },
     {
       "format_id": "heic",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "heic"
       ],
@@ -7854,6 +8659,13 @@
     },
     {
       "format_id": "heif",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "heif"
       ],
@@ -7931,6 +8743,13 @@
     },
     {
       "format_id": "zip",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "zip"
       ],
@@ -8034,6 +8853,13 @@
     },
     {
       "format_id": "tar",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "tar"
       ],
@@ -8111,6 +8937,13 @@
     },
     {
       "format_id": "gz",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "gz"
       ],
@@ -8188,6 +9021,13 @@
     },
     {
       "format_id": "tgz",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "tgz"
       ],
@@ -8265,6 +9105,13 @@
     },
     {
       "format_id": "sevenzip",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "7z"
       ],
@@ -8342,6 +9189,13 @@
     },
     {
       "format_id": "rar",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "rar"
       ],
@@ -8419,6 +9273,13 @@
     },
     {
       "format_id": "bz2",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "bz2"
       ],
@@ -8496,6 +9357,13 @@
     },
     {
       "format_id": "xz",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "xz"
       ],
@@ -8573,6 +9441,13 @@
     },
     {
       "format_id": "zst",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "zst"
       ],
@@ -8650,6 +9525,13 @@
     },
     {
       "format_id": "sqlite",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "sqlite",
         "sqlite3",
@@ -8729,6 +9611,13 @@
     },
     {
       "format_id": "srt",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "srt"
       ],
@@ -8826,6 +9715,13 @@
     },
     {
       "format_id": "vtt",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "vtt"
       ],
@@ -8923,6 +9819,13 @@
     },
     {
       "format_id": "ass",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "ass"
       ],
@@ -9020,6 +9923,13 @@
     },
     {
       "format_id": "ssa",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ssa"
       ],
@@ -9098,6 +10008,13 @@
     },
     {
       "format_id": "sub",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "sub"
       ],
@@ -9195,15 +10112,47 @@
     },
     {
       "format_id": "npy",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": true,
       "extensions": [
         "npy"
       ],
       "special_filenames": [],
       "mime_types": [],
-      "signatures": [],
-      "detector": "existing-bounded-detector",
+      "signatures": [
+        {
+          "offset": 0,
+          "bytes": [
+            147,
+            78,
+            85,
+            77,
+            80,
+            89
+          ]
+        }
+      ],
+      "detector": "static",
       "detection_rules": {
-        "backend": "existing-bounded-detector"
+        "backend": "static",
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": [
+              147,
+              78,
+              85,
+              77,
+              80,
+              89
+            ]
+          }
+        ]
       },
       "primary_viewer": "scientific",
       "fallback_viewer": "hex",
@@ -9292,6 +10241,13 @@
     },
     {
       "format_id": "npz",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "npz"
       ],
@@ -9370,25 +10326,67 @@
     },
     {
       "format_id": "psd",
+      "catalogue_registered": true,
+      "content_adapter": {
+        "id": "psd-composite",
+        "formats": [
+          "psd"
+        ],
+        "viewer": "image",
+        "projection": "ImageDocument",
+        "module": "src/viewer/plugins/image/image-psd.ts",
+        "worker": "src/viewer/plugins/image/image.worker.ts",
+        "scope": "PSD v1 8-bit RGB/grayscale raw or PackBits merged composite, 16 MP; no extra channels, layers, ICC conversion or ZIP"
+      },
+      "identification_verified": true,
+      "parser_implemented": true,
+      "real_viewer_registered": true,
+      "main_content_verified": true,
+      "sample_verified": true,
       "extensions": [
         "psd"
       ],
       "special_filenames": [],
       "mime_types": [],
-      "signatures": [],
-      "detector": "existing-bounded-detector",
+      "signatures": [
+        {
+          "offset": 0,
+          "bytes": [
+            56,
+            66,
+            80,
+            83,
+            0,
+            1
+          ]
+        }
+      ],
+      "detector": "static",
       "detection_rules": {
-        "backend": "existing-bounded-detector"
+        "backend": "static",
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": [
+              56,
+              66,
+              80,
+              83,
+              0,
+              1
+            ]
+          }
+        ]
       },
-      "primary_viewer": "hex",
+      "primary_viewer": "image",
       "fallback_viewer": "hex",
       "viewer_registration": {
         "registration": "src/viewer/builtins.ts",
         "source_files": [
-          "src/viewer/plugins/hex/hex.plugin.tsx"
+          "src/viewer/plugins/image/image.plugin.tsx"
         ]
       },
-      "capability_level": null,
+      "capability_level": "L3",
       "capability_flags": {
         "playback": null,
         "seeking": null,
@@ -9405,58 +10403,133 @@
         "animation": null,
         "external_resources": null
       },
-      "declared_preview_level": "detection-only",
+      "declared_preview_level": "partial",
       "declared_interactions": {
         "inspect": true,
-        "search": true,
+        "search": false,
         "edit": false,
         "save": false
       },
       "limitations": [
-        "No code, build script, or embedded command is executed.",
-        "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity.",
-        "NOT_VERIFIED: no executed content evidence; not L0 by extension."
+        "PSD v1 8-bit RGB/grayscale raw or PackBits merged composite, 16 MP; no extra channels, layers, ICC conversion or ZIP"
       ],
-      "test_fixtures": [],
-      "test_status": "NOT_VERIFIED",
-      "test_evidence": [],
+      "test_fixtures": [
+        "tests/fixtures/module28/quadrants.psd",
+        "tests/fixtures/module28/quadrants-rle.psd"
+      ],
+      "test_status": "passed-declared-scope",
+      "test_evidence": [
+        {
+          "format_id": "psd",
+          "fixture": "tests/fixtures/module28/quadrants.psd",
+          "fixture_sha256": "3d3eabb2ab1a83756d5810bc5cea5b2d9342b2f6e114483eb7d69342493f8f26",
+          "level": 3,
+          "flags": [],
+          "test_file": "tests/module-28.test.ts",
+          "assertions": [
+            "64x64 quadrants with actual red RGBA pixel",
+            "actual native Viewer content and basic reading operations",
+            "corrupted fixture rejects content; workers released after close"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Confirmed"
+          },
+          "resolved_viewer": "image",
+          "report_file": "docs/qa/module-28/content-evidence.json",
+          "validation_run": "2026-10-09T11:15:57.571Z"
+        },
+        {
+          "format_id": "psd",
+          "fixture": "tests/fixtures/module28/quadrants-rle.psd",
+          "fixture_sha256": "8dbeff581d52f284903a98f8aa7a05b446649ea1422033fcc6546d2ff25abf24",
+          "level": 3,
+          "flags": [],
+          "test_file": "tests/module-28.test.ts",
+          "assertions": [
+            "64x64 PackBits quadrants",
+            "actual native Viewer content and basic reading operations",
+            "corrupted fixture rejects content; workers released after close"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Confirmed"
+          },
+          "resolved_viewer": "image",
+          "report_file": "docs/qa/module-28/content-evidence.json",
+          "validation_run": "2026-10-09T11:15:57.571Z"
+        }
+      ],
       "dependency_requirements": [
-        "existing text/binary viewer"
+        "src/viewer/plugins/image/image-psd.ts"
       ],
       "decoder": {
         "implementation_source": [
-          "src/viewer/plugins/hex/hex.plugin.tsx"
+          "src/viewer/plugins/image/image-psd.ts",
+          "src/viewer/plugins/image/image.worker.ts"
         ],
         "dependency_requirements": [
-          "existing text/binary viewer"
+          "src/viewer/plugins/image/image-psd.ts"
         ],
-        "availability": "not-runtime-verified"
+        "availability": "verified-for-listed-fixtures"
       },
       "metadata_provider": {
         "implementation_source": [
-          "src/viewer/plugins/hex/hex.plugin.tsx"
+          "src/viewer/plugins/image/image.plugin.tsx"
         ],
         "verified": false
       },
       "preview": {
-        "viewer": "hex",
-        "verified_level": null
+        "viewer": "image",
+        "verified_level": "L3"
       },
       "resource_ownership_source": [
-        "src/viewer/plugins/hex/hex.plugin.tsx"
+        "src/viewer/plugins/image/image.plugin.tsx"
       ]
     },
     {
       "format_id": "psb",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "psb"
       ],
       "special_filenames": [],
       "mime_types": [],
-      "signatures": [],
-      "detector": "existing-bounded-detector",
+      "signatures": [
+        {
+          "offset": 0,
+          "bytes": [
+            56,
+            66,
+            80,
+            83,
+            0,
+            2
+          ]
+        }
+      ],
+      "detector": "static",
       "detection_rules": {
-        "backend": "existing-bounded-detector"
+        "backend": "static",
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": [
+              56,
+              66,
+              80,
+              83,
+              0,
+              2
+            ]
+          }
+        ]
       },
       "primary_viewer": "hex",
       "fallback_viewer": "hex",
@@ -9526,15 +10599,43 @@
     },
     {
       "format_id": "exr",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "exr"
       ],
       "special_filenames": [],
       "mime_types": [],
-      "signatures": [],
-      "detector": "existing-bounded-detector",
+      "signatures": [
+        {
+          "offset": 0,
+          "bytes": [
+            118,
+            47,
+            49,
+            1
+          ]
+        }
+      ],
+      "detector": "static",
       "detection_rules": {
-        "backend": "existing-bounded-detector"
+        "backend": "static",
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": [
+              118,
+              47,
+              49,
+              1
+            ]
+          }
+        ]
       },
       "primary_viewer": "hex",
       "fallback_viewer": "hex",
@@ -9604,15 +10705,43 @@
     },
     {
       "format_id": "eps",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "eps"
       ],
       "special_filenames": [],
       "mime_types": [],
-      "signatures": [],
-      "detector": "existing-bounded-detector",
+      "signatures": [
+        {
+          "offset": 0,
+          "bytes": [
+            37,
+            33,
+            80,
+            83
+          ]
+        }
+      ],
+      "detector": "static",
       "detection_rules": {
-        "backend": "existing-bounded-detector"
+        "backend": "static",
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": [
+              37,
+              33,
+              80,
+              83
+            ]
+          }
+        ]
       },
       "primary_viewer": "hex",
       "fallback_viewer": "hex",
@@ -9682,6 +10811,13 @@
     },
     {
       "format_id": "ai",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ai"
       ],
@@ -9760,6 +10896,13 @@
     },
     {
       "format_id": "fig",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "fig"
       ],
@@ -9838,6 +10981,13 @@
     },
     {
       "format_id": "sketch",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "sketch"
       ],
@@ -9916,6 +11066,13 @@
     },
     {
       "format_id": "lottie",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "lottie"
       ],
@@ -9994,6 +11151,13 @@
     },
     {
       "format_id": "bigtiff",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "btf",
         "bigtiff"
@@ -10073,6 +11237,13 @@
     },
     {
       "format_id": "typescript-declaration",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "d.ts"
       ],
@@ -10150,6 +11321,13 @@
     },
     {
       "format_id": "kotlin-script",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "gradle.kts",
         "kts"
@@ -10228,6 +11406,13 @@
     },
     {
       "format_id": "blade-template",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "blade.php"
       ],
@@ -10305,6 +11490,13 @@
     },
     {
       "format_id": "dockerfile",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         "Dockerfile"
@@ -10382,6 +11574,13 @@
     },
     {
       "format_id": "cmake",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         "CMakeLists.txt"
@@ -10459,6 +11658,13 @@
     },
     {
       "format_id": "go-module",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         "go.mod"
@@ -10536,6 +11742,13 @@
     },
     {
       "format_id": "cargo-manifest",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         "Cargo.toml"
@@ -10613,6 +11826,13 @@
     },
     {
       "format_id": "gitignore",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         ".gitignore"
@@ -10690,6 +11910,13 @@
     },
     {
       "format_id": "environment",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "env.local"
       ],
@@ -10770,6 +11997,13 @@
     },
     {
       "format_id": "matlab-source",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "m"
       ],
@@ -10847,6 +12081,13 @@
     },
     {
       "format_id": "objective-c",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "m"
       ],
@@ -10924,6 +12165,13 @@
     },
     {
       "format_id": "makefile",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         "Makefile",
@@ -11002,6 +12250,13 @@
     },
     {
       "format_id": "package-manifest",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         "package.json"
@@ -11079,6 +12334,13 @@
     },
     {
       "format_id": "tsconfig",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         "tsconfig.json"
@@ -11156,6 +12418,13 @@
     },
     {
       "format_id": "pyproject",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         "pyproject.toml"
@@ -11233,6 +12502,13 @@
     },
     {
       "format_id": "editorconfig",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [
         ".editorconfig"
@@ -11310,6 +12586,13 @@
     },
     {
       "format_id": "gradle",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "gradle"
       ],
@@ -11389,6 +12672,13 @@
     },
     {
       "format_id": "jsonc",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "jsonc"
       ],
@@ -11466,6 +12756,13 @@
     },
     {
       "format_id": "json5",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "json5"
       ],
@@ -11543,6 +12840,13 @@
     },
     {
       "format_id": "ini",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ini"
       ],
@@ -11620,6 +12924,13 @@
     },
     {
       "format_id": "vue",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "vue"
       ],
@@ -11697,6 +13008,13 @@
     },
     {
       "format_id": "svelte",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "svelte"
       ],
@@ -11774,6 +13092,13 @@
     },
     {
       "format_id": "astro",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "astro"
       ],
@@ -11851,6 +13176,13 @@
     },
     {
       "format_id": "perl-source",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "pl",
         "perl"
@@ -11929,6 +13261,13 @@
     },
     {
       "format_id": "prolog-source",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "pl"
       ],
@@ -12006,6 +13345,13 @@
     },
     {
       "format_id": "nifti-gzip",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "nii.gz"
       ],
@@ -12084,6 +13430,13 @@
     },
     {
       "format_id": "tar-zstd",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "tar.zst"
       ],
@@ -12162,6 +13515,13 @@
     },
     {
       "format_id": "notebook-json",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [
         "ipynb"
       ],
@@ -12240,6 +13600,13 @@
     },
     {
       "format_id": "unknown",
+      "catalogue_registered": true,
+      "content_adapter": null,
+      "identification_verified": null,
+      "parser_implemented": null,
+      "real_viewer_registered": true,
+      "main_content_verified": null,
+      "sample_verified": false,
       "extensions": [],
       "special_filenames": [],
       "mime_types": [],

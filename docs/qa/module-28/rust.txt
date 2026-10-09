@@ -1,0 +1,10 @@
+   Compiling prism v0.1.0 (D:\elorin\src-tauri)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.86s
+     Running unittests src\lib.rs (target\debug\deps\prism_lib-18a5e64d7d9a7653.exe)
+
+running 2 tests
+test detection::magic::stream_tests::tiff_version_outranks_three_ds_chunk_id ... ok
+test detection::magic::stream_tests::bounded_stream_schema_detection ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 48 filtered out; finished in 0.00s
+

@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "run_id": "2026-10-09T11:15:57.571Z",
+  "scope": "Listed generated binary fixtures and declared parser subsets only",
+  "samples": [
+    {
+      "format_id": "psd",
+      "fixture": "tests/fixtures/module28/quadrants.psd",
+      "fixture_sha256": "3d3eabb2ab1a83756d5810bc5cea5b2d9342b2f6e114483eb7d69342493f8f26",
+      "level": 3,
+      "flags": [],
+      "test_file": "tests/module-28.test.ts",
+      "assertions": [
+        "64x64 quadrants with actual red RGBA pixel",
+        "actual native Viewer content and basic reading operations",
+        "corrupted fixture rejects content; workers released after close"
+      ],
+      "status": "passed",
+      "detector_result": {
+        "status": "Confirmed"
+      },
+      "resolved_viewer": "image"
+    },
+    {
+      "format_id": "mat",
+      "fixture": "tests/fixtures/module28/signals.mat",
+      "fixture_sha256": "52efeb1964ebd1ff8e6231ec54e584af100fc74e3b3565b46676137d0e973b07",
+      "level": 3,
+      "flags": [],
+      "test_file": "tests/module-28.test.ts",
+      "assertions": [
+        "signal 1.25/2.5/3.75 and 10/20/30 plus complex vector",
+        "actual native Viewer content and basic reading operations",
+        "corrupted fixture rejects content; workers released after close"
+      ],
+      "status": "passed",
+      "detector_result": {
+        "status": "Probable"
+      },
+      "resolved_viewer": "scientific"
+    },
+    {
+      "format_id": "3ds",
+      "fixture": "tests/fixtures/module28/tetrahedron.3ds",
+      "fixture_sha256": "b48e02af0b26b428c9428f7eaf01f25f8685ec0fbfa6013d5ef3d226f335dc51",
+      "level": 3,
+      "flags": [
+        "scene_graph"
+      ],
+      "test_file": "tests/module-28.test.ts",
+      "assertions": [
+        "tetrahedron mesh",
+        "actual native Viewer content and basic reading operations",
+        "corrupted fixture rejects content; workers released after close"
+      ],
+      "status": "passed",
+      "detector_result": {
+        "status": "Confirmed"
+      },
+      "resolved_viewer": "scene"
+    },
+    {
+      "format_id": "psd",
+      "fixture": "tests/fixtures/module28/quadrants-rle.psd",
+      "fixture_sha256": "8dbeff581d52f284903a98f8aa7a05b446649ea1422033fcc6546d2ff25abf24",
+      "level": 3,
+      "flags": [],
+      "test_file": "tests/module-28.test.ts",
+      "assertions": [
+        "64x64 PackBits quadrants",
+        "actual native Viewer content and basic reading operations",
+        "corrupted fixture rejects content; workers released after close"
+      ],
+      "status": "passed",
+      "detector_result": {
+        "status": "Confirmed"
+      },
+      "resolved_viewer": "image"
+    },
+    {
+      "format_id": "mat",
+      "fixture": "tests/fixtures/module28/big-endian.mat",
+      "fixture_sha256": "9451d862edc048e0ec5bf48b7d82376106cd7a58200fcba25bb81706c01f5879",
+      "level": 3,
+      "flags": [],
+      "test_file": "tests/module-28.test.ts",
+      "assertions": [
+        "IEEE big endian matrix -2/3 and 40/50",
+        "actual native Viewer content and basic reading operations",
+        "corrupted fixture rejects content; workers released after close"
+      ],
+      "status": "passed",
+      "detector_result": {
+        "status": "Probable"
+      },
+      "resolved_viewer": "scientific"
+    },
+    {
+      "format_id": "tiff",
+      "fixture": "tests/fixtures/module28/big-endian.tiff",
+      "fixture_sha256": "2f300aadd2df86e6491a0f0dd58d8b7ac726daf2596c64993c1800408d0e32fb",
+      "level": 3,
+      "flags": [],
+      "test_file": "tests/module-28.test.ts",
+      "assertions": [
+        "8x8 cyan raster; TIFF signature outranks 3DS",
+        "actual native Viewer content and basic reading operations"
+      ],
+      "status": "passed",
+      "detector_result": {
+        "status": "Confirmed"
+      },
+      "resolved_viewer": "image"
+    }
+  ]
+}

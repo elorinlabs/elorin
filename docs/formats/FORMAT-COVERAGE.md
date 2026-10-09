@@ -9,7 +9,7 @@
 | feather | feather | columnar | 未验证 | NOT_VERIFIED |
 | hdf5 | h5, hdf5 | scientific | 未验证 | NOT_VERIFIED |
 | netcdf | nc, netcdf | scientific | 未验证 | NOT_VERIFIED |
-| mat | mat | scientific | 未验证 | NOT_VERIFIED |
+| mat | mat | scientific | L3 | passed-declared-scope |
 | stl | stl | mesh | 未验证 | NOT_VERIFIED |
 | obj | obj | mesh | 未验证 | NOT_VERIFIED |
 | ply | ply | mesh | 未验证 | NOT_VERIFIED |
@@ -32,7 +32,7 @@
 | usda | usda | scene | 未验证 | NOT_VERIFIED |
 | usdc | usdc | scene | 未验证 | NOT_VERIFIED |
 | usdz | usdz | scene | 未验证 | NOT_VERIFIED |
-| 3ds | 3ds | scene | 未验证 | NOT_VERIFIED |
+| 3ds | 3ds | scene | L3 | passed-declared-scope |
 | c4d | c4d | scene | 未验证 | NOT_VERIFIED |
 | blend | blend | scene | 未验证 | NOT_VERIFIED |
 | max | max | scene | 未验证 | NOT_VERIFIED |
@@ -101,7 +101,7 @@
 | avif | avif | image | 未验证 | NOT_VERIFIED |
 | bmp | bmp | image | 未验证 | NOT_VERIFIED |
 | ico | ico | image | 未验证 | NOT_VERIFIED |
-| tiff | tif, tiff | image | 未验证 | NOT_VERIFIED |
+| tiff | tif, tiff | image | L3 | passed-declared-scope |
 | heic | heic | image | 未验证 | NOT_VERIFIED |
 | heif | heif | image | 未验证 | NOT_VERIFIED |
 | zip | zip | archive | 未验证 | NOT_VERIFIED |
@@ -121,7 +121,7 @@
 | sub | sub | subtitle | L2 | passed-declared-scope |
 | npy | npy | scientific | L2 | passed-declared-scope |
 | npz | npz | archive | 未验证 | NOT_VERIFIED |
-| psd | psd | hex | 未验证 | NOT_VERIFIED |
+| psd | psd | image | L3 | passed-declared-scope |
 | psb | psb | hex | 未验证 | NOT_VERIFIED |
 | exr | exr | hex | 未验证 | NOT_VERIFIED |
 | eps | eps | hex | 未验证 | NOT_VERIFIED |

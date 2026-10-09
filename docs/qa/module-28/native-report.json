@@ -1,0 +1,57 @@
+{
+  "started": "2026-10-09T11:15:57.571Z",
+  "checks": [
+    "PSD native image viewer: real red pixel, dimensions, zoom and fit",
+    "PSD PackBits sample produces actual image content",
+    "Minimized MAT viewer releases worker; restore reopens bounded data",
+    "MAT Level 4: real matrix values, variable navigation/search and complex content",
+    "MAT IEEE big endian path displays -2",
+    "3DS native scene: rendered tetrahedron, view navigation and structure search",
+    "Existing big endian TIFF correctly routes to image and decodes cyan content",
+    "damaged.psd rejects damaged/unsafe payload with a visible diagnostic",
+    "oversized.psd rejects damaged/unsafe payload with a visible diagnostic",
+    "damaged.mat rejects damaged/unsafe payload with a visible diagnostic",
+    "damaged.3ds rejects damaged/unsafe payload with a visible diagnostic",
+    "external-texture.3ds rejects damaged/unsafe payload with a visible diagnostic",
+    "Wrong extension resolves PSD signature in main and independent Focus",
+    "Archive VFS PSD preview and independent tab read actual bytes; closing releases parsing workers",
+    "Normal native exit leaves no observed app/WebView child process"
+  ],
+  "samples": [
+    {
+      "format": "psd",
+      "fixture": "quadrants.psd",
+      "viewer": "image",
+      "content": "64x64 quadrants with actual red RGBA pixel",
+      "status": "passed"
+    },
+    {
+      "format": "mat",
+      "fixture": "signals.mat",
+      "viewer": "scientific",
+      "content": "signal 1.25/2.5/3.75 and 10/20/30 plus complex vector",
+      "status": "passed"
+    },
+    {
+      "format": "3ds",
+      "fixture": "tetrahedron.3ds",
+      "viewer": "scene",
+      "content": "tetrahedron mesh",
+      "status": "passed"
+    }
+  ],
+  "errors": [],
+  "executableSha256": "1b73d5de4e1b29eb2c1623621128e5e366c7f8c96934fa10b12a3b7425fa298a",
+  "workerTotals": {
+    "created": 14,
+    "live": 0
+  },
+  "normalExitRemaining": [],
+  "status": "PASS",
+  "cleanup": {
+    "personalDataUnchanged": true,
+    "frozenInstallerUnchanged": true,
+    "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+    "processesRemaining": []
+  }
+}
