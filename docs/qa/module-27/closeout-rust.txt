@@ -1,0 +1,9 @@
+   Compiling prism v0.1.0 (D:\elorin\src-tauri)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 16.20s
+     Running unittests src\lib.rs (target\debug\deps\prism_lib-18a5e64d7d9a7653.exe)
+
+running 1 test
+test productivity::workspace_watch_tests::release_is_idempotent_and_preserves_other_windows ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 48 filtered out; finished in 0.00s
+

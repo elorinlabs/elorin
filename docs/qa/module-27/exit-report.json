@@ -1,0 +1,12 @@
+{
+  "started": "2026-10-09T10:26:47.731Z",
+  "executableSha256": "1b362aae3080bac36d7d9e7a15b06d0a3df8c908bc5eb48391ef0fde6c00dc96",
+  "processesRemaining": [],
+  "status": "PASS",
+  "cleanup": {
+    "personalDataUnchanged": true,
+    "frozenInstallerUnchanged": true,
+    "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+    "processesRemaining": []
+  }
+}

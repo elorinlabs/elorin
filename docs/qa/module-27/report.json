@@ -1,21 +1,50 @@
 {
-  "started": "2026-10-09T09:59:11.750Z",
+  "status": "PASS_REQUIRED_NATIVE_CHECKS",
+  "completed": "2026-10-09T10:28:50.4567522Z",
+  "codeCommit": "8d3bcf2",
+  "executableSha256": "1b362aae3080bac36d7d9e7a15b06d0a3df8c908bc5eb48391ef0fde6c00dc96",
   "checks": [
     "Home → existing New File → text editor → native Save As → tab/path/recent synchronization",
     "In-place save preserves file contents and clears dirty state",
-    "Save As replaces only owning tab while original file remains intact"
+    "Save As replaces only owning tab while original file remains intact",
+    "Native multi-file picker opens both selected files",
+    "Each selected file is granted while an unselected sibling remains denied",
+    "Inactive tab context close targets correct file; unsupported destructive actions disabled",
+    "Focus reads an in-place save from main without transferring the editing session",
+    "Independent Focus keeps file identity across main switch; closing Focus preserves main tabs",
+    "Dirty close Cancel preserves editor and owning session",
+    "Bounded workspace manifest persists stable tabs and saved path",
+    "Reload restores active file through real authorized backend",
+    "Favorites are persisted through the existing service and visible on Home",
+    "Crash snapshot Restore opens isolated unsaved document without overwriting original",
+    "External move safely releases viewer and marks unavailable",
+    "Twelve long-name tabs: overflow palette and Ctrl+Tab activate the correct file",
+    "Close-right and reopen use correct stable files with bounded history",
+    "Workspace restore retains three tabs and active real viewer",
+    "Deleted source is unavailable live and after restore; removal targets only its tab",
+    "Malformed restore entry safely starts Home without crash or unauthorized read",
+    "Recent → add favorite → Favorites → Home favorite → reopen uses real persisted data",
+    "Remove favorite and Clear Recent Files persist empty states",
+    "Actual native Home and long tabs render in dark theme",
+    "Native titlebar normal exit terminates app and every observed child process"
   ],
-  "errors": [],
-  "priorRun": "2026-10-09T09:56:32.636Z",
-  "executableSha256": "fe657f0fbf6fef7c9235a77a31095b37448669c8c0a3c41da4572754d4b2fe56",
-  "syntheticDirectory": "D:\\elorin\\.qa-tools\\module27\\files-1791539792640",
-  "failure": "locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('.file-tab').filter({ hasText: 'two.txt' }) to be visible\u001b[22m\n\n    at D:\\elorin\\docs\\qa\\module-27\\native-qa.cjs:23:59",
+  "evidence": [
+    "interrupted-report.json",
+    "closeout-report.json",
+    "supplement-report.json",
+    "exit-report.json",
+    "closeout-tests.json"
+  ],
+  "provenance": "Creation/save/save-as from original run; multi-selection after ACL fix before Focus fix; remaining sequence on final executable. Resumed runs skip already verified dialogs.",
+  "notVerified": [
+    "Forced process termination crash injection",
+    "Windows ACL access revocation"
+  ],
   "cleanup": {
     "personalDataUnchanged": true,
     "frozenInstallerUnchanged": true,
     "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
     "processesRemaining": []
   },
-  "status": "INCOMPLETE — native continuation stopped by user Escape",
-  "interruption": "Computer Use reported the physical Escape key; no further Windows automation was performed. Isolated QA processes were terminated."
+  "module28": "NOT STARTED: formal scope missing"
 }

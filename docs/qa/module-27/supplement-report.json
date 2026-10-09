@@ -1,0 +1,23 @@
+{
+  "started": "2026-10-09T10:25:53.832Z",
+  "checks": [
+    "Twelve long-name tabs: overflow palette and Ctrl+Tab activate the correct file",
+    "Close-right and reopen use correct stable files with bounded history",
+    "Workspace restore retains three tabs and active real viewer",
+    "Deleted source is unavailable live and after restore; removal targets only its tab",
+    "Malformed restore entry safely starts Home without crash or unauthorized read",
+    "Recent → add favorite → Favorites → Home favorite → reopen uses real persisted data",
+    "Remove favorite and Clear Recent Files persist empty states",
+    "Actual native Home and long tabs render in dark theme"
+  ],
+  "errors": [],
+  "executableSha256": "1b362aae3080bac36d7d9e7a15b06d0a3df8c908bc5eb48391ef0fde6c00dc96",
+  "syntheticDirectory": "D:\\elorin\\.qa-tools\\module27\\supplement-1791541555143",
+  "status": "PASS",
+  "cleanup": {
+    "personalDataUnchanged": true,
+    "frozenInstallerUnchanged": true,
+    "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+    "processesRemaining": []
+  }
+}

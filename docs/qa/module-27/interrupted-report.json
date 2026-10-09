@@ -1,0 +1,21 @@
+{
+  "started": "2026-10-09T09:59:11.750Z",
+  "checks": [
+    "Home → existing New File → text editor → native Save As → tab/path/recent synchronization",
+    "In-place save preserves file contents and clears dirty state",
+    "Save As replaces only owning tab while original file remains intact"
+  ],
+  "errors": [],
+  "priorRun": "2026-10-09T09:56:32.636Z",
+  "executableSha256": "fe657f0fbf6fef7c9235a77a31095b37448669c8c0a3c41da4572754d4b2fe56",
+  "syntheticDirectory": "D:\\elorin\\.qa-tools\\module27\\files-1791539792640",
+  "failure": "locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('.file-tab').filter({ hasText: 'two.txt' }) to be visible\u001b[22m\n\n    at D:\\elorin\\docs\\qa\\module-27\\native-qa.cjs:23:59",
+  "cleanup": {
+    "personalDataUnchanged": true,
+    "frozenInstallerUnchanged": true,
+    "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+    "processesRemaining": []
+  },
+  "status": "INCOMPLETE — native continuation stopped by user Escape",
+  "interruption": "Computer Use reported the physical Escape key; no further Windows automation was performed. Isolated QA processes were terminated."
+}
