@@ -1,4 +1,5 @@
 /// <reference lib="webworker" />
+import { parseFormat } from '../../../formats/content-adapter';
 import { parquetMetadataAsync, parquetScan } from "hyparquet";
 import { compressors } from "hyparquet-compressors";
 import { RecordBatchReader, Message, Type } from "apache-arrow";
@@ -467,7 +468,7 @@ async function open(args: any) {
     netcdf = new NetcdfReader(read, size);
     nodes = await netcdf.open();
   } else if (format === "mat") {
-    mat4=await (await import('./mat4-reader')).mat4Adapter.parse({read,size});nodes=mat4.nodes;
+    mat4=await parseFormat('mat', {read,size});nodes=mat4.nodes;
   }
   else throw Error("Unsupported data format");
   return nodes;

@@ -1,5 +1,41 @@
 [
-  {"id":"psd-composite","formats":["psd"],"viewer":"image","projection":"ImageDocument","module":"src/viewer/plugins/image/image-psd.ts","worker":"src/viewer/plugins/image/image.worker.ts","scope":"PSD v1 8-bit RGB/grayscale raw or PackBits merged composite, 16 MP; no extra channels, layers, ICC conversion or ZIP"},
-  {"id":"mat-level4","formats":["mat"],"viewer":"scientific","projection":"ScientificDataset","module":"src/viewer/plugins/data/mat4-reader.ts","worker":"src/viewer/plugins/data/data.worker.ts","scope":"Level 4 full numeric real/complex IEEE little/big endian matrices, paged; no sparse/text/v5 (v7.3 keeps existing HDF5 path)"},
-  {"id":"three-ds-static","formats":["3ds"],"viewer":"scene","projection":"GeometryDocument","module":"src/viewer/plugins/geometry/three-ds-adapter.ts","worker":"src/viewer/plugins/geometry/parser.worker.ts","scope":"3DS bounded static triangle meshes via Three TDSLoader; no external textures or keyframe animation"}
+  {
+    "id": "psd-composite",
+    "formats": [
+      "psd"
+    ],
+    "viewer": "image",
+    "projection": "ImageDocument",
+    "module": "src/viewer/plugins/image/image-psd.ts",
+    "worker": "src/viewer/plugins/image/image.worker.ts",
+    "scope": "PSD v1 8-bit RGB/grayscale raw or PackBits merged composite, 16 MP; no extra channels, layers, ICC conversion or ZIP",
+    "exportName": "psdAdapter",
+    "outputModel": "ReturnType<typeof decodePsd>"
+  },
+  {
+    "id": "mat-level4",
+    "formats": [
+      "mat"
+    ],
+    "viewer": "scientific",
+    "projection": "ScientificDataset",
+    "module": "src/viewer/plugins/data/mat4-reader.ts",
+    "worker": "src/viewer/plugins/data/data.worker.ts",
+    "scope": "Level 4 full numeric real/complex IEEE little/big endian matrices, paged; no sparse/text/v5 (v7.3 keeps existing HDF5 path)",
+    "exportName": "mat4Adapter",
+    "outputModel": "Mat4Reader"
+  },
+  {
+    "id": "three-ds-static",
+    "formats": [
+      "3ds"
+    ],
+    "viewer": "scene",
+    "projection": "GeometryDocument",
+    "module": "src/viewer/plugins/geometry/three-ds-adapter.ts",
+    "worker": "src/viewer/plugins/geometry/parser.worker.ts",
+    "scope": "3DS bounded static triangle meshes via Three TDSLoader; no external textures or keyframe animation",
+    "exportName": "threeDsAdapter",
+    "outputModel": "GeometryDocumentModel"
+  }
 ]

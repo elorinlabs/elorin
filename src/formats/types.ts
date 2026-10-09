@@ -11,6 +11,11 @@ export interface FormatCapabilities {
   resourceDependencies: string[]; isolation: 'in-process' | 'worker' | 'native' | 'isolated-process-reserved';
   association: { allowed: boolean; recommended: boolean; category: string }; legacyType: DetectedFileType;
   ambiguityGroup?: string;
+  /** Existing viewer-owned pipelines are distinct from independently loadable adapters. */
+  parserId?: string | null;
+  viewerId?: string;
+  category?: string;
+  supportStatus?: 'adapter-implemented' | 'viewer-owned-unverified' | 'unimplemented' | 'raw-only';
   sourceLanguage?: string;
   detectionRules?: {
     backend: 'existing-bounded-detector' | 'static';

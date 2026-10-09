@@ -2,7 +2,7 @@ import catalogue from './runtime.json';
 import type { FileDescriptor } from '../types/files';
 import type { FormatAdapter, FormatCapabilities, FormatDetection, DetectionContext, AdaptedDocument, OpenOptions } from './types';
 import type { FileSource } from '../services/fileSource';
-import { checkAbort } from '../viewer/core/errors';
+import { checkAbort, ViewerError } from '../viewer/core/errors';
 export const formatManifest = catalogue.entries.map(([formatId,name,extensions,filenames,legacyType,profile,detectionRules,ambiguityGroup])=>({
   ...catalogue.profiles[profile as number],formatId,name,extensions,filenames,legacyType,detectionRules:detectionRules??undefined,ambiguityGroup:ambiguityGroup??undefined,
 })) as FormatCapabilities[];
@@ -50,9 +50,9 @@ export class FormatIndex {
   match(name:string): string[] {
     const base=name.replaceAll('\\','/').split('/').pop()!.toLowerCase();
     if(base.length>512)return [];
-    const exact=this.names.get(base);if(exact)return exact;
+    const exact=this.names.get(base);if(exact)return [...exact].sort();
     const pieces=base.split('.');
-    for(let i=1;i<pieces.length;i++){const ids=this.suffixes.get(pieces.slice(i).join('.'));if(ids)return ids;}
+    for(let i=1;i<pieces.length;i++){const ids=this.suffixes.get(pieces.slice(i).join('.'));if(ids)return [...ids].sort();}
     return [];
   }
   detect(context:DetectionContext): FormatDetection {
@@ -81,6 +81,13 @@ export class FormatIndex {
       if(objc!==matlab){ids=[objc?'objective-c':'matlab-source',objc?'matlab-source':'objective-c'];status='Probable';evidence.push({kind:'content',detail:objc?'Objective-C declaration in bounded sample':'MATLAB source marker in bounded sample'});}
       else status='Ambiguous';
     }
+    if(ids.includes('perl-source')&&ids.includes('prolog-source')){
+      const text=sample?new TextDecoder().decode(sample.subarray(0,8192)):'';
+      const perl=/^#![^\n]*\bperl\b|\buse\s+(?:strict|warnings)\s*;|\bmy\s+[$@%]/m.test(text);
+      const prolog=/^\s*:-\s*(?:module|use_module|dynamic)\b|^[^%\n]+\s*:-\s*[^\n]+\./m.test(text);
+      if(perl!==prolog){ids=[perl?'perl-source':'prolog-source',perl?'prolog-source':'perl-source'];status='Probable';evidence.push({kind:'content',detail:perl?'Perl source marker in bounded sample':'Prolog source marker in bounded sample'});}
+      else status='Ambiguous';
+    }
     if(ids[0]==='nifti-gzip'||ids[0]==='tar-zstd')status='Probable';
     if(file.detectionSource.includes('magic')&&file.detectionSource.includes('content'))evidence.push({kind:'container',detail:'Existing detector inspected bounded container structure'});
     const signatureConflict=magicIds.length>0&&named.length>0&&!named.some(id=>magicIds.includes(id));
@@ -101,6 +108,7 @@ export class RoutedFormatAdapter implements FormatAdapter {
   async open(source:FileSource,options:OpenOptions):Promise<AdaptedDocument>{
     checkAbort(options.signal);
     const view=this.capabilities.supportedViews.find(v=>v.id===(options.viewId??'primary'));
+    if((options.viewId??'primary')==='primary'&&this.capabilities.previewLevel==='detection-only')throw new ViewerError('UNSUPPORTED_CONTENT', `No content parser is implemented for ${this.capabilities.formatId}`);
     if(!view)throw Error('This format does not provide the selected view');
     if((view.projection==='TextDocument'||view.projection==='StructuredDocument')&&!options.file.isText&&['core.text-fallback','json','markdown','csv'].includes(view.viewerId))throw Error('Binary input cannot be interpreted as text');
     // Models, workers and native handles belong to the existing ViewerController lifecycle.

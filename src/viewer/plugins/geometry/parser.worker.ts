@@ -1,3 +1,4 @@
+import { parseFormat } from '../../../formats/content-adapter';
 import * as T from "three";
 import { STLLoader } from "three/addons/loaders/STLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
@@ -23,7 +24,7 @@ self.onmessage = async (
     const { format, bytes, resources, mtl, metadata } = event.data;
     self.postMessage({ progress: "Parsing geometry…" });
     if(format==='3ds'){
-      const doc=await (await import('./three-ds-adapter')).threeDsAdapter.parse(bytes);
+      const doc=await parseFormat('3ds', bytes);
       doc.metadata.parseMs=performance.now()-parseStart;
       self.postMessage({document:doc},{transfer:transferableDocument(doc)});return;
     }

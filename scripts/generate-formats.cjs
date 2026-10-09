@@ -9,7 +9,8 @@ for(const match of native.matchAll(/^\s*((?:"[^"]+"\s*\|?\s*)+)=>\s*(\w+)/gm)){
 }
 const groups={mesh:['stl','obj','ply','gltf','glb'],cad:['step','stp','iges','igs','jt','skp','3dm','sldprt','sldasm','catpart','catproduct'],scene:['fbx','dae','usd','usda','usdc','usdz','3ds','c4d','blend','max'],'cad-drawing':['dxf','dwg'],archive:['zip','tar','gz','tgz','sevenzip','rar','bz2','xz','zst'],audio:['mp3','wav','flac','aac','m4a','ogg','opus','wma','aiff'],video:['mp4','webm','mov','mkv','avi','mpeg','m4v'],ebook:['epub'],email:['eml','msg'],spreadsheet:['xlsx','xlsm','xls','xlsb','ods'],presentation:['pptx','pptm','ppsx','potx','ppt','odp'],pdf:['pdf'],'office-document':['docx','odt','rtf','doc'],markdown:['markdown'],json:['json'],csv:['csv','tsv'],image:['png','jpeg','gif','webp','svg','avif','bmp','ico','tiff','heic','heif'],columnar:['parquet','arrow','feather'],scientific:['hdf5','netcdf','mat'],database:['sqlite']};
 const projections={mesh:'GeometryDocument',cad:'GeometryDocument',scene:'GeometryDocument','cad-drawing':'GeometryDocument',archive:'ContainerDocument',audio:'TimelineDocument',video:'TimelineDocument',ebook:'DocumentPages',email:'StructuredDocument',spreadsheet:'TabularDataProvider',presentation:'DocumentPages',pdf:'DocumentPages','office-document':'DocumentPages',markdown:'TextDocument',json:'StructuredDocument',csv:'TabularDataProvider',image:'ImageDocument',columnar:'TabularDataProvider',scientific:'ScientificDataset',database:'TabularDataProvider','core.text-fallback':'TextDocument','core.binary-fallback':'BinaryDocument'};
-const detectedOnly=new Set(['jt','skp','3dm','sldprt','sldasm','catpart','catproduct','fbx','dae','3ds','usd','usda','usdc','usdz','c4d','blend','max','dwg']);
+// These existing backends explicitly return placeholder/legacy diagnostics, not content.
+const detectedOnly=new Set(['doc','xls','xlsb','ppt','msg','jt','skp','3dm','sldprt','sldasm','catpart','catproduct','fbx','dae','3ds','usd','usda','usdc','usdz','c4d','blend','max','dwg']);
 const textual=new Set(['text','markdown','json','yaml','xml','toml','javascript','typescript','jsx','tsx','python','c','cpp','java','go','rust','html','css','csv','tsv','svg']);
 const records=[...grouped].map(([id,extensions])=>{
  const text=textual.has(id),implemented=!detectedOnly.has(id);
@@ -87,6 +88,16 @@ for(const binding of JSON.parse(fs.readFileSync('src/formats/content-adapters.js
  record.canSearch=binding.viewer==='scientific';
  record.supportedViews[0]={id:'primary',viewerId:binding.viewer,projection:binding.projection,label:'Primary view'};
  record.limitations=[binding.scope];record.dependencies=[binding.module];
+}
+// Parser identity describes existing dispatch, never detection or raw-byte fallback support.
+const bindings=JSON.parse(fs.readFileSync('src/formats/content-adapters.json','utf8'));
+for(const record of records){
+ const primary=record.supportedViews.find(v=>v.id==='primary'),binding=bindings.find(b=>b.formats.includes(record.formatId));
+ const raw=['hex','core.binary-fallback'].includes(primary.viewerId);
+ record.category=record.association.category;
+ record.viewerId=primary.viewerId;
+ record.supportStatus=record.previewLevel==='detection-only'?'unimplemented':raw?'raw-only':binding?'adapter-implemented':'viewer-owned-unverified';
+ record.parserId=binding?.id??(record.supportStatus==='viewer-owned-unverified'?'viewer/'+primary.viewerId:null);
 }
 fs.mkdirSync('src/formats',{recursive:true});fs.writeFileSync('src/formats/catalogue.json',JSON.stringify(records,null,2)+'\n');
 // Deduplicate repeated policies in the startup metadata without changing the full export matrix.

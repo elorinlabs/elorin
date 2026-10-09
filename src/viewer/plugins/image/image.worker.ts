@@ -1,3 +1,4 @@
+import { parseFormat } from '../../../formats/content-adapter';
 import { pngPreview } from "./image-png";
 import { decodeTiff } from "./image-tiff";
 self.onmessage = async (
@@ -6,7 +7,7 @@ self.onmessage = async (
   try {
     const result =
       event.data.kind === 'psd'
-        ? await (await import('./image-psd')).psdAdapter.parse(event.data.buffer)
+        ? await parseFormat('psd', event.data.buffer)
         : event.data.kind === "png"
         ? pngPreview(event.data.buffer)
         : decodeTiff(event.data.buffer);

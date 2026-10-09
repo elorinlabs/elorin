@@ -88,7 +88,7 @@ export class ViewerController {
     void (async () => {
       const started = performance.now();
       try {
-        const pendingAdapter=forceId==='hex'?undefined:this.registry.adapt(context.source,{file:input.file,signal:abort.signal,onCleanup:context.onCleanup});
+        const pendingAdapter=(forceId==='hex'||forceId==='core.text-fallback')?undefined:this.registry.adapt(context.source,{file:input.file,signal:abort.signal,onCleanup:context.onCleanup});
         const adapted=pendingAdapter?await bounded(pendingAdapter):undefined;
         if(!active)return;
         if(adapted){

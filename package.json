@@ -13,7 +13,8 @@
     "formats:audit": "node scripts/generate-format-capabilities.cjs",
     "regression:fast": "node scripts/module-23-regression.cjs FAST",
     "regression:standard": "node scripts/module-23-regression.cjs STANDARD",
-    "regression:extended": "node scripts/module-23-regression.cjs EXTENDED"
+    "regression:extended": "node scripts/module-23-regression.cjs EXTENDED",
+    "formats:check": "node scripts/check-format-registration.cjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.0.0",
