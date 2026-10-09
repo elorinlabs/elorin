@@ -1,6 +1,6 @@
 import { t as tr } from "../i18n";
 import { invoke, isTauri } from '@tauri-apps/api/core';
-import type { DocumentSession } from './session';
+import { documentSessions, type DocumentSession } from './session';
 import { snapshot } from './recovery';
 import { confirmDocument } from './dialog';
 const activeSaves = new WeakMap<DocumentSession, Promise<{ path: string; fingerprint: string } | null>>();
@@ -19,7 +19,7 @@ async function performSave(session: DocumentSession, name: string, as: boolean) 
     if (!isTauri()) {
       const url = URL.createObjectURL(new Blob([bytes])); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); session.saveState = 'Exported copy'; return null;
     }
-    const result = await invoke<{ path: string; fingerprint: string } | null>('document_save', { path: as ? null : session.path, expected: as ? null : session.fingerprint, bytes: Array.from(bytes), name });
+    const result = await invoke<{ path: string; fingerprint: string } | null>('document_save', { path: as ? null : session.path, expected: as ? null : session.fingerprint, bytes: Array.from(bytes), name, protectedPaths: [...documentSessions.values()].filter(other=>other!==session && other.dirty && other.path).map(other=>other.path) });
     if (result) { session.saved(text, result.fingerprint, result.path); session.savedRevision = revision; session.externalChangeState = 'unchanged'; await snapshot(session); }
     else session.saveState = 'Unsaved';
     return result;

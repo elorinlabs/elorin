@@ -65,8 +65,16 @@ pub async fn document_fingerprint(app: tauri::AppHandle, path: String) -> Result
 }
 #[derive(serde::Serialize)]
 pub struct SaveResult { path: String, fingerprint: String }
+fn reject_protected_target(target: &Path, paths: &[String]) -> Result<(), FileError> {
+    if paths.len() > 128 { return Err(FileError::new("limit", "Too many protected documents.")); }
+    let identity = target.canonicalize().ok();
+    if identity.is_some() && paths.iter().any(|path| Path::new(path).canonicalize().ok() == identity) {
+        return Err(FileError::new("conflict", "Another open document has unsaved changes at this path."));
+    }
+    Ok(())
+}
 #[tauri::command]
-pub async fn document_save(app: tauri::AppHandle, path: Option<String>, bytes: Vec<u8>, expected: Option<String>, name: String) -> Result<Option<SaveResult>, FileError> {
+pub async fn document_save(app: tauri::AppHandle, path: Option<String>, bytes: Vec<u8>, expected: Option<String>, name: String, protected_paths: Option<Vec<String>>) -> Result<Option<SaveResult>, FileError> {
     tauri::async_runtime::spawn_blocking(move || {
         let (target, expected) = match path {
             Some(path) => {
@@ -78,6 +86,7 @@ pub async fn document_save(app: tauri::AppHandle, path: Option<String>, bytes: V
                 let target = picked.into_path().map_err(|e| FileError::new("unknown", e.to_string()))?;
                 let expected = if target.exists() { Some(fingerprint(&target)?) } else { None }; (target, expected) }
         };
+        reject_protected_target(&target, protected_paths.as_deref().unwrap_or_default())?;
         let fingerprint = atomic_write(&target, &bytes, expected.as_deref())?;
         app.state::<FileAccess>().grant(&target)?;
         Ok(Some(SaveResult { path: target.to_string_lossy().into_owned(), fingerprint }))
@@ -95,4 +104,16 @@ mod tests {
     #[test] fn readonly_preserves_original() { let dir = tempfile::tempdir().unwrap(); let path = dir.path().join("a.txt"); fs::write(&path, b"original").unwrap(); let base = fingerprint(&path).unwrap(); let mut permissions = fs::metadata(&path).unwrap().permissions(); permissions.set_readonly(true); fs::set_permissions(&path, permissions).unwrap(); assert_eq!(atomic_write(&path, b"edited", Some(&base)).unwrap_err().code, "permissionDenied"); assert_eq!(fs::read(&path).unwrap(), b"original"); let mut permissions = fs::metadata(&path).unwrap().permissions(); permissions.set_readonly(false); fs::set_permissions(&path, permissions).unwrap(); }
     #[cfg(windows)] #[test] fn locked_source_preserves_original() { use std::os::windows::fs::OpenOptionsExt; let dir = tempfile::tempdir().unwrap(); let path = dir.path().join("a.txt"); fs::write(&path, b"original").unwrap(); let base = fingerprint(&path).unwrap(); let lock = fs::OpenOptions::new().read(true).write(true).share_mode(0).open(&path).unwrap(); assert_eq!(atomic_write(&path, b"edited", Some(&base)).unwrap_err().code, "locked"); drop(lock); assert_eq!(fs::read(&path).unwrap(), b"original"); }
     #[cfg(unix)] #[test] fn execute_permission_preserved() { use std::os::unix::fs::PermissionsExt; let dir = tempfile::tempdir().unwrap(); let path = dir.path().join("script.sh"); fs::write(&path, b"#!/bin/sh\n").unwrap(); fs::set_permissions(&path, fs::Permissions::from_mode(0o755)).unwrap(); let base = fingerprint(&path).unwrap(); atomic_write(&path, b"#!/bin/sh\n# edited\n", Some(&base)).unwrap(); assert_eq!(fs::metadata(&path).unwrap().permissions().mode() & 0o777, 0o755); }
+}
+
+#[cfg(test)] mod workspace_save_tests {
+    use super::*;
+    #[test] fn another_dirty_document_is_protected_without_writing() {
+        let dir = tempfile::tempdir().unwrap(); let path = dir.path().join("draft.txt");
+        fs::write(&path, b"original").unwrap();
+        assert!(reject_protected_target(&path, &[path.to_string_lossy().into_owned()]).is_err());
+        assert_eq!(fs::read(&path).unwrap(), b"original");
+        assert!(reject_protected_target(&path, &[]).is_ok());
+        assert!(reject_protected_target(&dir.path().join("new.txt"), &[]).is_ok());
+    }
 }

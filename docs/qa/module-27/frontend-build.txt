@@ -1,0 +1,153 @@
+$ tsc -b && vite build
+vite v6.4.4 building for production...
+transforming...
+✓ 2333 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) D:/elorin/node_modules/.pnpm/@tauri-apps+api@2.12.1/node_modules/@tauri-apps/api/core.js is dynamically imported by D:/elorin/src/services/fileSource.ts, D:/elorin/src/viewer/plugins/image/image-model.ts but also statically imported by D:/elorin/node_modules/.pnpm/@tauri-apps+api@2.12.1/node_modules/@tauri-apps/api/dpi.js, D:/elorin/node_modules/.pnpm/@tauri-apps+api@2.12.1/node_modules/@tauri-apps/api/event.js, D:/elorin/node_modules/.pnpm/@tauri-apps+api@2.12.1/node_modules/@tauri-apps/api/image.js, D:/elorin/node_modules/.pnpm/@tauri-apps+api@2.12.1/node_modules/@tauri-apps/api/webview.js, D:/elorin/node_modules/.pnpm/@tauri-apps+api@2.12.1/node_modules/@tauri-apps/api/window.js, D:/elorin/node_modules/.pnpm/@tauri-apps+plugin-clipboard-manager@2.4.1/node_modules/@tauri-apps/plugin-clipboard-manager/dist-js/index.js, D:/elorin/src/app/App.tsx, D:/elorin/src/components/shell/DesktopPolicy.tsx, D:/elorin/src/document/DocumentSurface.tsx, D:/elorin/src/document/NewFileDialog.tsx, D:/elorin/src/document/clipboard.ts, D:/elorin/src/document/create.ts, D:/elorin/src/document/recovery.ts, D:/elorin/src/document/save-service.ts, D:/elorin/src/pages/focus/FocusWindow.tsx, D:/elorin/src/platform/file-watch.ts, D:/elorin/src/platform/integration.ts, D:/elorin/src/platform/user-environment.ts, D:/elorin/src/services/fileLoader.ts, D:/elorin/src/services/fileSelection.ts, D:/elorin/src/services/focusWindow.ts, D:/elorin/src/services/windowAdapter.ts, D:/elorin/src/viewer/plugins/archive/NativeArchiveBackend.ts, D:/elorin/src/viewer/plugins/data/scientific-session.ts, D:/elorin/src/viewer/plugins/data/sqlite-provider.ts, D:/elorin/src/viewer/plugins/hex/activity.ts, D:/elorin/src/viewer/plugins/hex/binary-model.ts, D:/elorin/src/viewer/plugins/media/MediaViewer.tsx, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) D:/elorin/src/document/clipboard.ts is dynamically imported by D:/elorin/src/viewer/plugins/text/text-model.ts, D:/elorin/src/viewer/plugins/text/text-model.ts but also statically imported by D:/elorin/src/app/App.tsx, D:/elorin/src/components/shell/ContextMenu.tsx, D:/elorin/src/document/DocumentSurface.tsx, D:/elorin/src/document/NewFileDialog.tsx, D:/elorin/src/viewer/components/FileDetailsCard.tsx, D:/elorin/src/viewer/plugins/hex/HexViewer.tsx, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) D:/elorin/node_modules/.pnpm/jsonc-parser@3.3.1/node_modules/jsonc-parser/lib/esm/main.js is dynamically imported by D:/elorin/src/viewer/plugins/text/source-analysis.ts but also statically imported by D:/elorin/src/document/validation.ts, D:/elorin/src/viewer/plugins/json/json-parser.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) D:/elorin/src/services/resourcePath.ts is dynamically imported by D:/elorin/src/services/fileSource.ts but also statically imported by D:/elorin/src/formats/resources.ts, D:/elorin/src/viewer/plugins/geometry/resource-resolver.ts, D:/elorin/src/viewer/plugins/media/MediaViewer.tsx, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) D:/elorin/node_modules/.pnpm/@tauri-apps+api@2.12.1/node_modules/@tauri-apps/api/window.js is dynamically imported by D:/elorin/src/viewer/plugins/hex/activity.ts but also statically imported by D:/elorin/node_modules/.pnpm/@tauri-apps+api@2.12.1/node_modules/@tauri-apps/api/webview.js, D:/elorin/src/app/App.tsx, D:/elorin/src/pages/focus/FocusWindow.tsx, D:/elorin/src/services/windowAdapter.ts, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/assets/shell-DYhVHYSm.js                    0.23 kB
+dist/assets/dockerfile-Co-AyC30.js               0.41 kB
+dist/index.html                                  0.44 kB │ gzip:   0.30 kB
+dist/assets/properties-CZgCE6EI.js               0.52 kB
+dist/assets/json-DdsocbVI.js                     0.60 kB
+dist/assets/prolog-BuZcL2r6.js                   0.66 kB
+dist/assets/_commonjsHelpers-D6-XlEtG.js         0.73 kB
+dist/assets/ini-B3BVgEsG.js                      0.95 kB
+dist/assets/makefile-BoJC05FH.js                 1.05 kB
+dist/assets/dos-B9NgXWIJ.js                      1.34 kB
+dist/assets/go-4VmnRw3R.js                       1.45 kB
+dist/assets/nginx-CwEijJ2O.js                    1.50 kB
+dist/assets/yaml-drsDnIKT.js                     1.85 kB
+dist/assets/xml-FcirFJJ2.js                      1.87 kB
+dist/assets/lua-CD7o2Ci6.js                      1.88 kB
+dist/assets/groovy-LYsxsIeY.js                   2.02 kB
+dist/assets/scala-CTk4KSn7.js                    2.05 kB
+dist/assets/matlab-D4e1gXu7.js                   2.24 kB
+dist/assets/dart-DbQNmsdu.js                     2.46 kB
+dist/assets/cmake-D5QrXK-V.js                    2.49 kB
+dist/assets/java-DUnkFH8J.js                     2.71 kB
+dist/assets/objectivec-BI0B0W2W.js               2.82 kB
+dist/assets/r-DWz4c2Y4.js                        2.91 kB
+dist/assets/rust-DsMvwcVK.js                     2.94 kB
+dist/assets/source.worker-CSO_nuMo.js            3.11 kB
+dist/assets/bash-I8pq0VWm.js                     3.16 kB
+dist/assets/kotlin-Za0-TyUR.js                   3.33 kB
+dist/assets/python-CXf-_D6G.js                   3.53 kB
+dist/assets/diff.worker-CkCHwu-p.js              3.79 kB
+dist/assets/ruby-CcVTKuP4.js                     3.91 kB
+dist/assets/csharp-D-6syieo.js                   4.07 kB
+dist/assets/powershell-BTRu8Ib4.js               4.40 kB
+dist/assets/perl-BWtAWCfC.js                     4.66 kB
+dist/assets/c-D87IyN5J.js                        4.67 kB
+dist/assets/inflate.worker-D9rTpkPi.js           5.77 kB
+dist/assets/cpp-BFCWVspj.js                      6.05 kB
+dist/assets/text.worker-Bdh7nzPE.js              6.06 kB
+dist/assets/php-kjAv1gW4.js                      6.44 kB
+dist/assets/javascript-DUNaicwC.js               6.50 kB
+dist/assets/package.worker-DleEdy91.js           6.85 kB
+dist/assets/typescript-5pldp2kO.js               7.78 kB
+dist/assets/swift-jkyvy0ac.js                    8.23 kB
+dist/assets/main-8gqLoKgX.js                    11.24 kB
+dist/assets/json.worker-CmHzILbs.js             12.78 kB
+dist/assets/css-AVCICof-.js                     13.46 kB
+dist/assets/less-ByLusONN.js                    14.47 kB
+dist/assets/scss-UZl0Ag-9.js                    14.56 kB
+dist/assets/csv.worker-zyDjk1WE.js              20.89 kB
+dist/assets/syntax-highlighter-D3IABW_6.js      23.48 kB
+dist/assets/email.worker-C0y14Er4.js            76.96 kB
+dist/assets/image.worker-CORBWNOn.js           109.52 kB
+dist/assets/parser.worker-t79B5Ikz.js          326.82 kB
+dist/assets/data.worker-C_Vfyvl5.js            434.79 kB
+dist/assets/pdf.worker.min-CjEcRF4W.mjs      1,264.34 kB
+dist/assets/typescript-L3cxYK3s.js           3,570.71 kB
+dist/assets/hex-Db_0zJAS.css                     1.28 kB │ gzip:   0.60 kB
+dist/assets/office-TcbV8J7C.css                  1.86 kB │ gzip:   0.79 kB
+dist/assets/geometry-vb9fqeco.css                2.01 kB │ gzip:   0.73 kB
+dist/assets/data-u2eISaOE.css                    2.32 kB │ gzip:   0.77 kB
+dist/assets/archive-BR4qNjWB.css                 3.16 kB │ gzip:   0.97 kB
+dist/assets/image-TqOPFGiJ.css                   3.25 kB │ gzip:   1.09 kB
+dist/assets/pdf-Dcp0mDQP.css                     3.68 kB │ gzip:   1.29 kB
+dist/assets/textFallback-CiZMgVZm.css            3.90 kB │ gzip:   1.32 kB
+dist/assets/csv-C1hZ6N4R.css                     3.96 kB │ gzip:   1.30 kB
+dist/assets/json-DEUWfv1U.css                    4.74 kB │ gzip:   1.41 kB
+dist/assets/module10-bi2aMKP4.css                4.97 kB │ gzip:   1.37 kB
+dist/assets/markdown-BtSd4zaA.css                5.64 kB │ gzip:   1.67 kB
+dist/assets/module11-D3YS0Vgy.css                5.91 kB │ gzip:   1.60 kB
+dist/assets/index-B2dv6rnQ.css                  83.98 kB │ gzip:  16.06 kB
+dist/assets/plus-CoVYmMLz.js                     0.32 kB │ gzip:   0.25 kB
+dist/assets/ViewerDiagnostic-BKimCTTy.js         0.45 kB │ gzip:   0.32 kB
+dist/assets/csv-CZy9GnuY.js                      0.64 kB │ gzip:   0.43 kB
+dist/assets/markdown-links-etE4rGyf.js           0.71 kB │ gzip:   0.35 kB
+dist/assets/TextLine-CmRqCHe9.js                 0.99 kB │ gzip:   0.44 kB
+dist/assets/virtual-grid-CWKL960y.js             1.17 kB │ gzip:   0.64 kB
+dist/assets/AbstractID3Parser-DUDBg9XJ.js        1.17 kB │ gzip:   0.60 kB
+dist/assets/csv-parser-Cj2gJIiG.js               1.98 kB │ gzip:   1.06 kB
+dist/assets/DsfParser-BQiG-I6M.js                2.54 kB │ gzip:   1.03 kB
+dist/assets/csv-query-DyVLX7Hi.js                2.71 kB │ gzip:   1.38 kB
+dist/assets/subtitle.plugin-JiIA8571.js          2.77 kB │ gzip:   1.36 kB
+dist/assets/virtualResource-C0WwMQp5.js          2.89 kB │ gzip:   1.35 kB
+dist/assets/subtitles-CdpOW_mJ.js                3.03 kB │ gzip:   1.52 kB
+dist/assets/svg-sanitizer-Bk2N5GJv.js            3.26 kB │ gzip:   1.57 kB
+dist/assets/resource-resolver-DI9Vd003.js        3.35 kB │ gzip:   1.65 kB
+dist/assets/CsvEditor-Bo0X44oC.js                3.61 kB │ gzip:   1.71 kB
+dist/assets/WavPackParser-B4Pviaom.js            3.64 kB │ gzip:   1.65 kB
+dist/assets/AiffParser-DI_Ig9bj.js               3.80 kB │ gzip:   1.66 kB
+dist/assets/DsdiffParser-VGIj0Y5B.js             4.10 kB │ gzip:   1.29 kB
+dist/assets/image-metadata-C1RI81Ff.js           5.48 kB │ gzip:   2.45 kB
+dist/assets/MusepackParser-BZAbLAyQ.js           5.78 kB │ gzip:   2.05 kB
+dist/assets/csv-BI6uP49X.js                      5.86 kB │ gzip:   2.47 kB
+dist/assets/WaveParser-CFWTJnv0.js               6.96 kB │ gzip:   2.53 kB
+dist/assets/FlacParser-DtOeqMDr.js               7.25 kB │ gzip:   2.72 kB
+dist/assets/binary-model-D5aO-P9L.js             7.34 kB │ gzip:   2.77 kB
+dist/assets/FocusWindow-D-96d2Yh.js              7.62 kB │ gzip:   2.94 kB
+dist/assets/OggParser-CTeWQi_G.js                8.46 kB │ gzip:   3.02 kB
+dist/assets/email.plugin-D1em9E5D.js             9.41 kB │ gzip:   3.93 kB
+dist/assets/ebook.plugin-ejDA0dY5.js            10.05 kB │ gzip:   4.19 kB
+dist/assets/ID3v2Parser-0FT15pEx.js             11.14 kB │ gzip:   4.14 kB
+dist/assets/OfficePackage-BtwmKCUU.js           11.40 kB │ gzip:   5.30 kB
+dist/assets/hex.plugin-BL0VVsRJ.js              12.14 kB │ gzip:   4.75 kB
+dist/assets/MatroskaParser-CO2UEKnG.js          12.65 kB │ gzip:   4.16 kB
+dist/assets/MpegParser-C2nrmBe6.js              13.31 kB │ gzip:   4.42 kB
+dist/assets/AsfParser-EwCPawGb.js               15.54 kB │ gzip:   5.31 kB
+dist/assets/textFallback-Bk0dyiES.js            16.30 kB │ gzip:   6.23 kB
+dist/assets/image.plugin-Aax2w4is.js            19.89 kB │ gzip:   7.12 kB
+dist/assets/csv.plugin-CIUpVrvJ.js              20.10 kB │ gzip:   7.49 kB
+dist/assets/presentation.plugin-usu_TZcy.js     20.84 kB │ gzip:   7.90 kB
+dist/assets/MP4Parser-DSEHpnhC.js               21.20 kB │ gzip:   6.36 kB
+dist/assets/csv-stats-CuHqsFhg.js               21.46 kB │ gzip:   8.11 kB
+dist/assets/office.plugin-DHtMSNrH.js           21.95 kB │ gzip:   8.50 kB
+dist/assets/json.plugin-BASAkMzS.js             22.07 kB │ gzip:   8.01 kB
+dist/assets/media.plugin-DHsjlNds.js            25.12 kB │ gzip:   9.38 kB
+dist/assets/pdf.plugin-BFr3nUQd.js              26.65 kB │ gzip:   9.47 kB
+dist/assets/archive.plugin-DxBWXQ4R.js          29.50 kB │ gzip:  10.67 kB
+dist/assets/data.plugins-DDk8_aaz.js            29.83 kB │ gzip:  10.51 kB
+dist/assets/index-nwLlqRA5.js                   43.54 kB │ gzip:  15.28 kB
+dist/assets/full.esm-DoFl4RTa.js                75.29 kB │ gzip:  26.51 kB
+dist/assets/spreadsheet.plugin-CUUlmjTo.js      76.25 kB │ gzip:  24.71 kB
+dist/assets/postal-mime-CzAumBci.js             76.81 kB │ gzip:  26.56 kB
+dist/assets/core-DGfj5Hux.js                   121.29 kB │ gzip:  36.90 kB
+dist/assets/markdown.plugin-Cl3Vj_ZM.js        130.32 kB │ gzip:  38.66 kB
+dist/assets/safe-document-D7nAfhRJ.js          178.37 kB │ gzip:  55.07 kB
+dist/assets/pdf-core-DR_q_aks.js               482.55 kB │ gzip: 144.47 kB
+dist/assets/geometry.plugin-DAnH__xR.js        603.33 kB │ gzip: 153.49 kB
+dist/assets/index-Beqwcmpv.js                1,069.20 kB │ gzip: 347.87 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 32.15s

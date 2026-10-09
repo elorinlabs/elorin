@@ -1,4 +1,5 @@
 import { t as tr, useUiLanguage as useLocale, localizedError as uiError } from "../../i18n";
+import { fileWatchService } from '../../platform/file-watch';
 import { listen } from '@tauri-apps/api/event';
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { invoke } from '@tauri-apps/api/core';
@@ -71,6 +72,21 @@ export function FocusWindow() {
         void getCurrentWindow().close().catch(e => setError(uiError(e)));
     }).then(fn => { if (live) stop = fn; else fn(); });
     return () => { live = false; stop?.(); window.removeEventListener('elorin-viewer-commands', sync); };
+  }, [data]);
+  useEffect(() => {
+    if (!data) return;
+    let live = true, revision = 0, stopSaved: (() => void) | undefined;
+    const refresh = async () => {
+      const request = ++revision;
+      try {
+        const file = await invoke<FileDescriptor>('load_file', {path: data.file.path});
+        if (live && request === revision) { setError(''); const source = new TauriFileSource(file.path!); viewerSessionStore.transfer(data.source, source); setData(previous => previous === data ? {...data, file: enhanceDescriptor(file), source} : previous); }
+      } catch (e) { if (live && request === revision) setError(uiError(e)); }
+    };
+    const stop = fileWatchService.subscribe(data.file.path!, () => void refresh());
+    void listen<{tabId: string; path: string}>('elorin://file-saved', event => { if(event.payload.tabId === data.tabId && event.payload.path === data.file.path) void refresh(); }).then(fn=>{if(live)stopSaved=fn;else fn();});
+    window.addEventListener('focus', refresh);
+    return () => { live=false; stop(); stopSaved?.(); window.removeEventListener('focus',refresh); };
   }, [data]);
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
@@ -151,7 +167,7 @@ export function FocusWindow() {
       </div>
     </div>
     <main className="focus-reading-surface" tabIndex={-1} aria-label={tr("Focus reading area")}>
-      {error && <p className="focus-error" role="alert">{tr(error)}</p>}{data && <ViewerHost file={data.file} source={data.source} />}
+      {error && <p className="focus-error" role="alert">{tr(error)}</p>}{data && !error && <ViewerHost file={data.file} source={data.source} />}
     </main>
   </div>;
 }

@@ -1,0 +1,4 @@
+        Info Looking up installed tauri packages to check mismatched versions...
+   Compiling prism v0.1.0 (D:\elorin\src-tauri)
+    Finished `release` profile [optimized] target(s) in 1m 57s
+       Built application at: D:\elorin\src-tauri\target\release\prism.exe

@@ -1485,5 +1485,7 @@
   "FALSE": "FALSE",
   "Vertical scroll": "縦スクロール",
   "Horizontal scroll": "横スクロール",
-  "Enter a page from 1 to {v0}.": "1 から {v0} までのページ番号を入力してください。"
+  "Enter a page from 1 to {v0}.": "1 から {v0} までのページ番号を入力してください。",
+  "Rename": "名前を変更",
+  "Delete": "削除"
 }

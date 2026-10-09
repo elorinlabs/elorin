@@ -5,6 +5,7 @@ import { libraryRoutes, type RouteId } from '../../app/routes';
 import { Button } from '../../components/common/ui';
 import { formatIconClass } from '../../formats/presentation';
 import { recentFilesService, type RecentFile, type RecentFilesService } from '../../services/recentFiles';
+import { favoritesService } from '../../services/favorites';
 import { useUiSettings } from '../../platform/ui-settings';
 export function Home({ openFile, openFolder, newFile, navigate, recentService = recentFilesService, onNotice, openRecent }: {
   openFile: () => void; openFolder: () => void; newFile?: () => void; navigate: (id: RouteId) => void;
@@ -12,12 +13,13 @@ export function Home({ openFile, openFolder, newFile, navigate, recentService = 
 }) {
   useLocale();
   const settings=useUiSettings();
+  const [favorites, setFavorites] = useState<RecentFile[]>([]);
   const [files, setFiles] = useState<RecentFile[]>([]), [error, setError] = useState('');
   useEffect(() => {
     let live = true;
-    const load = () => void recentService.list().then(v => { if(live) setFiles(v); }, () => { if(live) setError(tr("Recent files could not be loaded.")); });
-    load(); window.addEventListener('elorin-recent-change', load);
-    return () => { live = false; window.removeEventListener('elorin-recent-change', load); };
+    const load = () => void Promise.all([recentService.list(), favoritesService.list()]).then(([v, saved]) => { if(live) {setFiles(v);setFavorites(saved);setError('');} }, () => { if(live) setError(tr("Recent files could not be loaded.")); });
+    load(); window.addEventListener('elorin-recent-change', load); window.addEventListener('elorin-favorites-change', load);
+    return () => { live = false; window.removeEventListener('elorin-recent-change', load); window.removeEventListener('elorin-favorites-change', load); };
   }, [recentService]);
   return <div className="home reference-home">
     <header className="home-welcome">
@@ -31,7 +33,9 @@ export function Home({ openFile, openFolder, newFile, navigate, recentService = 
     </section>
     <div className="home-bottom-grid">
       <section className="home-card"><header><h2>{tr("Recent Files")}</h2><button className="text-button" onClick={() => navigate('recents')}>{tr("View All")}{' '}<ArrowRight size={15}/></button></header>
-        {error ? <p role="alert">{tr(error)}</p> : !files.length ? <p className="home-empty">{tr("Your recently opened files will appear here.")}</p> : files.slice(0,6).map(file => <button className="home-recent-row" key={file.id} onClick={() => openRecent ? openRecent(file.path) : onNotice(tr('Open recent files in the desktop app.'))}><span className={formatIconClass(file.name,file.extension)} aria-hidden="true"/><span>{file.name}</span><time dateTime={new Date(file.lastOpened).toISOString()}>{relativeTime(file.lastOpened)}</time></button>)}
+        {error ? <p role="alert">{tr(error)}</p> : !files.length ? <p className="home-empty">{tr("Your recently opened files will appear here.")}</p> : files.slice(0,6).map(file => <button className="home-recent-row" key={file.id} title={file.path} onClick={() => openRecent ? openRecent(file.path) : onNotice(tr('Open recent files in the desktop app.'))}><span className={formatIconClass(file.name,file.extension)} aria-hidden="true"/><span>{file.name}</span><time dateTime={new Date(file.lastOpened).toISOString()}>{relativeTime(file.lastOpened)}</time></button>)}
+        <header><h2>{tr('Favorites')}</h2><button className="text-button" onClick={()=>navigate('favorites')}>{tr('View All')} <ArrowRight size={15}/></button></header>
+        {!favorites.length ? <p className="home-empty">{tr('Your saved file shortcuts.')}</p> : favorites.slice(0,3).map(file=><button className="home-recent-row" key={file.path} title={file.path} onClick={()=>openRecent?.(file.path)}><Star size={16}/><span>{file.name}</span></button>)}
         {recentService.clear && <button className="text-button home-clear" onClick={() => void recentService.clear!().then(() => setFiles([])).catch(e => onNotice(String(e)))}>{tr("Clear Recent Files")}</button>}
       </section>
       <section className="home-card"><header><h2>{tr("Quick Shortcuts")}</h2></header>{[

@@ -39,8 +39,9 @@ export function DocumentSurface({ file, source, children, services, onSaved, act
   const root = useRef<HTMLElement>(null);
   const input = useRef<HTMLTextAreaElement>(null);
   const saving = useRef(false);
+  const alive = useRef(true);
+  useEffect(()=>{alive.current=true;return()=>{alive.current=false;};},[source]);
   useEffect(() => { if (!session) return; const timer = setTimeout(() => { void snapshot(session).catch(error => setMessage(tr("Recovery snapshot failed: {v0}", { v0: String(error) }))); }, 1000); return () => clearTimeout(timer); }, [session, session?.revision]);
-  useEffect(() => { if (!session) return; const timer = setInterval(() => { if (session.dirty) void snapshot(session).catch(error => setMessage(tr("Recovery snapshot failed: {v0}", { v0: String(error) }))); }, 5000); return () => clearInterval(timer); }, [session]);
   const update = () => { refresh(n => n + 1); window.dispatchEvent(new Event('elorin-document-change')); };
   const adapter = () => input.current && session ? textareaAdapter(input.current, session, update) : undefined;
   useEffect(() => { const navigate=(event:Event)=>{const {source:target,hit}=(event as CustomEvent).detail;if(target!==source)return;setEditing(true);setTimeout(()=>adapter()?.find(hit.offset??0,(hit.offset??0)+hit.length),0);};window.addEventListener('elorin-navigate-search',navigate);return()=>window.removeEventListener('elorin-navigate-search',navigate); });
@@ -67,6 +68,7 @@ export function DocumentSurface({ file, source, children, services, onSaved, act
       const next = new DocumentSession(text, ['csv','tsv'].includes(file.detectedType) ? 'csv' : file.detectedType === 'markdown' ? 'markdown' : file.detectedType === 'json' ? 'json' : 'text', file.virtual ? null : file.path, before, bytes[0] === 239 && bytes[1] === 187 && bytes[2] === 191);
       if (next.kind === 'csv') { const {parseEditableCsv} = await import('./csv'); parseEditableCsv(text, file.detectedType === 'tsv'); }
       next.source = source; next.sourceDescriptor = file;
+      if (!alive.current) return;
       documentSessions.set(source, next); setSession(next); setEditing(true);
     } catch (error) { setMessage(uiError(error)); }
   }

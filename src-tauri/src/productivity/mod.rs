@@ -67,33 +67,43 @@ pub async fn productivity_open(app: tauri::AppHandle, path: String) -> Result<()
 }
 
 pub struct FileWatches { inner: Mutex<WatchInner> }
-struct WatchInner { watcher: notify::RecommendedWatcher, files: HashMap<PathBuf, usize>, parents: HashMap<PathBuf, usize> }
+struct WatchInner { watcher: notify::RecommendedWatcher, files: HashMap<PathBuf, usize>, parents: HashMap<PathBuf, usize>, leases: HashMap<String, PathBuf> }
 impl FileWatches {
     pub fn new(app: tauri::AppHandle) -> Result<Self, notify::Error> {
         let handle = app.clone();
         let watcher = notify::recommended_watcher(move |result: Result<notify::Event, notify::Error>| {
             match result { Ok(event) => { let _ = handle.emit("elorin://file-change", serde_json::json!({"paths":event.paths, "kind":format!("{:?}",event.kind)})); }, Err(_) => { let _ = handle.emit("elorin://file-change", serde_json::json!({"paths":[],"kind":"Unavailable"})); } }
         })?;
-        Ok(Self { inner: Mutex::new(WatchInner { watcher, files: HashMap::new(), parents: HashMap::new() }) })
+        Ok(Self { inner: Mutex::new(WatchInner { watcher, files: HashMap::new(), parents: HashMap::new(), leases: HashMap::new() }) })
+    }
+}
+impl FileWatches {
+    pub fn release(&self, id: &str) {
+        if let Ok(mut inner) = self.inner.lock() {
+            if let Some(path) = inner.leases.remove(id) {
+                if let Some(count) = inner.files.get_mut(&path) { *count -= 1; if *count == 0 { inner.files.remove(&path); } }
+                if let Some(parent) = path.parent() {
+                    if let Some(count) = inner.parents.get_mut(parent) { *count -= 1; if *count == 0 { inner.parents.remove(parent); let _ = inner.watcher.unwatch(parent); } }
+                }
+            }
+        }
     }
 }
 #[tauri::command]
-pub fn file_watch(app: tauri::AppHandle, path: String, add: bool) -> Result<(), FileError> {
-    let service = app.state::<FileWatches>(); let mut inner = service.inner.lock().map_err(|_| FileError::new("watch", "Watcher lock failed"))?;
-    if add { app.state::<FileAccess>().authorized_path(Path::new(&path))?; }
-    // Keep the same caller key on removal, including after a file is deleted.
-    // Authorization canonicalizes Windows paths with a verbatim prefix.
+pub fn file_watch(app: tauri::AppHandle, window: tauri::WebviewWindow, path: String, add: bool) -> Result<(), FileError> {
+    let service = app.state::<FileWatches>();
+    let id = serde_json::to_string(&(window.label(), &path)).map_err(|_|FileError::new("watch", "Invalid watch key"))?;
+    if !add { service.release(&id); app.state::<crate::window_resources::WindowResources>().forget(crate::window_resources::Kind::Watch, &id); return Ok(()); }
+    app.state::<FileAccess>().authorized_path(Path::new(&path))?;
+    let mut inner = service.inner.lock().map_err(|_| FileError::new("watch", "Watcher lock failed"))?;
+    if inner.leases.contains_key(&id) { return Ok(()); }
     let path = PathBuf::from(path);
     let parent = path.parent().ok_or_else(|| FileError::new("watch", "Missing parent"))?.to_path_buf();
-    if add {
-        if inner.files.len() >= 128 && !inner.files.contains_key(&path) { return Err(FileError::new("watch", "Watcher budget reached")); }
-        if !inner.parents.contains_key(&parent) { inner.watcher.watch(&parent, RecursiveMode::NonRecursive).map_err(|e| FileError::new("watch", e.to_string()))?; }
-        *inner.files.entry(path).or_default() += 1; *inner.parents.entry(parent).or_default() += 1;
-    } else if let Some(count) = inner.files.get_mut(&path) {
-        *count -= 1; if *count == 0 { inner.files.remove(&path); }
-        if let Some(count) = inner.parents.get_mut(&parent) { *count -= 1; if *count == 0 { inner.parents.remove(&parent); let _ = inner.watcher.unwatch(&parent); } }
-    }
-    Ok(())
+    if inner.leases.len() >= 256 || inner.files.len() >= 128 && !inner.files.contains_key(&path) { return Err(FileError::new("watch", "Watcher budget reached")); }
+    if !inner.parents.contains_key(&parent) { inner.watcher.watch(&parent, RecursiveMode::NonRecursive).map_err(|e| FileError::new("watch", e.to_string()))?; }
+    *inner.files.entry(path.clone()).or_default() += 1; *inner.parents.entry(parent).or_default() += 1;
+    inner.leases.insert(id.clone(), path); drop(inner);
+    crate::window_resources::register(&app, window.label(), crate::window_resources::Kind::Watch, &id)
 }
 
 #[tauri::command]
@@ -102,4 +112,23 @@ pub fn platform_capabilities() -> Value { serde_json::json!({"native":true,"plat
 pub fn default_apps(app: tauri::AppHandle) -> Result<(), FileError> {
     #[cfg(windows)] { use tauri_plugin_opener::OpenerExt; return app.opener().open_url("ms-settings:defaultapps", None::<&str>).map_err(|e| FileError::new("platform", e.to_string())); }
     #[cfg(not(windows))] { let _ = app; Err(FileError::new("unsupported", "Use your system's application settings")) }
+}
+
+#[cfg(test)]
+mod workspace_watch_tests {
+    use super::*;
+    #[test]
+    fn release_is_idempotent_and_preserves_other_windows() {
+        let watcher = notify::recommended_watcher(|_: Result<notify::Event, notify::Error>| {}).unwrap();
+        let path = PathBuf::from("C:/synthetic/note.txt");
+        let parent = path.parent().unwrap().to_path_buf();
+        let service = FileWatches { inner: Mutex::new(WatchInner { watcher,
+            files: [(path.clone(), 2)].into_iter().collect(),
+            parents: [(parent.clone(), 2)].into_iter().collect(),
+            leases: [("main".into(), path.clone()), ("focus".into(), path.clone())].into_iter().collect() }) };
+        service.release("focus"); service.release("focus");
+        { let inner = service.inner.lock().unwrap(); assert_eq!(inner.files.get(&path), Some(&1)); assert_eq!(inner.parents.get(&parent), Some(&1)); assert!(inner.leases.contains_key("main")); }
+        service.release("main");
+        let inner = service.inner.lock().unwrap(); assert!(inner.files.is_empty()); assert!(inner.parents.is_empty()); assert!(inner.leases.is_empty());
+    }
 }

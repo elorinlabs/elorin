@@ -81,6 +81,7 @@ pub fn run() {
             data::data_sqlite_read,
             data::data_sqlite_close,
             commands::select_path,
+            commands::select_paths,
             commands::load_file,
             commands::read_file_range,
             commands::file_size,

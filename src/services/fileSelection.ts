@@ -22,6 +22,7 @@ export function selectionFromPath(
   };
 }
 export interface FileSelectionService {
+  selectMany?(): Promise<Selection[]>;
   select(kind: "file" | "folder"): Promise<Selection | null>;
   listenDrop(
     onDrop: (paths: string[]) => void,
@@ -29,6 +30,10 @@ export interface FileSelectionService {
   ): Promise<() => void>;
 }
 export const fileSelectionService: FileSelectionService = {
+  async selectMany() {
+    if (!isTauri()) throw Error('Open files in the desktop app.');
+    return invoke<Selection[]>('select_paths', {title:t('Open File')});
+  },
   async select(kind) {
     if (!isTauri())
       throw new Error(

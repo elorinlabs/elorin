@@ -85,6 +85,19 @@ pub async fn select_path(
     .await
     .map_err(|_| FileError::new("READ_FAILED", "The file dialog task failed."))?
 }
+// Each selected file receives the same explicit grant used by select_path.
+#[tauri::command]
+pub async fn select_paths(app: tauri::AppHandle, title: Option<String>) -> Result<Vec<Selection>, FileError> {
+    tauri::async_runtime::spawn_blocking(move || {
+        let picked = app.dialog().file().set_title(title.filter(|value| value.len() <= 256).unwrap_or_else(|| "Open File".into())).blocking_pick_files().unwrap_or_default();
+        if picked.len() > 128 { return Err(FileError::new("LIMIT", "Select at most 128 files.")); }
+        picked.into_iter().map(|picked| {
+            let path = picked.into_path().map_err(|_| FileError::new("UNSUPPORTED_PATH", "Only filesystem paths are supported."))?;
+            app.state::<FileAccess>().grant(&path)?;
+            Ok(Selection { filename: path.file_name().unwrap_or_default().to_string_lossy().into_owned(), path: path.to_string_lossy().into_owned(), kind: "file" })
+        }).collect()
+    }).await.map_err(|_| FileError::new("READ_FAILED", "The file dialog task failed."))?
+}
 #[tauri::command]
 pub async fn load_file(app: tauri::AppHandle, path: String) -> Result<FileDescriptor, FileError> {
     tauri::async_runtime::spawn_blocking(move || app.state::<FileAccess>().load(Path::new(&path)))

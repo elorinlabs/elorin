@@ -97,7 +97,8 @@ export function App({
   const [compare, setCompare] = useState<CompareSession>();
 
   const [recent, setRecent] = useState<Awaited<ReturnType<typeof recentFilesService.list>>>([]);
-  const closedTabs = useRef<TabSession[]>([]);
+  const closedTabs = useRef<{ file: FileDescriptor }[]>([]);
+  const closing = useRef(false);
   const [workspaceReady, setWorkspaceReady] = useState(!isTauri());
   const activeIndex = useRef(0);
   const restoring = useRef(new Set<string>());
@@ -118,7 +119,10 @@ export function App({
   activeIndex.current = activeFile;
   const sidebarCollapsed = useRef(collapsed);
   sidebarCollapsed.current = collapsed;
-  const currentManifest = () => workspaceManifest(documentOwners.current, activeIndex.current, sidebarCollapsed.current);
+  const currentManifest = () => workspaceManifest(documentOwners.current.map(tab => {
+    const session = documentSessions.get(tab.source);
+    return session?.path && session.path !== tab.file.path ? { ...tab, file: { ...tab.file, path: session.path, name: session.path.split(/[\\/]/).pop()! } } : tab;
+  }), activeIndex.current, sidebarCollapsed.current);
   useEffect(() => {
     if (!isTauri()) return;
     let cancelled = false;
@@ -127,8 +131,8 @@ export function App({
       if (validManifest(value) && uiSettingsStore.snapshot().rememberWorkspace) {
           restoreSidebar(value.sidebarCollapsed);
         const tabs: TabSession[] = value.tabs.map(t => { const source = new TauriFileSource(t.path); viewerSessionStore.restore(source, t.viewState); return { id: t.id, file: {...t.file,path:t.path}, source, status: 'restoring', lastFocusedAt: t.lastFocusedAt }; });
-        setDocuments(previous => previous.length ? previous : tabs);
-        setActiveFile(Math.max(0,tabs.findIndex(t=>tabId(t)===value.activeTabId)));
+        setDocuments(previous => { if (previous.length) { tabs.forEach(tab => tab.source.dispose?.()); return previous; } return tabs; });
+        setActiveFile(value.activeTabId ? Math.max(0,tabs.findIndex(t=>tabId(t)===value.activeTabId)) : -1);
       }
     }).catch(() => setNotice(tr("Previous workspace could not be loaded. Starting fresh."))).finally(() => { if (!cancelled) setWorkspaceReady(true); });
     return () => { cancelled = true; };
@@ -138,7 +142,7 @@ export function App({
   useEffect(() => { if (!workspaceReady || !isTauri()) return; let cancelled=false, stop:(()=>void)|undefined; const take=()=>{ void platformIntegration.takeLaunch().then(paths=>{ if(!cancelled && paths.length)void inspect(paths); }); }; void platformIntegration.listenLaunch(take).then(fn=>{if(cancelled)fn();else{stop=fn;take();}}); return()=>{cancelled=true;stop?.();}; },[workspaceReady]);
   useEffect(() => { const refresh=()=>void recentFilesService.list().then(setRecent).catch(()=>{}); refresh(); window.addEventListener('elorin-recent-change',refresh); return()=>window.removeEventListener('elorin-recent-change',refresh); },[]);
   const watchOwners = useRef(new Map<FileSource,()=>void>());
-  useEffect(() => { const live = new Set(documents.map(t=>t.source)); for(const [source,stop] of watchOwners.current)if(!live.has(source)){stop();watchOwners.current.delete(source);} for(const tab of documents){ if(!tab.file.path || tab.file.virtual || tab.status || watchOwners.current.has(tab.source))continue; watchOwners.current.set(tab.source,fileWatchService.subscribe(tab.file.path,kind=>{if(documentSessions.has(tab.source))return;setNotice(tr("{v0}: source {v1}. Reopen to refresh.", { v0: tab.file.name, v1: tr(kind.includes('Remove')?'unavailable':'changed externally') }));})); } },[documents]);
+  useEffect(() => { const live = new Set(documents.map(t=>t.source)); for(const [source,stop] of watchOwners.current)if(!live.has(source)){stop();watchOwners.current.delete(source);} for(const tab of documents){ if(!tab.file.path || tab.file.virtual || tab.status || watchOwners.current.has(tab.source))continue; watchOwners.current.set(tab.source,fileWatchService.subscribe(tab.file.path,kind=>{if(documentSessions.has(tab.source))return;void loader.loadPath(tab.file.path!).catch(()=>{if(mounted.current)setDocuments(previous=>previous.map(t=>t.source===tab.source?{...t,status:'unavailable'}:t));});setNotice(tr("{v0}: source {v1}. Reopen to refresh.", { v0: tab.file.name, v1: tr(kind.includes('Remove')?'unavailable':'changed externally') }));})); } },[documents]);
   useEffect(()=>()=>{watchOwners.current.forEach(stop=>stop());watchOwners.current.clear();},[]);
   const [newMenu, setNewMenu] = useState(false);
   useEffect(() => { if (isTauri()) return; const unload = (event: BeforeUnloadEvent) => { if (documentOwners.current.some(d => documentSessions.get(d.source)?.dirty)) { event.preventDefault(); event.returnValue = ''; } }; window.addEventListener('beforeunload', unload); return () => window.removeEventListener('beforeunload', unload); }, []);
@@ -151,7 +155,7 @@ export function App({
       const dirty = documentOwners.current.filter(d => documentSessions.get(d.source)?.dirty);
       event.preventDefault();
       try {
-        if (await discardDocuments(dirty.map(d => d.source))) { await platformIntegration.write('workspace',currentManifest()); await platformIntegration.flush(); await flushRecovery(); await getCurrentWindow().destroy(); }
+        if (await discardDocuments(dirty.map(d => d.source), syncSaved)) { if(uiSettingsStore.snapshot().rememberWorkspace)await platformIntegration.write('workspace',currentManifest()); await platformIntegration.flush(); await flushRecovery(); await getCurrentWindow().destroy(); }
       } catch { setNotice(tr("Workspace could not be saved. Please try closing again.")); }
     }).then(unlisten => { if (disposed) unlisten(); else stop = unlisten; });
     return () => { disposed = true; stop?.(); };
@@ -184,6 +188,7 @@ export function App({
     const document = await createDocument(request.kind, request.content, { name: request.name, location: request.location });
     setDocuments(previous => { setActiveFile(previous.length); return [...previous, document]; });
     setNewMenu(false);
+    if(document.file.path)await recentFilesService.add(document.file).catch(e=>setNotice(uiError(e)));
   }
   useEffect(() => {
     const key = (event: KeyboardEvent) => { if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'n') { event.preventDefault(); if (!document.querySelector('[aria-modal="true"]')) setNewMenu(true); } };
@@ -211,7 +216,7 @@ export function App({
     if (inputs.length > 128)
       errors.push("Only the first 128 files are opened at once.");
     for (const input of inputs.slice(0, 128)) {
-      if (id !== requestId.current || !mounted.current) return;
+      if (id !== requestId.current || !mounted.current) { sources.forEach(source => source.dispose?.()); return; }
       try {
         const file =
           typeof input === "string"
@@ -253,6 +258,7 @@ export function App({
         );
       }
     }
+    if (id !== requestId.current || !mounted.current) { sources.forEach(source => source.dispose?.()); return; }
     if (id === requestId.current && mounted.current) {
       setDocuments((previous) => {
         const next = [...previous];
@@ -262,7 +268,7 @@ export function App({
             ? next.findIndex((document) => document.file.path && physicalIdentity(document.file.path) === physicalIdentity(file.path!))
             : -1;
           if (existing >= 0) {
-            sources[index].dispose?.();
+            if (next[existing].status) { next[existing].source.dispose?.(); next[existing] = {...next[existing], file, source:sources[index], status:undefined}; } else sources[index].dispose?.();
             active = existing;
           } else {
             if (next.length >= 128) { sources[index].dispose?.(); setNotice(tr("128 tabs are open. Close a tab before opening another file.")); return; }
@@ -333,6 +339,12 @@ export function App({
     let operationId = ++requestId.current;
     setBusy(true);
     try {
+      if (kind === 'file' && selectionService.selectMany) {
+        const results = await selectionService.selectMany();
+        if (operationId !== requestId.current || !mounted.current) return;
+        if (results.length) { setSelected(results); operationId = requestId.current + 1; await inspect(results.map(item=>item.path)); }
+        return;
+      }
       const result = await selectionService.select(kind);
       if (operationId !== requestId.current || !mounted.current) return;
       if (result) {
@@ -351,13 +363,41 @@ export function App({
       if (operationId === requestId.current && mounted.current) setBusy(false);
     }
   }
+  async function syncSaved(original: FileSource, path: string) {
+    const owner = documentOwners.current.find(tab => tab.source === original);
+    if (!owner) return;
+    const file = await loader.loadPath(path);
+    if (!mounted.current || !documentOwners.current.some(tab => tab.source === original)) return;
+    const duplicates=documentOwners.current.filter(tab=>tab.source!==original && tab.file.path && physicalIdentity(tab.file.path)===physicalIdentity(path));
+    if(duplicates.some(tab=>documentSessions.get(tab.source)?.dirty))throw Error('Another open document has unsaved changes at this path.');
+    const session = documentSessions.get(original), source = new TauriFileSource(path);
+    viewerSessionStore.transfer(original, source);
+    if (session) { session.source = source; session.sourceDescriptor = file; documentSessions.delete(original); documentSessions.set(source, session); }
+    const current=documentOwners.current[activeIndex.current];
+    const next = documentOwners.current.filter(tab=>!duplicates.includes(tab)).map(tab => tab.source === original ? { ...tab, id: tabId(tab), file, source } : tab);
+    for(const duplicate of duplicates){documentSessions.delete(duplicate.source);duplicate.source.dispose?.();}
+    if(current)setActiveFile(next.findIndex(tab=>tabId(tab)===tabId(current)));
+    documentOwners.current = next; setDocuments(next); original.dispose?.();
+    await recentFilesService.add(file);
+    if(isTauri() && owner.file.path && physicalIdentity(owner.file.path) === physicalIdentity(path)) void emit('elorin://file-saved', {tabId: tabId(owner), path}).catch(e=>setNotice(uiError(e)));
+  }
   const activeDocument = documents[activeFile];
   useEffect(()=>{const external=(event:Event)=>{const {source}=(event as CustomEvent).detail;const tab=documentOwners.current.find(t=>t.source===source);const session=tab&&documentSessions.get(source);if(!tab?.file.path||!session)return;void(async()=>{try{await invoke('document_reload',{path:tab.file.path});const disk=new TauriFileSource(tab.file.path!);const rightText=await disk.readText({encoding:session.encoding,maxBytes:4*1024*1024});setCompare({left:tab,right:{...tab,source:disk},leftText:session.currentState,rightText,title:`Unsaved ${tab.file.name} ↔ External disk version`});}catch(e){setNotice(uiError(e));}})();};window.addEventListener('elorin-compare-external',external);return()=>window.removeEventListener('elorin-compare-external',external);},[]);
   async function closeTabs(index: number, scope: 'one'|'others'|'right' = 'one') {
-    const targets=closableTabs(documentOwners.current,index,scope); if(!targets.length || !await discardDocuments(targets.map(t=>t.source)))return;
-    if(isTauri())for(const tab of targets)void emit('elorin://file-closed',{tabId:tabId(tab)}).catch(()=>setNotice(tr("Focus window close notification failed."))); closedTabs.current=[...closedTabs.current,...targets].slice(-20); const ids=new Set(targets.map(tabId));
-    const current=documentOwners.current[activeIndex.current]; const next=documentOwners.current.filter(t=>!ids.has(tabId(t)));
-    setDocuments(next); setActiveFile(current&&!ids.has(tabId(current))?next.findIndex(t=>tabId(t)===tabId(current)):Math.min(index,next.length-1)); setCompare(undefined);
+    if (closing.current) return;
+    const targets=closableTabs(documentOwners.current,index,scope); if(!targets.length)return;
+    closing.current = true;
+    try {
+      if (!await discardDocuments(targets.map(t=>t.source), syncSaved)) return;
+      if(isTauri())for(const tab of targets)void emit('elorin://file-closed',{tabId:tabId(tab)}).catch(()=>setNotice(tr("Focus window close notification failed.")));
+      closedTabs.current=[...closedTabs.current,...targets.map(tab => ({file: {...tab.file, path: documentOwners.current.find(t=>tabId(t)===tabId(tab))?.file.path ?? tab.file.path}}))].slice(-20);
+      const ids=new Set(targets.map(tabId)), current=documentOwners.current[activeIndex.current];
+      const next=documentOwners.current.filter(t=>!ids.has(tabId(t)));
+      for (const tab of documentOwners.current) if (ids.has(tabId(tab))) tab.source.dispose?.();
+      documentOwners.current = next; setDocuments(next);
+      setActiveFile(current&&!ids.has(tabId(current))?next.findIndex(t=>tabId(t)===tabId(current)):Math.min(index,next.length-1));
+      setCompare(undefined); setSearchOpen(false);
+    } finally { closing.current = false; }
   }
   async function reopenTab() { const tab=closedTabs.current.pop(); if(!tab)return; if(tab.file.path&&!tab.file.virtual){await inspect([tab.file.path]);return;} setNotice(tr("This virtual or browser source was released. Reopen it from its container or choose the file again.")); }
   async function openRecent(path:string) { try { if(!isTauri()){setNotice(tr("Recent physical files can be reopened in the desktop app."));return;}await platformIntegration.authorizeReference(path);await inspect([path]); }catch{setNotice(tr("File unavailable. Choose its current location with Open File."));} }
@@ -393,7 +433,7 @@ export function App({
     else if(k==='f'&&!documentSessions.has(activeDocument?.source as object)){e.preventDefault();e.stopImmediatePropagation();const action=activeDocument&&!activeDocument.file.isText&&viewerCommands.get(activeDocument.source).find(a=>a.id==='search'&&!a.disabled);if(action)void action.action();else setSearchOpen(true);}
   };window.addEventListener('keydown',key,true);return()=>window.removeEventListener('keydown',key,true);});
   const paletteCommands:Command[] = palette==='commands'?commands:documents.filter(t=>palette!=='compare'||t!==activeDocument).map(tab=>({id:tabId(tab),title:tab.file.name,category:tab.file.path??tab.file.virtual?.trail.join(' › ')??tr('Unsaved document'),scope:'Tab' as const,keywords:tab.file.path??'',execute:()=>{if(palette==='compare'&&activeDocument)setCompare({left:activeDocument,right:tab});else setActiveFile(documents.indexOf(tab));}})).concat(palette==='quick'?recent.filter(r=>!documents.some(t=>t.file.path===r.path)).map(r=>({id:`recent:${r.id}`,title:r.name,category:r.path,scope:'Tab' as const,keywords:r.path,execute:()=>{void openRecent(r.path);}})):[]);
-  useEffect(()=>{const collect=(event:Event)=>{const{id,actions}=(event as CustomEvent).detail;const index=documents.findIndex(t=>tabId(t)===id),tab=documents[index];if(!tab)return;actions.push({id:'close',get label() { return tr("Close Tab"); },action:()=>closeTabs(index)},{id:'others',get label() { return tr("Close Others"); },action:()=>closeTabs(index,'others')},{id:'right',get label() { return tr("Close Tabs to Right"); },action:()=>closeTabs(index,'right')},{id:'reopen',get label() { return tr("Reopen Closed Tab"); },disabled:!closedTabs.current.length,action:reopenTab},{id:'copy-path',get label() { return tr("Copy Path"); },action:()=>writeClipboard(tab.file.virtual?.trail.join(' › ')??tab.file.path??tab.file.name)});if(isTauri()&&tab.file.path&&!tab.file.virtual)actions.push({id:'reveal',get label() { return tr("Show in Folder"); },action:()=>platformIntegration.reveal(tab.file.path!)},{id:'external',get label() { return tr("Open with System Default"); },action:()=>platformIntegration.externalOpen(tab.file.path!)});};window.addEventListener('elorin-tab-context-actions',collect);return()=>window.removeEventListener('elorin-tab-context-actions',collect);});
+  useEffect(()=>{const collect=(event:Event)=>{const{id,actions}=(event as CustomEvent).detail;const index=documents.findIndex(t=>tabId(t)===id),tab=documents[index];if(!tab)return;actions.push({id:'close',get label() { return tr("Close Tab"); },action:()=>closeTabs(index)},{id:'others',get label() { return tr("Close Others"); },action:()=>closeTabs(index,'others')},{id:'right',get label() { return tr("Close Tabs to Right"); },action:()=>closeTabs(index,'right')},{id:'reopen',get label() { return tr("Reopen Closed Tab"); },disabled:!closedTabs.current.length,action:reopenTab},{id:'rename-unavailable',label:tr('Rename')+' — '+tr('Unavailable'),disabled:true,action:()=>{}},{id:'delete-unavailable',label:tr('Delete')+' — '+tr('Unavailable'),disabled:true,action:()=>{}},{id:'copy-path',get label() { return tr("Copy Path"); },action:()=>writeClipboard(tab.file.virtual?.trail.join(' › ')??tab.file.path??tab.file.name)});if(isTauri()&&tab.file.path&&!tab.file.virtual)actions.push({id:'reveal',get label() { return tr("Show in Folder"); },action:()=>platformIntegration.reveal(tab.file.path!)},{id:'external',get label() { return tr("Open with System Default"); },action:()=>platformIntegration.externalOpen(tab.file.path!)});};window.addEventListener('elorin-tab-context-actions',collect);return()=>window.removeEventListener('elorin-tab-context-actions',collect);});
   const activeSource = useRef<FileSource | undefined>(undefined);
   activeSource.current = activeDocument?.source;
   const serviceCache=useRef(new WeakMap<FileSource,ReturnType<typeof fileServices>>());
@@ -425,13 +465,12 @@ export function App({
       services.file.openRelated = async (relative) => {
         const id = requestId.current;
         const related = await services.file.readRelated!(relative);
-        if (!mounted.current) return;
+        if (!mounted.current) { related.source.dispose?.(); return; }
         // Navigation is owned by App; the plugin knows neither routes nor target types.
         if (
           activeSource.current !== activeDocument.source ||
           id !== requestId.current
-        )
-          return;
+        ) { related.source.dispose?.(); return; }
         const file = related.file;
         setDocuments((previous) => {
           if (previous.length >= 128) { related.source.dispose?.(); setNotice(tr("128 tabs are open. Close a tab before opening another file.")); return previous; }
@@ -443,7 +482,9 @@ export function App({
       };
     serviceCache.current.set(activeDocument.source,services);return services;
   }, [activeDocument]);
+  useEffect(() => { document.querySelector<HTMLElement>('.file-tab[data-active="true"]')?.scrollIntoView?.({block:'nearest',inline:'nearest'}); }, [activeFile, documents.length]);
   const retainedLight=useRef<FileSource[]>([]);
+  retainedLight.current=retainedLight.current.filter(source=>documents.some(tab=>tab.source===source));
   if(activeDocument&&!activeDocument.status&&activeDocument.file.size<=2*1024*1024&&['text','markdown','json','csv','tsv'].includes(activeDocument.file.detectedType))retainedLight.current=[...retainedLight.current.filter(s=>s!==activeDocument.source&&documents.some(t=>t.source===s)),activeDocument.source].slice(-4);
   const title =
     [...primaryRoutes, ...libraryRoutes].find((item) => item.id === route)
@@ -509,9 +550,10 @@ export function App({
           <nav className="opened-files top-file-tabs" aria-label={tr("Opened files")}>
             <button className="home-tab" aria-pressed={!activeDocument && route === 'home'} onClick={() => { setRoute('home'); setActiveFile(-1); }}>{tr("Home")}</button>
             {documents.map(({file,source},index)=><div className="file-tab" key={tabId(documents[index])} data-elorin-tab={tabId(documents[index])} data-active={activeFile===index}>
-              <button draggable aria-pressed={activeFile===index} onAuxClick={event=>{if(event.button===1)void closeTabs(index);}} onClick={()=>setActiveFile(index)} onDragStart={event=>event.dataTransfer.setData('application/x-elorin-tab',tabId(documents[index]))} onDragOver={event=>{if(event.dataTransfer.types.includes('application/x-elorin-tab'))event.preventDefault();}} onDrop={event=>{const id=event.dataTransfer.getData('application/x-elorin-tab');if(!id)return;event.preventDefault();event.stopPropagation();setDocuments(previous=>{const from=previous.findIndex(t=>tabId(t)===id);if(from<0)return previous;const current=previous[activeFile];const next=[...previous];next.splice(index,0,...next.splice(from,1));setActiveFile(next.indexOf(current));return next;});}}><span className={formatIconClass(file.name,file.extension??'')} aria-hidden="true"/><span>{file.name}{documentSessions.get(source)?.dirty?' •':''}</span></button>
+              <button title={file.path ?? file.name} draggable aria-pressed={activeFile===index} onAuxClick={event=>{if(event.button===1)void closeTabs(index);}} onClick={()=>setActiveFile(index)} onDragStart={event=>event.dataTransfer.setData('application/x-elorin-tab',tabId(documents[index]))} onDragOver={event=>{if(event.dataTransfer.types.includes('application/x-elorin-tab'))event.preventDefault();}} onDrop={event=>{const id=event.dataTransfer.getData('application/x-elorin-tab');if(!id)return;event.preventDefault();event.stopPropagation();setDocuments(previous=>{const from=previous.findIndex(t=>tabId(t)===id);if(from<0)return previous;const current=previous[activeFile];const next=[...previous];next.splice(index,0,...next.splice(from,1));setActiveFile(next.indexOf(current));return next;});}}><span className={formatIconClass(file.name,file.extension??'')} aria-hidden="true"/><span>{file.name}{documentSessions.get(source)?.dirty?' •':''}</span></button>
               <button className="tab-close" aria-label={tr("Close {v0}", { v0: file.name })} onClick={()=>void closeTabs(index)}><X size={13}/></button>
             </div>)}
+            <button aria-label={tr('Switch Tab')} onClick={()=>setPalette('tabs')}>⋯</button>
             <button className="new-tab" aria-label={tr("New tab")} onClick={()=>setNewMenu(true)}>+</button>
           </nav>
           <div className="search-wrap">
@@ -591,15 +633,7 @@ export function App({
                   </span>
                 </nav>
               )}
-              {compare ? <CompareView session={compare} close={()=>setCompare(undefined)}/> : activeDocument?.status ? <section role="status"><h2>{activeDocument.status==='unavailable'?tr("File unavailable"):tr("Restoring file…")}</h2>{activeDocument.status==='unavailable'&&<><button onClick={()=>void choose('file')}>{tr("Locate")}</button><button onClick={()=>void closeTabs(activeFile)}>{tr("Remove from Session")}</button></>}</section> : documents.filter(tab=>tab===activeDocument||retainedLight.current.includes(tab.source)).filter(tab=>!tab.status).map(tab=><div className="tab-surface" hidden={tab!==activeDocument} key={documentIdentity(tab.source)}><DocumentSurface active={tab===activeDocument} file={tab.file} source={tab.source} services={tab===activeDocument?viewerServices:serviceCache.current.get(tab.source)} onSaved={async path => {
-                const original = tab.source;
-                const session = documentSessions.get(original);
-                const file = await loader.loadPath(path);
-                const source = new TauriFileSource(path);
-                viewerSessionStore.transfer(original, source);
-                if (session) { session.source = source; session.sourceDescriptor = file; session.kind = file.detectedType === 'markdown' ? 'markdown' : file.detectedType === 'json' ? 'json' : ['csv','tsv'].includes(file.detectedType) ? 'csv' : 'text'; documentSessions.delete(original); documentSessions.set(source, session); }
-                setDocuments(previous => previous.map(d => d.source === original ? { ...d, file, source } : d));
-              }}><ViewerHost
+              {compare ? <CompareView session={compare} close={()=>setCompare(undefined)}/> : activeDocument?.status ? <section role="status"><h2>{activeDocument.status==='unavailable'?tr("File unavailable"):tr("Restoring file…")}</h2>{activeDocument.status==='unavailable'&&<><button onClick={()=>void choose('file')}>{tr("Locate")}</button><button onClick={()=>void closeTabs(activeFile)}>{tr("Remove from Session")}</button></>}</section> : documents.filter(tab=>tab===activeDocument||retainedLight.current.includes(tab.source)).filter(tab=>!tab.status).map(tab=><div className="tab-surface" hidden={tab!==activeDocument} key={documentIdentity(tab.source)}><DocumentSurface active={tab===activeDocument} file={tab.file} source={tab.source} services={tab===activeDocument?viewerServices:serviceCache.current.get(tab.source)} onSaved={path => syncSaved(tab.source, path)}><ViewerHost
                 file={tab.file}
                 source={tab.source}
                 suspended={busy && tab===activeDocument}
