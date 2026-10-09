@@ -1,11 +1,13 @@
 import { pngPreview } from "./image-png";
 import { decodeTiff } from "./image-tiff";
-self.onmessage = (
+self.onmessage = async (
   event: MessageEvent<{ kind: string; buffer: ArrayBuffer }>,
 ) => {
   try {
     const result =
-      event.data.kind === "png"
+      event.data.kind === 'psd'
+        ? await (await import('./image-psd')).psdAdapter.parse(event.data.buffer)
+        : event.data.kind === "png"
         ? pngPreview(event.data.buffer)
         : decodeTiff(event.data.buffer);
     self.postMessage(

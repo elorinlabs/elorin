@@ -196,6 +196,7 @@ export async function loadGeometry(
     "iges",
     "igs",
     "dxf",
+    "3ds",
   ];
   if (!supported.includes(format)) {
     if (format === "dwg" || format === "fbx")

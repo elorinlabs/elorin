@@ -9,6 +9,7 @@ import { boundedValue, dataCell, exactDecimal } from "./precision";
 import { NetcdfReader } from "./netcdf-reader";
 import { NpyReader } from './npy-reader';
 let npy: NpyReader | undefined;
+let mat4: import('./mat4-reader').Mat4Reader | undefined;
 import { gridSlice } from './slice';
 const sliceGates = new Map<number, { resolve: () => void; reject: (e: Error) => void }>();
 async function checkSlice(shape: number[], r: DataRequest, width: number) {
@@ -465,10 +466,9 @@ async function open(args: any) {
   } else if (format === "netcdf") {
     netcdf = new NetcdfReader(read, size);
     nodes = await netcdf.open();
-  } else if (format === "mat")
-    throw Error(
-      "Limited Preview: MAT v5 backend is unavailable; MAT v7.3 uses the HDF5 reader. No MATLAB code is executed.",
-    );
+  } else if (format === "mat") {
+    mat4=await (await import('./mat4-reader')).mat4Adapter.parse({read,size});nodes=mat4.nodes;
+  }
   else throw Error("Unsupported data format");
   return nodes;
 }
@@ -607,6 +607,7 @@ async function page(r: DataRequest): Promise<DataPage> {
   }
   if (format === "sqlite") return sqlitePage(r);
   if(format==='npy'){await checkSlice(npy!.node.shape??[],r,npy!.width);return npy!.page(r);}
+  if(format==='mat'){await checkSlice(mat4!.describe(r.node).shape??[],r,8);return mat4!.page(r);}
   if (format === "netcdf") { const d = netcdf!.describe(r.node); await checkSlice(d.shape ?? [], r, 8); return netcdf!.page(r); }
   if (format === "hdf5") { const entity = h5file.get(r.node); const d = hdfDescribe(r.node, entity); await checkSlice(d.shape ?? [], r, entity.metadata?.size ?? 8); return hdfPage(r); }
   const node = nodes[0];

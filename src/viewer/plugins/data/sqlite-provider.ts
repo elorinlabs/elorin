@@ -60,7 +60,7 @@ export async function sqliteProvider(
 }
 export function workerProvider(client: DataWorkerClient, format: string): DataProvider {
   return {
-    capabilities: { hierarchy: true, table: true, array: ['hdf5', 'netcdf','npy'].includes(format), metadata: true, randomAccess: true, slice: ['hdf5', 'netcdf','npy'].includes(format), image: false, pointCloud: false, visualization: 'loaded-sample' },
+    capabilities: { hierarchy: true, table: true, array: ['hdf5', 'netcdf','npy','mat'].includes(format), metadata: true, randomAccess: true, slice: ['hdf5', 'netcdf','npy','mat'].includes(format), image: false, pointCloud: false, visualization: 'loaded-sample' },
     nodes: () => client.call("nodes"),
     children: (node) => client.call("children", { node }),
     describe: (node) => client.call("describe", { node }),

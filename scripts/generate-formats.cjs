@@ -67,7 +67,8 @@ add('nifti-gzip','Compressed NIfTI',['nii.gz'],[],'gz','detection-only','core.bi
 add('tar-zstd','Zstandard TAR',['tar.zst'],[],'zst','partial','archive',['Container name is a hint; decompression support is determined by the existing archive backend.']);
 add('notebook-json','Notebook JSON source',['ipynb'],[],'json','basic-structure','json',['Notebook viewer and kernel execution are not implemented.']);
 for(const id of ['matlab-source','objective-c'])records.find(r=>r.formatId===id).ambiguityGroup='m-source';
-for(const entry of records)entry.detectionRules={backend:'existing-bounded-detector'};
+// Preserve explicit signatures such as NPY/PSD; generation must not erase them.
+for(const entry of records)entry.detectionRules??={backend:'existing-bounded-detector'};
 for(const [id,mime]of Object.entries({pdf:'application/pdf',json:'application/json',png:'image/png',zip:'application/zip'}))records.find(r=>r.formatId===id).detectionRules.mimeTypes=[mime];
 for(const [id,signature]of Object.entries({pdf:'%PDF-',png:'\x89PNG\r\n\x1a\n',zip:'PK\x03\x04'}))records.find(r=>r.formatId===id).detectionRules.magic=[{offset:0,bytes:Array.from(signature,c=>c.charCodeAt(0))}];
 records.find(r=>r.formatId==='docx').detectionRules.containerEntries=['[Content_Types].xml','word/document.xml'];
@@ -78,6 +79,14 @@ records.push({...records.find(r=>r.formatId==='text'),formatId:'unknown',name:'U
 for(const record of records){
  record.supportedViews.push({id:'hex',viewerId:'hex',projection:'BinaryDocument',label:'Raw bytes / Hex (read only)'});
  if(record.formatId==='unknown'){record.previewLevel='basic-structure';record.canSearch=true;record.supportedViews[0].label='Binary / Hex';record.limitations=['Raw byte viewing does not identify or validate the original format.'];}
+}
+// Concrete parser bindings are metadata for the existing registry, not another registry.
+for(const binding of JSON.parse(fs.readFileSync('src/formats/content-adapters.json','utf8')))for(const id of binding.formats){
+ const record=records.find(r=>r.formatId===id);if(!record)throw Error('Adapter format must already be registered: '+id);
+ record.previewLevel='partial';record.isolation='worker';record.canEdit=false;record.canSave=false;
+ record.canSearch=binding.viewer==='scientific';
+ record.supportedViews[0]={id:'primary',viewerId:binding.viewer,projection:binding.projection,label:'Primary view'};
+ record.limitations=[binding.scope];record.dependencies=[binding.module];
 }
 fs.mkdirSync('src/formats',{recursive:true});fs.writeFileSync('src/formats/catalogue.json',JSON.stringify(records,null,2)+'\n');
 // Deduplicate repeated policies in the startup metadata without changing the full export matrix.

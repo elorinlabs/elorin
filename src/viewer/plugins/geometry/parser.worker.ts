@@ -22,6 +22,11 @@ self.onmessage = async (
   try {
     const { format, bytes, resources, mtl, metadata } = event.data;
     self.postMessage({ progress: "Parsing geometry…" });
+    if(format==='3ds'){
+      const doc=await (await import('./three-ds-adapter')).threeDsAdapter.parse(bytes);
+      doc.metadata.parseMs=performance.now()-parseStart;
+      self.postMessage({document:doc},{transfer:transferableDocument(doc)});return;
+    }
     if (format === "dxf") {
       const doc = parseDrawing(new TextDecoder().decode(bytes));
       doc.metadata.parseMs=performance.now()-parseStart;

@@ -83,7 +83,8 @@ export class FormatIndex {
     }
     if(ids[0]==='nifti-gzip'||ids[0]==='tar-zstd')status='Probable';
     if(file.detectionSource.includes('magic')&&file.detectionSource.includes('content'))evidence.push({kind:'container',detail:'Existing detector inspected bounded container structure'});
-    return {formatId:ids[0],status,evidence,candidates:ids,conflict:conflict||file.warnings.some(w=>w.code==='EXTENSION_MISMATCH'),probeBytes:sample?.byteLength??0};
+    const signatureConflict=magicIds.length>0&&named.length>0&&!named.some(id=>magicIds.includes(id));
+    return {formatId:ids[0],status,evidence,candidates:ids,conflict:conflict||signatureConflict||file.warnings.some(w=>w.code==='EXTENSION_MISMATCH'),probeBytes:sample?.byteLength??0};
   }
 }
 export class RoutedFormatAdapter implements FormatAdapter {

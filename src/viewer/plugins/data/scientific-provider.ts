@@ -6,7 +6,8 @@ export async function scientificProvider(context: ViewerContext) {
   try {
   const size = await context.source.getSize();
   let blob: Blob | undefined, url: string | undefined;
-  const format = context.file.format?.formatId==='npy'?'npy':context.file.detectedType;
+  const adapterFormat=context.file.format?.formatId;
+  const format = adapterFormat&&['npy','mat'].includes(adapterFormat)?adapterFormat:context.file.detectedType;
   const header = await context.source.readRange(0, Math.min(size, 65536));
   const hdf = [0, 512, 1024, 2048, 4096, 8192, 16384, 32768].some(
     (at) =>

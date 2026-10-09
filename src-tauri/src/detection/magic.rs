@@ -19,7 +19,8 @@ pub fn detect(bytes: &[u8]) -> Option<FileType> {
     if b.starts_with(b"MATLAB 5.0 MAT-file") {
         return Some(FileType::Mat);
     }
-    if b.len() >= 6 && b.starts_with(b"MM") {
+    // Explicit TIFF/BigTIFF versions outrank the weak two-byte 3DS chunk ID.
+    if b.len() >= 6 && b.starts_with(b"MM") && !(b[2] == 0 && [42, 43].contains(&b[3])) {
         return Some(FileType::Threeds);
     }
     if b.starts_with(b"glTF") {
@@ -222,6 +223,12 @@ fn arrow_stream(b: &[u8]) -> bool {
 #[cfg(test)]
 mod stream_tests {
     use super::*;
+    #[test]
+    fn tiff_version_outranks_three_ds_chunk_id() {
+        assert_eq!(detect(&[77,77,0,42,0,0,0,8]), Some(FileType::Tiff));
+        assert_ne!(detect(&[77,77,0,43,0,8,0,0]), Some(FileType::Threeds));
+        assert_eq!(detect(&[77,77,20,0,0,0]), Some(FileType::Threeds));
+    }
     #[test]
     fn bounded_stream_schema_detection() {
         let sample = std::fs::read(

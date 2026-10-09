@@ -1,6 +1,7 @@
 /* Derived inventory, not a second registry. Verified grades come only from executed evidence. */
 const fs=require('fs'),path=require('path'),ts=require('typescript'),crypto=require('crypto');
 const catalogue=JSON.parse(fs.readFileSync('src/formats/catalogue.json','utf8'));
+const contentAdapters=JSON.parse(fs.readFileSync('src/formats/content-adapters.json','utf8'));
 const ast=ts.createSourceFile('builtins.ts',fs.readFileSync('src/viewer/builtins.ts','utf8'),ts.ScriptTarget.Latest,true);
 const viewers=new Map();
 function collectLoop(node){if(ts.isForOfStatement(node)&&node.statement.getText(ast).includes('registry.registerLazy')){let expression=node.expression;while(ts.isAsExpression(expression)||ts.isParenthesizedExpression(expression))expression=expression.expression;if(ts.isArrayLiteralExpression(expression))for(const tuple of expression.elements)if(ts.isArrayLiteralExpression(tuple)&&ts.isStringLiteral(tuple.elements[0])){const imports=[...node.statement.getText(ast).matchAll(/import\(["']([^"']+)["']\)/g)].map(m=>path.resolve('src/viewer',m[1])+'.tsx');viewers.set(tuple.elements[0].text,{registration:'src/viewer/builtins.ts',source_files:imports.filter(p=>fs.existsSync(p)).map(p=>path.relative('.',p).replaceAll('\\','/'))});}}ts.forEachChild(node,collectLoop);}collectLoop(ast);
@@ -22,15 +23,24 @@ if(fs.existsSync(currentReport)){
  }
 }
 const flags=['playback','seeking','audio_tracks','subtitle_tracks','waveform','frame_navigation','page_navigation','layers','scene_graph','metadata','color_profile','high_bit_depth','animation','external_resources'];
+const module28Report='docs/qa/module-28/content-evidence.json';
+if(fs.existsSync(module28Report)){
+ const report=JSON.parse(fs.readFileSync(module28Report,'utf8'));
+ if(report.status==='PASS')for(const sample of report.samples)if(sample.status==='passed'){
+  evidence.push({...sample,report_file:module28Report,validation_run:report.run_id});
+ }
+}
 const rows=catalogue.map(c=>{
  const primary=c.supportedViews.find(v=>v.id==='primary'),backend=viewers.get(primary.viewerId),proof=evidence.filter(e=>e.format_id===c.formatId&&e.status==='passed');
  if(!backend)throw Error(`Missing real Viewer registration ${primary.viewerId} for ${c.formatId}`);
  for(const p of proof){if(!p.fixture||!fs.existsSync(p.fixture)||!p.assertions?.length||!fs.existsSync(p.test_file)||p.fixture_sha256!==crypto.createHash('sha256').update(fs.readFileSync(p.fixture)).digest('hex'))throw Error(`Invalid or stale fixture evidence ${c.formatId}`);}
- return {format_id:c.formatId,extensions:c.extensions,special_filenames:c.filenames,mime_types:c.detectionRules?.mimeTypes??[],signatures:c.detectionRules?.magic??[],detector:c.detectionRules?.backend??'existing-bounded-detector',detection_rules:c.detectionRules??{},primary_viewer:primary.viewerId,fallback_viewer:'hex',viewer_registration:backend,
+ const adapter=contentAdapters.find(a=>a.formats.includes(c.formatId));
+ if(adapter&&(!fs.existsSync(adapter.module)||!fs.existsSync(adapter.worker)||adapter.viewer!==primary.viewerId))throw Error('Unwired content adapter: '+c.formatId);
+ return {format_id:c.formatId,catalogue_registered:true,content_adapter:adapter??null,identification_verified:proof.some(p=>p.detector_result?.status==='Confirmed')?true:null,parser_implemented:adapter?true:proof.length?true:null,real_viewer_registered:true,main_content_verified:proof.some(p=>p.level>=3)?true:null,sample_verified:proof.length>0,extensions:c.extensions,special_filenames:c.filenames,mime_types:c.detectionRules?.mimeTypes??[],signatures:c.detectionRules?.magic??[],detector:c.detectionRules?.backend??'existing-bounded-detector',detection_rules:c.detectionRules??{},primary_viewer:primary.viewerId,fallback_viewer:'hex',viewer_registration:backend,
  capability_level:proof.length?'L'+Math.max(...proof.map(p=>p.level)):null,capability_flags:Object.fromEntries(flags.map(f=>[f,proof.some(p=>p.flags?.includes(f))?true:null])),
  declared_preview_level:c.previewLevel,declared_interactions:{inspect:c.canInspect,search:c.canSearch,edit:c.canEdit,save:c.canSave},
  limitations:[...c.limitations,...(!proof.length?['NOT_VERIFIED: no executed content evidence; not L0 by extension.']:[])],test_fixtures:[...new Set(proof.map(p=>p.fixture))],test_status:proof.length?'passed-declared-scope':'NOT_VERIFIED',test_evidence:proof,dependency_requirements:c.dependencies,
- decoder:{implementation_source:backend.source_files,dependency_requirements:c.dependencies,availability:proof.length?'verified-for-listed-fixtures':'not-runtime-verified'},metadata_provider:{implementation_source:backend.source_files,verified:proof.some(p=>p.flags?.includes('metadata'))},preview:{viewer:primary.viewerId,verified_level:proof.length?'L'+Math.max(...proof.map(p=>p.level)):null},resource_ownership_source:backend.source_files};
+ decoder:{implementation_source:adapter?[adapter.module,adapter.worker]:backend.source_files,dependency_requirements:c.dependencies,availability:proof.length?'verified-for-listed-fixtures':'not-runtime-verified'},metadata_provider:{implementation_source:backend.source_files,verified:proof.some(p=>p.flags?.includes('metadata'))},preview:{viewer:primary.viewerId,verified_level:proof.length?'L'+Math.max(...proof.map(p=>p.level)):null},resource_ownership_source:backend.source_files};
 });
 fs.mkdirSync('docs/formats',{recursive:true});fs.writeFileSync('docs/formats/format-capability-matrix.json',JSON.stringify({schema_version:1,generated_from:['src/formats/catalogue.json','src/viewer/builtins.ts',evidencePath],levels:{L0:'Content-based identification',L1:'Validated metadata',L2:'Bounded content preview',L3:'Declared main content',L4:'Format-specific interaction'},unverified_level:null,formats:rows},null,2)+'\n');
 const lines=['# Elorin 格式覆盖清单','','此清单从唯一格式 catalogue 与实际 Viewer AST 提取。已验证等级仅来自执行证据；空等级表示尚无内容验证，不以扩展名推断 L0。true 是已有证据，null 表示尚无证据，不等价于实现不存在。L3/L4 不承诺所有 codec/变体。','','| 格式 | 扩展名 | 真实注册 Viewer | 已执行验证等级 | 验证状态 |','| --- | --- | --- | --- | --- |',...rows.map(r=>`| ${r.format_id} | ${r.extensions.join(', ')} | ${r.primary_viewer} | ${r.capability_level??'未验证'} | ${r.test_status} |`),'','完整签名/规则/限制/依赖/样本/断言依据见 [机器可读矩阵](format-capability-matrix.json)。'];fs.writeFileSync('docs/formats/FORMAT-COVERAGE.md',lines.join('\n')+'\n');console.log(`${rows.length} actual format records; ${rows.filter(r=>r.capability_level).length} have executed evidence`);

@@ -273,13 +273,13 @@
     "supportsVirtualSource": true,
     "supportsRandomAccess": true,
     "dependencies": [
-      "existing scientific backend"
+      "src/viewer/plugins/data/mat4-reader.ts"
     ],
     "limitations": [
-      "Existing viewer limits apply; recognition does not validate the entire document."
+      "Level 4 full numeric real/complex IEEE little/big endian matrices, paged; no sparse/text/v5 (v7.3 keeps existing HDF5 path)"
     ],
     "resourceDependencies": [],
-    "isolation": "in-process",
+    "isolation": "worker",
     "association": {
       "allowed": true,
       "recommended": false,
@@ -1359,13 +1359,13 @@
     "filenames": [],
     "legacyType": "3ds",
     "detectionStatus": "implemented",
-    "previewLevel": "detection-only",
+    "previewLevel": "partial",
     "supportedViews": [
       {
         "id": "primary",
         "viewerId": "scene",
         "projection": "GeometryDocument",
-        "label": "Format information"
+        "label": "Primary view"
       },
       {
         "id": "hex",
@@ -1381,13 +1381,13 @@
     "supportsVirtualSource": true,
     "supportsRandomAccess": true,
     "dependencies": [
-      "existing scene backend"
+      "src/viewer/plugins/geometry/three-ds-adapter.ts"
     ],
     "limitations": [
-      "Recognized only; no specialized parser is implemented."
+      "3DS bounded static triangle meshes via Three TDSLoader; no external textures or keyframe animation"
     ],
     "resourceDependencies": [],
-    "isolation": "in-process",
+    "isolation": "worker",
     "association": {
       "allowed": true,
       "recommended": false,
@@ -5736,7 +5736,20 @@
       "category": "Code"
     },
     "detectionRules": {
-      "backend": "existing-bounded-detector"
+      "backend": "static",
+      "magic": [
+        {
+          "offset": 0,
+          "bytes": [
+            147,
+            78,
+            85,
+            77,
+            80,
+            89
+          ]
+        }
+      ]
     }
   },
   {
@@ -5798,13 +5811,13 @@
     "filenames": [],
     "legacyType": "unknown",
     "detectionStatus": "implemented",
-    "previewLevel": "detection-only",
+    "previewLevel": "partial",
     "supportedViews": [
       {
         "id": "primary",
-        "viewerId": "hex",
-        "projection": "BinaryDocument",
-        "label": "Format information"
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
       },
       {
         "id": "hex",
@@ -5814,27 +5827,39 @@
       }
     ],
     "canInspect": true,
-    "canSearch": true,
+    "canSearch": false,
     "canEdit": false,
     "canSave": false,
     "supportsVirtualSource": true,
     "supportsRandomAccess": true,
     "dependencies": [
-      "existing text/binary viewer"
+      "src/viewer/plugins/image/image-psd.ts"
     ],
     "limitations": [
-      "No code, build script, or embedded command is executed.",
-      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+      "PSD v1 8-bit RGB/grayscale raw or PackBits merged composite, 16 MP; no extra channels, layers, ICC conversion or ZIP"
     ],
     "resourceDependencies": [],
-    "isolation": "in-process",
+    "isolation": "worker",
     "association": {
       "allowed": false,
       "recommended": false,
       "category": "Code"
     },
     "detectionRules": {
-      "backend": "existing-bounded-detector"
+      "backend": "static",
+      "magic": [
+        {
+          "offset": 0,
+          "bytes": [
+            56,
+            66,
+            80,
+            83,
+            0,
+            1
+          ]
+        }
+      ]
     }
   },
   {
@@ -5883,7 +5908,20 @@
       "category": "Code"
     },
     "detectionRules": {
-      "backend": "existing-bounded-detector"
+      "backend": "static",
+      "magic": [
+        {
+          "offset": 0,
+          "bytes": [
+            56,
+            66,
+            80,
+            83,
+            0,
+            2
+          ]
+        }
+      ]
     }
   },
   {
@@ -5932,7 +5970,18 @@
       "category": "Code"
     },
     "detectionRules": {
-      "backend": "existing-bounded-detector"
+      "backend": "static",
+      "magic": [
+        {
+          "offset": 0,
+          "bytes": [
+            118,
+            47,
+            49,
+            1
+          ]
+        }
+      ]
     }
   },
   {
@@ -5981,7 +6030,18 @@
       "category": "Code"
     },
     "detectionRules": {
-      "backend": "existing-bounded-detector"
+      "backend": "static",
+      "magic": [
+        {
+          "offset": 0,
+          "bytes": [
+            37,
+            33,
+            80,
+            83
+          ]
+        }
+      ]
     }
   },
   {

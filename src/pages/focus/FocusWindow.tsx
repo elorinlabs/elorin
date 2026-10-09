@@ -13,7 +13,7 @@ import { viewerCommands } from '../../commands/viewer-bridge';
 import type { ViewerAction } from '../../viewer/core/actions';
 import { useTheme, type ThemePreference } from '../../hooks/useTheme';
 import { useUiSettings, uiSettingsStore } from '../../platform/ui-settings';
-import { enhanceDescriptor } from '../../formats';
+import { fileLoader } from '../../services/fileLoader';
 import type { FileDescriptor } from '../../types/files';
 import { ScrollbarSystem } from '../../components/common/ScrollbarSystem';
 import { ContextMenu } from '../../components/shell/ContextMenu';
@@ -42,13 +42,16 @@ export function FocusWindow() {
   useEffect(() => {
     let live = true;
     void uiSettingsStore.load().catch(e => { if (live) setError(uiError(e)); });
-    void invoke<Snapshot>('focus_take').then(snapshot => {
+    void invoke<Snapshot>('focus_take').then(async snapshot => {
+      // Backend snapshots contain native descriptors, not frontend adapter evidence.
+      // Reuse the authorized loader so a wrong suffix cannot change Focus routing.
+      const file=await fileLoader.loadPath(snapshot.file.path!);
       if (!live) return;
-      const source = new TauriFileSource(snapshot.file.path!);
+      const source = new TauriFileSource(file.path!);
       viewerSessionStore.restore(source, snapshot.viewState);
       setTheme(snapshot.theme);
-      setData({ file: enhanceDescriptor(snapshot.file), source, tabId: snapshot.tabId });
-    }, e => { if (live) setError(uiError(e)); });
+      setData({ file, source, tabId: snapshot.tabId });
+    }).catch(e => { if (live) setError(uiError(e)); });
     return () => { live = false; clearTimeout(timer.current); };
   }, [setTheme]);
   useEffect(() => {
@@ -79,8 +82,8 @@ export function FocusWindow() {
     const refresh = async () => {
       const request = ++revision;
       try {
-        const file = await invoke<FileDescriptor>('load_file', {path: data.file.path});
-        if (live && request === revision) { setError(''); const source = new TauriFileSource(file.path!); viewerSessionStore.transfer(data.source, source); setData(previous => previous === data ? {...data, file: enhanceDescriptor(file), source} : previous); }
+        const file = await fileLoader.loadPath(data.file.path!);
+        if (live && request === revision) { setError(''); const source = new TauriFileSource(file.path!); viewerSessionStore.transfer(data.source, source); setData(previous => previous === data ? {...data, file, source} : previous); }
       } catch (e) { if (live && request === revision) setError(uiError(e)); }
     };
     const stop = fileWatchService.subscribe(data.file.path!, kind => { if(kind === 'Unavailable') { if(live)setError(tr('File unavailable')); } else void refresh(); });

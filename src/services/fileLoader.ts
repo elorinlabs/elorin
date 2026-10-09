@@ -7,13 +7,20 @@ export interface FileLoader {
   loadBrowserFile(file: File): Promise<FileDescriptor>;
 }
 export class TauriFileAdapter {
-  async load(path: string): Promise<FileDescriptor> {
-    const file=await invoke<FileDescriptor>("load_file", { path });
-    const sample=/\.m$/i.test(file.name)?new Uint8Array(await this.readRange(file.path??path,0,Math.min(8192,file.size))):undefined;
+  private async describe(file:FileDescriptor,fallbackPath?:string){
+    // Native detection has no knowledge of adapter-declared signatures. Probe only
+    // when it has not already confirmed magic, plus ambiguous .m source files.
+    const probe=/\.m$/i.test(file.name)||!file.detectionSource.includes('magic');
+    const path=file.path??fallbackPath;
+    const sample=probe&&path?new Uint8Array(await this.readRange(path,0,Math.min(65536,file.size))):undefined;
     return enhanceDescriptor(file,sample);
   }
+  async load(path: string): Promise<FileDescriptor> {
+    const file=await invoke<FileDescriptor>("load_file", { path });
+    return this.describe(file,path);
+  }
   async loadRelated(basePath: string, relative: string) {
-    return enhanceDescriptor(await invoke<FileDescriptor>("load_related_file", { basePath, relative }));
+    return this.describe(await invoke<FileDescriptor>("load_related_file", { basePath, relative }));
   }
   openUrl(url: string) {
     return invoke<void>("open_external_url", { url });

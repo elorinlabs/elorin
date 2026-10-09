@@ -10,7 +10,7 @@
 | 25 | 正式职责未提供/待核对 | 从下列工作包映射，用户确认既定名称前不开发 |
 | 26 | 同上 | 同上 |
 | 27 | 同上 | 同上 |
-| 28 | 同上 | 同上 |
+| 28 | Viewer Functional Completion & Universal Format Adaptation Foundation；2026-10-09 用户正式指定 | 完善真实 Viewer 阅读链路、复用格式适配、样本与能力对应、资源安全；交付见 module-28-verification.md，不重新定义其他模块 |
 | 29 | 同上 | 同上 |
 | 30 | 同上 | 同上 |
 | 31 | 同上 | 同上 |

@@ -1,4 +1,5 @@
 import { IMAGE_CONFIG } from "./image-config";
+import { psdHeader } from './image-psd';
 export interface ImageMetadata {
   derivedGrid?: boolean;
   format: string;
@@ -49,6 +50,7 @@ export function readImageHeader(
   bytes: Uint8Array,
   format: string,
 ): ImageMetadata {
+  if(format==='psd'){const header=psdHeader(bytes);return {format,orientation:1,width:header.w,height:header.h,bitDepth:header.depth,colorSpace:header.mode===3?'RGB':'Grayscale',alpha:false,photo:{}};}
   const m: ImageMetadata = { format, orientation: 1, photo: {} },
     v = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   const text = (at: number, length: number) =>

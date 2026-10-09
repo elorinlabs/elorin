@@ -39,7 +39,9 @@ function ascii(b: Uint8Array): string {
   return String.fromCharCode(...b);
 }
 export function magicType(b: Uint8Array): DetectedFileType | null {
-  if (b.length >= 6 && b[0] === 77 && b[1] === 77) return "3ds";
+  // MM is also the TIFF byte-order marker. Its explicit version wins over the
+  // two-byte 3DS chunk ID; BigTIFF stays diagnostic-only, never a mesh.
+  if (b.length >= 6 && b[0] === 77 && b[1] === 77 && !(b[2]===0&&[42,43].includes(b[3]))) return "3ds";
   if (starts(b, "glTF")) return "glb";
   if (starts(b, "Kaydara FBX Binary")) return "fbx";
   if (starts(b, "AC10")) return "dwg";

@@ -109,7 +109,7 @@ async function workerDecode(context: ViewerContext, kind: string, data: Blob) {
   });
 }
 export async function loadImage(context: ViewerContext): Promise<ImageModel> {
-  const format = context.file.detectedType,
+  const format = context.file.format?.formatId==='psd'?'psd':context.file.detectedType,
     size = await context.source.getSize();
   const header = await context.source.readRange(
     0,
@@ -235,7 +235,7 @@ export async function loadImage(context: ViewerContext): Promise<ImageModel> {
         );
       model.reduced = true;
     } else if (
-      format === "tiff" ||
+      format === 'psd' || format === "tiff" ||
       (format === "png" && pixels > IMAGE_CONFIG.normalPixels)
     ) {
       if (format === "tiff" && pixels > IMAGE_CONFIG.tiffPixels)
@@ -274,7 +274,8 @@ export async function loadImage(context: ViewerContext): Promise<ImageModel> {
       model.previewWidth = oriented.width;
       model.previewHeight = oriented.height;
       model.decoderName =
-        format === "tiff" ? "UTIF worker · first page" : "Streaming PNG worker";
+        format === 'psd' ? 'PSD worker · composite only' : format === "tiff" ? "UTIF worker · first page" : "Streaming PNG worker";
+      if(format==='psd')model.warnings.push('Composite RGB/grayscale image only; layers are not rendered independently.');
       model.reduced = format === "png";
       if (format === "png" && (m.frames ?? 1) > 1)
         model.warnings.push(
