@@ -1,5 +1,6 @@
+import { useAnchoredPosition } from './layer-layout';
 import { t as tr, useUiLanguage as useLocale } from "../../i18n";
-import { forwardRef, useId, useState, useLayoutEffect, useEffect, useRef, isValidElement, cloneElement, type ReactElement, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type ReactNode, } from "react";
+import { forwardRef, useCallback, useId, useState, useLayoutEffect, useEffect, useRef, isValidElement, cloneElement, type ReactElement, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type ReactNode, } from "react";
 import { createPortal } from 'react-dom';
 import { Search } from "lucide-react";
 export function Button({ className = "", variant = "secondary", loading = false, disabled, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -25,10 +26,8 @@ export function Tooltip({ label, children, }: {
 }) {
   useLocale();
     const id = useId(), [open, setOpen] = useState(false), anchor = useRef<HTMLSpanElement>(null), tip = useRef<HTMLSpanElement>(null), [position, setPosition] = useState({ left: 0, top: 0 });
-    useLayoutEffect(() => { if (!open || !anchor.current || !tip.current)
-        return; const rect = anchor.current.getBoundingClientRect(), size = tip.current.getBoundingClientRect(); setPosition({ left: Math.max(8, Math.min(rect.left, window.innerWidth - size.width - 8)), top: rect.bottom + 8 + size.height > window.innerHeight ? Math.max(8, rect.top - size.height - 8) : rect.bottom + 8 }); }, [open, label]);
-    useEffect(() => { if (!open)
-        return; const close = () => setOpen(false); window.addEventListener('resize', close); window.addEventListener('scroll', close, true); return () => { window.removeEventListener('resize', close); window.removeEventListener('scroll', close, true); }; }, [open]);
+    const dismiss = useCallback(() => setOpen(false), []);
+    useAnchoredPosition(open,anchor,tip,setPosition,dismiss);
     return <span ref={anchor} className="tooltip-host" onPointerEnter={() => setOpen(true)} onPointerLeave={() => setOpen(false)} onFocus={() => setOpen(true)} onBlur={() => setOpen(false)} onKeyDown={e => { if (e.key === 'Escape') {
         e.stopPropagation();
         setOpen(false);
@@ -36,7 +35,7 @@ export function Tooltip({ label, children, }: {
     {isValidElement(children) ? cloneElement(children as ReactElement<{
         'aria-describedby'?: string;
     }>, { 'aria-describedby': open ? id : undefined }) : children}
-    {open && createPortal(<span ref={tip} id={id} className="tooltip" role="tooltip" style={{ position: 'fixed', right: 'auto', ...position }}>{label}</span>, document.body)}
+    {open && createPortal(<span ref={tip} id={id} className="tooltip" role="tooltip" style={{ position: 'fixed', right: 'auto', zIndex: anchor.current?.closest('[aria-modal="true"]') ? 'calc(var(--z-modal) + 1)' : 'var(--z-tooltip)', ...position }}>{label}</span>, document.body)}
   </span>;
 }
 export const SearchInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(function SearchInput(props, ref) {
