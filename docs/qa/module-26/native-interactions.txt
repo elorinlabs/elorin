@@ -1,0 +1,6 @@
+Stable sample started: main visible with two pinned panels / Focus minimized
+Stable sample started: main visible / Focus minimized
+Stable sample started: main minimized / Focus minimized
+Stable sample started: Focus visible after panel cycles / main minimized
+Stable sample started: Focus minimized after panel cycles / main minimized
+passed  [{"label":"main visible with two pinned panels / Focus minimized","stableSeconds":60.746,"cpuSeconds":1.609375,"memoryBefore":863768576,"memoryAfter":793563136,"processesBefore":10,"processesAfter":10},{"label":"main visible / Focus minimized","stableSeconds":60.725,"cpuSeconds":0.0625,"memoryBefore":791461888,"memoryAfter":789794816,"processesBefore":10,"processesAfter":10},{"label":"main minimized / Focus minimized","stableSeconds":60.856,"cpuSeconds":0,"memoryBefore":789807104,"memoryAfter":789667840,"processesBefore":10,"processesAfter":10},{"label":"Focus visible after panel cycles / main minimized","stableSeconds":60.697,"cpuSeconds":0.078125,"memoryBefore":844857344,"memoryAfter":836665344,"processesBefore":10,"processesAfter":10},{"label":"Focus minimized after panel cycles / main minimized","stableSeconds":60.691,"cpuSeconds":0.03125,"memoryBefore":790601728,"memoryAfter":768012288,"processesBefore":10,"processesAfter":10}]

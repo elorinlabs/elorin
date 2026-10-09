@@ -1,0 +1,6 @@
+{
+ "identifier":"app.elorin.module26.qa",
+ "productName":"Elorin Module26 QA",
+ "build":{"beforeBuildCommand":"","frontendDist":"../dist"},
+ "app":{"security":{"capabilities":["main-capability","focus-capability",{"identifier":"module26-qa-window","windows":["main","focus-*"],"permissions":["core:window:allow-set-size"]}]}}
+}

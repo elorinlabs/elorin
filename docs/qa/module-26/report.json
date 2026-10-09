@@ -1,0 +1,116 @@
+{
+  "checks": [
+    "Search focus/Enter, PDF scroll with pinned search, validated page drafts and layered Escape",
+    "Inspector float/collapse, keyboard scrolling, four-corner drag, resized clamp, panel promotion, modal priority and context-menu Escape",
+    "Focus thumbnail virtualization/scroll, search, independent layers, context menu and Escape",
+    "Text/Markdown search and scroll; CSV both axes, axis-only keyboard and overlay wheel",
+    "Dynamic forced-colors removes overlays and safely restores native scrollbars",
+    "Archive selection, Image zoom, real Media playback/volume controls and Geometry wheel",
+    "Capability-backed Floating Toolbar and Quick Actions open, close and show real commands",
+    "Live French, light/dark, real new document and modal close"
+  ],
+  "errors": [],
+  "cpu": [
+    {
+      "label": "main visible with two pinned panels / Focus minimized",
+      "stableSeconds": 60.746,
+      "cpuSeconds": 1.609375,
+      "memoryBefore": 863768576,
+      "memoryAfter": 793563136,
+      "processesBefore": 10,
+      "processesAfter": 10
+    },
+    {
+      "label": "main visible / Focus minimized",
+      "stableSeconds": 60.725,
+      "cpuSeconds": 0.0625,
+      "memoryBefore": 791461888,
+      "memoryAfter": 789794816,
+      "processesBefore": 10,
+      "processesAfter": 10
+    },
+    {
+      "label": "main minimized / Focus minimized",
+      "stableSeconds": 60.856,
+      "cpuSeconds": 0,
+      "memoryBefore": 789807104,
+      "memoryAfter": 789667840,
+      "processesBefore": 10,
+      "processesAfter": 10
+    },
+    {
+      "label": "Focus visible after panel cycles / main minimized",
+      "stableSeconds": 60.697,
+      "cpuSeconds": 0.078125,
+      "memoryBefore": 844857344,
+      "memoryAfter": 836665344,
+      "processesBefore": 10,
+      "processesAfter": 10
+    },
+    {
+      "label": "Focus minimized after panel cycles / main minimized",
+      "stableSeconds": 60.691,
+      "cpuSeconds": 0.03125,
+      "memoryBefore": 790601728,
+      "memoryAfter": 768012288,
+      "processesBefore": 10,
+      "processesAfter": 10
+    }
+  ],
+  "started": "2026-10-09T09:12:01.280Z",
+  "executableSha256": "dc567e670e5377e3a779f044d8ec093999b4fbf18872783817821b7bdca2e565",
+  "corners": [
+    {
+      "x": 8,
+      "y": 40,
+      "width": 330,
+      "height": 695
+    },
+    {
+      "x": 1020,
+      "y": 40,
+      "width": 330,
+      "height": 695
+    },
+    {
+      "x": 1020,
+      "y": 57,
+      "width": 330,
+      "height": 695
+    },
+    {
+      "x": 8,
+      "y": 57,
+      "width": 330,
+      "height": 695
+    }
+  ],
+  "modalLayers": {
+    "modal": "60",
+    "panel": "30"
+  },
+  "csvScroll": {
+    "left": 3396,
+    "top": 367,
+    "width": 4526,
+    "height": 320064,
+    "nodes": 331
+  },
+  "largeWindow": {
+    "width": 1920,
+    "height": 1080
+  },
+  "resourcesBefore": {
+    "overlays": 6,
+    "panels": 0
+  },
+  "resourcesAfter": {
+    "overlays": 6,
+    "panels": 0
+  },
+  "status": "passed",
+  "personalDataUnchanged": true,
+  "frozenInstallerUnchanged": true,
+  "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+  "processesRemaining": []
+}

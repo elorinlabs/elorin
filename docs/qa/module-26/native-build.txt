@@ -1,0 +1,5 @@
+$ tauri "build" "--debug" "--no-bundle" "--config" "docs/qa/module-26/tauri-qa.json"
+        Info Looking up installed tauri packages to check mismatched versions...
+   Compiling prism v0.1.0 (D:\elorin\src-tauri)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 28.38s
+       Built application at: D:\elorin\src-tauri\target\debug\prism.exe
