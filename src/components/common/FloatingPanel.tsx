@@ -27,7 +27,7 @@ export function FloatingPanel({title,owner,close,children,anchor,anchorElement,i
   const inactive=(e:Event)=>{if((e as CustomEvent).detail?.source===owner)callback.current();};
   window.addEventListener('elorin-viewer-inactive',inactive);
   window.addEventListener('keydown',keydown,true);window.addEventListener('pointerdown',outside);element.querySelector<HTMLElement>('input:not(:disabled),textarea:not(:disabled)')?.focus({preventScroll:true});if(!element.contains(document.activeElement))element.focus({preventScroll:true});
-  return()=>{endDrag();const top=layers.at(-1)===item,index=layers.indexOf(item);if(index>=0)layers.splice(index,1);layer.current=null;window.removeEventListener('elorin-viewer-inactive',inactive);window.removeEventListener('keydown',keydown,true);window.removeEventListener('pointerdown',outside);if(top&&returnFocus.current?.isConnected&&!modal())returnFocus.current.focus({preventScroll:true});};
+  return()=>{endDrag();const top=layers.at(-1)===item,index=layers.indexOf(item);if(index>=0)layers.splice(index,1);layer.current=null;window.removeEventListener('elorin-viewer-inactive',inactive);window.removeEventListener('keydown',keydown,true);window.removeEventListener('pointerdown',outside);if(top&&!modal()){const previous=returnFocus.current;const target=previous?.isConnected&&previous!==document.body&&!previous.closest('[hidden],[inert]')?previous:document.querySelector<HTMLElement>('[data-elorin-tab][data-active="true"] button,.focus-reading-surface');target?.focus({preventScroll:true});}};
  },[owner,key,anchorElement]);
  useLayoutEffect(()=>{
   let frame=0;const target=anchorElement;const update=()=>{frame=0;const r=panel.current?.getBoundingClientRect();if(!r)return;

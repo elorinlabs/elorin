@@ -18,13 +18,13 @@ export function JsonSearch({
   const [result, setResult] = useState<{ matches: number[]; limited: boolean }>(
     { matches: [], limited: false },
   );
-  const [busy, setBusy] = useState(false);
+  const [busy, setBusy] = useState(false), [selected, setSelected] = useState(-1);
   useEffect(() => {
     const controller = new AbortController();
     const abort = () => controller.abort();
     signal.addEventListener("abort", abort, { once: true });
     if (signal.aborted) controller.abort();
-    setResult({ matches: [], limited: false });
+    setResult({ matches: [], limited: false });setSelected(-1);
     setBusy(!!query);
     const timer = setTimeout(
       () =>
@@ -56,6 +56,7 @@ export function JsonSearch({
           placeholder={tr("Search keys and values…")}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          onKeyDown={event=>{if(event.key==='Enter'&&result.matches.length){event.preventDefault();const next=selected<0?(event.shiftKey?result.matches.length-1:0):(selected+(event.shiftKey?-1:1)+result.matches.length)%result.matches.length;setSelected(next);navigate(result.matches[next]);}}}
         />
         <select
           aria-label={tr("Search scope")}

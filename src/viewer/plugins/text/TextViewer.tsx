@@ -1,3 +1,4 @@
+import { FloatingPanel } from '../../../components/common/FloatingPanel';
 import { formatNumber } from "../../../i18n";
 import { t as tr, useUiLanguage as useLocale } from "../../../i18n";
 import { useUiSettings } from "../../../platform/ui-settings";
@@ -320,7 +321,7 @@ export function TextViewer({
         <p role="alert">{model.diagnostics.join(" ")}</p>
       )}
       {searchOpen && (
-        <div className="text-search" role="search">
+        <FloatingPanel title={tr("Search Panel")} layoutId="text-search" owner={context.source} close={()=>setSearchOpen(false)}><div className="text-search" role="search">
           <input
             ref={searchRef}
             aria-label={tr("Search text")}
@@ -402,7 +403,7 @@ export function TextViewer({
             <small>
               {tr("Very long lines skipped by regex. Use literal search to scan all text.")}</small>
           )}
-        </div>
+        </div></FloatingPanel>
       )}
       {goOpen && (
         <form
