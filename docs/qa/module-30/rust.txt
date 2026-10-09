@@ -1,0 +1,19 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.57s
+     Running unittests src\lib.rs (target\debug\deps\prism_lib-18a5e64d7d9a7653.exe)
+
+running 12 tests
+test document::creation::tests::reject_traversal_and_reserved_names ... ok
+test document::creation::tests::forged_location_and_oversize_content_are_rejected ... ok
+test document::tests::deleted_source_is_conflict ... ok
+test document::workspace_save_tests::another_dirty_document_is_protected_without_writing ... ok
+test document::tests::conflict_preserves_source ... ok
+test document::tests::locked_source_preserves_original ... ok
+test document::tests::readonly_preserves_original ... ok
+test document::creation::tests::create_does_not_overwrite_existing_file ... ok
+test document::tests::disk_full_preserves_original ... ok
+test document::tests::failed_temp_write_preserves_original ... ok
+test document::tests::replace_and_create ... ok
+test document::tests::save_with_selected_handle ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 38 filtered out; finished in 0.02s
+

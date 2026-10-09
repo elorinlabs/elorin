@@ -1,0 +1,202 @@
+{
+  "started": "2026-10-09T12:19:23.222Z",
+  "checks": [
+    "notes.txt dirty-close Cancel preserves disk and editing session",
+    "notes.txt native save preserves all untouched source/cells, BOM and line endings",
+    "notes.txt reopen reads saved edited content",
+    "notes.md dirty-close Cancel preserves disk and editing session",
+    "notes.md native save preserves all untouched source/cells, BOM and line endings",
+    "notes.md reopen reads saved edited content",
+    "data.json dirty-close Cancel preserves disk and editing session",
+    "data.json native save preserves all untouched source/cells, BOM and line endings",
+    "data.json reopen reads saved edited content",
+    "data.csv dirty-close Cancel preserves disk and editing session",
+    "data.csv native save preserves all untouched source/cells, BOM and line endings",
+    "data.csv reopen reads saved edited content",
+    "data.tsv dirty-close Cancel preserves disk and editing session",
+    "data.tsv native save preserves all untouched source/cells, BOM and line endings",
+    "data.tsv reopen reads saved edited content",
+    "events.jsonl dirty-close Cancel preserves disk and editing session",
+    "events.jsonl native save preserves all untouched source/cells, BOM and line endings",
+    "events.jsonl native system Save As writes exact authorized copy",
+    "events.jsonl reopen reads saved edited content",
+    "events.ndjson dirty-close Cancel preserves disk and editing session",
+    "events.ndjson native save preserves all untouched source/cells, BOM and line endings",
+    "events.ndjson native system Save As writes exact authorized copy",
+    "events.ndjson reopen reads saved edited content",
+    "package.json dirty-close Cancel preserves disk and editing session",
+    "package.json native save preserves all untouched source/cells, BOM and line endings",
+    "package.json native system Save As writes exact authorized copy",
+    "package.json reopen reads saved edited content",
+    "notes.ipynb dirty-close Cancel preserves disk and editing session",
+    "notes.ipynb native save preserves all untouched source/cells, BOM and line endings",
+    "notes.ipynb native system Save As writes exact authorized copy",
+    "notes.ipynb reopen reads saved edited content",
+    "JSON Lines larger than 256KiB uses existing Worker and closes with no live Worker",
+    "External-change conflict preserves disk and local edits",
+    "Native read-only failure preserves original and unsaved input",
+    "Unselected path cannot be overwritten through save IPC",
+    "Normal exit releases app and observed WebView children"
+  ],
+  "roundTrips": [
+    {
+      "formatId": "text",
+      "name": "notes.txt",
+      "status": "passed",
+      "originalSha256": "6ff704ad09f7e83458cf96bbb00906a653e23ce87add4e801ea677af8090885e",
+      "savedSha256": "b0a0979f39684def48baa59c6fb41f446e982932e276f14e3482b6fe9b897471",
+      "saveAs": "NOT_VERIFIED",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+      "validationRun": "2026-10-09T12:14:25.194Z"
+    },
+    {
+      "formatId": "markdown",
+      "name": "notes.md",
+      "status": "passed",
+      "originalSha256": "ea287d8443a174a7fbe0966cc5960b3fd7725cac482e2d15298b18c93f4ca2d6",
+      "savedSha256": "7bbb49fdfef12f62334045e00cdc55bb82cd4c9de12c67f34d1dcb5d49ce6e34",
+      "saveAs": "NOT_VERIFIED",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+      "validationRun": "2026-10-09T12:14:25.194Z"
+    },
+    {
+      "formatId": "json",
+      "name": "data.json",
+      "status": "passed",
+      "originalSha256": "a69bed1b35fd74350fbcc957106627520a3417bb4515154220b4cde910fefd04",
+      "savedSha256": "70b6e21277905df7e68b687aee7592bf7cdfb68e8b1b05f8f79dc01fdf059945",
+      "saveAs": "NOT_VERIFIED",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+      "validationRun": "2026-10-09T12:14:25.194Z"
+    },
+    {
+      "formatId": "csv",
+      "name": "data.csv",
+      "status": "passed",
+      "originalSha256": "20c64682a87302b42735849647e2e6c6c359004d1ea2e1d5dad9909e19f16c4b",
+      "savedSha256": "62294960816f1eae0ed9628f03563fa95d0dbe842ba485f144b55fc0402a439c",
+      "saveAs": "NOT_VERIFIED",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+      "validationRun": "2026-10-09T12:14:25.194Z"
+    },
+    {
+      "formatId": "tsv",
+      "name": "data.tsv",
+      "status": "passed",
+      "originalSha256": "f7830415b5aab3819099ad799be125c1d4711969175350d68bfe8f11ee128cd0",
+      "savedSha256": "b050815dd84ebc14059abd8f062e413a2419f412ba2ea09b2f821233eba7d6ab",
+      "saveAs": "NOT_VERIFIED",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+      "validationRun": "2026-10-09T12:14:25.194Z"
+    },
+    {
+      "formatId": "json",
+      "name": "events.jsonl",
+      "status": "passed",
+      "originalSha256": "7d20abfa596e8c0317aa4f1b3bca6740d44c99484604d70cc53d6ca3194174c7",
+      "savedSha256": "a0f5e495a77262f737a9d36e0cf852db60abe6b0d86d8f7b8015e07620f16bb9",
+      "saveAs": "passed",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+      "validationRun": "2026-10-09T12:14:25.194Z"
+    },
+    {
+      "formatId": "json",
+      "name": "events.ndjson",
+      "status": "passed",
+      "originalSha256": "3ccb6d8432308bc5510beabddc4614d6b1a6e6fd2f75d99d89b66ce3204bbfa8",
+      "savedSha256": "08e1a441490ab0895b5d72a5a8b393938e03d930aa8ad444508b3f1c0c26bb3b",
+      "saveAs": "passed",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+      "validationRun": "2026-10-09T12:14:25.194Z"
+    },
+    {
+      "formatId": "package-manifest",
+      "name": "package.json",
+      "status": "passed",
+      "originalSha256": "047091d9b086ec2b1c3fc8983270b18a7ec4d97f053b58e5abf8a595577202a7",
+      "savedSha256": "1936445349adf374b50b2eb53820e1ce3725e91860db8d84cf70932e7b5cdc60",
+      "saveAs": "passed",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+      "validationRun": "2026-10-09T12:14:25.194Z"
+    },
+    {
+      "formatId": "notebook-json",
+      "name": "notes.ipynb",
+      "status": "passed",
+      "originalSha256": "5455895ad6cb277667a4c41174af7e9a89ce957086713d232097b8645bb13d34",
+      "savedSha256": "3c1a25031f8db701232bfc0e0b075c321d98ee51b3279fd726182af9b402198a",
+      "saveAs": "passed",
+      "assertions": [
+        "actual content before editing",
+        "dirty close protection",
+        "exact saved bytes retain unknown fields/data",
+        "reopen reads edited content"
+      ],
+      "validationRun": "2026-10-09T12:17:29.280Z",
+      "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing"
+    }
+  ],
+  "errors": [],
+  "priorEvidence": "docs/qa/module-30/native-roundtrip-report.json",
+  "executableSha256": "5f195353d9a5d17b107679b67566372f9d4cabd5d984ae3ae2b9dfa700eb14a0",
+  "workerTotals": {
+    "created": 7,
+    "live": 0
+  },
+  "normalExitRemaining": [],
+  "status": "PASS",
+  "cleanup": {
+    "personalDataUnchanged": true,
+    "frozenInstallerUnchanged": true,
+    "frozenSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+    "processesRemaining": []
+  }
+}
