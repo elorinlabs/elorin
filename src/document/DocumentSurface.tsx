@@ -1,6 +1,6 @@
 import { t as tr, useUiLanguage as useLocale, localizedError as uiError } from "../i18n";
 import { readClipboard, writeClipboard } from './clipboard';
-import { formatIndex } from '../formats';
+import {editableKind} from './editing';
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { invoke, isTauri } from '@tauri-apps/api/core';
 import type { FileDescriptor } from '../types/files';
@@ -28,7 +28,7 @@ export function DocumentSurface({ file, source, children, services, onSaved, act
   const [editing, setEditing] = useState(!!session);
   const [message, setMessage] = useState('');
   const [previewText, setPreviewText] = useState(session?.currentState ?? '');
-  useEffect(() => { if (!session || session.kind === 'json' && session.validationState) return; const timer = setTimeout(() => setPreviewText(session.currentState), editing ? 180 : 0); return () => clearTimeout(timer); }, [session?.currentState, editing]);
+  useEffect(() => { if (!session || (session.kind === 'json'||session.kind==='jsonl') && session.validationState) return; const timer = setTimeout(() => setPreviewText(session.currentState), editing ? 180 : 0); return () => clearTimeout(timer); }, [session?.currentState, editing]);
   const [searchMode, setSearchMode] = useState<'find' | 'replace'>();
   const [split, setSplit] = useState(false);
   const preference = viewerSessionStore.get(source, 'core.text-fallback');
@@ -45,7 +45,8 @@ export function DocumentSurface({ file, source, children, services, onSaved, act
   const update = () => { refresh(n => n + 1); window.dispatchEvent(new Event('elorin-document-change')); };
   const adapter = () => input.current && session ? textareaAdapter(input.current, session, update) : undefined;
   useEffect(() => { const navigate=(event:Event)=>{const {source:target,hit}=(event as CustomEvent).detail;if(target!==source)return;setEditing(true);setTimeout(()=>adapter()?.find(hit.offset??0,(hit.offset??0)+hit.length),0);};window.addEventListener('elorin-navigate-search',navigate);return()=>window.removeEventListener('elorin-navigate-search',navigate); });
-  const supported = ['text','markdown','json','csv','tsv','yaml','xml','toml','javascript','typescript','jsx','tsx','python','c','cpp','java','go','rust','html','css','unknown'].includes(file.detectedType) && file.isText && (!file.format || formatIndex.get(file.format.formatId)?.capabilities.canEdit!==false);
+  const kind=editableKind(file);
+  const supported = kind!==undefined;
   const eligible = supported && file.size <= EDIT_LIMIT;
   const previewSource = useMemo(() => { if (!session) return null; const preview: FileSource = new BrowserFileSource(new File([previewText], file.name)); preview.resolveRelated = source.resolveRelated; viewerSessionStore.transfer(source, preview); return preview; }, [previewText, file.name, source, session]);
   useEffect(() => () => { if (session && documentSessions.get(source) === session) void snapshot(session).catch(() => {}); }, [session, source]);
@@ -59,13 +60,16 @@ export function DocumentSurface({ file, source, children, services, onSaved, act
   }, [session, session?.path]);
   async function enter() {
     try {
+      if(!eligible||!kind)throw Error('This format has no safe editing path.');
       if (session) { setEditing(true); return; }
       const before = isTauri() && file.path && !file.virtual ? await invoke<string>('document_fingerprint', { path: file.path }) : null;
+      if(await source.getSize()>EDIT_LIMIT)throw Error('This document exceeds the safe editing limit.');
       const bytes = await source.readAll();
+      if(bytes.length>EDIT_LIMIT)throw Error('This document exceeds the safe editing limit.');
       if (before && before !== await invoke<string>('document_fingerprint', { path: file.path })) throw Error('File changed while entering edit mode. Reopen it.');
       if (file.encoding && !/^utf-?8(?:\s*bom)?$/i.test(file.encoding)) throw Error('Editing this encoding is not yet supported safely.');
       const text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
-      const next = new DocumentSession(text, ['csv','tsv'].includes(file.detectedType) ? 'csv' : file.detectedType === 'markdown' ? 'markdown' : file.detectedType === 'json' ? 'json' : 'text', file.virtual ? null : file.path, before, bytes[0] === 239 && bytes[1] === 187 && bytes[2] === 191);
+      const next = new DocumentSession(text, kind, file.virtual ? null : file.path, before, bytes[0] === 239 && bytes[1] === 187 && bytes[2] === 191);
       if (next.kind === 'csv') { const {parseEditableCsv} = await import('./csv'); parseEditableCsv(text, file.detectedType === 'tsv'); }
       next.source = source; next.sourceDescriptor = file;
       if (!alive.current) return;

@@ -16,6 +16,13 @@ export interface FormatCapabilities {
   viewerId?: string;
   category?: string;
   supportStatus?: 'adapter-implemented' | 'viewer-owned-unverified' | 'unimplemented' | 'raw-only';
+  editCapability?: 'full' | 'limited' | 'read-only' | 'unverified';
+  parserReuse?: 'existing-parser' | 'needs-parser';
+  viewerReuse?: 'existing-viewer' | 'shared-new-viewer' | 'specialized-viewer';
+  saveCapability?: 'original-format' | 'limited-save' | 'export-only' | 'no-write';
+  writerId?: string | null;
+  editorGroup?: string | null;
+  editLimitations?: string[];
   sourceLanguage?: string;
   detectionRules?: {
     backend: 'existing-bounded-detector' | 'static';

@@ -166,7 +166,7 @@ export function App({
     void invoke<[string, string][]>('document_recovery_list').then(async snapshots => {
       for (const [id, raw] of snapshots) {
         if (cancelled) return;
-        try { const data = JSON.parse(raw); if (data.version !== 1 || typeof data.text !== 'string' || !['text','markdown','json','csv'].includes(data.kind)) continue;
+        try { const data = JSON.parse(raw); if (data.version !== 1 || typeof data.text !== 'string' || !['text','markdown','json','jsonl','csv'].includes(data.kind)) continue;
           const choice = await documentChoice(tr("Recovered document: {v0}. Last edit: {v1}. Restore opens a new document for safe Save As.", { v0: data.path ?? 'Untitled', v1: formatDate(new Date(data.time), {dateStyle:'short',timeStyle:'medium'}) }), ['Restore', 'Discard', 'Cancel']);
           if (choice === 'Restore') { const restored = await newDocument(data.kind, data.text); const session = documentSessions.get(restored.source)!; session.bom = !!data.bom; session.csvHeader = typeof data.header === 'boolean' ? data.header : undefined; session.csvColumns = Number.isInteger(data.columns) && data.columns >= 0 && data.columns <= 256 ? data.columns : undefined; if (data.csvDraft && Number.isInteger(data.csvDraft.row) && data.csvDraft.row >= 0 && data.csvDraft.row < 100000 && Number.isInteger(data.csvDraft.column) && data.csvDraft.column >= 0 && data.csvDraft.column < 256 && typeof data.csvDraft.value === 'string' && data.csvDraft.value.length <= 2 * 1024 * 1024) session.csvDraft = data.csvDraft; await snapshot(session); }
           else if (choice !== 'Discard') continue;

@@ -99,6 +99,19 @@ for(const record of records){
  record.supportStatus=record.previewLevel==='detection-only'?'unimplemented':raw?'raw-only':binding?'adapter-implemented':'viewer-owned-unverified';
  record.parserId=binding?.id??(record.supportStatus==='viewer-owned-unverified'?'viewer/'+primary.viewerId:null);
 }
+// Module 30 reuses DocumentSurface, source-preserving sessions and the atomic writer.
+for(const record of records){
+ if(['package-manifest','notebook-json'].includes(record.formatId)){record.canEdit=true;record.canSave=true;}
+ record.editCapability=record.canEdit?'limited':'read-only';
+ record.parserReuse=record.parserId?'existing-parser':'needs-parser';
+ record.viewerReuse='existing-viewer';
+ record.saveCapability=record.canEdit?'limited-save':'no-write';
+ record.writerId=record.canEdit?'document.atomic-utf8':null;
+ record.editorGroup=record.canEdit?record.viewerId==='csv'?'tabular-text':record.viewerId==='json'?'validated-json-source':record.viewerId==='markdown'?'markdown-source':'utf8-source':null;
+ record.editLimitations=record.canEdit?['UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.','Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.','Native Save As requires system picker authorization; virtual/browser sources write a copy only.','Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation.']:['No connected reliable writer; detection, Hex and external opening do not imply editing.'];
+ if(['xml','yaml','toml'].includes(record.formatId))record.editLimitations.push('Existing source-text editing only; highlighting is not a structural parser or schema validation.');
+ if(record.formatId==='json')record.editLimitations.push('JSONL/NDJSON use per-record strict parsing and validation, preserving original source and numbers.');
+}
 fs.mkdirSync('src/formats',{recursive:true});fs.writeFileSync('src/formats/catalogue.json',JSON.stringify(records,null,2)+'\n');
 // Deduplicate repeated policies in the startup metadata without changing the full export matrix.
 const profiles=[],profileKeys=new Map(),entries=records.map(record=>{

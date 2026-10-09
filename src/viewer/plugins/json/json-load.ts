@@ -2,6 +2,7 @@ import type { ViewerContext } from "../../core/types";
 import { ViewerError, checkAbort } from "../../core/errors";
 import { JSON_CONFIG } from "./json-config";
 import { emptyModel, parseJsonDocument } from "./json-parser";
+import {parseJsonLines} from './json-lines';
 import type { JsonDocumentModel } from "./json-model";
 export async function loadJson(
   context: ViewerContext,
@@ -25,19 +26,7 @@ export async function loadJson(
       "This file changed while reading. Select it again.",
     );
   checkAbort(context.signal);
-  if (
-    context.file.extension === "jsonl" ||
-    context.file.extension === "ndjson"
-  ) {
-    const model = emptyModel(source, "jsonl");
-    model.truncated = limited;
-    model.diagnostics.push({
-      kind: "warning",
-      message:
-        "JSON Lines is not supported yet. Source is available; no single JSON object was inferred.",
-    });
-    return model;
-  }
+  const jsonLines=['jsonl','ndjson'].includes(context.file.extension??'');
   if (limited) {
     const model = emptyModel(source, "limited");
     model.truncated = true;
@@ -51,7 +40,7 @@ export async function loadJson(
   if (size < JSON_CONFIG.workerBytes) {
     await new Promise<void>((resolve) => setTimeout(resolve, 0));
     checkAbort(context.signal);
-    return parseJsonDocument(source);
+    return jsonLines?parseJsonLines(source):parseJsonDocument(source);
   }
   if (typeof Worker === "undefined")
     throw new ViewerError(
@@ -97,6 +86,6 @@ export async function loadJson(
         ),
       );
     };
-    worker.postMessage(source);
+    worker.postMessage(jsonLines?{source,jsonLines}:source);
   });
 }

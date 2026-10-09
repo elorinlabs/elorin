@@ -1,9 +1,9 @@
-import { jsonValidator, type DocumentDiagnostic } from './validation';
+import { jsonValidator, jsonLinesValidator, type DocumentDiagnostic } from './validation';
 import type { FileSource } from '../services/fileSource';
 import type { FileDescriptor } from '../types/files';
 export const EDIT_LIMIT = 2 * 1024 * 1024;
 export const UNDO_BUDGET = 16 * 1024 * 1024;
-export type DocumentKind = 'text' | 'markdown' | 'json' | 'csv';
+export type DocumentKind = 'text' | 'markdown' | 'json' | 'jsonl' | 'csv';
 type HistoryEntry = { text: string; columns?: number; header?: boolean; revision: number };
 export class DocumentSession {
   readonly id = crypto.randomUUID();
@@ -44,8 +44,8 @@ export class DocumentSession {
   }
   get dirty() { return !!this.csvDraft || this.revision !== this.savedRevision || !this.path; }
   get validationState() {
-    if (this.kind !== 'json') return null;
-    if (this.validatedText !== this.currentState) { this.validatedText = this.currentState; this.diagnostic = jsonValidator.validate(this.currentState); }
+    if (this.kind !== 'json' && this.kind !== 'jsonl') return null;
+    if (this.validatedText !== this.currentState) { this.validatedText = this.currentState; this.diagnostic = (this.kind==='jsonl'?jsonLinesValidator:jsonValidator).validate(this.currentState); }
     return this.diagnostic;
   }
   modify(value: string, metadata?: { columns: number; header: boolean }) {

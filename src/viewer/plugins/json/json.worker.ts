@@ -1,7 +1,9 @@
 import { parseJsonDocument } from "./json-parser";
-self.onmessage = (event: MessageEvent<string>) => {
+import {parseJsonLines} from './json-lines';
+self.onmessage = (event: MessageEvent<string | {source:string;jsonLines:boolean}>) => {
   try {
-    self.postMessage({ model: parseJsonDocument(event.data) });
+    const source=typeof event.data==='string'?event.data:event.data.source;
+    self.postMessage({ model: typeof event.data!=='string'&&event.data.jsonLines?parseJsonLines(source):parseJsonDocument(source) });
   } catch {
     self.postMessage({ error: "Unable to parse this JSON document." });
   }

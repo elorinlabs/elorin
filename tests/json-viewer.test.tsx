@@ -328,12 +328,12 @@ describe("JSON Plugin integration", () => {
 });
 
 describe("JSON loading lifecycle", () => {
-  it("does not parse JSONL, and huge files get bounded Source preview", async () => {
+  it("parses JSONL records, and huge files retain bounded Source preview", async () => {
     const jsonl = {
       ...context('{"a":1}\n{"a":2}'),
       file: data("", "a.jsonl").file,
     };
-    expect((await loadJson(jsonl)).status).toBe("jsonl");
+    const lines=await loadJson(jsonl);expect(lines.status).toBe("ready");expect(lines.nodes[0].children).toHaveLength(2);
     const huge = context();
     huge.source.getSize = async () => JSON_CONFIG.maxBytes + 1;
     const read = vi.spyOn(huge.source, "readText");

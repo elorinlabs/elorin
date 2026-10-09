@@ -6,8 +6,186 @@
     "src/formats/content-adapters.json",
     "docs/qa/module-22-capability-evidence.json",
     "docs/qa/module-28/content-evidence.json",
-    "docs/qa/module-29/content-evidence.json"
+    "docs/qa/module-29/content-evidence.json",
+    "docs/qa/module-30/native-report.json"
   ],
+  "editing_summary": {
+    "total": 155,
+    "capability": {
+      "full": 0,
+      "limited": 22,
+      "read-only": 133,
+      "unverified": 0
+    },
+    "native_roundtrip_formats": 7,
+    "groups": {
+      "requires-writer": [
+        "parquet",
+        "arrow",
+        "feather",
+        "hdf5",
+        "netcdf",
+        "mat",
+        "stl",
+        "obj",
+        "ply",
+        "gltf",
+        "glb",
+        "step",
+        "stp",
+        "iges",
+        "igs",
+        "jt",
+        "skp",
+        "3dm",
+        "sldprt",
+        "sldasm",
+        "catpart",
+        "catproduct",
+        "fbx",
+        "dae",
+        "usd",
+        "usda",
+        "usdc",
+        "usdz",
+        "3ds",
+        "c4d",
+        "blend",
+        "max",
+        "dxf",
+        "dwg",
+        "mp3",
+        "wav",
+        "flac",
+        "aac",
+        "m4a",
+        "ogg",
+        "opus",
+        "wma",
+        "aiff",
+        "mp4",
+        "webm",
+        "mov",
+        "mkv",
+        "avi",
+        "mpeg",
+        "m4v",
+        "epub",
+        "eml",
+        "msg",
+        "xlsx",
+        "xlsm",
+        "xls",
+        "xlsb",
+        "ods",
+        "pptx",
+        "pptm",
+        "ppsx",
+        "potx",
+        "ppt",
+        "odp",
+        "pdf",
+        "docx",
+        "odt",
+        "rtf",
+        "doc",
+        "png",
+        "jpeg",
+        "gif",
+        "webp",
+        "svg",
+        "avif",
+        "bmp",
+        "ico",
+        "tiff",
+        "heic",
+        "heif",
+        "zip",
+        "tar",
+        "gz",
+        "tgz",
+        "sevenzip",
+        "rar",
+        "bz2",
+        "xz",
+        "zst",
+        "sqlite",
+        "srt",
+        "vtt",
+        "ass",
+        "ssa",
+        "sub",
+        "npy",
+        "npz",
+        "psd",
+        "psb",
+        "exr",
+        "eps",
+        "ai",
+        "fig",
+        "sketch",
+        "lottie",
+        "bigtiff",
+        "typescript-declaration",
+        "kotlin-script",
+        "blade-template",
+        "dockerfile",
+        "cmake",
+        "go-module",
+        "cargo-manifest",
+        "gitignore",
+        "environment",
+        "matlab-source",
+        "objective-c",
+        "makefile",
+        "tsconfig",
+        "pyproject",
+        "editorconfig",
+        "gradle",
+        "jsonc",
+        "json5",
+        "ini",
+        "vue",
+        "svelte",
+        "astro",
+        "perl-source",
+        "prolog-source",
+        "nifti-gzip",
+        "tar-zstd",
+        "unknown"
+      ],
+      "utf8-source": [
+        "text",
+        "yaml",
+        "xml",
+        "toml",
+        "javascript",
+        "typescript",
+        "jsx",
+        "tsx",
+        "python",
+        "c",
+        "cpp",
+        "java",
+        "go",
+        "rust",
+        "html",
+        "css"
+      ],
+      "markdown-source": [
+        "markdown"
+      ],
+      "validated-json-source": [
+        "json",
+        "package-manifest",
+        "notebook-json"
+      ],
+      "tabular-text": [
+        "csv",
+        "tsv"
+      ]
+    }
+  },
   "levels": {
     "L0": "Content-based identification",
     "L1": "Validated metadata",
@@ -20,6 +198,22 @@
     {
       "format_id": "parquet",
       "formatId": "parquet",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/columnar",
       "viewerId": "columnar",
       "detectionStatus": "implemented-unverified",
@@ -111,6 +305,22 @@
     {
       "format_id": "arrow",
       "formatId": "arrow",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/columnar",
       "viewerId": "columnar",
       "detectionStatus": "implemented-unverified",
@@ -202,6 +412,22 @@
     {
       "format_id": "feather",
       "formatId": "feather",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/columnar",
       "viewerId": "columnar",
       "detectionStatus": "implemented-unverified",
@@ -293,6 +519,22 @@
     {
       "format_id": "hdf5",
       "formatId": "hdf5",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/scientific",
       "viewerId": "scientific",
       "detectionStatus": "implemented-unverified",
@@ -385,6 +627,22 @@
     {
       "format_id": "netcdf",
       "formatId": "netcdf",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/scientific",
       "viewerId": "scientific",
       "detectionStatus": "implemented-unverified",
@@ -477,6 +735,22 @@
     {
       "format_id": "mat",
       "formatId": "mat",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "mat-level4",
       "viewerId": "scientific",
       "detectionStatus": "implemented-unverified",
@@ -645,6 +919,22 @@
     {
       "format_id": "stl",
       "formatId": "stl",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/mesh",
       "viewerId": "mesh",
       "detectionStatus": "implemented-unverified",
@@ -736,6 +1026,22 @@
     {
       "format_id": "obj",
       "formatId": "obj",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/mesh",
       "viewerId": "mesh",
       "detectionStatus": "implemented-unverified",
@@ -827,6 +1133,22 @@
     {
       "format_id": "ply",
       "formatId": "ply",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/mesh",
       "viewerId": "mesh",
       "detectionStatus": "implemented-unverified",
@@ -918,6 +1240,22 @@
     {
       "format_id": "gltf",
       "formatId": "gltf",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/mesh",
       "viewerId": "mesh",
       "detectionStatus": "implemented-unverified",
@@ -1009,6 +1347,22 @@
     {
       "format_id": "glb",
       "formatId": "glb",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/mesh",
       "viewerId": "mesh",
       "detectionStatus": "implemented-unverified",
@@ -1100,6 +1454,22 @@
     {
       "format_id": "step",
       "formatId": "step",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/cad",
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1191,6 +1561,22 @@
     {
       "format_id": "stp",
       "formatId": "stp",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/cad",
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1282,6 +1668,22 @@
     {
       "format_id": "iges",
       "formatId": "iges",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/cad",
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1373,6 +1775,22 @@
     {
       "format_id": "igs",
       "formatId": "igs",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/cad",
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1464,6 +1882,22 @@
     {
       "format_id": "jt",
       "formatId": "jt",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1555,6 +1989,22 @@
     {
       "format_id": "skp",
       "formatId": "skp",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1646,6 +2096,22 @@
     {
       "format_id": "3dm",
       "formatId": "3dm",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1737,6 +2203,22 @@
     {
       "format_id": "sldprt",
       "formatId": "sldprt",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1828,6 +2310,22 @@
     {
       "format_id": "sldasm",
       "formatId": "sldasm",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -1919,6 +2417,22 @@
     {
       "format_id": "catpart",
       "formatId": "catpart",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -2010,6 +2524,22 @@
     {
       "format_id": "catproduct",
       "formatId": "catproduct",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "cad",
       "detectionStatus": "implemented-unverified",
@@ -2101,6 +2631,22 @@
     {
       "format_id": "fbx",
       "formatId": "fbx",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2192,6 +2738,22 @@
     {
       "format_id": "dae",
       "formatId": "dae",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2283,6 +2845,22 @@
     {
       "format_id": "usd",
       "formatId": "usd",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2374,6 +2952,22 @@
     {
       "format_id": "usda",
       "formatId": "usda",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2465,6 +3059,22 @@
     {
       "format_id": "usdc",
       "formatId": "usdc",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2556,6 +3166,22 @@
     {
       "format_id": "usdz",
       "formatId": "usdz",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2647,6 +3273,22 @@
     {
       "format_id": "3ds",
       "formatId": "3ds",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "three-ds-static",
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2798,6 +3440,22 @@
     {
       "format_id": "c4d",
       "formatId": "c4d",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2889,6 +3547,22 @@
     {
       "format_id": "blend",
       "formatId": "blend",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -2980,6 +3654,22 @@
     {
       "format_id": "max",
       "formatId": "max",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "scene",
       "detectionStatus": "implemented-unverified",
@@ -3071,6 +3761,22 @@
     {
       "format_id": "dxf",
       "formatId": "dxf",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/cad-drawing",
       "viewerId": "cad-drawing",
       "detectionStatus": "implemented-unverified",
@@ -3162,6 +3868,22 @@
     {
       "format_id": "dwg",
       "formatId": "dwg",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "cad-drawing",
       "detectionStatus": "implemented-unverified",
@@ -3253,6 +3975,47 @@
     {
       "format_id": "text",
       "formatId": "text",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "sample-verified",
+        "report": "docs/qa/module-30/native-report.json",
+        "roundTrips": [
+          {
+            "formatId": "text",
+            "name": "notes.txt",
+            "status": "passed",
+            "originalSha256": "6ff704ad09f7e83458cf96bbb00906a653e23ce87add4e801ea677af8090885e",
+            "savedSha256": "b0a0979f39684def48baa59c6fb41f446e982932e276f14e3482b6fe9b897471",
+            "saveAs": "NOT_VERIFIED",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+            "validationRun": "2026-10-09T12:14:25.194Z"
+          }
+        ]
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -3345,6 +4108,47 @@
     {
       "format_id": "markdown",
       "formatId": "markdown",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "markdown-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "sample-verified",
+        "report": "docs/qa/module-30/native-report.json",
+        "roundTrips": [
+          {
+            "formatId": "markdown",
+            "name": "notes.md",
+            "status": "passed",
+            "originalSha256": "ea287d8443a174a7fbe0966cc5960b3fd7725cac482e2d15298b18c93f4ca2d6",
+            "savedSha256": "7bbb49fdfef12f62334045e00cdc55bb82cd4c9de12c67f34d1dcb5d49ce6e34",
+            "saveAs": "NOT_VERIFIED",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+            "validationRun": "2026-10-09T12:14:25.194Z"
+          }
+        ]
+      },
       "parserId": "viewer/markdown",
       "viewerId": "markdown",
       "detectionStatus": "implemented-unverified",
@@ -3440,6 +4244,80 @@
     {
       "format_id": "json",
       "formatId": "json",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "validated-json-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation.",
+        "JSONL/NDJSON use per-record strict parsing and validation, preserving original source and numbers."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "sample-verified",
+        "report": "docs/qa/module-30/native-report.json",
+        "roundTrips": [
+          {
+            "formatId": "json",
+            "name": "data.json",
+            "status": "passed",
+            "originalSha256": "a69bed1b35fd74350fbcc957106627520a3417bb4515154220b4cde910fefd04",
+            "savedSha256": "70b6e21277905df7e68b687aee7592bf7cdfb68e8b1b05f8f79dc01fdf059945",
+            "saveAs": "NOT_VERIFIED",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+            "validationRun": "2026-10-09T12:14:25.194Z"
+          },
+          {
+            "formatId": "json",
+            "name": "events.jsonl",
+            "status": "passed",
+            "originalSha256": "7d20abfa596e8c0317aa4f1b3bca6740d44c99484604d70cc53d6ca3194174c7",
+            "savedSha256": "a0f5e495a77262f737a9d36e0cf852db60abe6b0d86d8f7b8015e07620f16bb9",
+            "saveAs": "passed",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+            "validationRun": "2026-10-09T12:14:25.194Z"
+          },
+          {
+            "formatId": "json",
+            "name": "events.ndjson",
+            "status": "passed",
+            "originalSha256": "3ccb6d8432308bc5510beabddc4614d6b1a6e6fd2f75d99d89b66ce3204bbfa8",
+            "savedSha256": "08e1a441490ab0895b5d72a5a8b393938e03d930aa8ad444508b3f1c0c26bb3b",
+            "saveAs": "passed",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+            "validationRun": "2026-10-09T12:14:25.194Z"
+          }
+        ]
+      },
       "parserId": "viewer/json",
       "viewerId": "json",
       "detectionStatus": "implemented-unverified",
@@ -3539,6 +4417,31 @@
     {
       "format_id": "yaml",
       "formatId": "yaml",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation.",
+        "Existing source-text editing only; highlighting is not a structural parser or schema validation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -3631,6 +4534,31 @@
     {
       "format_id": "xml",
       "formatId": "xml",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation.",
+        "Existing source-text editing only; highlighting is not a structural parser or schema validation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -3722,6 +4650,31 @@
     {
       "format_id": "toml",
       "formatId": "toml",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation.",
+        "Existing source-text editing only; highlighting is not a structural parser or schema validation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -3813,6 +4766,30 @@
     {
       "format_id": "javascript",
       "formatId": "javascript",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -3906,6 +4883,30 @@
     {
       "format_id": "typescript",
       "formatId": "typescript",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -3999,6 +5000,30 @@
     {
       "format_id": "jsx",
       "formatId": "jsx",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4090,6 +5115,30 @@
     {
       "format_id": "tsx",
       "formatId": "tsx",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4181,6 +5230,30 @@
     {
       "format_id": "python",
       "formatId": "python",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4273,6 +5346,30 @@
     {
       "format_id": "c",
       "formatId": "c",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4365,6 +5462,30 @@
     {
       "format_id": "cpp",
       "formatId": "cpp",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4459,6 +5580,30 @@
     {
       "format_id": "java",
       "formatId": "java",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4550,6 +5695,30 @@
     {
       "format_id": "go",
       "formatId": "go",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4641,6 +5810,30 @@
     {
       "format_id": "rust",
       "formatId": "rust",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4732,6 +5925,30 @@
     {
       "format_id": "html",
       "formatId": "html",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4824,6 +6041,30 @@
     {
       "format_id": "css",
       "formatId": "css",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "utf8-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -4915,6 +6156,47 @@
     {
       "format_id": "csv",
       "formatId": "csv",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "tabular-text",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "sample-verified",
+        "report": "docs/qa/module-30/native-report.json",
+        "roundTrips": [
+          {
+            "formatId": "csv",
+            "name": "data.csv",
+            "status": "passed",
+            "originalSha256": "20c64682a87302b42735849647e2e6c6c359004d1ea2e1d5dad9909e19f16c4b",
+            "savedSha256": "62294960816f1eae0ed9628f03563fa95d0dbe842ba485f144b55fc0402a439c",
+            "saveAs": "NOT_VERIFIED",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+            "validationRun": "2026-10-09T12:14:25.194Z"
+          }
+        ]
+      },
       "parserId": "viewer/csv",
       "viewerId": "csv",
       "detectionStatus": "implemented-unverified",
@@ -5006,6 +6288,47 @@
     {
       "format_id": "tsv",
       "formatId": "tsv",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "tabular-text",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "sample-verified",
+        "report": "docs/qa/module-30/native-report.json",
+        "roundTrips": [
+          {
+            "formatId": "tsv",
+            "name": "data.tsv",
+            "status": "passed",
+            "originalSha256": "f7830415b5aab3819099ad799be125c1d4711969175350d68bfe8f11ee128cd0",
+            "savedSha256": "b050815dd84ebc14059abd8f062e413a2419f412ba2ea09b2f821233eba7d6ab",
+            "saveAs": "NOT_VERIFIED",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+            "validationRun": "2026-10-09T12:14:25.194Z"
+          }
+        ]
+      },
       "parserId": "viewer/csv",
       "viewerId": "csv",
       "detectionStatus": "implemented-unverified",
@@ -5098,6 +6421,22 @@
     {
       "format_id": "mp3",
       "formatId": "mp3",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -5208,6 +6547,22 @@
     {
       "format_id": "wav",
       "formatId": "wav",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -5318,6 +6673,22 @@
     {
       "format_id": "flac",
       "formatId": "flac",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -5428,6 +6799,22 @@
     {
       "format_id": "aac",
       "formatId": "aac",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -5519,6 +6906,22 @@
     {
       "format_id": "m4a",
       "formatId": "m4a",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -5629,6 +7032,22 @@
     {
       "format_id": "ogg",
       "formatId": "ogg",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -5739,6 +7158,22 @@
     {
       "format_id": "opus",
       "formatId": "opus",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -5849,6 +7284,22 @@
     {
       "format_id": "wma",
       "formatId": "wma",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -5940,6 +7391,22 @@
     {
       "format_id": "aiff",
       "formatId": "aiff",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/audio",
       "viewerId": "audio",
       "detectionStatus": "implemented-unverified",
@@ -6032,6 +7499,22 @@
     {
       "format_id": "mp4",
       "formatId": "mp4",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/video",
       "viewerId": "video",
       "detectionStatus": "implemented-unverified",
@@ -6123,6 +7606,22 @@
     {
       "format_id": "webm",
       "formatId": "webm",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/video",
       "viewerId": "video",
       "detectionStatus": "implemented-unverified",
@@ -6214,6 +7713,22 @@
     {
       "format_id": "mov",
       "formatId": "mov",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/video",
       "viewerId": "video",
       "detectionStatus": "implemented-unverified",
@@ -6305,6 +7820,22 @@
     {
       "format_id": "mkv",
       "formatId": "mkv",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/video",
       "viewerId": "video",
       "detectionStatus": "implemented-unverified",
@@ -6396,6 +7927,22 @@
     {
       "format_id": "avi",
       "formatId": "avi",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/video",
       "viewerId": "video",
       "detectionStatus": "implemented-unverified",
@@ -6487,6 +8034,22 @@
     {
       "format_id": "mpeg",
       "formatId": "mpeg",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/video",
       "viewerId": "video",
       "detectionStatus": "implemented-unverified",
@@ -6579,6 +8142,22 @@
     {
       "format_id": "m4v",
       "formatId": "m4v",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/video",
       "viewerId": "video",
       "detectionStatus": "implemented-unverified",
@@ -6670,6 +8249,22 @@
     {
       "format_id": "epub",
       "formatId": "epub",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/ebook",
       "viewerId": "ebook",
       "detectionStatus": "implemented-unverified",
@@ -6765,6 +8360,22 @@
     {
       "format_id": "eml",
       "formatId": "eml",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/email",
       "viewerId": "email",
       "detectionStatus": "implemented-unverified",
@@ -6856,6 +8467,22 @@
     {
       "format_id": "msg",
       "formatId": "msg",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "email",
       "detectionStatus": "implemented-unverified",
@@ -6947,6 +8574,22 @@
     {
       "format_id": "xlsx",
       "formatId": "xlsx",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/spreadsheet",
       "viewerId": "spreadsheet",
       "detectionStatus": "implemented-unverified",
@@ -7038,6 +8681,22 @@
     {
       "format_id": "xlsm",
       "formatId": "xlsm",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/spreadsheet",
       "viewerId": "spreadsheet",
       "detectionStatus": "implemented-unverified",
@@ -7129,6 +8788,22 @@
     {
       "format_id": "xls",
       "formatId": "xls",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "spreadsheet",
       "detectionStatus": "implemented-unverified",
@@ -7220,6 +8895,22 @@
     {
       "format_id": "xlsb",
       "formatId": "xlsb",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "spreadsheet",
       "detectionStatus": "implemented-unverified",
@@ -7311,6 +9002,22 @@
     {
       "format_id": "ods",
       "formatId": "ods",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/spreadsheet",
       "viewerId": "spreadsheet",
       "detectionStatus": "implemented-unverified",
@@ -7402,6 +9109,22 @@
     {
       "format_id": "pptx",
       "formatId": "pptx",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/presentation",
       "viewerId": "presentation",
       "detectionStatus": "implemented-unverified",
@@ -7493,6 +9216,22 @@
     {
       "format_id": "pptm",
       "formatId": "pptm",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/presentation",
       "viewerId": "presentation",
       "detectionStatus": "implemented-unverified",
@@ -7584,6 +9323,22 @@
     {
       "format_id": "ppsx",
       "formatId": "ppsx",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/presentation",
       "viewerId": "presentation",
       "detectionStatus": "implemented-unverified",
@@ -7675,6 +9430,22 @@
     {
       "format_id": "potx",
       "formatId": "potx",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/presentation",
       "viewerId": "presentation",
       "detectionStatus": "implemented-unverified",
@@ -7766,6 +9537,22 @@
     {
       "format_id": "ppt",
       "formatId": "ppt",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "presentation",
       "detectionStatus": "implemented-unverified",
@@ -7857,6 +9644,22 @@
     {
       "format_id": "odp",
       "formatId": "odp",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/presentation",
       "viewerId": "presentation",
       "detectionStatus": "implemented-unverified",
@@ -7948,6 +9751,22 @@
     {
       "format_id": "pdf",
       "formatId": "pdf",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/pdf",
       "viewerId": "pdf",
       "detectionStatus": "implemented-unverified",
@@ -8067,6 +9886,22 @@
     {
       "format_id": "docx",
       "formatId": "docx",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/office-document",
       "viewerId": "office-document",
       "detectionStatus": "implemented-unverified",
@@ -8162,6 +9997,22 @@
     {
       "format_id": "odt",
       "formatId": "odt",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/office-document",
       "viewerId": "office-document",
       "detectionStatus": "implemented-unverified",
@@ -8253,6 +10104,22 @@
     {
       "format_id": "rtf",
       "formatId": "rtf",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/office-document",
       "viewerId": "office-document",
       "detectionStatus": "implemented-unverified",
@@ -8344,6 +10211,22 @@
     {
       "format_id": "doc",
       "formatId": "doc",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "office-document",
       "detectionStatus": "implemented-unverified",
@@ -8435,6 +10318,22 @@
     {
       "format_id": "png",
       "formatId": "png",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -8560,6 +10459,22 @@
     {
       "format_id": "jpeg",
       "formatId": "jpeg",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -8652,6 +10567,22 @@
     {
       "format_id": "gif",
       "formatId": "gif",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -8743,6 +10674,22 @@
     {
       "format_id": "webp",
       "formatId": "webp",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -8834,6 +10781,22 @@
     {
       "format_id": "svg",
       "formatId": "svg",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -8925,6 +10888,22 @@
     {
       "format_id": "avif",
       "formatId": "avif",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -9016,6 +10995,22 @@
     {
       "format_id": "bmp",
       "formatId": "bmp",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -9107,6 +11102,22 @@
     {
       "format_id": "ico",
       "formatId": "ico",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -9198,6 +11209,22 @@
     {
       "format_id": "tiff",
       "formatId": "tiff",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -9311,6 +11338,22 @@
     {
       "format_id": "heic",
       "formatId": "heic",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -9402,6 +11445,22 @@
     {
       "format_id": "heif",
       "formatId": "heif",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/image",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -9493,6 +11552,22 @@
     {
       "format_id": "zip",
       "formatId": "zip",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -9610,6 +11685,22 @@
     {
       "format_id": "tar",
       "formatId": "tar",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -9701,6 +11792,22 @@
     {
       "format_id": "gz",
       "formatId": "gz",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -9792,6 +11899,22 @@
     {
       "format_id": "tgz",
       "formatId": "tgz",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -9883,6 +12006,22 @@
     {
       "format_id": "sevenzip",
       "formatId": "sevenzip",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -9974,6 +12113,22 @@
     {
       "format_id": "rar",
       "formatId": "rar",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -10065,6 +12220,22 @@
     {
       "format_id": "bz2",
       "formatId": "bz2",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -10156,6 +12327,22 @@
     {
       "format_id": "xz",
       "formatId": "xz",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -10247,6 +12434,22 @@
     {
       "format_id": "zst",
       "formatId": "zst",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -10338,6 +12541,22 @@
     {
       "format_id": "sqlite",
       "formatId": "sqlite",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/database",
       "viewerId": "database",
       "detectionStatus": "implemented-unverified",
@@ -10431,6 +12650,22 @@
     {
       "format_id": "srt",
       "formatId": "srt",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/subtitle",
       "viewerId": "subtitle",
       "detectionStatus": "implemented-unverified",
@@ -10542,6 +12777,22 @@
     {
       "format_id": "vtt",
       "formatId": "vtt",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/subtitle",
       "viewerId": "subtitle",
       "detectionStatus": "implemented-unverified",
@@ -10653,6 +12904,22 @@
     {
       "format_id": "ass",
       "formatId": "ass",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/subtitle",
       "viewerId": "subtitle",
       "detectionStatus": "implemented-unverified",
@@ -10764,6 +13031,22 @@
     {
       "format_id": "ssa",
       "formatId": "ssa",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/subtitle",
       "viewerId": "subtitle",
       "detectionStatus": "implemented-unverified",
@@ -10856,6 +13139,22 @@
     {
       "format_id": "sub",
       "formatId": "sub",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/subtitle",
       "viewerId": "subtitle",
       "detectionStatus": "implemented-unverified",
@@ -10967,6 +13266,22 @@
     {
       "format_id": "npy",
       "formatId": "npy",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/scientific",
       "viewerId": "scientific",
       "detectionStatus": "implemented-unverified",
@@ -11103,6 +13418,22 @@
     {
       "format_id": "npz",
       "formatId": "npz",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -11195,6 +13526,22 @@
     {
       "format_id": "psd",
       "formatId": "psd",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "psd-composite",
       "viewerId": "image",
       "detectionStatus": "implemented-unverified",
@@ -11388,6 +13735,22 @@
     {
       "format_id": "psb",
       "formatId": "psb",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "hex",
       "detectionStatus": "implemented-unverified",
@@ -11505,6 +13868,22 @@
     {
       "format_id": "exr",
       "formatId": "exr",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "hex",
       "detectionStatus": "implemented-unverified",
@@ -11618,6 +13997,22 @@
     {
       "format_id": "eps",
       "formatId": "eps",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "hex",
       "detectionStatus": "implemented-unverified",
@@ -11731,6 +14126,22 @@
     {
       "format_id": "ai",
       "formatId": "ai",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "hex",
       "detectionStatus": "implemented-unverified",
@@ -11823,6 +14234,22 @@
     {
       "format_id": "fig",
       "formatId": "fig",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "hex",
       "detectionStatus": "implemented-unverified",
@@ -11915,6 +14342,22 @@
     {
       "format_id": "sketch",
       "formatId": "sketch",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "hex",
       "detectionStatus": "implemented-unverified",
@@ -12007,6 +14450,22 @@
     {
       "format_id": "lottie",
       "formatId": "lottie",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "hex",
       "detectionStatus": "implemented-unverified",
@@ -12099,6 +14558,22 @@
     {
       "format_id": "bigtiff",
       "formatId": "bigtiff",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "hex",
       "detectionStatus": "implemented-unverified",
@@ -12192,6 +14667,22 @@
     {
       "format_id": "typescript-declaration",
       "formatId": "typescript-declaration",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -12283,6 +14774,22 @@
     {
       "format_id": "kotlin-script",
       "formatId": "kotlin-script",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -12375,6 +14882,22 @@
     {
       "format_id": "blade-template",
       "formatId": "blade-template",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -12466,6 +14989,22 @@
     {
       "format_id": "dockerfile",
       "formatId": "dockerfile",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -12557,6 +15096,22 @@
     {
       "format_id": "cmake",
       "formatId": "cmake",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -12648,6 +15203,22 @@
     {
       "format_id": "go-module",
       "formatId": "go-module",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -12739,6 +15310,22 @@
     {
       "format_id": "cargo-manifest",
       "formatId": "cargo-manifest",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -12830,6 +15417,22 @@
     {
       "format_id": "gitignore",
       "formatId": "gitignore",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -12921,6 +15524,22 @@
     {
       "format_id": "environment",
       "formatId": "environment",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13015,6 +15634,22 @@
     {
       "format_id": "matlab-source",
       "formatId": "matlab-source",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13106,6 +15741,22 @@
     {
       "format_id": "objective-c",
       "formatId": "objective-c",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13197,6 +15848,22 @@
     {
       "format_id": "makefile",
       "formatId": "makefile",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13289,6 +15956,47 @@
     {
       "format_id": "package-manifest",
       "formatId": "package-manifest",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "validated-json-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "sample-verified",
+        "report": "docs/qa/module-30/native-report.json",
+        "roundTrips": [
+          {
+            "formatId": "package-manifest",
+            "name": "package.json",
+            "status": "passed",
+            "originalSha256": "047091d9b086ec2b1c3fc8983270b18a7ec4d97f053b58e5abf8a595577202a7",
+            "savedSha256": "1936445349adf374b50b2eb53820e1ce3725e91860db8d84cf70932e7b5cdc60",
+            "saveAs": "passed",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing",
+            "validationRun": "2026-10-09T12:14:25.194Z"
+          }
+        ]
+      },
       "parserId": "viewer/json",
       "viewerId": "json",
       "detectionStatus": "implemented-unverified",
@@ -13341,8 +16049,8 @@
       "declared_interactions": {
         "inspect": true,
         "search": true,
-        "edit": false,
-        "save": false
+        "edit": true,
+        "save": true
       },
       "limitations": [
         "No code, build script, or embedded command is executed.",
@@ -13380,6 +16088,22 @@
     {
       "format_id": "tsconfig",
       "formatId": "tsconfig",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13471,6 +16195,22 @@
     {
       "format_id": "pyproject",
       "formatId": "pyproject",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13562,6 +16302,22 @@
     {
       "format_id": "editorconfig",
       "formatId": "editorconfig",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13653,6 +16409,22 @@
     {
       "format_id": "gradle",
       "formatId": "gradle",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13746,6 +16518,22 @@
     {
       "format_id": "jsonc",
       "formatId": "jsonc",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13837,6 +16625,22 @@
     {
       "format_id": "json5",
       "formatId": "json5",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -13928,6 +16732,22 @@
     {
       "format_id": "ini",
       "formatId": "ini",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -14019,6 +16839,22 @@
     {
       "format_id": "vue",
       "formatId": "vue",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -14110,6 +16946,22 @@
     {
       "format_id": "svelte",
       "formatId": "svelte",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -14201,6 +17053,22 @@
     {
       "format_id": "astro",
       "formatId": "astro",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -14292,6 +17160,22 @@
     {
       "format_id": "perl-source",
       "formatId": "perl-source",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -14384,6 +17268,22 @@
     {
       "format_id": "prolog-source",
       "formatId": "prolog-source",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/core.text-fallback",
       "viewerId": "core.text-fallback",
       "detectionStatus": "implemented-unverified",
@@ -14475,6 +17375,22 @@
     {
       "format_id": "nifti-gzip",
       "formatId": "nifti-gzip",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "core.binary-fallback",
       "detectionStatus": "implemented-unverified",
@@ -14567,6 +17483,22 @@
     {
       "format_id": "tar-zstd",
       "formatId": "tar-zstd",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": "viewer/archive",
       "viewerId": "archive",
       "detectionStatus": "implemented-unverified",
@@ -14659,6 +17591,47 @@
     {
       "format_id": "notebook-json",
       "formatId": "notebook-json",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "limited",
+      "parserReuse": "existing-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "limited-save",
+      "writerId": "document.atomic-utf8",
+      "editorGroup": "validated-json-source",
+      "editLimitations": [
+        "UTF-8 only, optional BOM, <=2 MiB; other encodings and larger files are view-only.",
+        "Source text or raw CSV cells are saved, never JSON.stringify or typed numeric conversion.",
+        "Native Save As requires system picker authorization; virtual/browser sources write a copy only.",
+        "Conflict/failure keeps edits and protects original; mixed line endings require explicit confirmation."
+      ],
+      "editEvidence": {
+        "implementation": [
+          "src/document/DocumentSurface.tsx",
+          "src/document/session.ts",
+          "src/document/save-service.ts",
+          "src-tauri/src/document/mod.rs"
+        ],
+        "runtimeStatus": "sample-verified",
+        "report": "docs/qa/module-30/native-report.json",
+        "roundTrips": [
+          {
+            "formatId": "notebook-json",
+            "name": "notes.ipynb",
+            "status": "passed",
+            "originalSha256": "5455895ad6cb277667a4c41174af7e9a89ce957086713d232097b8645bb13d34",
+            "savedSha256": "3c1a25031f8db701232bfc0e0b075c321d98ee51b3279fd726182af9b402198a",
+            "saveAs": "passed",
+            "assertions": [
+              "actual content before editing",
+              "dirty close protection",
+              "exact saved bytes retain unknown fields/data",
+              "reopen reads edited content"
+            ],
+            "validationRun": "2026-10-09T12:17:29.280Z",
+            "scope": "UTF8/BOM <=2 MiB; source editing, not semantic/schema editing"
+          }
+        ]
+      },
       "parserId": "viewer/json",
       "viewerId": "json",
       "detectionStatus": "implemented-unverified",
@@ -14711,8 +17684,8 @@
       "declared_interactions": {
         "inspect": true,
         "search": true,
-        "edit": false,
-        "save": false
+        "edit": true,
+        "save": true
       },
       "limitations": [
         "No code, build script, or embedded command is executed.",
@@ -14751,6 +17724,22 @@
     {
       "format_id": "unknown",
       "formatId": "unknown",
+      "auditStatus": "production-route-reviewed",
+      "editCapability": "read-only",
+      "parserReuse": "needs-parser",
+      "viewerReuse": "existing-viewer",
+      "saveCapability": "no-write",
+      "writerId": null,
+      "editorGroup": null,
+      "editLimitations": [
+        "No connected reliable writer; detection, Hex and external opening do not imply editing."
+      ],
+      "editEvidence": {
+        "implementation": [],
+        "runtimeStatus": "NOT_VERIFIED",
+        "report": null,
+        "roundTrips": []
+      },
       "parserId": null,
       "viewerId": "core.binary-fallback",
       "detectionStatus": "implemented-unverified",

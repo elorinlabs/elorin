@@ -9,7 +9,7 @@ export const documentFormats = [
 export interface CreateLocation { id: string; label: string; path?: string; systemLabel?: boolean }
 export interface NewDocumentRequest { kind: DocumentKind; name: string; location: string; content?: string }
 export function documentFileName(name: string, kind: DocumentKind) {
-  const extension = documentFormats.find(f => f.kind === kind)!.extension;
+  const extension = kind==='jsonl'?'jsonl':documentFormats.find(f => f.kind === kind)!.extension;
   const trimmed = name.trim();
   return trimmed.toLowerCase().endsWith(`.${extension}`) ? trimmed : `${trimmed}.${extension}`;
 }

@@ -9,6 +9,7 @@ export function saveDocument(session: DocumentSession, name: string, as = false)
   const operation = performSave(session, name, as).finally(() => activeSaves.delete(session)); activeSaves.set(session, operation); return operation;
 }
 async function performSave(session: DocumentSession, name: string, as: boolean) {
+  if(session.readOnly&&!as)throw Error('This document is read-only. Use Save As to write a copy.');
   session.commitPendingEdit?.();
   if (session.csvDraft) throw Error('Commit the CSV cell before saving. Its content exceeds the safe editing limit.');
   if (session.validationState && !await confirmDocument(tr("JSON is invalid. Save anyway?"))) { session.saveState = 'Unsaved'; return null; }

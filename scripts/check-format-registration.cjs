@@ -51,6 +51,10 @@ function check(options={}){
   if(c.supportStatus==='adapter-implemented'&&!parsers.has(c.parserId))fail(c.formatId,'declared adapter support has no actual parser');
   if(['hex','core.binary-fallback'].includes(c.viewerId)&&c.parserId)fail(c.formatId,'raw/Hex fallback cannot declare a content parser');
   if(c.previewLevel==='detection-only'&&c.parserId)fail(c.formatId,'detection-only cannot declare implemented parsing');
+  if(!['full','limited','read-only','unverified'].includes(c.editCapability)||!['original-format','limited-save','export-only','no-write'].includes(c.saveCapability))fail(c.formatId,'missing editing/save classification');
+  if(c.canEdit!==c.canSave||c.canEdit!==!!c.writerId)fail(c.formatId,'editor and safe writer capability mismatch');
+  if(c.writerId&&c.writerId!=='document.atomic-utf8')fail(c.formatId,'writer is not connected to an existing safe write path');
+  if(c.canEdit&&!['core.text-fallback','markdown','json','csv'].includes(c.viewerId))fail(c.formatId,'specialized Viewer has no connected editing model');
   for(const key of [...c.extensions.map(e=>'extension:'+e.toLowerCase()),...c.filenames.map(e=>'filename:'+e.toLowerCase()),...(c.detectionRules?.magic??[]).map(r=>'magic:'+r.offset+':'+r.bytes.join(','))]){
    const previous=rules.get(key)??[];
    for(const p of previous)if(!c.ambiguityGroup||c.ambiguityGroup!==p.ambiguityGroup)fail(c.formatId,`${key} conflicts with ${p.formatId} without explicit ambiguity policy`);
@@ -64,6 +68,12 @@ function check(options={}){
   const c=catalogue.find(c=>c.formatId===r.formatId);
   if(!c){fail(r.formatId,'capability row does not reference catalogue');continue;}
   if(r.parserId!==c.parserId||r.viewerId!==c.viewerId)fail(c.formatId,'stale capability parser/Viewer mapping');
+  if(r.writerId!==c.writerId||r.editCapability!==c.editCapability||r.saveCapability!==c.saveCapability)fail(c.formatId,'stale editing/writer capability mapping');
+  if(r.editEvidence?.runtimeStatus==='sample-verified'){
+   const report=r.editEvidence.report&&fs.existsSync(r.editEvidence.report)?read(r.editEvidence.report):null;
+   if(!c.canEdit||report?.status!=='PASS'||!r.editEvidence.roundTrips?.length)fail(c.formatId,'verified editing without editor, passed native run and round-trip evidence');
+   for(const e of r.editEvidence.roundTrips??[])if(e.formatId!==c.formatId||e.status!=='passed'||!e.assertions?.length||!/^([a-f0-9]{64})$/.test(e.savedSha256??'')||!report?.roundTrips?.some(s=>s.name===e.name&&s.savedSha256===e.savedSha256&&s.status==='passed'))fail(c.formatId,'editing evidence does not match the executed native round trip');
+  }
   if(r.parsingStatus==='implemented'&&c.supportStatus!=='adapter-implemented')fail(c.formatId,'implemented parsing status without an independently registered adapter');
   if((r.parser_implemented||r.main_content_verified||r.sample_verified)&&!c.parserId)fail(c.formatId,'raw/detection-only capability cannot claim parser or reading support');
   if(r.sampleStatus?.startsWith('verified')||r.renderingStatus==='sample-verified'){

@@ -10,3 +10,9 @@ export const jsonValidator: DocumentValidator = {
     return { line: before.split(/\r\n|\r|\n/).length, column: before.length - Math.max(before.lastIndexOf('\n'), before.lastIndexOf('\r')), message: printParseErrorCode(error.error), severity: 'error' };
   },
 };
+export const jsonLinesValidator:DocumentValidator={validate(text){
+ const records=text.split(/\r\n|\n/);let line=1;for(const record of records){
+  if(line===records.length&&record===''&&/\n$/.test(text))break;
+  const error=jsonValidator.validate(record);if(error)return {...error,line};line++;
+ }return null;
+}};
