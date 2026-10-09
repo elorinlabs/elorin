@@ -1484,5 +1484,6 @@
   "TRUE": "TRUE",
   "FALSE": "FALSE",
   "Vertical scroll": "Rolagem vertical",
-  "Horizontal scroll": "Rolagem horizontal"
+  "Horizontal scroll": "Rolagem horizontal",
+  "Enter a page from 1 to {v0}.": "Digite um número de página entre 1 e {v0}."
 }

@@ -1484,5 +1484,6 @@
   "TRUE": "TRUE",
   "FALSE": "FALSE",
   "Vertical scroll": "Défilement vertical",
-  "Horizontal scroll": "Défilement horizontal"
+  "Horizontal scroll": "Défilement horizontal",
+  "Enter a page from 1 to {v0}.": "Saisissez un numéro de page de 1 à {v0}."
 }

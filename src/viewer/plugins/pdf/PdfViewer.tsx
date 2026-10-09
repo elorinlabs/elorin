@@ -261,6 +261,12 @@ function Thumbnails({
     </aside>
   );
 }
+export function PageNavigator({current,count,go,close}:{current:number;count:number;go:(page:number)=>void;close:()=>void}) {
+ useLocale();const [draft,setDraft]=useState(String(current)),[error,setError]=useState(false);
+ useEffect(()=>{setDraft(String(current));setError(false);},[current]);
+ const confirm=()=>{const page=Number(draft);if(!/^\d+$/.test(draft)||!Number.isInteger(page)||page<1||page>count){setError(true);return;}setError(false);go(page);};
+ return <div className="pdf-page-navigator"><button disabled={current===1} onClick={()=>go(current-1)}>{tr('Previous')}</button><input type="text" inputMode="numeric" aria-label={tr('Jump to page')} aria-invalid={error} value={draft} onChange={e=>{setDraft(e.target.value);setError(false);}} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();confirm();}if(e.key==='Escape'){e.preventDefault();e.stopPropagation();setDraft(String(current));close();}}}/><span>/ {count}</span><button disabled={current===count} onClick={()=>go(current+1)}>{tr('Next')}</button>{error&&<span role="alert">{tr('Enter a page from 1 to {v0}.',{v0:count})}</span>}</div>;
+}
 export function PdfViewer({
   model: engine,
   context,
@@ -274,6 +280,7 @@ export function PdfViewer({
   const preferences=useUiSettings();
   const focusWindow=new URLSearchParams(location.search).get('window')==='focus';
   const [utility,setUtility]=useState<'zoom'|'page'|undefined>();
+  const zoomTrigger=useRef<HTMLButtonElement>(null),pageTrigger=useRef<HTMLButtonElement>(null);
   const saved = session.metadata;
   const [scale, setScale] = useState(Number(saved.pdfZoom) || 1),
     [fit, setFit] = useState(String(saved.pdfFit || "width")),
@@ -495,6 +502,7 @@ export function PdfViewer({
         action: () => setPanel(panel === "outline" ? "" : "outline"),
       },
     ]),
+    [context.registerActions, engine, panel, effective, rotation, current, scroll, sizes],
   );
   if (engine.error)
     return (
@@ -618,9 +626,9 @@ export function PdfViewer({
           <option value="custom">{tr("Custom zoom")}</option>
         </select>
       </div>; const host = focusWindow && document.getElementById('focus-viewer-tools');return host ? createPortal(controls, host) : controls; })()}
-      <div className="pdf-utility-triggers"><button data-floating-trigger aria-label={tr("Zoom Controls")} onClick={()=>setUtility(v=>v==='zoom'?undefined:'zoom')}>{tr("Zoom")}</button><button data-floating-trigger aria-label={tr("Page Navigator")} onClick={()=>setUtility(v=>v==='page'?undefined:'page')}>{tr("Pages")}</button></div>
-      {utility==='page'&&<FloatingPanel title={tr("Page Navigator")} owner={context.source} close={()=>setUtility(undefined)}><div className="pdf-page-navigator"><button disabled={current===1} onClick={()=>go(current-1)}>{tr("Previous")}</button><input type="number" min={1} max={count} aria-label={tr("Jump to page")} value={current} onChange={e=>{const page=Number(e.target.value);if(Number.isInteger(page)&&page>=1&&page<=count)go(page);}}/><span>/ {count}</span><button disabled={current===count} onClick={()=>go(current+1)}>{tr("Next")}</button></div></FloatingPanel>}
-      {utility==='zoom'&&<FloatingPanel title={tr("Zoom Controls")} owner={context.source} close={()=>setUtility(undefined)}><div className="pdf-floating-controls" aria-label={tr("PDF zoom and rotation")}>
+      <div className="pdf-utility-triggers"><button ref={zoomTrigger} data-floating-trigger aria-label={tr("Zoom Controls")} onClick={()=>setUtility(v=>v==='zoom'?undefined:'zoom')}>{tr("Zoom")}</button><button ref={pageTrigger} data-floating-trigger aria-label={tr("Page Navigator")} onClick={()=>setUtility(v=>v==='page'?undefined:'page')}>{tr("Pages")}</button></div>
+      {utility==='page'&&<FloatingPanel title={tr("Page Navigator")} layoutId="page-navigator" anchorElement={pageTrigger.current} owner={context.source} close={()=>setUtility(undefined)}><PageNavigator current={current} count={count} go={go} close={()=>setUtility(undefined)}/></FloatingPanel>}
+      {utility==='zoom'&&<FloatingPanel title={tr("Zoom Controls")} layoutId="zoom-controls" anchorElement={zoomTrigger.current} owner={context.source} close={()=>setUtility(undefined)}><div className="pdf-floating-controls" aria-label={tr("PDF zoom and rotation")}>
         <button aria-label={tr("Zoom out")} onClick={() => zoom(effective * 0.8)}>
           −
         </button>
@@ -632,13 +640,14 @@ export function PdfViewer({
         <button onClick={()=>zoom(effective,'width')}>{tr("Fit to Width")}</button><button onClick={()=>zoom(effective,'page')}>{tr("Fit to Page")}</button><button onClick={()=>zoom(1,'custom')}>{tr("Actual Size")}</button>
       </div></FloatingPanel>}
       {panel === "search" && (
-        <FloatingPanel title={tr("Search Panel")} owner={context.source} close={()=>setPanel('')}><div className="document-search">
+        <FloatingPanel title={tr("Search Panel")} layoutId="search-panel" owner={context.source} close={()=>setPanel('')}><div className="document-search">
           <input
             ref={search}
             aria-label={tr("Search PDF")}
             disabled={!engine.copyAllowed}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();if(hits.length){const next=(selected+(e.shiftKey?-1:1)+hits.length)%hits.length;setSelected(next);go(hits[next].page);}}}}
             placeholder={tr("Find in document")}
           />
           <label>
@@ -703,7 +712,7 @@ export function PdfViewer({
             onGo={go}
           />
         )}
-        {panel === "thumbnails" && focusWindow && <FloatingPanel title={tr("Thumbnail Strip")} owner={context.source} close={()=>setPanel('')} width={220}><Thumbnails engine={engine} current={current} rotation={rotation} onGo={go}/></FloatingPanel>}
+        {panel === "thumbnails" && focusWindow && <FloatingPanel title={tr("Thumbnail Strip")} layoutId="thumbnail-strip" owner={context.source} close={()=>setPanel('')} width={220}><Thumbnails engine={engine} current={current} rotation={rotation} onGo={go}/></FloatingPanel>}
         <div
           ref={viewport}
           className="pdf-viewport"

@@ -1,0 +1,852 @@
+diff --git a/src/components/common/FloatingPanel.tsx b/src/components/common/FloatingPanel.tsx
+index 8018e5b..ac3aec2 100644
+--- a/src/components/common/FloatingPanel.tsx
++++ b/src/components/common/FloatingPanel.tsx
+@@ -1,19 +1,45 @@
+-import { t as tr, useUiLanguage as useLocale } from "../../i18n";
++import { t as tr, useUiLanguage as useLocale } from '../../i18n';
+ import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+ import { createPortal } from 'react-dom';
+ import { X, Pin, GripHorizontal } from 'lucide-react';
+-interface Layer { id: symbol; close: () => void; pinned: () => boolean }
++import { placeLayer } from './layer-layout';
++interface Layer {id:symbol;element:HTMLElement}
+ const layers:Layer[]=[];
++function reorder(layer:Layer){const index=layers.indexOf(layer);if(index>=0)layers.splice(index,1);layers.push(layer);layers.forEach((item,i)=>item.element.style.setProperty('--panel-order',String(i)));}
+ type SavedLayer={left:number;top:number;pinned:boolean;collapsed:boolean};
+ const objectLayouts=new WeakMap<object,Map<string,SavedLayer>>(),stringLayouts=new Map<string,Map<string,SavedLayer>>();
+-function layouts(owner:object|string){if(typeof owner==='object'){let value=objectLayouts.get(owner);if(!value){value=new Map();objectLayouts.set(owner,value);}return value;}let value=stringLayouts.get(owner);if(!value){if(stringLayouts.size>=32)stringLayouts.delete(stringLayouts.keys().next().value!);value=new Map();stringLayouts.set(owner,value);}return value;}
+-export function clampPanel(left:number,top:number,width:number,height:number,viewportWidth=innerWidth,viewportHeight=innerHeight){return {left:Math.max(8,Math.min(left,Math.max(8,viewportWidth-width-16))),top:Math.max(40,Math.min(top,Math.max(40,viewportHeight-height-16)))};}
+-export function FloatingPanel({title,owner,close,children,anchor,initial,width=330}: {title:string;owner:object|string;close:()=>void;children:ReactNode;anchor?:DOMRect;initial?:{left:number;top:number};width?:number}){
+-  useLocale();
+- const saved=layouts(owner).get(title);
+- const panel=useRef<HTMLDivElement>(null),returnFocus=useRef<HTMLElement|null>(null),callback=useRef(close),pinnedRef=useRef(saved?.pinned??false),[pinned,setPinned]=useState(saved?.pinned??false),[collapsed,setCollapsed]=useState(saved?.collapsed??false),[position,setPosition]=useState(saved?{left:saved.left,top:saved.top}:initial??{left:anchor?.left??Math.max(8,innerWidth-width-24),top:anchor?.bottom??100});const drag=useRef<{x:number;y:number;left:number;top:number} | undefined>(undefined);callback.current=close;
+- useEffect(()=>{layouts(owner).set(title,{...position,pinned,collapsed});},[owner,title,position,pinned,collapsed]);
+- useEffect(()=>{const id=Symbol(title);returnFocus.current=document.activeElement as HTMLElement;const layer={id,close:()=>callback.current(),pinned:()=>pinnedRef.current};layers.push(layer);const key=(e:KeyboardEvent)=>{if(e.key==='Escape'&&layers.at(-1)?.id===id&&!document.querySelector('[role="dialog"],[role="alertdialog"]')){e.preventDefault();e.stopImmediatePropagation();callback.current();}};const outside=(e:PointerEvent)=>{if(layers.at(-1)?.id===id&&!pinnedRef.current&&!panel.current?.contains(e.target as Node)&&!(e.target as Element).closest('[data-floating-trigger]'))callback.current();};window.addEventListener('keydown',key,true);window.addEventListener('pointerdown',outside);panel.current?.focus();return()=>{const index=layers.findIndex(l=>l.id===id);if(index>=0)layers.splice(index,1);window.removeEventListener('keydown',key,true);window.removeEventListener('pointerdown',outside);if(returnFocus.current?.isConnected)returnFocus.current.focus();};},[owner]);
+- useLayoutEffect(()=>{const clamp=()=>{const rect=panel.current?.getBoundingClientRect();if(rect)setPosition(v=>clampPanel(v.left,v.top,rect.width,rect.height));};clamp();window.addEventListener('resize',clamp);return()=>window.removeEventListener('resize',clamp);},[]);
+- return createPortal(<div ref={panel} role="region" aria-label={title} tabIndex={-1} className="floating-panel" style={{...position,width}}><header tabIndex={0} aria-label={tr("Move {v0} with arrow keys", { v0: title })} onKeyDown={e=>{const delta={ArrowLeft:[-16,0],ArrowRight:[16,0],ArrowUp:[0,-16],ArrowDown:[0,16]}[e.key as 'ArrowLeft'];if(!delta||e.target!==e.currentTarget)return;e.preventDefault();const r=panel.current!.getBoundingClientRect();setPosition(clampPanel(position.left+delta[0],position.top+delta[1],r.width,r.height));}} onPointerDown={e=>{if(e.button!==0||(e.target as Element).closest('button,input,select'))return;e.preventDefault();e.stopPropagation();drag.current={x:e.clientX,y:e.clientY,...position};e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e=>{const d=drag.current;if(!d)return;const r=panel.current!.getBoundingClientRect();setPosition(clampPanel(d.left+e.clientX-d.x,d.top+e.clientY-d.y,r.width,r.height));}} onPointerUp={()=>{drag.current=undefined;}} onPointerCancel={()=>{drag.current=undefined;}} onLostPointerCapture={()=>{drag.current=undefined;}}><GripHorizontal size={15}/><strong>{title}</strong><button aria-label={tr("{v0} {v1}", { v0: tr(collapsed?'Expand':'Collapse'), v1: title })} aria-expanded={!collapsed} onClick={()=>setCollapsed(v=>!v)}>{collapsed?'+':'−'}</button><button aria-label={tr("Pin {v0}", { v0: title })} aria-pressed={pinned} onClick={()=>{pinnedRef.current=!pinned;setPinned(!pinned);}}><Pin size={14}/></button><button aria-label={tr("Close {v0}", { v0: title })} onClick={close}><X size={15}/></button></header><div className="floating-panel-content" hidden={collapsed}>{children}</div></div>,document.body);
++function layouts(owner:object|string){const cache=typeof owner==='object'?objectLayouts:stringLayouts;let value=cache.get(owner as never);if(!value){value=new Map();if(typeof owner==='string'&&stringLayouts.size>=32)stringLayouts.delete(stringLayouts.keys().next().value!);cache.set(owner as never,value);}return value;}
++export function clampPanel(left:number,top:number,width:number,height:number,viewportWidth=innerWidth,viewportHeight=innerHeight){return{left:Math.max(8,Math.min(left,Math.max(8,viewportWidth-width-16))),top:Math.max(40,Math.min(top,Math.max(40,viewportHeight-height-16)))};}
++export function FloatingPanel({title,owner,close,children,anchor,anchorElement,initial,width=330,layoutId}: {title:string;owner:object|string;close:()=>void;children:ReactNode;anchor?:DOMRect;anchorElement?:HTMLElement|null;initial?:{left:number;top:number};width?:number;layoutId?:string}){
++ useLocale();const key=layoutId??title,saved=layouts(owner).get(key);
++ const panel=useRef<HTMLDivElement>(null),header=useRef<HTMLElement>(null),callback=useRef(close),layer=useRef<Layer|null>(null),returnFocus=useRef<HTMLElement|null>(null);
++ const [pinned,setPinned]=useState(saved?.pinned??false),[collapsed,setCollapsed]=useState(saved?.collapsed??false),[position,setPosition]=useState(saved?{left:saved.left,top:saved.top}:initial??{left:anchor?.left??Math.max(8,innerWidth-width-24),top:anchor?.bottom??100});
++ const positionRef=useRef(position);positionRef.current=position;
++ const pinnedRef=useRef(pinned),manual=useRef(!!saved||!!initial),drag=useRef<{x:number;y:number;left:number;top:number;pointer:number}|undefined>(undefined);callback.current=close;pinnedRef.current=pinned;
++ const modal=()=>!!document.querySelector('[aria-modal="true"],[role="dialog"],[role="alertdialog"]');
++ const endDrag=()=>{const id=drag.current?.pointer;drag.current=undefined;if(id!==undefined&&header.current?.hasPointerCapture?.(id))header.current.releasePointerCapture(id);};
++ const move=(left:number,top:number)=>{const rect=panel.current?.getBoundingClientRect();if(!rect)return;const next=clampPanel(left,top,rect.width,rect.height);setPosition(v=>v.left===next.left&&v.top===next.top?v:next);};
++ useEffect(()=>{const map=layouts(owner);if(map.size>=16&&!map.has(key))map.delete(map.keys().next().value!);map.set(key,{...position,pinned,collapsed});window.dispatchEvent(new Event('elorin-scroll-metrics'));},[owner,key,position,pinned,collapsed]);
++ useEffect(()=>{
++  const element=panel.current!;const item={id:Symbol(key),element};layer.current=item;returnFocus.current=(anchorElement??document.activeElement) as HTMLElement;reorder(item);
++  const keydown=(e:KeyboardEvent)=>{if(e.key!=='Escape'||e.defaultPrevented||layers.at(-1)!==item||modal()||document.querySelector('[role="menu"]'))return;e.preventDefault();e.stopImmediatePropagation();callback.current();};
++  const outside=(e:PointerEvent)=>{const target=e.target as Element;if(modal()||layers.at(-1)!==item||pinnedRef.current||element.contains(target)||target.closest('.floating-panel,[role="menu"],[data-floating-trigger],[data-overlay-scrollbar]'))return;callback.current();};
++  const inactive=(e:Event)=>{if((e as CustomEvent).detail?.source===owner)callback.current();};
++  window.addEventListener('elorin-viewer-inactive',inactive);
++  window.addEventListener('keydown',keydown,true);window.addEventListener('pointerdown',outside);element.querySelector<HTMLElement>('input:not(:disabled),textarea:not(:disabled)')?.focus({preventScroll:true});if(!element.contains(document.activeElement))element.focus({preventScroll:true});
++  return()=>{endDrag();const top=layers.at(-1)===item,index=layers.indexOf(item);if(index>=0)layers.splice(index,1);layer.current=null;window.removeEventListener('elorin-viewer-inactive',inactive);window.removeEventListener('keydown',keydown,true);window.removeEventListener('pointerdown',outside);if(top&&!modal()){const previous=returnFocus.current;const target=previous?.isConnected&&previous!==document.body&&!previous.closest('[hidden],[inert]')?previous:document.querySelector<HTMLElement>('[data-elorin-tab][data-active="true"] button,.focus-reading-surface');target?.focus({preventScroll:true});}};
++ },[owner,key,anchorElement]);
++ useLayoutEffect(()=>{
++  let frame=0;const target=anchorElement;const update=()=>{frame=0;const r=panel.current?.getBoundingClientRect();if(!r)return;
++   if(target&&!manual.current){const a=target.getBoundingClientRect();if(!target.isConnected||a.bottom<0||a.top>innerHeight){if(!pinnedRef.current)callback.current();return;}const next=placeLayer(a,r.width,r.height);move(next.left,next.top);}else move(positionRef.current.left,positionRef.current.top);
++  };const schedule=()=>{if(!frame&&!document.hidden)frame=requestAnimationFrame(update);};
++  const observer=typeof ResizeObserver==='undefined'?undefined:new ResizeObserver(schedule);observer?.observe(panel.current!);if(target)observer?.observe(target);window.addEventListener('resize',schedule);window.addEventListener('scroll',schedule,true);window.addEventListener('elorin-scroll-metrics',schedule);update();
++  return()=>{cancelAnimationFrame(frame);observer?.disconnect();window.removeEventListener('resize',schedule);window.removeEventListener('scroll',schedule,true);window.removeEventListener('elorin-scroll-metrics',schedule);};
++ },[anchorElement,owner,key]);
++ const raise=()=>{if(layer.current&&!modal())reorder(layer.current);};
++ return createPortal(<div ref={panel} role="region" aria-label={title} tabIndex={-1} className="floating-panel" data-layer="panel" style={{...position,width}} onPointerDownCapture={raise} onFocusCapture={raise}>
++  <header ref={header} tabIndex={0} aria-label={tr('Move {v0} with arrow keys',{v0:title})} onKeyDown={e=>{const delta={ArrowLeft:[-16,0],ArrowRight:[16,0],ArrowUp:[0,-16],ArrowDown:[0,16]}[e.key as 'ArrowLeft'];if(!delta||e.target!==e.currentTarget)return;e.preventDefault();manual.current=true;move(position.left+delta[0],position.top+delta[1]);}} onPointerDown={e=>{if(e.button!==0||(e.target as Element).closest('button,input,select'))return;e.preventDefault();e.stopPropagation();manual.current=true;drag.current={x:e.clientX,y:e.clientY,...position,pointer:e.pointerId};e.currentTarget.setPointerCapture(e.pointerId);}} onPointerMove={e=>{const d=drag.current;if(!d)return;e.stopPropagation();move(d.left+e.clientX-d.x,d.top+e.clientY-d.y);}} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={()=>{drag.current=undefined;}}>
++   <GripHorizontal size={15}/><strong>{title}</strong><button aria-label={tr('{v0} {v1}',{v0:tr(collapsed?'Expand':'Collapse'),v1:title})} aria-expanded={!collapsed} onClick={()=>setCollapsed(v=>!v)}>{collapsed?'+':'−'}</button><button aria-label={tr('Pin {v0}',{v0:title})} aria-pressed={pinned} onClick={()=>setPinned(v=>!v)}><Pin size={14}/></button><button aria-label={tr('Close {v0}',{v0:title})} onClick={close}><X size={15}/></button>
++  </header><div className="floating-panel-content" hidden={collapsed}>{children}</div>
++ </div>,document.body);
+ }
+diff --git a/src/components/common/ScrollbarSystem.tsx b/src/components/common/ScrollbarSystem.tsx
+index c05d749..638adf4 100644
+--- a/src/components/common/ScrollbarSystem.tsx
++++ b/src/components/common/ScrollbarSystem.tsx
+@@ -1,25 +1,63 @@
+-import { useEffect } from 'react';
++import { useEffect, useState } from 'react';
+ import { t, useUiLanguage } from '../../i18n';
+ import { useUiSettings } from '../../platform/ui-settings';
+ export function thumbMetrics(viewport:number,content:number,offset:number,track:number){const max=Math.max(0,content-viewport),size=Math.min(track,Math.max(24,track*(content?viewport/content:1))),travel=Math.max(0,track-size);return{max,size,travel,position:max?Math.max(0,Math.min(max,offset))/max*travel:0};}
+-const selector='.sidebar,.settings-nav,.settings-page,.viewer-scroll,.viewer-panel,.pdf-viewport,.pdf-thumbnails,.pdf-outline,.text-viewport,.markdown-reader,.markdown-source,.json-tree,.json-source,.csv-grid,.m10-grid,.archive-list,.archive-results,.geometry-tree,.data-tree,.data-grid,.m11-reading,.floating-panel-content,.top-file-tabs';
+-/** One event-driven system, attached to existing scroll owners; never adds a second scroller. */
+-export function ScrollbarSystem(){const preferences=useUiSettings(),language=useUiLanguage();useEffect(()=>{
+- const forced=matchMedia('(forced-colors: active)');if(forced.matches)return;
+- const owners=new Map<HTMLElement,()=>void>();let frame=0,closed=false;
+- const attach=(element:HTMLElement)=>{
+-  const nodes=(['y','x'] as const).map(axis=>{const track=document.createElement('div'),thumb=document.createElement('span');track.className=`art-scrollbar art-scrollbar-${axis}`;track.dataset.overlayScrollbar='true';track.setAttribute('role','scrollbar');track.setAttribute('aria-orientation',axis==='y'?'vertical':'horizontal');track.setAttribute('aria-label',`${element.getAttribute('aria-label')??t('File preview')} ${t(axis==='y'?'Vertical scroll':'Horizontal scroll')}`);track.setAttribute('aria-valuemin','0');track.tabIndex=0;track.appendChild(thumb);document.body.appendChild(track);return{axis,track,thumb,drag:undefined as {start:number;offset:number}|undefined};});
+-  const update=()=>{const rect=element.getBoundingClientRect(),hidden=!!element.closest('[hidden]')||document.hidden||rect.width===0||rect.height===0;for(const node of nodes){const vertical=node.axis==='y',viewport=vertical?element.clientHeight:element.clientWidth,content=vertical?element.scrollHeight:element.scrollWidth,offset=vertical?element.scrollTop:element.scrollLeft,trackLength=vertical?rect.height:rect.width,metrics=thumbMetrics(viewport,content,offset,trackLength);const scrollable=metrics.max>1;node.track.hidden=hidden||!scrollable;node.track.style.left=(vertical?rect.right-14:rect.left)+'px';node.track.style.top=(vertical?rect.top:rect.bottom-14)+'px';node.track.style.width=(vertical?14:rect.width)+'px';node.track.style.height=(vertical?rect.height:14)+'px';node.track.setAttribute('aria-valuemax',String(metrics.max));node.track.setAttribute('aria-valuenow',String(Math.round(offset)));node.thumb.style[vertical?'height':'width']=metrics.size+'px';node.thumb.style.transform=vertical?`translateY(${metrics.position}px)`:`translateX(${metrics.position}px)`;}};
+-  const observe=new ResizeObserver(update);observe.observe(element);if(element.firstElementChild)observe.observe(element.firstElementChild);
+-  const releases:(()=>void)[]=[];
+-  for(const node of nodes){const vertical=node.axis==='y';const set=(value:number)=>{if(vertical)element.scrollTop=value;else element.scrollLeft=value;update();};const coordinate=(e:PointerEvent)=>vertical?e.clientY:e.clientX;const metrics=()=>thumbMetrics(vertical?element.clientHeight:element.clientWidth,vertical?element.scrollHeight:element.scrollWidth,vertical?element.scrollTop:element.scrollLeft,vertical?element.getBoundingClientRect().height:element.getBoundingClientRect().width);
+-   const down=(e:PointerEvent)=>{if(e.button!==0)return;e.preventDefault();e.stopPropagation();const m=metrics();if(e.target!==node.thumb){const r=node.track.getBoundingClientRect(),at=coordinate(e)-(vertical?r.top:r.left);set(m.travel?(at-m.size/2)/m.travel*m.max:0);}node.drag={start:coordinate(e),offset:vertical?element.scrollTop:element.scrollLeft};node.track.dataset.dragging='true';node.track.setPointerCapture(e.pointerId);};const move=(e:PointerEvent)=>{if(!node.drag)return;const m=metrics();set(node.drag.offset+(m.travel?(coordinate(e)-node.drag.start)/m.travel*m.max:0));};const end=()=>{node.drag=undefined;delete node.track.dataset.dragging;};const key=(e:KeyboardEvent)=>{const view=vertical?element.clientHeight:element.clientWidth,current=vertical?element.scrollTop:element.scrollLeft,max=metrics().max;const value=e.key==='Home'?0:e.key==='End'?max:e.key==='PageDown'?current+view:e.key==='PageUp'?current-view:['ArrowDown','ArrowRight'].includes(e.key)?current+40:['ArrowUp','ArrowLeft'].includes(e.key)?current-40:undefined;if(value!==undefined){e.preventDefault();set(Math.max(0,Math.min(max,value)));}};node.track.addEventListener('pointerdown',down);node.track.addEventListener('pointermove',move);node.track.addEventListener('pointerup',end);node.track.addEventListener('pointercancel',end);node.track.addEventListener('lostpointercapture',end);node.track.addEventListener('keydown',key);releases.push(()=>{node.track.removeEventListener('pointerdown',down);node.track.removeEventListener('pointermove',move);node.track.removeEventListener('pointerup',end);node.track.removeEventListener('pointercancel',end);node.track.removeEventListener('lostpointercapture',end);node.track.removeEventListener('keydown',key);node.track.remove();});
+-  }
+-  const ancestorScroll=(event:Event)=>{if(event.target instanceof Element&&event.target!==element&&event.target.contains(element))update();};
+-  element.classList.add('art-scroll-owner');element.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);window.addEventListener('elorin-scroll-metrics',update);window.addEventListener('scroll',ancestorScroll,true);document.addEventListener('visibilitychange',update);update();return()=>{observe.disconnect();element.classList.remove('art-scroll-owner');element.removeEventListener('scroll',update);window.removeEventListener('resize',update);window.removeEventListener('elorin-scroll-metrics',update);window.removeEventListener('scroll',ancestorScroll,true);document.removeEventListener('visibilitychange',update);releases.forEach(fn=>fn());};
+- };
+- const refresh=()=>{frame=0;if(closed||document.hidden)return;for(const [element,release]of owners)if(!element.isConnected){release();owners.delete(element);}for(const element of document.querySelectorAll<HTMLElement>(selector))if(!owners.has(element)&&['auto','scroll'].some(value=>{const style=getComputedStyle(element);return style.overflowY===value||style.overflowX===value;}))owners.set(element,attach(element));};
+- const schedule=()=>{if(!frame&&!document.hidden)frame=requestAnimationFrame(refresh);};
+- const mutation=new MutationObserver(records=>{if(records.some(r=>[...r.addedNodes,...r.removedNodes].some(n=>n instanceof Element&&(n.matches(selector)||!!n.querySelector(selector)))))schedule();});mutation.observe(document.body,{childList:true,subtree:true});schedule();document.addEventListener('visibilitychange',schedule);
+- return()=>{closed=true;cancelAnimationFrame(frame);mutation.disconnect();document.removeEventListener('visibilitychange',schedule);for(const release of owners.values())release();owners.clear();};
+- },[preferences.scrollbar,language]);return null;}
++export function scrollKey(key:string,vertical:boolean,current:number,viewport:number,max:number){const value=key==='Home'?0:key==='End'?max:key==='PageDown'?current+viewport:key==='PageUp'?current-viewport:key===(vertical?'ArrowDown':'ArrowRight')?current+40:key===(vertical?'ArrowUp':'ArrowLeft')?current-40:undefined;return value===undefined?undefined:Math.max(0,Math.min(max,value));}
++export function intersectRect(a:{left:number;top:number;right:number;bottom:number},b:{left:number;top:number;right:number;bottom:number}){return{left:Math.max(a.left,b.left),top:Math.max(a.top,b.top),right:Math.min(a.right,b.right),bottom:Math.min(a.bottom,b.bottom)};}
++const selector='.workspace>main,.sidebar,.settings-nav,.settings-page,.viewer-scroll,.viewer-panel,.pdf-viewport,.document-sidebar,.pdf-thumbnails,.pdf-outline,.text-viewport,.markdown-reader,.markdown-source,.markdown-reader-pane,.markdown-source-pane,.json-tree,.json-source,.csv-grid,.m10-grid,.archive-list,.archive-results,.geometry-tree,.data-tree,.data-grid,.m11-reading,.floating-panel-content,.top-file-tabs';
++type Owner={element:HTMLElement;measure:(rects:Map<Element,DOMRect>)=>(()=>void);release:()=>void;schedule:()=>void};
++/** Existing scroll owners, batched layout reads before overlay writes. No idle loop. */
++export function ScrollbarSystem(){const preferences=useUiSettings(),language=useUiLanguage();const [forced,setForced]=useState(()=>matchMedia('(forced-colors: active)').matches);
++ useEffect(()=>{const query=matchMedia('(forced-colors: active)'),change=()=>setForced(query.matches);query.addEventListener('change',change);return()=>query.removeEventListener('change',change);},[]);
++ useEffect(()=>{
++  if(forced)return;
++  const owners=new Map<HTMLElement,Owner>(),dirty=new Set<Owner>();let frame=0,discovery=0,closed=false;
++  const flush=()=>{frame=0;if(document.hidden)return;const rects=new Map<Element,DOMRect>(),writes=[...dirty].filter(o=>o.element.isConnected).map(o=>o.measure(rects));dirty.clear();writes.forEach(write=>write());};
++  const queue=(owner:Owner)=>{dirty.add(owner);if(!frame&&!document.hidden)frame=requestAnimationFrame(flush);};
++  const all=()=>{for(const owner of owners.values())owner.schedule();};
++  const attach=(element:HTMLElement):Owner=>{
++   let geometryDirty=true,cachedRect:DOMRect|undefined,cachedClip:{left:number;top:number;right:number;bottom:number}|undefined;
++   const ancestors:HTMLElement[]=[];for(let p=element.parentElement;p;p=p.parentElement){const s=getComputedStyle(p);if(['hidden','clip','auto','scroll'].some(v=>s.overflowX===v||s.overflowY===v))ancestors.push(p);}
++   const id=element.id||`elorin-scroll-${crypto.randomUUID()}`,assigned=!element.id;if(assigned)element.id=id;
++   const nodes=(['y','x'] as const).map(axis=>{const track=document.createElement('div'),thumb=document.createElement('span');track.className=`art-scrollbar art-scrollbar-${axis}`;track.dataset.overlayScrollbar='true';track.dataset.scrollOwner=id;track.setAttribute('role','scrollbar');track.setAttribute('aria-controls',id);track.setAttribute('aria-orientation',axis==='y'?'vertical':'horizontal');track.setAttribute('aria-label',`${element.getAttribute('aria-label')??t('File preview')} ${t(axis==='y'?'Vertical scroll':'Horizontal scroll')}`);track.setAttribute('aria-valuemin','0');track.tabIndex=0;track.appendChild(thumb);document.body.appendChild(track);return{axis,track,thumb,drag:undefined as {start:number;offset:number;pointer:number}|undefined,metrics:thumbMetrics(0,0,0,0),start:0,last:{geometry:'',max:-1,offset:-1,size:-1,position:-1}};});
++   const rect=(e:Element,cache:Map<Element,DOMRect>)=>{let r=cache.get(e);if(!r){r=e.getBoundingClientRect();cache.set(e,r);}return r;};
++   const releases:(()=>void)[]=[];
++   const owner:Owner={element,schedule:()=>{geometryDirty=true;queue(owner);},measure:cache=>{
++    if(geometryDirty||!cachedRect||!cachedClip){cachedRect=rect(element,cache);const r=cachedRect;cachedClip={left:Math.max(0,r.left),top:Math.max(0,r.top),right:Math.min(innerWidth,r.right),bottom:Math.min(innerHeight,r.bottom)};for(const a of ancestors)cachedClip=intersectRect(cachedClip,rect(a,cache));geometryDirty=false;}
++    const r=cachedRect,clip=cachedClip;
++    const hidden=!!element.closest('[hidden],[inert]')||r.width===0||r.height===0||clip.right<=clip.left||clip.bottom<=clip.top;
++    const hasY=element.scrollHeight-element.clientHeight>1,hasX=element.scrollWidth-element.clientWidth>1,panel=element.closest<HTMLElement>('.floating-panel');
++    const order=panel?Number(panel.style.getPropertyValue('--panel-order'))||0:0;
++    const values=nodes.map(n=>{const vertical=n.axis==='y',view=vertical?element.clientHeight:element.clientWidth,content=vertical?element.scrollHeight:element.scrollWidth,offset=vertical?element.scrollTop:element.scrollLeft,length=Math.max(0,(vertical?clip.bottom-clip.top:clip.right-clip.left)-((vertical?hasX:hasY)?14:0));return{n,vertical,offset,length,metrics:thumbMetrics(view,content,offset,length),visible:!hidden&&(vertical?hasY:hasX)};});
++    return()=>{for(const v of values){const {n,vertical,metrics}=v;n.metrics=metrics;n.start=vertical?clip.top:clip.left;if(n.track.hidden===v.visible)n.track.hidden=!v.visible;
++     const geometry=[clip.left,clip.top,clip.right,clip.bottom,v.length,panel?order:-1].join(':');
++     if(n.last.geometry!==geometry){n.track.style.left=(vertical?clip.right-14:clip.left)+'px';n.track.style.top=(vertical?clip.top:clip.bottom-14)+'px';n.track.style.width=(vertical?14:v.length)+'px';n.track.style.height=(vertical?v.length:14)+'px';n.track.style.zIndex=panel?`calc(var(--z-panel) + ${order+1})`:'var(--z-scrollbar)';n.last.geometry=geometry;}
++     if(n.last.max!==metrics.max){n.track.setAttribute('aria-valuemax',String(metrics.max));n.last.max=metrics.max;}
++     const offset=Math.round(v.offset);if(n.last.offset!==offset){n.track.setAttribute('aria-valuenow',String(offset));n.last.offset=offset;}
++     if(n.last.size!==metrics.size){n.thumb.style[vertical?'height':'width']=metrics.size+'px';n.last.size=metrics.size;}
++     if(n.last.position!==metrics.position){n.thumb.style.transform=vertical?`translateY(${metrics.position}px)`:`translateX(${metrics.position}px)`;n.last.position=metrics.position;}
++    }}
++   },release:()=>{observe.disconnect();element.classList.remove('art-scroll-owner');element.removeEventListener('scroll',ownScroll);if(assigned&&element.id===id)element.removeAttribute('id');dirty.delete(owner);releases.forEach(fn=>fn());}};
++   const ownScroll=()=>queue(owner);
++   const observe=new ResizeObserver(owner.schedule);observe.observe(element);if(element.firstElementChild)observe.observe(element.firstElementChild);
++   for(const n of nodes){const vertical=n.axis==='y',coordinate=(e:PointerEvent)=>vertical?e.clientY:e.clientX,set=(v:number)=>{if(vertical)element.scrollTop=v;else element.scrollLeft=v;queue(owner);};
++    const end=()=>{const pointer=n.drag?.pointer;n.drag=undefined;delete n.track.dataset.dragging;if(pointer!==undefined&&n.track.hasPointerCapture?.(pointer))n.track.releasePointerCapture(pointer);};
++    const down=(e:PointerEvent)=>{if(e.button!==0)return;e.preventDefault();e.stopPropagation();const m=n.metrics;if(e.target!==n.thumb)set(m.travel?(coordinate(e)-n.start-m.size/2)/m.travel*m.max:0);n.drag={start:coordinate(e),offset:vertical?element.scrollTop:element.scrollLeft,pointer:e.pointerId};n.track.dataset.dragging='true';n.track.setPointerCapture(e.pointerId);};
++    const move=(e:PointerEvent)=>{if(!n.drag)return;e.stopPropagation();const m=n.metrics;set(n.drag.offset+(m.travel?(coordinate(e)-n.drag.start)/m.travel*m.max:0));};
++    const key=(e:KeyboardEvent)=>{const value=scrollKey(e.key,vertical,vertical?element.scrollTop:element.scrollLeft,vertical?element.clientHeight:element.clientWidth,n.metrics.max);if(value!==undefined){e.preventDefault();e.stopPropagation();set(value);}};
++    const wheel=(e:WheelEvent)=>{const delta=vertical?e.deltaY:e.deltaX||e.deltaY;if(!delta)return;e.preventDefault();set((vertical?element.scrollTop:element.scrollLeft)+delta*(e.deltaMode===1?20:e.deltaMode===2?(vertical?element.clientHeight:element.clientWidth):1));};
++    n.track.addEventListener('pointerdown',down);n.track.addEventListener('pointermove',move);n.track.addEventListener('pointerup',end);n.track.addEventListener('pointercancel',end);n.track.addEventListener('lostpointercapture',end);n.track.addEventListener('keydown',key);n.track.addEventListener('wheel',wheel,{passive:false});
++    releases.push(()=>{end();n.track.removeEventListener('pointerdown',down);n.track.removeEventListener('pointermove',move);n.track.removeEventListener('pointerup',end);n.track.removeEventListener('pointercancel',end);n.track.removeEventListener('lostpointercapture',end);n.track.removeEventListener('keydown',key);n.track.removeEventListener('wheel',wheel);n.track.remove();});
++   }
++   element.classList.add('art-scroll-owner');element.addEventListener('scroll',ownScroll,{passive:true});owner.schedule();return owner;
++  };
++  const discover=()=>{discovery=0;if(closed)return;for(const [e,o]of owners)if(!e.isConnected){o.release();owners.delete(e);}if(document.hidden)return;for(const e of document.querySelectorAll<HTMLElement>(selector)){if(owners.has(e))continue;const s=getComputedStyle(e);if(['auto','scroll'].includes(s.overflowY)||['auto','scroll'].includes(s.overflowX))owners.set(e,attach(e));}};
++  const scan=()=>{if(!discovery&&!document.hidden)discovery=requestAnimationFrame(discover);};
++  const mutation=new MutationObserver(records=>{if(records.some(r=>r.type==='attributes'&&!(r.target as Element).closest('[data-overlay-scrollbar]')))all();if(records.some(r=>r.type==='childList'&&[...r.addedNodes,...r.removedNodes].some(n=>n instanceof Element&&(n.matches(selector)||!!n.querySelector(selector)))))scan();});
++  mutation.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','inert','data-visible']});
++  const scroll=(e:Event)=>{if(e.target instanceof Element)for(const o of owners.values())if(e.target!==o.element&&e.target.contains(o.element))o.schedule();};
++  const visibility=()=>{if(document.hidden){cancelAnimationFrame(frame);frame=0;for(const o of owners.values())for(const n of document.querySelectorAll<HTMLElement>(`[data-scroll-owner="${o.element.id}"]`))n.hidden=true;}else{scan();all();}};
++  window.addEventListener('resize',all);window.addEventListener('scroll',scroll,true);window.addEventListener('elorin-scroll-metrics',all);document.addEventListener('visibilitychange',visibility);scan();
++  return()=>{closed=true;cancelAnimationFrame(frame);cancelAnimationFrame(discovery);mutation.disconnect();window.removeEventListener('resize',all);window.removeEventListener('scroll',scroll,true);window.removeEventListener('elorin-scroll-metrics',all);document.removeEventListener('visibilitychange',visibility);for(const o of owners.values())o.release();owners.clear();dirty.clear();};
++ },[preferences.scrollbar,language,forced]);return null;
++}
+diff --git a/src/components/common/controls.tsx b/src/components/common/controls.tsx
+index bed285e..c5c17ce 100644
+--- a/src/components/common/controls.tsx
++++ b/src/components/common/controls.tsx
+@@ -1,5 +1,6 @@
++import { useAnchoredPosition } from './layer-layout';
+ import { useUiLanguage as useLocale } from "../../i18n";
+-import { forwardRef, useEffect, useLayoutEffect, useRef, useState, useId, type HTMLAttributes, type InputHTMLAttributes, type SelectHTMLAttributes, type ReactNode } from 'react';
++import { forwardRef, useCallback, useEffect, useLayoutEffect, useRef, useState, useId, type HTMLAttributes, type InputHTMLAttributes, type SelectHTMLAttributes, type ReactNode } from 'react';
+ import { createPortal } from 'react-dom';
+ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement> & {
+     invalid?: boolean;
+@@ -48,8 +49,8 @@ export function Tabs({ options, value, onChange, label, segmented = false }: {
+         index = enabled.length - 1;
+     else
+         return; if (!enabled.length)
+-        return; e.preventDefault(); const next = enabled[index]; onChange(next.id); root.current?.querySelector<HTMLButtonElement>(`[data-tab-index="${options.indexOf(next)}"]`)?.focus(); }}>
+-  {options.map((o, index) => <button type="button" role="tab" key={o.id} data-tab-index={index} disabled={o.disabled} aria-selected={o.id === selected} tabIndex={o.id === selected ? 0 : -1} onClick={() => onChange(o.id)}>{o.label}</button>)}
++        return; e.preventDefault(); const next = enabled[index]; onChange(next.id); root.current?.querySelector<HTMLButtonElement>(`[data-tab-index="${options.indexOf(next)}"]`)?.focus(); }}>
++  {options.map((o, index) => <button type="button" role="tab" key={o.id} data-tab-index={index} disabled={o.disabled} aria-selected={o.id === selected} tabIndex={o.id === selected ? 0 : -1} onClick={() => onChange(o.id)}>{o.label}</button>)}
+  </div>;
+ }
+ export function SegmentedControl(props: Omit<Parameters<typeof Tabs>[0], 'segmented'>) {
+@@ -93,17 +94,15 @@ export function Dropdown({ label, items, disabled }: {
+ }) {
+   useLocale();
+     const [open, setOpen] = useState(false), [position, setPosition] = useState({ left: 0, top: 0 }), button = useRef<HTMLButtonElement>(null), menu = useRef<HTMLDivElement>(null), id = useId();
+-    const close = (restore = false) => { setOpen(false); if (restore)
+-        button.current?.focus(); };
+-    useLayoutEffect(() => { if (!open)
+-        return; const rect = button.current!.getBoundingClientRect(); setPosition({ left: Math.max(8, Math.min(rect.left, window.innerWidth - 248)), top: Math.max(8, Math.min(rect.bottom + 4, window.innerHeight - Math.min(items.length * 40 + 16, 320) - 8)) }); menu.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus(); }, [open, items]);
+-    useEffect(() => { if (!open)
+-        return; const outside = (e: PointerEvent) => { if (!menu.current?.contains(e.target as Node) && !button.current?.contains(e.target as Node))
+-        close(); }; const resize = () => close(); document.addEventListener('pointerdown', outside); window.addEventListener('resize', resize); return () => { document.removeEventListener('pointerdown', outside); window.removeEventListener('resize', resize); }; }, [open]);
++    const dismiss = useCallback(() => setOpen(false), []);
++    const close = (restore = false) => { setOpen(false); if (restore) button.current?.focus(); };
++    useAnchoredPosition(open, button, menu, setPosition, dismiss);
++    useLayoutEffect(() => { if(open) menu.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus(); }, [open]);
++    useEffect(() => { if (!open) return; const outside = (e:PointerEvent) => { if (!menu.current?.contains(e.target as Node) && !button.current?.contains(e.target as Node)) dismiss(); }; document.addEventListener('pointerdown',outside); return()=>document.removeEventListener('pointerdown',outside); },[open,dismiss]);
+     return <><button type="button" className="button secondary" ref={button} aria-haspopup="menu" aria-expanded={open} aria-controls={open ? id : undefined} disabled={disabled} onClick={() => setOpen(v => !v)} onKeyDown={e => { if (e.key === 'ArrowDown') {
+         e.preventDefault();
+         setOpen(true);
+-    } }}>
++    } }}>
+   {label}</button>{open && createPortal(<div id={id} ref={menu} role="menu" aria-label={label} className="ds-dropdown" style={position} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget))
+         close(); }} onKeyDown={e => { if (e.key === 'Escape') {
+         e.preventDefault();
+diff --git a/src/components/common/layer-layout.ts b/src/components/common/layer-layout.ts
+new file mode 100644
+index 0000000..e1a16e3
+--- /dev/null
++++ b/src/components/common/layer-layout.ts
+@@ -0,0 +1,18 @@
++import { useLayoutEffect, type RefObject } from 'react';
++export function placeLayer(anchor: Pick<DOMRect, 'left'|'top'|'bottom'>, width:number, height:number, viewportWidth=innerWidth, viewportHeight=innerHeight, gap=6) {
++ const left=Math.max(8,Math.min(anchor.left,viewportWidth-width-8)),below=anchor.bottom+gap;
++ return {left,top:Math.max(8,Math.min(below+height>viewportHeight-8?anchor.top-height-gap:below,viewportHeight-height-8))};
++}
++/** Existing portals share positioning; there is no polling loop. */
++export function useAnchoredPosition(open:boolean, anchor:RefObject<HTMLElement|null>, panel:RefObject<HTMLElement|null>, move:(point:{left:number;top:number})=>void, close:()=>void) {
++ useLayoutEffect(()=>{
++  if(!open||!anchor.current||!panel.current)return;
++  const target=anchor.current,element=panel.current;let frame=0;
++  const update=()=>{frame=0;if(!target.isConnected){close();return;}const a=target.getBoundingClientRect(),p=element.getBoundingClientRect();if(a.bottom<0||a.top>innerHeight||a.right<0||a.left>innerWidth){close();return;}move(placeLayer(a,p.width,p.height));};
++  const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
++  const observer=typeof ResizeObserver==='undefined'?undefined:new ResizeObserver(schedule);observer?.observe(target);observer?.observe(element);
++  const visibility=typeof IntersectionObserver==='undefined'?undefined:new IntersectionObserver(entries=>{if(entries.some(entry=>!entry.isIntersecting))close();});visibility?.observe(target);
++  window.addEventListener('resize',schedule);window.addEventListener('scroll',schedule,true);update();
++  return()=>{cancelAnimationFrame(frame);observer?.disconnect();visibility?.disconnect();window.removeEventListener('resize',schedule);window.removeEventListener('scroll',schedule,true);};
++ },[open,anchor,panel,move,close]);
++}
+diff --git a/src/components/common/ui.tsx b/src/components/common/ui.tsx
+index 32df685..96ab15f 100644
+--- a/src/components/common/ui.tsx
++++ b/src/components/common/ui.tsx
+@@ -1,5 +1,6 @@
++import { useAnchoredPosition } from './layer-layout';
+ import { t as tr, useUiLanguage as useLocale } from "../../i18n";
+-import { forwardRef, useId, useState, useLayoutEffect, useEffect, useRef, isValidElement, cloneElement, type ReactElement, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type ReactNode, } from "react";
++import { forwardRef, useCallback, useId, useState, useLayoutEffect, useEffect, useRef, isValidElement, cloneElement, type ReactElement, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type ReactNode, } from "react";
+ import { createPortal } from 'react-dom';
+ import { Search } from "lucide-react";
+ export function Button({ className = "", variant = "secondary", loading = false, disabled, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & {
+@@ -25,33 +26,31 @@ export function Tooltip({ label, children, }: {
+ }) {
+   useLocale();
+     const id = useId(), [open, setOpen] = useState(false), anchor = useRef<HTMLSpanElement>(null), tip = useRef<HTMLSpanElement>(null), [position, setPosition] = useState({ left: 0, top: 0 });
+-    useLayoutEffect(() => { if (!open || !anchor.current || !tip.current)
+-        return; const rect = anchor.current.getBoundingClientRect(), size = tip.current.getBoundingClientRect(); setPosition({ left: Math.max(8, Math.min(rect.left, window.innerWidth - size.width - 8)), top: rect.bottom + 8 + size.height > window.innerHeight ? Math.max(8, rect.top - size.height - 8) : rect.bottom + 8 }); }, [open, label]);
+-    useEffect(() => { if (!open)
+-        return; const close = () => setOpen(false); window.addEventListener('resize', close); window.addEventListener('scroll', close, true); return () => { window.removeEventListener('resize', close); window.removeEventListener('scroll', close, true); }; }, [open]);
++    const dismiss = useCallback(() => setOpen(false), []);
++    useAnchoredPosition(open,anchor,tip,setPosition,dismiss);
+     return <span ref={anchor} className="tooltip-host" onPointerEnter={() => setOpen(true)} onPointerLeave={() => setOpen(false)} onFocus={() => setOpen(true)} onBlur={() => setOpen(false)} onKeyDown={e => { if (e.key === 'Escape') {
+         e.stopPropagation();
+         setOpen(false);
+-    } }}>
++    } }}>
+     {isValidElement(children) ? cloneElement(children as ReactElement<{
+         'aria-describedby'?: string;
+-    }>, { 'aria-describedby': open ? id : undefined }) : children}
+-    {open && createPortal(<span ref={tip} id={id} className="tooltip" role="tooltip" style={{ position: 'fixed', right: 'auto', ...position }}>{label}</span>, document.body)}
++    }>, { 'aria-describedby': open ? id : undefined }) : children}
++    {open && createPortal(<span ref={tip} id={id} className="tooltip" role="tooltip" style={{ position: 'fixed', right: 'auto', zIndex: anchor.current?.closest('[aria-modal="true"]') ? 'calc(var(--z-modal) + 1)' : 'var(--z-tooltip)', ...position }}>{label}</span>, document.body)}
+   </span>;
+ }
+ export const SearchInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(function SearchInput(props, ref) {
+-    return (<label className="search">
+-      <Search size={19}/>
+-      <input ref={ref} aria-label={tr("Global search")} placeholder={tr("Search files, content, or ask Elorin...")} {...props}/>
+-      <kbd>{navigator.platform.includes("Mac") ? "⌘" : tr("Ctrl")} K</kbd>
++    return (<label className="search">
++      <Search size={19}/>
++      <input ref={ref} aria-label={tr("Global search")} placeholder={tr("Search files, content, or ask Elorin...")} {...props}/>
++      <kbd>{navigator.platform.includes("Mac") ? "⌘" : tr("Ctrl")} K</kbd>
+     </label>);
+ });
+ export function FileTypeBadge({ extension }: {
+     extension: string;
+ }) {
+   useLocale();
+-    return (<span className={`file-badge ext-${extension.toLowerCase()}`}>
+-      {extension.toUpperCase()}
++    return (<span className={`file-badge ext-${extension.toLowerCase()}`}>
++      {extension.toUpperCase()}
+     </span>);
+ }
+ export { Input, Select, Checkbox, Radio, Switch, Tabs, SegmentedControl, Badge, Separator, Progress, Skeleton, Card, Panel, EmptyState, ScrollArea, Dropdown } from "./controls";
+diff --git a/src/components/shell/ContextMenu.tsx b/src/components/shell/ContextMenu.tsx
+index 7d9d94a..07386a4 100644
+--- a/src/components/shell/ContextMenu.tsx
++++ b/src/components/shell/ContextMenu.tsx
+@@ -1,10 +1,10 @@
+-import { t as tr, useUiLanguage as useLocale } from "../../i18n";
++import { t as tr, useUiLanguage as useLocale } from "../../i18n";
+ import { writeClipboard } from '../../document/clipboard';
+ import { useEffect, useLayoutEffect, useRef, useState } from "react";
+ import { createPortal } from "react-dom";
+ import type { ContextMenuAction } from "../../viewer/core/actions";
+ 
+-export function ContextMenu() {
++export function ContextMenu() {
+   useLocale();
+   const [menu, setMenu] = useState<{
+     x: number;
+@@ -16,6 +16,7 @@ export function ContextMenu() {
+   useEffect(() => {
+     const open = (event: MouseEvent) => {
+       event.preventDefault();
++      if (document.querySelector('[aria-modal="true"]')) { setMenu(undefined); return; }
+       const target = event.target as HTMLElement;
+       const input =
+         target instanceof HTMLInputElement ||
+@@ -102,6 +103,7 @@ export function ContextMenu() {
+         );
+         if (event.key === "Escape") {
+           event.preventDefault();
++          event.stopPropagation();
+           setMenu(undefined);
+           previousFocus.current?.focus({ preventScroll: true });
+         }
+diff --git a/src/design-system/tokens.ts b/src/design-system/tokens.ts
+index bb3a54f..3138c2e 100644
+--- a/src/design-system/tokens.ts
++++ b/src/design-system/tokens.ts
+@@ -7,7 +7,7 @@ export const semanticColors = {
+ const aliases = { background: 'app-background', surface: 'surface-primary', surfaceElevated: 'surface-secondary', border: 'border-default', textPrimary: 'text-primary', textSecondary: 'text-secondary', textMuted: 'text-muted', accent: 'accent-primary', accentStrong: 'accent-hover', accentSurface: 'accent-subtle', shadowColor: 'shadow-color', glass: 'surface-secondary' } as const;
+ function palette(mode: 'light' | 'dark'): Record<string, string> { const values = semanticColors[mode]; return { ...values, ...Object.fromEntries(Object.entries(aliases).map(([key, value]) => [key, values[value]])), code: values.success, data: values.warning, media: values['accent-primary'], archive: values['text-secondary'], transparent: 'transparent' }; }
+ export const colors = { light: palette('light'), dark: palette('dark') };
+-export const tokens = { colors, typography, spacing: { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 }, space: [4, 8, 12, 16, 20, 24, 32, 40, 48, 64], radius: { xs: 4, sm: 6, md: 8, lg: 12, xl: 16, pill: 999, small: 6, medium: 8, large: 12, window: 16 }, shadow: { soft: '0 8px 28px var(--shadow-color)', raised: '0 4px 16px var(--shadow-color)' }, border: { thin: '1px solid var(--border-default)' }, motion: { fast: '120ms', panel: '180ms' }, layers: { content: 0, sticky: 10, toolbar: 20, dropdown: 40, popover: 50, modal: 60, tooltip: 70, notification: 80, 'window-overlay': 90 } };
++export const tokens = { colors, typography, spacing: { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 }, space: [4, 8, 12, 16, 20, 24, 32, 40, 48, 64], radius: { xs: 4, sm: 6, md: 8, lg: 12, xl: 16, pill: 999, small: 6, medium: 8, large: 12, window: 16 }, shadow: { soft: '0 8px 28px var(--shadow-color)', raised: '0 4px 16px var(--shadow-color)' }, border: { thin: '1px solid var(--border-default)' }, motion: { fast: '120ms', panel: '180ms' }, layers: { content: 0, sticky: 10, toolbar: 20, scrollbar: 21, panel: 30, dropdown: 50, popover: 50, tooltip: 55, modal: 60, notification: 80, 'window-overlay': 90 } };
+ export function applyTokens(mode: 'light' | 'dark' = 'light') {
+     const root = document.documentElement;
+     for (const [key, value] of Object.entries(colors[mode]))
+diff --git a/src/document/new-file.css b/src/document/new-file.css
+index 429bf76..bcf7543 100644
+--- a/src/document/new-file.css
++++ b/src/document/new-file.css
+@@ -1,4 +1,4 @@
+-.new-file-backdrop{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(62,94,132,.24);backdrop-filter:blur(8px)}
++.new-file-backdrop{position:fixed;inset:0;z-index:var(--z-modal);display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(62,94,132,.24);backdrop-filter:blur(8px)}
+ .new-file-dialog{position:relative;width:720px;max-width:100%;max-height:calc(100dvh - 48px);overflow:auto;padding:28px 30px 20px;border:1px solid var(--border-subtle);border-radius:13px;background:linear-gradient(135deg,var(--surface-primary),var(--surface-secondary));color:var(--text-primary);box-shadow:0 24px 80px rgba(32,57,95,.22);font-size:14px;line-height:1.45}
+ .new-file-heading{position:relative;margin-bottom:18px}.new-file-heading .brand-wordmark{margin-bottom:13px}.new-file-heading h1{font-size:40px;letter-spacing:-1.1px;line-height:1.16;margin:0 0 4px;font-weight:750}.new-file-heading p{font-size:16px;color:var(--text-secondary);margin:0}.new-file-close{position:absolute;right:-8px;top:-5px;display:grid;place-items:center;width:34px;height:34px;border-radius:6px;color:var(--text-secondary)}
+ .new-file-close:hover,.new-format-search button:hover{background:var(--surface-hover)}.new-file-label{display:block;font-weight:550;font-size:14px;margin-bottom:5px}.new-name-field{position:relative;margin-bottom:14px}.new-name-field input{width:100%;height:40px;border:1px solid var(--border-default);border-radius:8px;background:var(--surface-primary);color:inherit;padding:8px 13px;font:inherit}.new-name-field input:focus{border-color:var(--accent-primary);outline:1px solid var(--accent-primary);outline-offset:0}.new-name-field[data-invalid=true] input{border-color:var(--danger);padding-right:35px}.new-name-field>svg{position:absolute;right:12px;top:12px;color:var(--danger)}.new-file-error{font-size:12px;color:var(--danger);margin:-7px 0 12px}
+diff --git a/src/i18n/locales/en.json b/src/i18n/locales/en.json
+index e3c578c..d7ebe1b 100644
+--- a/src/i18n/locales/en.json
++++ b/src/i18n/locales/en.json
+@@ -30,5 +30,6 @@
+   "操作已取消。": "Operation cancelled.",
+   "查看器发生异常，可重试或选择其他查看方式。": "The viewer encountered an error. Retry or choose another view.",
+   "Vertical scroll": "Vertical scroll",
+-  "Horizontal scroll": "Horizontal scroll"
++  "Horizontal scroll": "Horizontal scroll",
++  "Enter a page from 1 to {v0}.": "Enter a page from 1 to {v0}."
+ }
+diff --git a/src/i18n/locales/fr.json b/src/i18n/locales/fr.json
+index 67e8a4d..a27c349 100644
+--- a/src/i18n/locales/fr.json
++++ b/src/i18n/locales/fr.json
+@@ -1484,5 +1484,6 @@
+   "TRUE": "TRUE",
+   "FALSE": "FALSE",
+   "Vertical scroll": "Défilement vertical",
+-  "Horizontal scroll": "Défilement horizontal"
++  "Horizontal scroll": "Défilement horizontal",
++  "Enter a page from 1 to {v0}.": "Saisissez un numéro de page de 1 à {v0}."
+ }
+diff --git a/src/i18n/locales/it.json b/src/i18n/locales/it.json
+index d5ab740..0ab83b8 100644
+--- a/src/i18n/locales/it.json
++++ b/src/i18n/locales/it.json
+@@ -1484,5 +1484,6 @@
+   "TRUE": "TRUE",
+   "FALSE": "FALSE",
+   "Vertical scroll": "Scorrimento verticale",
+-  "Horizontal scroll": "Scorrimento orizzontale"
++  "Horizontal scroll": "Scorrimento orizzontale",
++  "Enter a page from 1 to {v0}.": "Inserisci un numero di pagina da 1 a {v0}."
+ }
+diff --git a/src/i18n/locales/ja.json b/src/i18n/locales/ja.json
+index e79df8f..8bcacaf 100644
+--- a/src/i18n/locales/ja.json
++++ b/src/i18n/locales/ja.json
+@@ -1484,5 +1484,6 @@
+   "TRUE": "TRUE",
+   "FALSE": "FALSE",
+   "Vertical scroll": "縦スクロール",
+-  "Horizontal scroll": "横スクロール"
++  "Horizontal scroll": "横スクロール",
++  "Enter a page from 1 to {v0}.": "1 から {v0} までのページ番号を入力してください。"
+ }
+diff --git a/src/i18n/locales/ko.json b/src/i18n/locales/ko.json
+index 9db3133..9150d7f 100644
+--- a/src/i18n/locales/ko.json
++++ b/src/i18n/locales/ko.json
+@@ -1484,5 +1484,6 @@
+   "TRUE": "TRUE",
+   "FALSE": "FALSE",
+   "Vertical scroll": "세로 스크롤",
+-  "Horizontal scroll": "가로 스크롤"
++  "Horizontal scroll": "가로 스크롤",
++  "Enter a page from 1 to {v0}.": "1부터 {v0}까지의 페이지 번호를 입력하세요."
+ }
+diff --git a/src/i18n/locales/pt.json b/src/i18n/locales/pt.json
+index 744b6f2..29bff04 100644
+--- a/src/i18n/locales/pt.json
++++ b/src/i18n/locales/pt.json
+@@ -1484,5 +1484,6 @@
+   "TRUE": "TRUE",
+   "FALSE": "FALSE",
+   "Vertical scroll": "Rolagem vertical",
+-  "Horizontal scroll": "Rolagem horizontal"
++  "Horizontal scroll": "Rolagem horizontal",
++  "Enter a page from 1 to {v0}.": "Digite um número de página entre 1 e {v0}."
+ }
+diff --git a/src/i18n/locales/zh.json b/src/i18n/locales/zh.json
+index fb878f7..9c051ba 100644
+--- a/src/i18n/locales/zh.json
++++ b/src/i18n/locales/zh.json
+@@ -1484,5 +1484,6 @@
+   "TRUE": "TRUE",
+   "FALSE": "FALSE",
+   "Vertical scroll": "垂直滚动",
+-  "Horizontal scroll": "水平滚动"
++  "Horizontal scroll": "水平滚动",
++  "Enter a page from 1 to {v0}.": "请输入 1 到 {v0} 之间的页码。"
+ }
+diff --git a/src/pages/focus/FocusWindow.tsx b/src/pages/focus/FocusWindow.tsx
+index 7fc52a5..8050bdd 100644
+--- a/src/pages/focus/FocusWindow.tsx
++++ b/src/pages/focus/FocusWindow.tsx
+@@ -15,6 +15,7 @@ import { useUiSettings, uiSettingsStore } from '../../platform/ui-settings';
+ import { enhanceDescriptor } from '../../formats';
+ import type { FileDescriptor } from '../../types/files';
+ import { ScrollbarSystem } from '../../components/common/ScrollbarSystem';
++import { ContextMenu } from '../../components/shell/ContextMenu';
+ 
+ interface Snapshot { tabId: string; file: FileDescriptor; viewState: unknown; theme: ThemePreference }
+ const temporaryLayer = '.floating-panel,[role=dialog],[role=alertdialog],[role=menu],.viewer-more[open]';
+@@ -138,7 +139,7 @@ export function FocusWindow() {
+     return action && <button key={id} aria-label={tr(label)} title={tr(label)} disabled={action.disabled} data-floating-trigger onClick={() => run(action)}>{icon}</button>;
+   };
+   return <div className={`focus-window focus-background-${settings.focusBackground}`} style={{ backgroundColor: settings.focusBackgroundColor }}>
+-    <PrismTitleBar title={data?.file.name ?? tr("Focus View")} /><ScrollbarSystem />
++    <PrismTitleBar title={data?.file.name ?? tr("Focus View")} /><ScrollbarSystem /><ContextMenu />
+     <div ref={toolbar} className="focus-top-controls" data-visible={show || !settings.focusAutoHide} inert={!show && settings.focusAutoHide} aria-label={tr("Focus tools")} role="toolbar" onPointerEnter={reveal} onPointerLeave={() => { nearTop.current = false; reveal(); }} onFocus={reveal}>
+       <div id="focus-viewer-tools" className="focus-viewer-tools" />
+       <div className="focus-common-tools">
+diff --git a/src/search/SearchSurface.tsx b/src/search/SearchSurface.tsx
+index a72eb39..2f5e042 100644
+--- a/src/search/SearchSurface.tsx
++++ b/src/search/SearchSurface.tsx
+@@ -1,17 +1,18 @@
++import { FloatingPanel } from '../components/common/FloatingPanel';
+ import { t as tr, useUiLanguage as useLocale } from "../i18n";
+-import { useEffect, useState } from 'react';
++import { useEffect, useRef, useState } from 'react';
+ import type { TabSession } from '../workspace/workspace';
+ import { tabId } from '../workspace/workspace';
+ import { sourceSearchProvider, type SearchHit } from './providers';
+ export function SearchSurface({ tabs, active, activate, close }: { tabs: TabSession[]; active: number; activate(index: number): void; close(): void }) {
+-  useLocale();
++  useLocale();const selected=useRef(-1);
+   const [query, setQuery] = useState(''), [scope, setScope] = useState('current'), [rows, setRows] = useState<{ tab: TabSession; index: number; hit: SearchHit }[]>([]), [status, setStatus] = useState('');
+   useEffect(() => {
+-    const task = new AbortController(); setRows([]); setStatus(''); if (!query.trim()) return () => task.abort();
++    const task = new AbortController(); selected.current=-1;setRows([]); setStatus(''); if (!query.trim()) return () => task.abort();
+     const timer = setTimeout(() => { void (async () => { setStatus(tr('Searching…')); const targets = tabs.map((tab, index) => ({ tab, index })).filter(t => scope === 'tabs' || t.index === active); let cursor = 0, count = 0, limited = false, unavailable = 0;
+       await Promise.all(Array.from({ length: Math.min(3, targets.length) }, async () => { while (cursor < targets.length && !task.signal.aborted) { const {tab,index} = targets[cursor++]; const provider = sourceSearchProvider(tab.file, tab.source); if (!provider || tab.status) { unavailable++; continue; } try { const result = await provider.search(query, task.signal); if (task.signal.aborted) return; const hits = result.hits.slice(0, Math.max(0, 1000-count)); count += hits.length; limited ||= result.limited || hits.length < result.hits.length; setRows(previous => [...previous, ...hits.map(hit => ({tab,index,hit}))]); } catch { if (!task.signal.aborted) unavailable++; } } }));
+       if (!task.signal.aborted) setStatus(tr('{v0} matches',{v0:count})+(limited?tr(' · More results available'):'')+(unavailable?tr(' · {v0} tabs do not provide source search or are not loaded',{v0:unavailable}):''));
+     })(); }, 180); return () => { clearTimeout(timer); task.abort(); };
+   }, [query, scope, tabs, active]);
+-  return <section className="productivity-search" aria-label={tr("Workspace search")}><header><input autoFocus aria-label={tr("Search content")} value={query} onChange={e => setQuery(e.target.value)} /><select aria-label={tr("Content search scope")} value={scope} onChange={e => setScope(e.target.value)}><option value="current">{tr("Current File")}</option><option value="tabs">{tr("Open Tabs")}</option></select><button onClick={close}>{tr("Close search")}</button></header><small>{tr("Source text search · viewer search remains available in Viewer controls")}</small><p role="status">{tr(status)}</p><div>{rows.map((r,i) => <button key={`${tabId(r.tab)}:${i}`} onClick={() => { activate(r.index); sourceSearchProvider(r.tab.file,r.tab.source)?.navigateTo(r.hit); }}><strong>{r.tab.file.name}</strong><span>{r.hit.context}</span><small>{tr("Line")}{' '}{r.hit.line}</small></button>)}</div></section>;
++  return <FloatingPanel title={tr("Workspace search")} layoutId="workspace-search" owner="workspace-search" close={close} width={460}><section className="productivity-search" aria-label={tr("Workspace search")}><header><input autoFocus aria-label={tr("Search content")} value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&rows.length){e.preventDefault();selected.current=selected.current<0?(e.shiftKey?rows.length-1:0):(selected.current+(e.shiftKey?-1:1)+rows.length)%rows.length;const row=rows[selected.current];activate(row.index);sourceSearchProvider(row.tab.file,row.tab.source)?.navigateTo(row.hit);}}} /><select aria-label={tr("Content search scope")} value={scope} onChange={e => setScope(e.target.value)}><option value="current">{tr("Current File")}</option><option value="tabs">{tr("Open Tabs")}</option></select><button onClick={close}>{tr("Close search")}</button></header><small>{tr("Source text search · viewer search remains available in Viewer controls")}</small><p role="status">{tr(status)}</p><div>{rows.map((r,i) => <button key={`${tabId(r.tab)}:${i}`} onClick={() => { activate(r.index); sourceSearchProvider(r.tab.file,r.tab.source)?.navigateTo(r.hit); }}><strong>{r.tab.file.name}</strong><span>{r.hit.context}</span><small>{tr("Line")}{' '}{r.hit.line}</small></button>)}</div></section></FloatingPanel>;
+ }
+diff --git a/src/viewer/components/ViewerHost.tsx b/src/viewer/components/ViewerHost.tsx
+index f5227e7..c69a736 100644
+--- a/src/viewer/components/ViewerHost.tsx
++++ b/src/viewer/components/ViewerHost.tsx
+@@ -91,7 +91,7 @@ function PluginSurface({
+   }, [state, capability]);
+   const inspector=capability === "inspect" && state.plugin.inspect ? <section aria-label={tr("Viewer inspection")}><div className="inspector-panel-actions"><button aria-label={floatingInspector?tr("Dock Inspector"):tr("Float Inspector")} disabled={focusWindow} onClick={()=>{inspectorLayoutChosen.current=true;setFloatingInspector(v=>!v);}}>{floatingInspector?tr("Dock"):tr("Float")}</button><button aria-label={tr("Hide Inspector")} onClick={()=>props.context.requestCapability?.(undefined)}>×</button></div><FileDetailsCard context={props.context}/>{inspectError ? <div role="alert"><p>{inspectError.userMessage}</p><details><summary>{tr("技术细节")}</summary><p>{inspectError.diagnosticCode} · {inspectError.code}</p><pre>{inspectError.message}</pre></details></div> : inspection === undefined ? <p role="status">{tr("Loading inspection…")}</p> : state.plugin.renderInspection ? state.plugin.renderInspection(inspection,props) : <pre>{JSON.stringify(inspection,null,2)}</pre>}</section> : slots.rightPanel;
+   return <>
+-    {floatingInspector&&capability==='inspect'&&inspector&&<FloatingPanel title={tr("Floating Inspector")} owner={props.context.source} close={()=>props.context.requestCapability?.(undefined)}>{inspector}</FloatingPanel>}
++    {floatingInspector&&capability==='inspect'&&inspector&&<FloatingPanel title={tr("Floating Inspector")} layoutId="floating-inspector" owner={props.context.source} close={()=>props.context.requestCapability?.(undefined)}>{inspector}</FloatingPanel>}
+     <ViewerShell
+       {...slots}
+       statusFloating={focusWindow || settings.statusBar !== 'show'}
+@@ -146,6 +146,8 @@ export function ViewerHost({
+   },[file,interpretedId]);
+   const [moreOpen, setMoreOpen] = useState(false);
+   const [floatingTools,setFloatingTools]=useState<'toolbar'|'quick'|undefined>();
++  useEffect(()=>{setMoreOpen(false);setFloatingTools(undefined);},[source,active]);
++  useEffect(()=>{if(!active)window.dispatchEvent(new CustomEvent('elorin-viewer-inactive',{detail:{source}}));return()=>{window.dispatchEvent(new CustomEvent('elorin-viewer-inactive',{detail:{source}}));};},[source,active]);
+   const [generation, setGeneration] = useState(0);
+   const [capability, setCapability] = useState<keyof ViewerCapabilities | undefined>(settings.inspector&&!focusWindow&&!embedded ? "inspect" : undefined);
+   useEffect(()=>setCapability(settings.inspector&&!focusWindow&&!embedded?"inspect":undefined),[settings.inspector,focusWindow,embedded]);
+@@ -336,7 +338,7 @@ export function ViewerHost({
+               >
+                 {tr("More")}</summary>
+               {moreOpen && (
+-                <FloatingPanel title={tr("Viewer actions")} owner={source} close={()=>setMoreOpen(false)}><div className="viewer-more-panel">
++                <FloatingPanel title={tr("Viewer actions")} layoutId="viewer-actions" owner={source} close={()=>setMoreOpen(false)}><div className="viewer-more-panel">
+                   <button onClick={()=>{setMoreOpen(false);setFloatingTools('toolbar');}}>{tr("Floating Toolbar")}</button><button onClick={()=>{setMoreOpen(false);setFloatingTools('quick');}}>{tr("Quick Actions")}</button>
+                   {actions
+                     .filter(
+diff --git a/src/viewer/plugins/json/JsonSearch.tsx b/src/viewer/plugins/json/JsonSearch.tsx
+index cd77d4d..54ae80b 100644
+--- a/src/viewer/plugins/json/JsonSearch.tsx
++++ b/src/viewer/plugins/json/JsonSearch.tsx
+@@ -18,13 +18,13 @@ export function JsonSearch({
+   const [result, setResult] = useState<{ matches: number[]; limited: boolean }>(
+     { matches: [], limited: false },
+   );
+-  const [busy, setBusy] = useState(false);
++  const [busy, setBusy] = useState(false), [selected, setSelected] = useState(-1);
+   useEffect(() => {
+     const controller = new AbortController();
+     const abort = () => controller.abort();
+     signal.addEventListener("abort", abort, { once: true });
+     if (signal.aborted) controller.abort();
+-    setResult({ matches: [], limited: false });
++    setResult({ matches: [], limited: false });setSelected(-1);
+     setBusy(!!query);
+     const timer = setTimeout(
+       () =>
+@@ -56,6 +56,7 @@ export function JsonSearch({
+           placeholder={tr("Search keys and values…")}
+           value={query}
+           onChange={(event) => setQuery(event.target.value)}
++          onKeyDown={event=>{if(event.key==='Enter'&&result.matches.length){event.preventDefault();const next=selected<0?(event.shiftKey?result.matches.length-1:0):(selected+(event.shiftKey?-1:1)+result.matches.length)%result.matches.length;setSelected(next);navigate(result.matches[next]);}}}
+         />
+         <select
+           aria-label={tr("Search scope")}
+diff --git a/src/viewer/plugins/json/JsonViewer.tsx b/src/viewer/plugins/json/JsonViewer.tsx
+index 92793e0..7ee7ea7 100644
+--- a/src/viewer/plugins/json/JsonViewer.tsx
++++ b/src/viewer/plugins/json/JsonViewer.tsx
+@@ -1,3 +1,4 @@
++import { FloatingPanel } from '../../../components/common/FloatingPanel';
+ import { t as tr, useUiLanguage as useLocale } from "../../../i18n";
+ import { useEffect, useMemo, useState } from "react";
+ import type { ViewerRenderProps } from "../../core/types";
+@@ -140,7 +141,7 @@ export function JsonViewer({
+   return (
+     <div className={`json-viewer json-mode-${mode}`}>
+       {activeCapability === "search" && model.status === "ready" && (
+-        <JsonSearch model={model} navigate={navigate} signal={context.signal} />
++        <FloatingPanel title={tr("Search Panel")} layoutId="json-search" owner={context.source} close={()=>context.requestCapability?.(undefined)}><JsonSearch model={model} navigate={navigate} signal={context.signal} /></FloatingPanel>
+       )}
+       {model.status === "ready" && (
+         <div className="json-path-surface">
+diff --git a/src/viewer/plugins/media/MediaViewer.tsx b/src/viewer/plugins/media/MediaViewer.tsx
+index 9ed46c2..bed2899 100644
+--- a/src/viewer/plugins/media/MediaViewer.tsx
++++ b/src/viewer/plugins/media/MediaViewer.tsx
+@@ -1,4 +1,4 @@
+-import { t as tr, useUiLanguage as useLocale } from "../../../i18n";
++import { t as tr, useUiLanguage as useLocale } from "../../../i18n";
+ import { emit, listen } from '@tauri-apps/api/event';
+ import { isTauri } from '@tauri-apps/api/core';
+ import {ViewerDiagnostic} from '../../components/ViewerDiagnostic';
+@@ -14,11 +14,11 @@ import { checkAbort } from '../../core/errors';
+ import { FloatingPanel } from '../../../components/common/FloatingPanel';
+ import type {ReactNode} from 'react';
+ import {RecentMediaPanel} from './RecentMediaPanel';
+-function MediaControlLayer({floating,owner,close,children}:{floating:boolean;owner:object;close:()=>void;children:ReactNode}){
+-  useLocale();return floating?<FloatingPanel title={tr("Media Controls")} owner={owner} close={close} width={430}>{children}</FloatingPanel>:<>{children}</>;}
++function MediaControlLayer({floating,owner,close,children}:{floating:boolean;owner:object;close:()=>void;children:ReactNode}){
++  useLocale();return floating?<FloatingPanel title={tr("Media Controls")} layoutId="media-controls" owner={owner} close={close} width={430}>{children}</FloatingPanel>:<>{children}</>;}
+ const time = (n: number) =>
+   `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, "0")}`;
+-export function MediaInspector({ model: m }: { model: MediaModel }) {
++export function MediaInspector({ model: m }: { model: MediaModel }) {
+   useLocale();
+   const [, refresh] = useState(0);
+   useEffect(() => {
+@@ -101,14 +101,15 @@ export function MediaViewer({
+   context,
+   session,
+   updateSession,
+-}: ViewerRenderProps<MediaModel>) {
++}: ViewerRenderProps<MediaModel>) {
+   useLocale();
+   const [, refresh] = useState(0),
+     [show, setShow] = useState(true),
+     surface = useRef<HTMLElement>(null),
++    controlSurface = useRef<HTMLDivElement>(null),
+     mount = useRef<HTMLDivElement>(null),
+     hide = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+-  const controller = m.controller;
++  const controller = m.controller;
+   const [floatingControls,setFloatingControls]=useState(false);
+   useEffect(()=>{if(!controller||!isTauri())return;const identity=crypto.randomUUID();let live=true,off:(()=>void)|undefined;const playing=()=>void emit('elorin://media-play',{identity}).catch(()=>{});controller.element.addEventListener('play',playing);void listen<{identity:string}>('elorin://media-play',event=>{if(event.payload.identity!==identity)controller.pause();}).then(fn=>{if(live)off=fn;else fn();});return()=>{live=false;off?.();controller.element.removeEventListener('play',playing);};},[controller]);
+   const [wave,setWave]=useState<Awaited<ReturnType<typeof sampleWaveform>>|undefined>(),[waveError,setWaveError]=useState('');
+@@ -224,7 +225,10 @@ export function MediaViewer({
+     setShow(true);
+     if (hide.current) clearTimeout(hide.current);
+     if (m.kind === "video" && state?.playing)
+-      hide.current = setTimeout(() => setShow(false), 2500);
++      hide.current = setTimeout(() => {
++        const controls = controlSurface.current;
++        if (!controls?.matches(':hover') && !controls?.contains(document.activeElement)) setShow(false);
++      }, 2500);
+   }
+   if (!controller || !state)
+     return (
+@@ -322,7 +326,10 @@ export function MediaViewer({
+       )}
+       <button className="media-float-trigger" data-floating-trigger onClick={()=>setFloatingControls(v=>!v)}>{tr("Media Controls")}</button>
+       <MediaControlLayer floating={floatingControls} owner={context.source} close={()=>setFloatingControls(false)}><div
++        ref={controlSurface}
+         className="m11-media-controls"
++        onMouseLeave={reveal}
++        onBlur={reveal}
+         onMouseEnter={() => {
+           if (hide.current) clearTimeout(hide.current);
+         }}
+diff --git a/src/viewer/plugins/pdf/PdfViewer.tsx b/src/viewer/plugins/pdf/PdfViewer.tsx
+index 7b3b844..19fdf18 100644
+--- a/src/viewer/plugins/pdf/PdfViewer.tsx
++++ b/src/viewer/plugins/pdf/PdfViewer.tsx
+@@ -261,6 +261,12 @@ function Thumbnails({
+     </aside>
+   );
+ }
++export function PageNavigator({current,count,go,close}:{current:number;count:number;go:(page:number)=>void;close:()=>void}) {
++ useLocale();const [draft,setDraft]=useState(String(current)),[error,setError]=useState(false);
++ useEffect(()=>{setDraft(String(current));setError(false);},[current]);
++ const confirm=()=>{const page=Number(draft);if(!/^\d+$/.test(draft)||!Number.isInteger(page)||page<1||page>count){setError(true);return;}setError(false);go(page);};
++ return <div className="pdf-page-navigator"><button disabled={current===1} onClick={()=>go(current-1)}>{tr('Previous')}</button><input type="text" inputMode="numeric" aria-label={tr('Jump to page')} aria-invalid={error} value={draft} onChange={e=>{setDraft(e.target.value);setError(false);}} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();confirm();}if(e.key==='Escape'){e.preventDefault();e.stopPropagation();setDraft(String(current));close();}}}/><span>/ {count}</span><button disabled={current===count} onClick={()=>go(current+1)}>{tr('Next')}</button>{error&&<span role="alert">{tr('Enter a page from 1 to {v0}.',{v0:count})}</span>}</div>;
++}
+ export function PdfViewer({
+   model: engine,
+   context,
+@@ -274,6 +280,7 @@ export function PdfViewer({
+   const preferences=useUiSettings();
+   const focusWindow=new URLSearchParams(location.search).get('window')==='focus';
+   const [utility,setUtility]=useState<'zoom'|'page'|undefined>();
++  const zoomTrigger=useRef<HTMLButtonElement>(null),pageTrigger=useRef<HTMLButtonElement>(null);
+   const saved = session.metadata;
+   const [scale, setScale] = useState(Number(saved.pdfZoom) || 1),
+     [fit, setFit] = useState(String(saved.pdfFit || "width")),
+@@ -495,6 +502,7 @@ export function PdfViewer({
+         action: () => setPanel(panel === "outline" ? "" : "outline"),
+       },
+     ]),
++    [context.registerActions, engine, panel, effective, rotation, current, scroll, sizes],
+   );
+   if (engine.error)
+     return (
+@@ -618,9 +626,9 @@ export function PdfViewer({
+           <option value="custom">{tr("Custom zoom")}</option>
+         </select>
+       </div>; const host = focusWindow && document.getElementById('focus-viewer-tools');return host ? createPortal(controls, host) : controls; })()}
+-      <div className="pdf-utility-triggers"><button data-floating-trigger aria-label={tr("Zoom Controls")} onClick={()=>setUtility(v=>v==='zoom'?undefined:'zoom')}>{tr("Zoom")}</button><button data-floating-trigger aria-label={tr("Page Navigator")} onClick={()=>setUtility(v=>v==='page'?undefined:'page')}>{tr("Pages")}</button></div>
+-      {utility==='page'&&<FloatingPanel title={tr("Page Navigator")} owner={context.source} close={()=>setUtility(undefined)}><div className="pdf-page-navigator"><button disabled={current===1} onClick={()=>go(current-1)}>{tr("Previous")}</button><input type="number" min={1} max={count} aria-label={tr("Jump to page")} value={current} onChange={e=>{const page=Number(e.target.value);if(Number.isInteger(page)&&page>=1&&page<=count)go(page);}}/><span>/ {count}</span><button disabled={current===count} onClick={()=>go(current+1)}>{tr("Next")}</button></div></FloatingPanel>}
+-      {utility==='zoom'&&<FloatingPanel title={tr("Zoom Controls")} owner={context.source} close={()=>setUtility(undefined)}><div className="pdf-floating-controls" aria-label={tr("PDF zoom and rotation")}>
++      <div className="pdf-utility-triggers"><button ref={zoomTrigger} data-floating-trigger aria-label={tr("Zoom Controls")} onClick={()=>setUtility(v=>v==='zoom'?undefined:'zoom')}>{tr("Zoom")}</button><button ref={pageTrigger} data-floating-trigger aria-label={tr("Page Navigator")} onClick={()=>setUtility(v=>v==='page'?undefined:'page')}>{tr("Pages")}</button></div>
++      {utility==='page'&&<FloatingPanel title={tr("Page Navigator")} layoutId="page-navigator" anchorElement={pageTrigger.current} owner={context.source} close={()=>setUtility(undefined)}><PageNavigator current={current} count={count} go={go} close={()=>setUtility(undefined)}/></FloatingPanel>}
++      {utility==='zoom'&&<FloatingPanel title={tr("Zoom Controls")} layoutId="zoom-controls" anchorElement={zoomTrigger.current} owner={context.source} close={()=>setUtility(undefined)}><div className="pdf-floating-controls" aria-label={tr("PDF zoom and rotation")}>
+         <button aria-label={tr("Zoom out")} onClick={() => zoom(effective * 0.8)}>
+           −
+         </button>
+@@ -632,13 +640,14 @@ export function PdfViewer({
+         <button onClick={()=>zoom(effective,'width')}>{tr("Fit to Width")}</button><button onClick={()=>zoom(effective,'page')}>{tr("Fit to Page")}</button><button onClick={()=>zoom(1,'custom')}>{tr("Actual Size")}</button>
+       </div></FloatingPanel>}
+       {panel === "search" && (
+-        <FloatingPanel title={tr("Search Panel")} owner={context.source} close={()=>setPanel('')}><div className="document-search">
++        <FloatingPanel title={tr("Search Panel")} layoutId="search-panel" owner={context.source} close={()=>setPanel('')}><div className="document-search">
+           <input
+             ref={search}
+             aria-label={tr("Search PDF")}
+             disabled={!engine.copyAllowed}
+             value={query}
+             onChange={(e) => setQuery(e.target.value)}
++            onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();if(hits.length){const next=(selected+(e.shiftKey?-1:1)+hits.length)%hits.length;setSelected(next);go(hits[next].page);}}}}
+             placeholder={tr("Find in document")}
+           />
+           <label>
+@@ -703,7 +712,7 @@ export function PdfViewer({
+             onGo={go}
+           />
+         )}
+-        {panel === "thumbnails" && focusWindow && <FloatingPanel title={tr("Thumbnail Strip")} owner={context.source} close={()=>setPanel('')} width={220}><Thumbnails engine={engine} current={current} rotation={rotation} onGo={go}/></FloatingPanel>}
++        {panel === "thumbnails" && focusWindow && <FloatingPanel title={tr("Thumbnail Strip")} layoutId="thumbnail-strip" owner={context.source} close={()=>setPanel('')} width={220}><Thumbnails engine={engine} current={current} rotation={rotation} onGo={go}/></FloatingPanel>}
+         <div
+           ref={viewport}
+           className="pdf-viewport"
+diff --git a/src/viewer/plugins/text/TextViewer.tsx b/src/viewer/plugins/text/TextViewer.tsx
+index 1cc0d2e..35dda7a 100644
+--- a/src/viewer/plugins/text/TextViewer.tsx
++++ b/src/viewer/plugins/text/TextViewer.tsx
+@@ -1,5 +1,6 @@
+-import { formatNumber } from "../../../i18n";
+-import { t as tr, useUiLanguage as useLocale } from "../../../i18n";
++import { FloatingPanel } from '../../../components/common/FloatingPanel';
++import { formatNumber } from "../../../i18n";
++import { t as tr, useUiLanguage as useLocale } from "../../../i18n";
+ import { useUiSettings } from "../../../platform/ui-settings";
+ import { useEffect, useLayoutEffect, useRef, useState } from "react";
+ import type { ViewerRenderProps } from "../../core/types";
+@@ -11,7 +12,7 @@ import { useBinaryActivity as useSourceActivity } from '../hex/activity';
+ import { sourcePosition } from './source-position';
+ import type { ConfigNode } from './source-analysis';
+ const languages=['plaintext','javascript','typescript','jsx','tsx','python','rust','go','java','kotlin','c','cpp','csharp','objectivec','matlab','perl','prolog','ruby','php','swift','css','scss','less','xml','bash','powershell','dos','lua','r','dart','scala','dockerfile','makefile','cmake','properties','ini','yaml','json','jsonc'];
+-function ConfigBranch({node,jump}:{node:ConfigNode;jump:(line:number)=>void}){
++function ConfigBranch({node,jump}:{node:ConfigNode;jump:(line:number)=>void}){
+   useLocale();const [open,setOpen]=useState(false);return <details onToggle={e=>setOpen(e.currentTarget.open)}><summary><button onClick={()=>jump(node.line)}>{node.name} · {node.kind} · {node.line}:{node.column}</button></summary>{open && node.children?.map((child,i)=><ConfigBranch key={i} node={child} jump={jump}/>)}</details>;}
+ export function TextViewer({
+   model,
+@@ -19,7 +20,7 @@ export function TextViewer({
+   updateSession,
+   activeCapability,
+   context,
+-}: ViewerRenderProps<TextDocumentModel>) {
++}: ViewerRenderProps<TextDocumentModel>) {
+   useLocale();
+   useTextModel(model);
+   const active=useSourceActivity(context.active ?? true);
+@@ -320,7 +321,7 @@ export function TextViewer({
+         <p role="alert">{model.diagnostics.join(" ")}</p>
+       )}
+       {searchOpen && (
+-        <div className="text-search" role="search">
++        <FloatingPanel title={tr("Search Panel")} layoutId="text-search" owner={context.source} close={()=>setSearchOpen(false)}><div className="text-search" role="search">
+           <input
+             ref={searchRef}
+             aria-label={tr("Search text")}
+@@ -402,7 +403,7 @@ export function TextViewer({
+             <small>
+               {tr("Very long lines skipped by regex. Use literal search to scan all text.")}</small>
+           )}
+-        </div>
++        </div></FloatingPanel>
+       )}
+       {goOpen && (
+         <form
+diff --git a/src/workspace/productivity.css b/src/workspace/productivity.css
+index 28b31b9..f6a0af0 100644
+--- a/src/workspace/productivity.css
++++ b/src/workspace/productivity.css
+@@ -7,8 +7,8 @@
+ .productivity-palette small{display:block;opacity:.6;overflow:hidden;text-overflow:ellipsis;max-width:500px}
+ .opened-files{overflow-x:auto;flex-wrap:nowrap}.opened-files button{flex-shrink:0;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .focus-mode>.sidebar,.focus-mode .global-bar,.focus-mode .file-inspector-details{display:none}.focus-mode{grid-template-columns:0 1fr}
+-.productivity-search{position:fixed;right:18px;top:120px;bottom:30px;width:min(460px,90vw);z-index:var(--z-popover);padding:16px;background:var(--surface,#fff);color:var(--text,#222);border:1px solid #8885;border-radius:12px;box-shadow:0 12px 50px #0003;overflow:auto}
+-.productivity-search header{display:flex;gap:8px}.productivity-search input{min-width:0;width:100%}.productivity-search div>button{display:flex;flex-direction:column;text-align:left;padding:12px;width:100%;margin:4px 0;background:transparent;color:inherit;border:1px solid #8883}.productivity-search span{white-space:pre-wrap;overflow-wrap:anywhere}
++.productivity-search{position:relative;width:100%;padding:4px;background:var(--surface,#fff);color:var(--text,#222);border:0;border-radius:0;box-shadow:none;overflow:visible}
++.productivity-search header{display:flex;flex-wrap:wrap;gap:8px}.productivity-search input{min-width:0;width:100%}.productivity-search div>button{display:flex;flex-direction:column;text-align:left;padding:12px;width:100%;margin:4px 0;background:transparent;color:inherit;border:1px solid #8883}.productivity-search span{white-space:pre-wrap;overflow-wrap:anywhere}
+ .compare-view header{display:flex;gap:16px;align-items:center;padding:12px}.compare-columns{display:grid;grid-template-columns:1fr 1fr;height:65vh;gap:1px;background:#8885}.compare-columns>div{overflow:auto;background:var(--surface,#fff);min-width:0}.compare-columns pre{margin:0;min-height:1.5em;font:13px/1.5 Consolas,monospace;white-space:pre;padding:0 12px}.diff-added{background:#3abf6630}.diff-removed{background:#ef575730}.diff-empty{background:#8881}.compare-view footer{padding:10px;opacity:.7;font-size:12px}
+ .tab-surface{display:flex;flex:1;min-height:0;min-width:0;overflow:hidden}
+ .tab-surface>.document-surface{flex:1;min-width:0}
+diff --git a/src/workspace/reference.css b/src/workspace/reference.css
+index b9b1de9..89686a8 100644
+--- a/src/workspace/reference.css
++++ b/src/workspace/reference.css
+@@ -33,10 +33,10 @@ html[data-density=compact] .sidebar-item{min-height:32px;height:32px}html[data-d
+ @media(max-width:900px){.global-bar .global-actions{display:none}.home-file-art{display:none}.home-welcome{min-height:170px}.home-bottom-grid{grid-template-columns:1fr}.home-card:last-child{grid-column:auto}.home-welcome h1{font-size:28px}.home-card:last-child .home-format-row{width:100%}.settings-center{grid-template-columns:160px 1fr}.settings-page{padding:18px}.setting-row select{width:130px}.viewer-panel.viewer-right{width:210px;flex-basis:210px}}
+ @media(forced-colors:active){.app-shell,.sidebar,.workspace>main{background:Canvas}.button.primary{background:Highlight;color:HighlightText}.home-drop-zone{border-color:CanvasText}.theme-card[aria-pressed=true],.accent-options button[aria-pressed=true]{outline:2px solid Highlight}}
+ 
+-.floating-panel{position:fixed;z-index:var(--z-popover);max-width:calc(100vw - 24px);max-height:calc(100vh - 64px);border:1px solid var(--border-default);border-radius:10px;background:var(--surface-primary);box-shadow:0 8px 32px var(--shadow-color);overflow:hidden}.floating-panel>header{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--border-subtle);cursor:move;touch-action:none}.floating-panel>header strong{flex:1;font-size:12px}.floating-panel>header button{padding:4px;border-radius:4px}.floating-panel-content{max-height:calc(100vh - 125px);overflow:auto;padding:8px}.floating-panel .viewer-more-panel{position:static;border:0;box-shadow:none;width:100%;background:transparent;max-height:none;display:grid}.floating-panel .viewer-more-panel button{text-align:left;padding:9px;font-size:12px;border-radius:5px}
++.floating-panel{position:fixed;z-index:calc(var(--z-panel) + var(--panel-order,0));max-width:calc(100vw - 24px);max-height:calc(100vh - 64px);border:1px solid var(--border-default);border-radius:10px;background:var(--surface-primary);box-shadow:0 8px 32px var(--shadow-color);overflow:hidden}.floating-panel>header{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--border-subtle);cursor:move;touch-action:none}.floating-panel>header strong{flex:1;font-size:12px}.floating-panel>header button{padding:4px;border-radius:4px}.floating-panel-content{max-height:calc(100vh - 125px);overflow:auto;padding:8px}.floating-panel .viewer-more-panel{position:static;border:0;box-shadow:none;width:100%;background:transparent;max-height:none;display:grid}.floating-panel .viewer-more-panel button{text-align:left;padding:9px;font-size:12px;border-radius:5px}
+ .focus-window{height:100dvh;position:relative;padding:34px 0 0;display:flex;flex-direction:column;gap:0;overflow:hidden}.focus-window>main{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;border-radius:12px;background:var(--surface-primary)}.focus-top-controls{display:flex;align-items:center;gap:12px;background:var(--surface-primary);padding:7px 12px;min-height:44px;border-radius:9px;transition:opacity 120ms}.focus-top-controls strong{flex:1;font-size:13px}.focus-top-controls button{display:flex;align-items:center;gap:6px;border:1px solid var(--border-default);border-radius:6px;padding:7px;font-size:12px}.focus-background-gradient{background-image:linear-gradient(130deg,var(--surface-secondary),var(--app-background))}.focus-background-blur{background-image:radial-gradient(ellipse at top,var(--accent-subtle),var(--surface-secondary))}
+ 
+-.art-scroll-owner{scrollbar-width:none!important}.art-scroll-owner::-webkit-scrollbar{width:0!important;height:0!important}.art-scrollbar{position:fixed;z-index:21;cursor:pointer;touch-action:none;background:transparent;opacity:.7}.art-scrollbar[hidden]{display:none!important}.art-scrollbar>span{display:block;position:absolute;border-radius:8px;background:color-mix(in srgb,var(--text-secondary) 30%,transparent);pointer-events:auto}.art-scrollbar-y>span{right:4px;width:3px;min-height:24px}.art-scrollbar-x>span{bottom:4px;height:3px;min-width:24px}.art-scrollbar:hover,.art-scrollbar:focus-visible,.art-scrollbar[data-dragging=true]{opacity:1}.art-scrollbar-y:hover>span,.art-scrollbar-y:focus-visible>span,.art-scrollbar-y[data-dragging=true]>span{width:8px;right:2px;background:color-mix(in srgb,var(--text-secondary) 58%,transparent)}.art-scrollbar-x:hover>span,.art-scrollbar-x:focus-visible>span,.art-scrollbar-x[data-dragging=true]>span{height:8px;bottom:2px;background:color-mix(in srgb,var(--text-secondary) 58%,transparent)}html[data-scrollbar=always] .art-scrollbar{opacity:1}@media(forced-colors:active){.art-scrollbar{display:none}.art-scroll-owner{scrollbar-width:auto!important}.art-scroll-owner::-webkit-scrollbar{width:12px!important;height:12px!important}}
++.art-scroll-owner{scrollbar-width:none!important}.art-scroll-owner::-webkit-scrollbar{width:0!important;height:0!important}.art-scrollbar{position:fixed;z-index:var(--z-scrollbar);cursor:pointer;touch-action:none;background:transparent;opacity:.7}.art-scrollbar[hidden]{display:none!important}.art-scrollbar>span{display:block;position:absolute;border-radius:8px;background:color-mix(in srgb,var(--text-secondary) 30%,transparent);pointer-events:auto}.art-scrollbar-y>span{right:4px;width:3px;min-height:24px}.art-scrollbar-x>span{bottom:4px;height:3px;min-width:24px}.art-scrollbar:hover,.art-scrollbar:focus-visible,.art-scrollbar[data-dragging=true]{opacity:1}.art-scrollbar-y:hover>span,.art-scrollbar-y:focus-visible>span,.art-scrollbar-y[data-dragging=true]>span{width:8px;right:2px;background:color-mix(in srgb,var(--text-secondary) 58%,transparent)}.art-scrollbar-x:hover>span,.art-scrollbar-x:focus-visible>span,.art-scrollbar-x[data-dragging=true]>span{height:8px;bottom:2px;background:color-mix(in srgb,var(--text-secondary) 58%,transparent)}html[data-scrollbar=always] .art-scrollbar{opacity:1}@media(forced-colors:active){.art-scrollbar{display:none}.art-scroll-owner{scrollbar-width:auto!important}.art-scroll-owner::-webkit-scrollbar{width:12px!important;height:12px!important}}
+ #root{zoom:var(--ui-scale,1);height:calc(100dvh / var(--ui-scale,1))}.app-shell,.focus-window{height:100%;min-height:0}.csv-formula-bar{display:flex;align-items:center;gap:12px;padding:10px;border-block:1px solid var(--border-subtle)}.csv-formula-bar>span{min-width:86px;padding:7px;border:1px solid var(--border-default);border-radius:6px}.csv-formula-bar>i{font-size:22px;color:var(--text-secondary)}.csv-formula-bar>input{flex:1;min-width:0;padding:8px;border:1px solid var(--border-default);border-radius:6px;background:var(--surface-primary);color:var(--text-primary)}.csv-column-chooser{display:grid;gap:10px}.csv-column-chooser label{display:flex;gap:9px;align-items:center}.inspector-close{float:right;padding:3px 8px;border:1px solid var(--border-default);border-radius:5px}
+ .has-document .opened-file-actions{display:none}.has-document .viewer-debug{display:none}.format-information{padding:5px 12px;font-size:10px;border:0;border-bottom:1px solid var(--border-subtle)}.viewer-file-heading strong{font-size:18px}.viewer-file-heading>span{font-size:11px;color:var(--text-muted)}.viewer-file-meta{font-size:10px}.viewer-state-label{font-size:10px;color:var(--text-muted)}.document-surface>.document-toolbar:first-child{min-height:32px;padding:5px 12px}.document-surface>.document-toolbar:first-child>span:first-child{display:none}.viewer-modes{padding:5px 12px;min-height:36px}.viewer-header{min-height:40px;gap:8px;padding:6px 10px;flex-wrap:wrap}.has-document .viewer-header>.viewer-file-heading,.has-document .viewer-header>.viewer-file-meta{display:none}.viewer-header>nav{display:flex;align-items:center;gap:6px;min-width:0;flex-wrap:wrap;margin-left:auto}.viewer-header button,.viewer-header summary{font-size:11px;padding:7px 10px}.viewer-body{gap:8px}.csv-grid-row,.csv-grid-header{font-size:13px}.csv-cell.selected{outline:2px solid var(--ui-accent);outline-offset:-2px}.sidebar .category-images svg{color:#00b9c9}.sidebar .category-data svg{color:#00b958}.sidebar .category-media svg{color:#8c2bff}.sidebar .category-archives svg{color:#ffa000}
+ .archive-browser-layout{display:flex;flex:1;min-height:0;gap:10px;padding:10px}.archive-directory-pane{display:flex;flex-direction:column;width:300px;min-width:210px;flex-shrink:0;border-right:1px solid var(--border-subtle);padding-right:10px}.archive-directory-pane>h3{font-size:11px;color:var(--text-muted);padding:8px}.archive-directory-pane .archive-columns{grid-template-columns:1fr 70px 0;padding:0 8px}.archive-directory-pane .archive-columns>button:nth-child(3){display:none}.archive-directory-pane .archive-row{grid-template-columns:1fr 60px;padding:0 8px;gap:8px}.archive-directory-pane .archive-row>span:nth-child(3){display:none}.archive-preview-pane{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;background:var(--surface-secondary);border-radius:10px;overflow:hidden}.archive-preview-pane>header{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:var(--surface-primary)}.archive-preview-empty{display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;padding:24px;color:var(--text-muted)}.archive-preview-pane .viewer-header{min-height:48px}.archive-preview-pane .viewer-header .viewer-file-meta,.archive-preview-pane .viewer-file-heading>span,.archive-preview-pane .viewer-state-label{display:none}.archive-preview-pane .viewer-body{flex-direction:row!important}.archive-preview-pane .viewer-right{width:220px}.archive-preview-pane .viewer-header nav button{font-size:10px;padding:5px}.archive-preview-pane .viewer-content{padding:0}.archive-preview-pane .format-information{display:none}@media(max-width:1000px){.archive-directory-pane{width:240px}.archive-preview-pane .viewer-right{display:none}}
+@@ -46,13 +46,13 @@ html[data-density=compact] .sidebar-item{min-height:32px;height:32px}html[data-d
+ .m11-media-workspace{display:flex;gap:10px;flex:1;min-height:0;min-width:0}.recent-media-panel{width:220px;flex-shrink:0;overflow:auto;padding:14px 10px;border:1px solid var(--border-subtle);border-radius:10px;background:var(--surface-primary)}.recent-media-panel header{display:flex;justify-content:space-between;margin-bottom:14px}.recent-media-panel h3{font-size:14px}.recent-media-panel nav{display:flex;gap:4px;margin-bottom:14px}.recent-media-panel nav button{flex:1;padding:6px;font-size:11px;border-radius:6px;background:var(--surface-secondary)}.recent-media-panel nav button[aria-pressed=true]{background:var(--ui-accent);color:#fff}.recent-media-file{display:flex;align-items:center;gap:10px;text-align:left;width:100%;padding:12px 6px;border:1px solid transparent;border-radius:8px}.recent-media-file[aria-pressed=true]{border-color:var(--ui-accent);background:var(--accent-subtle)}.recent-media-file>span{min-width:0}.recent-media-file strong{font-size:12px;display:block;overflow:hidden;text-overflow:ellipsis}.recent-media-file small{display:block;color:var(--text-muted);font-size:10px;margin-top:8px}.recent-media-panel>p{font-size:12px;color:var(--text-secondary)}.m11-media-workspace>.m11-media{border-radius:10px;overflow:hidden}.has-document .viewer-scroll:has(.m11-media-workspace) .viewer-content{padding:10px}@media(max-width:1100px){.recent-media-panel{width:180px}}
+ .has-document .tab-surface,.focus-window>main>.viewer-host{display:flex;flex:1;min-height:0;flex-direction:column}.has-document .viewer-scroll,.focus-window .viewer-scroll{display:flex;flex:1;min-height:0;flex-direction:column;overflow:hidden}.has-document .viewer-shell,.focus-window .viewer-shell{position:relative;display:flex;flex:1;min-height:0;flex-direction:column}.has-document .viewer-shell>.viewer-body,.focus-window .viewer-shell>.viewer-body{display:flex;flex:1;min-height:0;flex-direction:row}.has-document .viewer-body>.viewer-content,.focus-window .viewer-body>.viewer-content{display:flex;flex:1;min-width:0;min-height:0;flex-direction:column;overflow:auto}.has-document .csv-viewer,.focus-window .csv-viewer{display:flex;flex:1;min-height:0;padding:0 12px;overflow:hidden}.has-document .csv-panes,.focus-window .csv-panes{flex:1;height:auto!important;min-height:0}.has-document .pdf-viewer,.focus-window .pdf-viewer{flex:1;height:100%;min-height:0;position:relative}.has-document .text-viewer,.focus-window .text-viewer{flex:1;min-height:0;overflow:hidden}.has-document .text-viewport,.focus-window .text-viewport{flex:1;height:auto;min-height:0}.viewer-shell>.viewer-status{flex:0 0 auto;padding:0}.viewer-content>.markdown-viewer{flex:1;height:100%;min-height:0}.viewer-panel.viewer-right{overflow:auto;height:auto}.has-document .viewer-content>.image-viewer{flex:1;min-height:0}
+ .floating-panel .pdf-floating-controls{opacity:1;pointer-events:auto}.pdf-viewer>.document-toolbar{order:-1}.floating-panel .pdf-floating-controls button{padding:7px;border:1px solid var(--border-default);border-radius:5px}
+-.floating-panel .pdf-thumbnails{max-height:min(440px,calc(100dvh - 180px));overflow:auto}.floating-panel>header:focus-visible{outline:2px solid var(--primary,#0066ff);outline-offset:-2px}
++.floating-panel .pdf-thumbnails,.floating-panel .document-sidebar{height:min(420px,calc(100dvh - 180px));max-height:min(420px,calc(100dvh - 180px));min-height:0;overflow:auto;width:100%}.floating-panel>header:focus-visible{outline:2px solid var(--primary,#0066ff);outline-offset:-2px}
+ 
+ /* Focus keeps only native window chrome in the layout. Reading tools overlay it. */
+ .focus-window>.prism-titlebar{height:34px}
+ .focus-window>main.focus-reading-surface{border-radius:0;outline:none;padding:0}
+ .focus-window .viewer-body>.viewer-content{padding:0}
+-.focus-top-controls{position:fixed;top:44px;left:16px;right:16px;margin-inline:auto;max-width:1100px;min-height:44px;padding:6px 8px;gap:8px;z-index:40;border:1px solid var(--border-default);box-shadow:0 4px 18px var(--shadow-color);overflow-x:auto}
++.focus-top-controls{position:fixed;top:44px;left:16px;right:16px;margin-inline:auto;max-width:1100px;min-height:44px;padding:6px 8px;gap:8px;z-index:var(--z-toolbar);border:1px solid var(--border-default);box-shadow:0 4px 18px var(--shadow-color);overflow-x:auto}
+ .focus-top-controls[data-visible=false]{visibility:hidden;opacity:0;pointer-events:none}
+ .focus-viewer-tools{min-width:0;flex:1}
+ .focus-viewer-tools:empty{display:none}
+@@ -63,12 +63,12 @@ html[data-density=compact] .sidebar-item{min-height:32px;height:32px}html[data-d
+ .focus-common-tools button{min-height:32px;flex-shrink:0}
+ .focus-window .pdf-viewer>.pdf-utility-triggers{bottom:12px;right:18px}
+ .focus-window .pdf-viewport{border-radius:0}
+-.focus-window .viewer-modes{position:absolute;top:96px;left:16px;z-index:35;background:var(--surface-primary);border:1px solid var(--border-default);border-radius:8px}
++.focus-window .viewer-modes{position:absolute;top:96px;left:16px;z-index:var(--z-toolbar);background:var(--surface-primary);border:1px solid var(--border-default);border-radius:8px}
+ .focus-top-controls[data-visible=false]~main .viewer-modes{visibility:hidden;pointer-events:none}
+ .focus-loading-feedback,.focus-error{position:absolute;top:100px;left:16px;right:16px;z-index:35;padding:12px;background:var(--surface-primary);border:1px solid var(--border-default);border-radius:8px}
+ .focus-window .viewer-shell>.viewer-status,.has-document.status-hide .viewer-shell>.viewer-status{display:block}
+ .viewer-shell>.viewer-status:empty{display:none}
+-.viewer-shell>.viewer-status-floating{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:40;max-width:calc(100% - 24px);width:max-content;pointer-events:none;background:transparent;border:0}
++.viewer-shell>.viewer-status-floating{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:var(--z-toolbar);max-width:calc(100% - 24px);width:max-content;pointer-events:none;background:transparent;border:0}
+ .viewer-status-floating .ui-context-status{border:1px solid var(--border-default);border-radius:9px;padding:7px 14px;min-height:30px;box-shadow:0 3px 16px var(--shadow-color);pointer-events:auto;transition:opacity 120ms}
+ .ui-context-status[data-visible=false]{opacity:0;visibility:hidden;pointer-events:none}
+ .ui-context-status [role=alert]{color:var(--text-primary);font-weight:600}
+diff --git a/tests/csv-viewer.test.tsx b/tests/csv-viewer.test.tsx
+index 24ecf43..6865ae9 100644
+--- a/tests/csv-viewer.test.tsx
++++ b/tests/csv-viewer.test.tsx
+@@ -148,7 +148,7 @@ describe("CSV registry and surfaces", () => {
+     expect(screen.getAllByRole("button", { name: /^name/ })).toHaveLength(2);
+     expect(screen.getByRole("gridcell", { name: "A" })).toBeInTheDocument();
+     expect(screen.getByRole("gridcell", { name: "extra" })).toBeInTheDocument();
+-    expect(screen.getByText(/Duplicate column names/)).toBeInTheDocument();
++    expect(await screen.findByText(/Duplicate column names/)).toBeInTheDocument();
+   });
+   it("keyboard navigation uses one grid tab stop and resizes columns by keyboard", async () => {
+     await open();
+diff --git a/tests/module-26.test.tsx b/tests/module-26.test.tsx
+new file mode 100644
+index 0000000..2828bce
+--- /dev/null
++++ b/tests/module-26.test.tsx
+@@ -0,0 +1,39 @@
++import {afterEach,describe,it,expect,vi} from 'vitest';
++import {act,fireEvent,render,screen} from '@testing-library/react';
++import {useState} from 'react';
++import {FloatingPanel} from '../src/components/common/FloatingPanel';
++import {placeLayer} from '../src/components/common/layer-layout';
++import {scrollKey,intersectRect} from '../src/components/common/ScrollbarSystem';
++import {PageNavigator,PdfViewer} from '../src/viewer/plugins/pdf/PdfViewer';
++afterEach(()=>vi.unstubAllGlobals());
++describe('Module 26 floating and scroll boundaries',()=>{
++ it('does not republish unchanged PDF commands when the host redraws',()=>{
++  const registerActions=vi.fn(()=>vi.fn()),engine={subscribe:()=>()=>{},snapshot:()=>0,cancelSearch:vi.fn(),firstSize:{width:600,height:800},copyAllowed:true};
++  const props={model:engine,context:{source:{},registerActions},session:{metadata:{}},updateSession:vi.fn()} as unknown as Parameters<typeof PdfViewer>[0];
++  const view=render(<PdfViewer {...props}/>);expect(registerActions).toHaveBeenCalledOnce();
++  view.rerender(<PdfViewer {...props} context={{...props.context}}/>);expect(registerActions).toHaveBeenCalledOnce();
++ });
++ it('flips anchored content above the bottom edge and left of the right edge',()=>{expect(placeLayer({left:980,top:620,bottom:650},330,200,1000,700)).toEqual({left:662,top:414});});
++ it('keeps scrollbar keyboard input on the intended axis',()=>{expect(scrollKey('ArrowDown',false,10,100,1000)).toBeUndefined();expect(scrollKey('ArrowRight',true,10,100,1000)).toBeUndefined();expect(scrollKey('ArrowRight',false,10,100,1000)).toBe(50);expect(scrollKey('End',true,10,100,1000)).toBe(1000);expect(scrollKey('PageUp',true,10,100,1000)).toBe(0);});
++ it('clips nested overlays to the visible ancestor',()=>{expect(intersectRect({left:0,top:0,right:500,bottom:500},{left:40,top:100,right:300,bottom:400})).toEqual({left:40,top:100,right:300,bottom:400});});
++ it('raises an older panel and closes only that panel on Escape',()=>{
++  function Pair(){const [a,setA]=useState(true),[b,setB]=useState(true);return <>{a&&<FloatingPanel title="Panel A" owner={{}} close={()=>setA(false)}>A</FloatingPanel>}{b&&<FloatingPanel title="Panel B" owner={{}} close={()=>setB(false)}>B</FloatingPanel>}</>;}
++  render(<Pair/>);fireEvent.pointerDown(screen.getByRole('region',{name:'Panel A'}));fireEvent.keyDown(window,{key:'Escape'});expect(screen.queryByRole('region',{name:'Panel A'})).toBeNull();expect(screen.getByRole('region',{name:'Panel B'})).toBeInTheDocument();fireEvent.keyDown(window,{key:'Escape'});expect(screen.queryByRole('region')).toBeNull();
++ });
++ it('does not dismiss a panel when its overlay scrollbar or modal is used',()=>{
++  const close=vi.fn();render(<FloatingPanel title="Tools" owner={{}} close={close}>Tools</FloatingPanel>);
++  const bar=document.createElement('div');bar.dataset.overlayScrollbar='true';document.body.append(bar);fireEvent.pointerDown(bar);bar.remove();expect(close).not.toHaveBeenCalled();
++  const modal=document.createElement('div');modal.setAttribute('aria-modal','true');document.body.append(modal);fireEvent.pointerDown(document.body);fireEvent.keyDown(window,{key:'Escape'});modal.remove();expect(close).not.toHaveBeenCalled();
++ });
++ it('reclamps after content resizing and disconnects its observer',()=>{
++  let changed:ResizeObserverCallback=()=>{};const disconnect=vi.fn();vi.stubGlobal('ResizeObserver',class {constructor(fn:ResizeObserverCallback){changed=fn;}observe(){}disconnect=disconnect;});
++  const frames:FrameRequestCallback[]=[];vi.stubGlobal('requestAnimationFrame',(fn:FrameRequestCallback)=>{frames.push(fn);return frames.length;});
++  const {unmount}=render(<FloatingPanel title="Growing" owner={{}} close={()=>{}} initial={{left:900,top:650}}>Content</FloatingPanel>);const p=screen.getByRole('region',{name:'Growing'});p.getBoundingClientRect=()=>({width:330,height:350} as DOMRect);
++  act(()=>changed([],{} as ResizeObserver));act(()=>frames.shift()?.(0));
++  expect(p).toHaveStyle({left:`${innerWidth-330-16}px`,top:`${innerHeight-350-16}px`});
++  unmount();expect(disconnect).toHaveBeenCalledOnce();
++ });
++ it('validates draft pages and commits only on Enter, with Escape cancellation',()=>{
++  const go=vi.fn(),close=vi.fn();render(<PageNavigator current={3} count={10} go={go} close={close}/>);const input=screen.getByLabelText('Jump to page');fireEvent.change(input,{target:{value:'99'}});expect(go).not.toHaveBeenCalled();fireEvent.keyDown(input,{key:'Enter'});expect(screen.getByRole('alert')).toHaveTextContent('1 to 10');expect(input).toHaveAttribute('aria-invalid','true');fireEvent.change(input,{target:{value:'7'}});fireEvent.keyDown(input,{key:'Enter'});expect(go).toHaveBeenCalledWith(7);fireEvent.keyDown(input,{key:'Escape'});expect(close).toHaveBeenCalledOnce();
++ });
++});

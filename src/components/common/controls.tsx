@@ -1,5 +1,6 @@
+import { useAnchoredPosition } from './layer-layout';
 import { useUiLanguage as useLocale } from "../../i18n";
-import { forwardRef, useEffect, useLayoutEffect, useRef, useState, useId, type HTMLAttributes, type InputHTMLAttributes, type SelectHTMLAttributes, type ReactNode } from 'react';
+import { forwardRef, useCallback, useEffect, useLayoutEffect, useRef, useState, useId, type HTMLAttributes, type InputHTMLAttributes, type SelectHTMLAttributes, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement> & {
     invalid?: boolean;
@@ -93,13 +94,11 @@ export function Dropdown({ label, items, disabled }: {
 }) {
   useLocale();
     const [open, setOpen] = useState(false), [position, setPosition] = useState({ left: 0, top: 0 }), button = useRef<HTMLButtonElement>(null), menu = useRef<HTMLDivElement>(null), id = useId();
-    const close = (restore = false) => { setOpen(false); if (restore)
-        button.current?.focus(); };
-    useLayoutEffect(() => { if (!open)
-        return; const rect = button.current!.getBoundingClientRect(); setPosition({ left: Math.max(8, Math.min(rect.left, window.innerWidth - 248)), top: Math.max(8, Math.min(rect.bottom + 4, window.innerHeight - Math.min(items.length * 40 + 16, 320) - 8)) }); menu.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus(); }, [open, items]);
-    useEffect(() => { if (!open)
-        return; const outside = (e: PointerEvent) => { if (!menu.current?.contains(e.target as Node) && !button.current?.contains(e.target as Node))
-        close(); }; const resize = () => close(); document.addEventListener('pointerdown', outside); window.addEventListener('resize', resize); return () => { document.removeEventListener('pointerdown', outside); window.removeEventListener('resize', resize); }; }, [open]);
+    const dismiss = useCallback(() => setOpen(false), []);
+    const close = (restore = false) => { setOpen(false); if (restore) button.current?.focus(); };
+    useAnchoredPosition(open, button, menu, setPosition, dismiss);
+    useLayoutEffect(() => { if(open) menu.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus(); }, [open]);
+    useEffect(() => { if (!open) return; const outside = (e:PointerEvent) => { if (!menu.current?.contains(e.target as Node) && !button.current?.contains(e.target as Node)) dismiss(); }; document.addEventListener('pointerdown',outside); return()=>document.removeEventListener('pointerdown',outside); },[open,dismiss]);
     return <><button type="button" className="button secondary" ref={button} aria-haspopup="menu" aria-expanded={open} aria-controls={open ? id : undefined} disabled={disabled} onClick={() => setOpen(v => !v)} onKeyDown={e => { if (e.key === 'ArrowDown') {
         e.preventDefault();
         setOpen(true);

@@ -15,6 +15,7 @@ import { useUiSettings, uiSettingsStore } from '../../platform/ui-settings';
 import { enhanceDescriptor } from '../../formats';
 import type { FileDescriptor } from '../../types/files';
 import { ScrollbarSystem } from '../../components/common/ScrollbarSystem';
+import { ContextMenu } from '../../components/shell/ContextMenu';
 
 interface Snapshot { tabId: string; file: FileDescriptor; viewState: unknown; theme: ThemePreference }
 const temporaryLayer = '.floating-panel,[role=dialog],[role=alertdialog],[role=menu],.viewer-more[open]';
@@ -138,7 +139,7 @@ export function FocusWindow() {
     return action && <button key={id} aria-label={tr(label)} title={tr(label)} disabled={action.disabled} data-floating-trigger onClick={() => run(action)}>{icon}</button>;
   };
   return <div className={`focus-window focus-background-${settings.focusBackground}`} style={{ backgroundColor: settings.focusBackgroundColor }}>
-    <PrismTitleBar title={data?.file.name ?? tr("Focus View")} /><ScrollbarSystem />
+    <PrismTitleBar title={data?.file.name ?? tr("Focus View")} /><ScrollbarSystem /><ContextMenu />
     <div ref={toolbar} className="focus-top-controls" data-visible={show || !settings.focusAutoHide} inert={!show && settings.focusAutoHide} aria-label={tr("Focus tools")} role="toolbar" onPointerEnter={reveal} onPointerLeave={() => { nearTop.current = false; reveal(); }} onFocus={reveal}>
       <div id="focus-viewer-tools" className="focus-viewer-tools" />
       <div className="focus-common-tools">

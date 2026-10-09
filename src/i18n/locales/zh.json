@@ -1484,5 +1484,6 @@
   "TRUE": "TRUE",
   "FALSE": "FALSE",
   "Vertical scroll": "垂直滚动",
-  "Horizontal scroll": "水平滚动"
+  "Horizontal scroll": "水平滚动",
+  "Enter a page from 1 to {v0}.": "请输入 1 到 {v0} 之间的页码。"
 }

@@ -1,0 +1,54 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.13s
+     Running unittests src\lib.rs (target\debug\deps\prism_lib-18a5e64d7d9a7653.exe)
+
+running 47 tests
+test binary::tests::ipc_input_budget ... ok
+test binary::tests::offsets ... ok
+test binary::tests::cancellation_in_algorithm ... ok
+test binary::tests::permission_and_remote ... ok
+test binary::tests::exact_and_close ... ok
+test data::tests::pages_exact_blob_and_parameterization ... ok
+test binary::tests::single_none_empty_cancel ... ok
+test binary::tests::minimize_and_reload_cleanup ... ok
+test binary::tests::mutation_and_deleted ... ok
+test binary::tests::search_boundary_and_previous ... ok
+test detection::extension::format_name_tests::compound_and_special_names_preserve_bounded_detector ... ok
+test detection::extension::format_name_tests::magic_still_overrides_forged_compound_filename ... ok
+test detection::magic::stream_tests::bounded_stream_schema_detection ... ok
+test binary::tests::bounded_cache ... ok
+test document::creation::tests::forged_location_and_oversize_content_are_rejected ... ok
+test document::creation::tests::reject_traversal_and_reserved_names ... ok
+test data::tests::million_rows_keyset_and_without_rowid ... ok
+test data::tests::readonly_source_unchanged_and_extensions_disabled ... ok
+test data::tests::schemas_and_keys ... ok
+test document::creation::tests::create_does_not_overwrite_existing_file ... ok
+test document::tests::deleted_source_is_conflict ... ok
+test document::tests::conflict_preserves_source ... ok
+test document::tests::locked_source_preserves_original ... ok
+test image_decode::tests::rejects_bad_jpeg ... ok
+test document::tests::readonly_preserves_original ... ok
+test image_decode::tests::cmyk_preview_has_correct_red ... ok
+test document::tests::disk_full_preserves_original ... ok
+test document::tests::failed_temp_write_preserves_original ... ok
+test scientific::tests::ipc_axes_are_bounded ... ok
+test document::tests::replace_and_create ... ok
+test media::tests::ranges_are_bounded ... ok
+test scientific::tests::exact_axis_validation ... ok
+test document::tests::save_with_selected_handle ... ok
+test focus::tests::request_is_bounded ... ok
+test media::security_tests::source_requires_grant_and_releases_token ... ok
+test scientific::tests::reservations_pause_close_and_isolation ... ok
+test scientific::tests::scalar_empty_and_shape_overflow ... ok
+test window_chrome::tests::chrome_rejects_other_windows ... ok
+test window_chrome::tests::main_and_focus_use_the_same_software_compositor_policy ... ok
+test scientific::tests::native_reads_authorization_and_protocol ... ok
+test window_resources::tests::forget ... ok
+test window_resources::tests::isolated_and_late_registration ... ok
+test binary::tests::isolated_positional_handles ... ok
+test binary::tests::sparse_files_and_resource_release ... ok
+test image_decode::tests::large_local_jpeg_stays_scaled ... ok
+test image_decode::tests::scales_authorized_jpeg ... ok
+test image_decode::tests::requires_grant ... ok
+
+test result: ok. 47 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.37s
+

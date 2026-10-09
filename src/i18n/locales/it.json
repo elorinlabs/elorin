@@ -1484,5 +1484,6 @@
   "TRUE": "TRUE",
   "FALSE": "FALSE",
   "Vertical scroll": "Scorrimento verticale",
-  "Horizontal scroll": "Scorrimento orizzontale"
+  "Horizontal scroll": "Scorrimento orizzontale",
+  "Enter a page from 1 to {v0}.": "Inserisci un numero di pagina da 1 a {v0}."
 }

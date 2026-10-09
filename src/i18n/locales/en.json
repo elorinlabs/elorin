@@ -30,5 +30,6 @@
   "操作已取消。": "Operation cancelled.",
   "查看器发生异常，可重试或选择其他查看方式。": "The viewer encountered an error. Retry or choose another view.",
   "Vertical scroll": "Vertical scroll",
-  "Horizontal scroll": "Horizontal scroll"
+  "Horizontal scroll": "Horizontal scroll",
+  "Enter a page from 1 to {v0}.": "Enter a page from 1 to {v0}."
 }

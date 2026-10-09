@@ -91,7 +91,7 @@ function PluginSurface({
   }, [state, capability]);
   const inspector=capability === "inspect" && state.plugin.inspect ? <section aria-label={tr("Viewer inspection")}><div className="inspector-panel-actions"><button aria-label={floatingInspector?tr("Dock Inspector"):tr("Float Inspector")} disabled={focusWindow} onClick={()=>{inspectorLayoutChosen.current=true;setFloatingInspector(v=>!v);}}>{floatingInspector?tr("Dock"):tr("Float")}</button><button aria-label={tr("Hide Inspector")} onClick={()=>props.context.requestCapability?.(undefined)}>×</button></div><FileDetailsCard context={props.context}/>{inspectError ? <div role="alert"><p>{inspectError.userMessage}</p><details><summary>{tr("技术细节")}</summary><p>{inspectError.diagnosticCode} · {inspectError.code}</p><pre>{inspectError.message}</pre></details></div> : inspection === undefined ? <p role="status">{tr("Loading inspection…")}</p> : state.plugin.renderInspection ? state.plugin.renderInspection(inspection,props) : <pre>{JSON.stringify(inspection,null,2)}</pre>}</section> : slots.rightPanel;
   return <>
-    {floatingInspector&&capability==='inspect'&&inspector&&<FloatingPanel title={tr("Floating Inspector")} owner={props.context.source} close={()=>props.context.requestCapability?.(undefined)}>{inspector}</FloatingPanel>}
+    {floatingInspector&&capability==='inspect'&&inspector&&<FloatingPanel title={tr("Floating Inspector")} layoutId="floating-inspector" owner={props.context.source} close={()=>props.context.requestCapability?.(undefined)}>{inspector}</FloatingPanel>}
     <ViewerShell
       {...slots}
       statusFloating={focusWindow || settings.statusBar !== 'show'}
@@ -146,6 +146,8 @@ export function ViewerHost({
   },[file,interpretedId]);
   const [moreOpen, setMoreOpen] = useState(false);
   const [floatingTools,setFloatingTools]=useState<'toolbar'|'quick'|undefined>();
+  useEffect(()=>{setMoreOpen(false);setFloatingTools(undefined);},[source,active]);
+  useEffect(()=>{if(!active)window.dispatchEvent(new CustomEvent('elorin-viewer-inactive',{detail:{source}}));return()=>{window.dispatchEvent(new CustomEvent('elorin-viewer-inactive',{detail:{source}}));};},[source,active]);
   const [generation, setGeneration] = useState(0);
   const [capability, setCapability] = useState<keyof ViewerCapabilities | undefined>(settings.inspector&&!focusWindow&&!embedded ? "inspect" : undefined);
   useEffect(()=>setCapability(settings.inspector&&!focusWindow&&!embedded?"inspect":undefined),[settings.inspector,focusWindow,embedded]);
@@ -336,7 +338,7 @@ export function ViewerHost({
               >
                 {tr("More")}</summary>
               {moreOpen && (
-                <FloatingPanel title={tr("Viewer actions")} owner={source} close={()=>setMoreOpen(false)}><div className="viewer-more-panel">
+                <FloatingPanel title={tr("Viewer actions")} layoutId="viewer-actions" owner={source} close={()=>setMoreOpen(false)}><div className="viewer-more-panel">
                   <button onClick={()=>{setMoreOpen(false);setFloatingTools('toolbar');}}>{tr("Floating Toolbar")}</button><button onClick={()=>{setMoreOpen(false);setFloatingTools('quick');}}>{tr("Quick Actions")}</button>
                   {actions
                     .filter(

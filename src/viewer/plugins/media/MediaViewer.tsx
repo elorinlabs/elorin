@@ -15,7 +15,7 @@ import { FloatingPanel } from '../../../components/common/FloatingPanel';
 import type {ReactNode} from 'react';
 import {RecentMediaPanel} from './RecentMediaPanel';
 function MediaControlLayer({floating,owner,close,children}:{floating:boolean;owner:object;close:()=>void;children:ReactNode}){
-  useLocale();return floating?<FloatingPanel title={tr("Media Controls")} owner={owner} close={close} width={430}>{children}</FloatingPanel>:<>{children}</>;}
+  useLocale();return floating?<FloatingPanel title={tr("Media Controls")} layoutId="media-controls" owner={owner} close={close} width={430}>{children}</FloatingPanel>:<>{children}</>;}
 const time = (n: number) =>
   `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, "0")}`;
 export function MediaInspector({ model: m }: { model: MediaModel }) {
@@ -106,6 +106,7 @@ export function MediaViewer({
   const [, refresh] = useState(0),
     [show, setShow] = useState(true),
     surface = useRef<HTMLElement>(null),
+    controlSurface = useRef<HTMLDivElement>(null),
     mount = useRef<HTMLDivElement>(null),
     hide = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const controller = m.controller;
@@ -224,7 +225,10 @@ export function MediaViewer({
     setShow(true);
     if (hide.current) clearTimeout(hide.current);
     if (m.kind === "video" && state?.playing)
-      hide.current = setTimeout(() => setShow(false), 2500);
+      hide.current = setTimeout(() => {
+        const controls = controlSurface.current;
+        if (!controls?.matches(':hover') && !controls?.contains(document.activeElement)) setShow(false);
+      }, 2500);
   }
   if (!controller || !state)
     return (
@@ -322,7 +326,10 @@ export function MediaViewer({
       )}
       <button className="media-float-trigger" data-floating-trigger onClick={()=>setFloatingControls(v=>!v)}>{tr("Media Controls")}</button>
       <MediaControlLayer floating={floatingControls} owner={context.source} close={()=>setFloatingControls(false)}><div
+        ref={controlSurface}
         className="m11-media-controls"
+        onMouseLeave={reveal}
+        onBlur={reveal}
         onMouseEnter={() => {
           if (hide.current) clearTimeout(hide.current);
         }}

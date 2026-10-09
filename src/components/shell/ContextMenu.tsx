@@ -16,6 +16,7 @@ export function ContextMenu() {
   useEffect(() => {
     const open = (event: MouseEvent) => {
       event.preventDefault();
+      if (document.querySelector('[aria-modal="true"]')) { setMenu(undefined); return; }
       const target = event.target as HTMLElement;
       const input =
         target instanceof HTMLInputElement ||
@@ -102,6 +103,7 @@ export function ContextMenu() {
         );
         if (event.key === "Escape") {
           event.preventDefault();
+          event.stopPropagation();
           setMenu(undefined);
           previousFocus.current?.focus({ preventScroll: true });
         }

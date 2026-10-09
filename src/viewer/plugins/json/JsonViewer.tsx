@@ -1,3 +1,4 @@
+import { FloatingPanel } from '../../../components/common/FloatingPanel';
 import { t as tr, useUiLanguage as useLocale } from "../../../i18n";
 import { useEffect, useMemo, useState } from "react";
 import type { ViewerRenderProps } from "../../core/types";
@@ -140,7 +141,7 @@ export function JsonViewer({
   return (
     <div className={`json-viewer json-mode-${mode}`}>
       {activeCapability === "search" && model.status === "ready" && (
-        <JsonSearch model={model} navigate={navigate} signal={context.signal} />
+        <FloatingPanel title={tr("Search Panel")} layoutId="json-search" owner={context.source} close={()=>context.requestCapability?.(undefined)}><JsonSearch model={model} navigate={navigate} signal={context.signal} /></FloatingPanel>
       )}
       {model.status === "ready" && (
         <div className="json-path-surface">

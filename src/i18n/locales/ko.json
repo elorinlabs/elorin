@@ -1484,5 +1484,6 @@
   "TRUE": "TRUE",
   "FALSE": "FALSE",
   "Vertical scroll": "세로 스크롤",
-  "Horizontal scroll": "가로 스크롤"
+  "Horizontal scroll": "가로 스크롤",
+  "Enter a page from 1 to {v0}.": "1부터 {v0}까지의 페이지 번호를 입력하세요."
 }
