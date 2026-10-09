@@ -21,7 +21,7 @@ export function Home({ openFile, openFolder, newFile, navigate, recentService = 
   }, [recentService]);
   return <div className="home reference-home">
     <header className="home-welcome">
-      <div><p className="eyebrow">{tr("WELCOME TO ELORIN")}</p><h1>{tr("A unified file viewer")}<br/>{tr("for a simpler, more focused workflow.")}</h1><p>{tr("Open, view, and explore all your files in one place —")}<br/>{tr("fast, beautiful, and distraction free.")}</p></div>
+      <div><p className="eyebrow">{tr("WELCOME TO ELORIN")}</p><h1>{tr("A unified file viewer")}<br/>{tr("for a simpler, more focused workflow.")}</h1><p>{tr("Open, view, and explore all your files in one place —")} {tr("fast, beautiful, and distraction free.")}</p></div>
       <div className="home-file-art" aria-hidden="true"><div className="art-page"><FileText size={96}/></div><span className="art-format pdf"><FileText/></span><span className="art-format image"><Image/></span><span className="art-format video"><Play/></span><span className="art-format sheet"><Table2/></span><span className="art-format code"><Code2/></span></div>
     </header>
     <section className="home-drop-zone" aria-label={tr("Drag and drop files here")}>
@@ -32,7 +32,7 @@ export function Home({ openFile, openFolder, newFile, navigate, recentService = 
     <div className="home-bottom-grid">
       <section className="home-card"><header><h2>{tr("Recent Files")}</h2><button className="text-button" onClick={() => navigate('recents')}>{tr("View All")}{' '}<ArrowRight size={15}/></button></header>
         {error ? <p role="alert">{tr(error)}</p> : !files.length ? <p className="home-empty">{tr("Your recently opened files will appear here.")}</p> : files.slice(0,6).map(file => <button className="home-recent-row" key={file.id} onClick={() => openRecent ? openRecent(file.path) : onNotice(tr('Open recent files in the desktop app.'))}><span className={formatIconClass(file.name,file.extension)} aria-hidden="true"/><span>{file.name}</span><time dateTime={new Date(file.lastOpened).toISOString()}>{relativeTime(file.lastOpened)}</time></button>)}
-        <button className="text-button home-clear" onClick={() => void recentFilesService.clear().then(() => setFiles([])).catch(e => onNotice(String(e)))}>{tr("Clear Recent Files")}</button>
+        {recentService.clear && <button className="text-button home-clear" onClick={() => void recentService.clear!().then(() => setFiles([])).catch(e => onNotice(String(e)))}>{tr("Clear Recent Files")}</button>}
       </section>
       <section className="home-card"><header><h2>{tr("Quick Shortcuts")}</h2></header>{[
         {get label() { return tr("Open File"); },get description() { return tr("Browse and open a file"); },Icon:Folder,action:openFile},

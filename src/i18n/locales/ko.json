@@ -1482,5 +1482,7 @@
   "NULL": "NULL",
   "{v0} / {v1}": "{v0} / {v1}",
   "TRUE": "TRUE",
-  "FALSE": "FALSE"
+  "FALSE": "FALSE",
+  "Vertical scroll": "세로 스크롤",
+  "Horizontal scroll": "가로 스크롤"
 }

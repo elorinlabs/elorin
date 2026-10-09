@@ -473,7 +473,7 @@ export function App({
         }
       }}
     >
-      <PrismTitleBar title={activeDocument?.file.name ?? title} />
+      <PrismTitleBar title={activeDocument ? tr("File preview") : title} />
       <ContextMenu />
       <DesktopPolicy /><DocumentDialog /><ScrollbarSystem />
       {newMenu && <NewFileDialog onClose={() => setNewMenu(false)} onCreate={createFromDialog} existingNames={documents.map(d => d.file.name)}/>}

@@ -60,4 +60,11 @@ describe('Contextual status presentation', () => {
     expect(screen.getByLabelText('Viewer status')).toHaveAttribute('data-visible', 'false');
     unmount(); expect(vi.getTimerCount()).toBe(0);
   });
+  it('resets bottom-edge visibility when the source changes', () => {
+    const { rerender } = render(<ContextualStatus plugin={plugin} props={props()}/>);
+    fireEvent(window, new MouseEvent('pointermove', { clientY: innerHeight - 2 }));
+    expect(screen.getByLabelText('Viewer status')).toHaveAttribute('data-visible', 'true');
+    rerender(<ContextualStatus plugin={plugin} props={props()}/>);
+    expect(screen.getByLabelText('Viewer status')).toHaveAttribute('data-visible', 'false');
+  });
 });

@@ -1,4 +1,4 @@
-import { defineConfig } from "vitest/config";
+import { configDefaults, defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
@@ -14,6 +14,7 @@ export default defineConfig({
     rollupOptions: { output: { manualChunks: { "pdf-core": ["pdfjs-dist"] } } },
   },
   test: {
+    exclude: [...configDefaults.exclude, "**/.qa-tools/**"],
     environment: "jsdom",
     setupFiles: ["./tests/setup.ts"],
     restoreMocks: true,

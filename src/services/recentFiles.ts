@@ -7,6 +7,7 @@ export interface RecentFile {
 }
 export interface RecentFilesService {
   list(): Promise<RecentFile[]>;
+  clear?(): Promise<void>;
 }
 import { platformIntegration } from '../platform/integration';
 export const recentFilesService: RecentFilesService & { add(file: { path: string | null; name: string; extension: string | null }): Promise<void>; clear(): Promise<void> } = {

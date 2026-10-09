@@ -11,7 +11,7 @@ export function ViewerShell({
 }: ViewerSlots & { statusFloating?: boolean }) {
   useLocale();
   return (
-    <section className="viewer-shell" aria-label={tr("File preview")}>
+    <section className="viewer-shell" data-status-layout={statusFloating ? 'overlay' : 'inline'} aria-label={tr("File preview")}>
       {header && <header className="viewer-header">{header}</header>}
       {toolbar && <div className="viewer-toolbar">{toolbar}</div>}
       <div className="viewer-body">

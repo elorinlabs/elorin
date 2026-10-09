@@ -93,7 +93,16 @@ export function FocusWindow() {
         reveal();
       }
     };
-    const move = (e: PointerEvent) => { nearTop.current = e.clientY < 96 || !!(e.target as Element)?.closest?.('.focus-top-controls'); if (nearTop.current) reveal(); };
+    const move = (e: PointerEvent) => {
+      const wasNearTop = nearTop.current;
+      nearTop.current = e.clientY < 96 || !!(e.target as Element)?.closest?.('.focus-top-controls');
+      if (nearTop.current || wasNearTop) reveal();
+    };
+    const leave = () => { nearTop.current = false; dragging.current = false; reveal(); };
+    const blur = () => {
+      dragging.current = false; nearTop.current = false; clearTimeout(timer.current);
+      if (settings.focusAutoHide && !interactionLocked()) setShow(false);
+    };
     const down = () => { dragging.current = true; if (interactionLocked()) reveal(); };
     const up = () => { dragging.current = false; reveal(); };
     const focusChanged = () => { reveal(); };
@@ -105,6 +114,7 @@ export function FocusWindow() {
     });
     observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] });
     window.addEventListener('keydown', key); window.addEventListener('pointermove', move);
+    document.addEventListener('pointerleave', leave); window.addEventListener('blur', blur); window.addEventListener('focus', focusChanged);
     window.addEventListener('pointerdown', down, true); window.addEventListener('pointerup', up, true);
     window.addEventListener('pointercancel', up, true); window.addEventListener('focusin', focusChanged);
     window.addEventListener('focusout', focusChanged); document.addEventListener('visibilitychange', hidden);
@@ -112,6 +122,7 @@ export function FocusWindow() {
     return () => {
       observer.disconnect(); clearTimeout(timer.current);
       window.removeEventListener('keydown', key); window.removeEventListener('pointermove', move);
+      document.removeEventListener('pointerleave', leave); window.removeEventListener('blur', blur); window.removeEventListener('focus', focusChanged);
       window.removeEventListener('pointerdown', down, true); window.removeEventListener('pointerup', up, true);
       window.removeEventListener('pointercancel', up, true); window.removeEventListener('focusin', focusChanged);
       window.removeEventListener('focusout', focusChanged); document.removeEventListener('visibilitychange', hidden);
@@ -124,11 +135,11 @@ export function FocusWindow() {
   };
   const tool = (id: string, label: string, icon: ReactNode) => {
     const action = actions.find(a => a.id === id);
-    return action && <button key={id} aria-label={label} disabled={action.disabled} data-floating-trigger onClick={() => run(action)}>{icon}</button>;
+    return action && <button key={id} aria-label={tr(label)} title={tr(label)} disabled={action.disabled} data-floating-trigger onClick={() => run(action)}>{icon}</button>;
   };
   return <div className={`focus-window focus-background-${settings.focusBackground}`} style={{ backgroundColor: settings.focusBackgroundColor }}>
     <PrismTitleBar title={data?.file.name ?? tr("Focus View")} /><ScrollbarSystem />
-    <div ref={toolbar} className="focus-top-controls" data-visible={show || !settings.focusAutoHide} aria-label={tr("Focus tools")} role="toolbar" onPointerEnter={reveal} onPointerLeave={() => { nearTop.current = false; reveal(); }} onFocus={reveal}>
+    <div ref={toolbar} className="focus-top-controls" data-visible={show || !settings.focusAutoHide} inert={!show && settings.focusAutoHide} aria-label={tr("Focus tools")} role="toolbar" onPointerEnter={reveal} onPointerLeave={() => { nearTop.current = false; reveal(); }} onFocus={reveal}>
       <div id="focus-viewer-tools" className="focus-viewer-tools" />
       <div className="focus-common-tools">
         {tool('pdf-zoom-out', 'Zoom out', <Minus size={17} />)}{tool('pdf-zoom-in', 'Zoom in', <Plus size={17} />)}

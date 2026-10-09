@@ -28,5 +28,7 @@
   "内容解码失败，可重试或选择其他查看方式。": "Content decoding failed. Retry or choose another view.",
   "当前环境无法创建所需渲染器。": "The required renderer cannot be created in this environment.",
   "操作已取消。": "Operation cancelled.",
-  "查看器发生异常，可重试或选择其他查看方式。": "The viewer encountered an error. Retry or choose another view."
+  "查看器发生异常，可重试或选择其他查看方式。": "The viewer encountered an error. Retry or choose another view.",
+  "Vertical scroll": "Vertical scroll",
+  "Horizontal scroll": "Horizontal scroll"
 }

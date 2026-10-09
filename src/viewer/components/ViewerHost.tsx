@@ -60,7 +60,14 @@ function PluginSurface({
   const settings = useUiSettings();
   const focusWindow = new URLSearchParams(location.search).get('window') === 'focus';
   const [inspection, setInspection] = useState<unknown>();
-  const [floatingInspector,setFloatingInspector]=useState(new URLSearchParams(location.search).get('window')==='focus');
+  const [floatingInspector,setFloatingInspector]=useState(new URLSearchParams(location.search).get('window')==='focus' || matchMedia('(max-width: 1100px)').matches);
+  const inspectorLayoutChosen = useRef(false);
+  useEffect(() => {
+    const narrow = matchMedia('(max-width: 1100px)');
+    const changed = () => { if (!inspectorLayoutChosen.current && !focusWindow) setFloatingInspector(narrow.matches); };
+    narrow.addEventListener('change', changed);
+    return () => narrow.removeEventListener('change', changed);
+  }, [focusWindow]);
   const [inspectError, setInspectError] = useState<ViewerError>();
   useEffect(() => {
     let current = true;
@@ -82,13 +89,13 @@ function PluginSurface({
       current = false;
     };
   }, [state, capability]);
-  const inspector=capability === "inspect" && state.plugin.inspect ? <section aria-label={tr("Viewer inspection")}><div className="inspector-panel-actions"><button aria-label={floatingInspector?tr("Dock Inspector"):tr("Float Inspector")} onClick={()=>setFloatingInspector(v=>!v)}>{floatingInspector?tr("Dock"):tr("Float")}</button><button aria-label={tr("Hide Inspector")} onClick={()=>props.context.requestCapability?.(undefined)}>×</button></div><FileDetailsCard context={props.context}/>{inspectError ? <div role="alert"><p>{inspectError.userMessage}</p><details><summary>{tr("技术细节")}</summary><p>{inspectError.diagnosticCode} · {inspectError.code}</p><pre>{inspectError.message}</pre></details></div> : inspection === undefined ? <p role="status">{tr("Loading inspection…")}</p> : state.plugin.renderInspection ? state.plugin.renderInspection(inspection,props) : <pre>{JSON.stringify(inspection,null,2)}</pre>}</section> : slots.rightPanel;
+  const inspector=capability === "inspect" && state.plugin.inspect ? <section aria-label={tr("Viewer inspection")}><div className="inspector-panel-actions"><button aria-label={floatingInspector?tr("Dock Inspector"):tr("Float Inspector")} disabled={focusWindow} onClick={()=>{inspectorLayoutChosen.current=true;setFloatingInspector(v=>!v);}}>{floatingInspector?tr("Dock"):tr("Float")}</button><button aria-label={tr("Hide Inspector")} onClick={()=>props.context.requestCapability?.(undefined)}>×</button></div><FileDetailsCard context={props.context}/>{inspectError ? <div role="alert"><p>{inspectError.userMessage}</p><details><summary>{tr("技术细节")}</summary><p>{inspectError.diagnosticCode} · {inspectError.code}</p><pre>{inspectError.message}</pre></details></div> : inspection === undefined ? <p role="status">{tr("Loading inspection…")}</p> : state.plugin.renderInspection ? state.plugin.renderInspection(inspection,props) : <pre>{JSON.stringify(inspection,null,2)}</pre>}</section> : slots.rightPanel;
   return <>
     {floatingInspector&&capability==='inspect'&&inspector&&<FloatingPanel title={tr("Floating Inspector")} owner={props.context.source} close={()=>props.context.requestCapability?.(undefined)}>{inspector}</FloatingPanel>}
     <ViewerShell
       {...slots}
       statusFloating={focusWindow || settings.statusBar !== 'show'}
-      statusBar={<>{slots.statusBar}<ContextualStatus plugin={state.plugin} props={props}/></>}
+      statusBar={<ContextualStatus plugin={state.plugin} props={props}>{slots.statusBar}</ContextualStatus>}
       content={state.plugin.render(props)}
       rightPanel={floatingInspector&&capability==='inspect'?undefined:inspector}
     />
@@ -334,8 +341,7 @@ export function ViewerHost({
                   {actions
                     .filter(
                       (action) =>
-                        !action.primary &&
-                        !["search", "inspect"].includes(action.id),
+                        action.id !== 'focus',
                     )
                     .map((action) => (
                       <button
