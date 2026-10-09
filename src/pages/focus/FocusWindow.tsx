@@ -83,7 +83,7 @@ export function FocusWindow() {
         if (live && request === revision) { setError(''); const source = new TauriFileSource(file.path!); viewerSessionStore.transfer(data.source, source); setData(previous => previous === data ? {...data, file: enhanceDescriptor(file), source} : previous); }
       } catch (e) { if (live && request === revision) setError(uiError(e)); }
     };
-    const stop = fileWatchService.subscribe(data.file.path!, () => void refresh());
+    const stop = fileWatchService.subscribe(data.file.path!, kind => { if(kind === 'Unavailable') { if(live)setError(tr('File unavailable')); } else void refresh(); });
     void listen<{tabId: string; path: string}>('elorin://file-saved', event => { if(event.payload.tabId === data.tabId && event.payload.path === data.file.path) void refresh(); }).then(fn=>{if(live)stopSaved=fn;else fn();});
     window.addEventListener('focus', refresh);
     return () => { live=false; stop(); stopSaved?.(); window.removeEventListener('focus',refresh); };

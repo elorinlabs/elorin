@@ -18,6 +18,7 @@ fn main() {
             "data_sqlite_read",
             "data_sqlite_close",
             "select_path",
+            "select_paths",
             "load_file",
             "read_file_range",
             "file_size",

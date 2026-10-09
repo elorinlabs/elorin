@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-select-paths"
+description = "Enables the select_paths command without any pre-configured scope."
+commands.allow = ["select_paths"]
+
+[[permission]]
+identifier = "deny-select-paths"
+description = "Denies the select_paths command without any pre-configured scope."
+commands.deny = ["select_paths"]

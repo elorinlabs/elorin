@@ -699,6 +699,12 @@
           "markdownDescription": "Enables the select_path command without any pre-configured scope."
         },
         {
+          "description": "Enables the select_paths command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-select-paths",
+          "markdownDescription": "Enables the select_paths command without any pre-configured scope."
+        },
+        {
           "description": "Enables the user_environment command without any pre-configured scope.",
           "type": "string",
           "const": "allow-user-environment",
@@ -1069,6 +1075,12 @@
           "type": "string",
           "const": "deny-select-path",
           "markdownDescription": "Denies the select_path command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the select_paths command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-select-paths",
+          "markdownDescription": "Denies the select_paths command without any pre-configured scope."
         },
         {
           "description": "Denies the user_environment command without any pre-configured scope.",

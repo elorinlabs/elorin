@@ -49,6 +49,7 @@
     "allow-data-sqlite-read",
     "allow-data-sqlite-close",
     "allow-select-path",
+    "allow-select-paths",
     "allow-load-file",
     "allow-read-file-range",
     "allow-file-size",

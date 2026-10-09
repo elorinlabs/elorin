@@ -35,6 +35,7 @@
     "allow-data-sqlite-read",
     "allow-data-sqlite-close",
     "allow-load-file",
+    "allow-file-watch",
     "allow-read-file-range",
     "allow-file-size",
     "allow-open-file-external",

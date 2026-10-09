@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 import { platformIntegration } from '../src/platform/integration';
@@ -14,6 +15,15 @@ import { setUiLanguage } from '../src/i18n';
 beforeEach(()=>{localStorage.clear();setUiLanguage('en');});
 afterEach(()=>{vi.restoreAllMocks();documentSessions.clear();});
 describe('Module 27 workspace safety',()=>{
+ it('permits native multi-selection only in the main capability and declares its manifest command',()=>{
+  const main=JSON.parse(readFileSync('src-tauri/capabilities/main.json','utf8'));
+  const focus=JSON.parse(readFileSync('src-tauri/capabilities/focus.json','utf8'));
+  expect(main.permissions).toContain('allow-select-paths');
+  expect(focus.permissions).toContain('allow-file-watch');
+  expect(readFileSync('src/pages/focus/FocusWindow.tsx','utf8')).toContain("if(kind === 'Unavailable')");
+  expect(main.windows).toEqual(['main']);expect(focus.permissions).not.toContain('allow-select-paths');
+  expect(readFileSync('src-tauri/build.rs','utf8')).toContain('"select_paths"');
+ });
  it('serializes concurrent recent additions and clear in invocation order',async()=>{
   await Promise.all(['A','B','C'].map(name=>recentFilesService.add({path:`C:\\qa\\${name}.txt`,name,extension:'txt'})));
   expect((await recentFilesService.list()).map(f=>f.name)).toEqual(['C','B','A']);
