@@ -3,6 +3,7 @@ const fs=require('fs'),path=require('path'),crypto=require('crypto'),ts=require(
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
 function calls(source,file,predicate){const ast=ts.createSourceFile(file,source,ts.ScriptTarget.Latest,true),result=[];function visit(n){if(ts.isCallExpression(n)&&predicate(n,ast))result.push(n);ts.forEachChild(n,visit);}visit(ast);return result;}
 const modelByProjection={ImageDocument:'ReturnType<typeof decodePsd>',ScientificDataset:'Mat4Reader',GeometryDocument:'GeometryDocumentModel'};
+const projectionByViewer={image:'ImageDocument',scientific:'ScientificDataset',mesh:'GeometryDocument',cad:'GeometryDocument',scene:'GeometryDocument','cad-drawing':'GeometryDocument',archive:'ContainerDocument',audio:'TimelineDocument',video:'TimelineDocument',subtitle:'TimelineDocument',ebook:'DocumentPages',presentation:'DocumentPages',pdf:'DocumentPages','office-document':'DocumentPages',email:'StructuredDocument',json:'StructuredDocument',spreadsheet:'TabularDataProvider',columnar:'TabularDataProvider',database:'TabularDataProvider',csv:'TabularDataProvider',markdown:'TextDocument','core.text-fallback':'TextDocument',hex:'BinaryDocument','core.binary-fallback':'BinaryDocument'};
 function viewerIds(){
  const source=fs.readFileSync('src/viewer/builtins.ts','utf8'),ast=ts.createSourceFile('builtins.ts',source,ts.ScriptTarget.Latest,true),ids=new Set();
  function visit(n){
@@ -21,6 +22,7 @@ function check(options={}){
  for(const b of bindings){
   if(parsers.has(b.id))fail(b.id,'duplicate parser ID');parsers.set(b.id,b);
   if(!viewers.has(b.viewer))fail(b.id,`missing Viewer ${b.viewer}`);
+  if(projectionByViewer[b.viewer]!==b.projection)fail(b.id,'parser projection incompatible with registered Viewer input');
   if(modelByProjection[b.projection]!==b.outputModel)fail(b.id,`output model ${b.outputModel} incompatible with ${b.viewer}/${b.projection}`);
   for(const f of [b.module,b.worker])if(!f||!fs.existsSync(f))fail(b.id,`missing parser/worker source ${f}`);
   if(!fs.existsSync(b.module)||!fs.existsSync(b.worker))continue;
@@ -43,7 +45,7 @@ function check(options={}){
   if(ids.has(c.formatId))fail(c.formatId,'duplicate format ID');ids.add(c.formatId);
   const primary=c.supportedViews.find(v=>v.id==='primary');
   if(!primary||primary.viewerId!==c.viewerId)fail(c.formatId,'primary Viewer identity mismatch');
-  for(const v of c.supportedViews)if(!viewers.has(v.viewerId))fail(c.formatId,`missing Viewer ${v.viewerId}`);
+  for(const v of c.supportedViews){if(!viewers.has(v.viewerId))fail(c.formatId,`missing Viewer ${v.viewerId}`);if(projectionByViewer[v.viewerId]!==v.projection)fail(c.formatId,`projection ${v.projection} incompatible with Viewer ${v.viewerId}`);}
   if(c.parserId?.startsWith('viewer/')){if(c.parserId!==`viewer/${c.viewerId}`||!viewers.has(c.viewerId))fail(c.formatId,'missing viewer-owned parser pipeline');}
   else if(c.parserId){const b=parsers.get(c.parserId);if(!b||!b.formats.includes(c.formatId))fail(c.formatId,`missing parser ${c.parserId}`);else if(b.viewer!==c.viewerId||b.projection!==primary?.projection)fail(c.formatId,'parser output / Viewer input projection mismatch');}
   if(c.supportStatus==='adapter-implemented'&&!parsers.has(c.parserId))fail(c.formatId,'declared adapter support has no actual parser');
@@ -70,6 +72,7 @@ function check(options={}){
     if(e.status!=='passed'||!e.assertions?.length||!e.test_file||!fs.existsSync(e.test_file)||!e.fixture||!fs.existsSync(e.fixture)||e.fixture_sha256!==crypto.createHash('sha256').update(fs.readFileSync(e.fixture)).digest('hex'))fail(c.formatId,'invalid or stale verified sample evidence');
     if(e.resolved_viewer&&e.resolved_viewer!==c.viewerId)fail(c.formatId,'sample evidence resolved a different Viewer');
     if(e.report_file&&(!fs.existsSync(e.report_file)||read(e.report_file).status==='FAIL'))fail(c.formatId,'sample runtime report is missing or failed');
+    if(e.runtime_report&&(!fs.existsSync(e.runtime_report)||read(e.runtime_report).status!=='PASS'))fail(c.formatId,'referenced native content run is missing or not passed');
    }
   }
  }

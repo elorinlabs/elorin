@@ -5,7 +5,8 @@
     "src/viewer/builtins.ts",
     "src/formats/content-adapters.json",
     "docs/qa/module-22-capability-evidence.json",
-    "docs/qa/module-28/content-evidence.json"
+    "docs/qa/module-28/content-evidence.json",
+    "docs/qa/module-29/content-evidence.json"
   ],
   "levels": {
     "L0": "Content-based identification",
@@ -591,6 +592,27 @@
           "resolved_viewer": "scientific",
           "report_file": "docs/qa/module-28/content-evidence.json",
           "validation_run": "2026-10-09T11:15:57.571Z"
+        },
+        {
+          "format_id": "mat",
+          "fixture": "tests/fixtures/module28/signals.mat",
+          "fixture_sha256": "52efeb1964ebd1ff8e6231ec54e584af100fc74e3b3565b46676137d0e973b07",
+          "level": 3,
+          "flags": [],
+          "test_file": "docs/qa/module-29/native-qa.cjs",
+          "assertions": [
+            "signal 1.25/2.5/3.75 and 10/20/30 plus complex vector",
+            "actual native Viewer content, reading navigation and closure",
+            "normal exit leaves no observed app/WebView child process"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Probable"
+          },
+          "resolved_viewer": "scientific",
+          "runtime_report": "docs/qa/module-29/native-report.json",
+          "report_file": "docs/qa/module-29/content-evidence.json",
+          "validation_run": "2026-10-09T11:48:19.703Z"
         }
       ],
       "dependency_requirements": [
@@ -2721,6 +2743,29 @@
           "resolved_viewer": "scene",
           "report_file": "docs/qa/module-28/content-evidence.json",
           "validation_run": "2026-10-09T11:15:57.571Z"
+        },
+        {
+          "format_id": "3ds",
+          "fixture": "tests/fixtures/module28/tetrahedron.3ds",
+          "fixture_sha256": "b48e02af0b26b428c9428f7eaf01f25f8685ec0fbfa6013d5ef3d226f335dc51",
+          "level": 3,
+          "flags": [
+            "scene_graph"
+          ],
+          "test_file": "docs/qa/module-29/native-qa.cjs",
+          "assertions": [
+            "tetrahedron mesh",
+            "actual native Viewer content, reading navigation and closure",
+            "normal exit leaves no observed app/WebView child process"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Confirmed"
+          },
+          "resolved_viewer": "scene",
+          "runtime_report": "docs/qa/module-29/native-report.json",
+          "report_file": "docs/qa/module-29/content-evidence.json",
+          "validation_run": "2026-10-09T11:48:19.703Z"
         }
       ],
       "dependency_requirements": [
@@ -11290,6 +11335,27 @@
           "resolved_viewer": "image",
           "report_file": "docs/qa/module-28/content-evidence.json",
           "validation_run": "2026-10-09T11:15:57.571Z"
+        },
+        {
+          "format_id": "psd",
+          "fixture": "tests/fixtures/module28/quadrants.psd",
+          "fixture_sha256": "3d3eabb2ab1a83756d5810bc5cea5b2d9342b2f6e114483eb7d69342493f8f26",
+          "level": 3,
+          "flags": [],
+          "test_file": "docs/qa/module-29/native-qa.cjs",
+          "assertions": [
+            "64x64 quadrants with actual red RGBA pixel",
+            "actual native Viewer content, reading navigation and closure",
+            "normal exit leaves no observed app/WebView child process"
+          ],
+          "status": "passed",
+          "detector_result": {
+            "status": "Confirmed"
+          },
+          "resolved_viewer": "image",
+          "runtime_report": "docs/qa/module-29/native-report.json",
+          "report_file": "docs/qa/module-29/content-evidence.json",
+          "validation_run": "2026-10-09T11:48:19.703Z"
         }
       ],
       "dependency_requirements": [

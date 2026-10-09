@@ -1,0 +1,6 @@
+{
+ "identifier":"app.elorin.module29.qa",
+ "productName":"Elorin Module29 QA",
+ "build":{"beforeBuildCommand":"","frontendDist":"../dist"},
+ "app":{"security":{"capabilities":["main-capability","focus-capability"]}}
+}

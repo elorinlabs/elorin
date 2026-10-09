@@ -24,10 +24,11 @@ if(fs.existsSync(currentReport)){
 }
 const flags=['playback','seeking','audio_tracks','subtitle_tracks','waveform','frame_navigation','page_navigation','layers','scene_graph','metadata','color_profile','high_bit_depth','animation','external_resources'];
 const module28Report='docs/qa/module-28/content-evidence.json';
-if(fs.existsSync(module28Report)){
- const report=JSON.parse(fs.readFileSync(module28Report,'utf8'));
+const module29Report='docs/qa/module-29/content-evidence.json';
+for(const currentEvidence of [module28Report,module29Report])if(fs.existsSync(currentEvidence)){
+ const report=JSON.parse(fs.readFileSync(currentEvidence,'utf8'));
  if(report.status==='PASS')for(const sample of report.samples)if(sample.status==='passed'){
-  evidence.push({...sample,report_file:module28Report,validation_run:report.run_id});
+  evidence.push({...sample,report_file:currentEvidence,validation_run:report.run_id});
  }
 }
 const rows=catalogue.map(c=>{
@@ -42,6 +43,6 @@ const rows=catalogue.map(c=>{
  limitations:[...c.limitations,...(!proof.length?['NOT_VERIFIED: no executed content evidence; not L0 by extension.']:[])],test_fixtures:[...new Set(proof.map(p=>p.fixture))],test_status:proof.length?'passed-declared-scope':'NOT_VERIFIED',test_evidence:proof,dependency_requirements:c.dependencies,
  decoder:{implementation_source:adapter?[adapter.module,adapter.worker]:backend.source_files,dependency_requirements:c.dependencies,availability:proof.length?'verified-for-listed-fixtures':'not-runtime-verified'},metadata_provider:{implementation_source:backend.source_files,verified:proof.some(p=>p.flags?.includes('metadata'))},preview:{viewer:primary.viewerId,verified_level:proof.length?'L'+Math.max(...proof.map(p=>p.level)):null},resource_ownership_source:backend.source_files};
 });
-fs.mkdirSync('docs/formats',{recursive:true});fs.writeFileSync('docs/formats/format-capability-matrix.json',JSON.stringify({schema_version:2,generated_from:['src/formats/catalogue.json','src/viewer/builtins.ts','src/formats/content-adapters.json',evidencePath,...(fs.existsSync(module28Report)?[module28Report]:[])],levels:{L0:'Content-based identification',L1:'Validated metadata',L2:'Bounded content preview',L3:'Declared main content',L4:'Format-specific interaction'},unverified_level:null,formats:rows},null,2)+'\n');
+fs.mkdirSync('docs/formats',{recursive:true});fs.writeFileSync('docs/formats/format-capability-matrix.json',JSON.stringify({schema_version:2,generated_from:['src/formats/catalogue.json','src/viewer/builtins.ts','src/formats/content-adapters.json',evidencePath,...[module28Report,module29Report].filter(p=>fs.existsSync(p))],levels:{L0:'Content-based identification',L1:'Validated metadata',L2:'Bounded content preview',L3:'Declared main content',L4:'Format-specific interaction'},unverified_level:null,formats:rows},null,2)+'\n');
 const lines=['# Elorin 格式覆盖清单','','此清单从唯一格式 catalogue 与实际 Viewer AST 提取。已验证等级仅来自执行证据；空等级表示尚无内容验证，不以扩展名推断 L0。true 是已有证据，null 表示尚无证据，不等价于实现不存在。L3/L4 不承诺所有 codec/变体。','','| 格式 | 扩展名 | 真实注册 Viewer | 已执行验证等级 | 验证状态 |','| --- | --- | --- | --- | --- |',...rows.map(r=>`| ${r.format_id} | ${r.extensions.join(', ')} | ${r.primary_viewer} | ${r.capability_level??'未验证'} | ${r.test_status} |`),'','完整签名/规则/限制/依赖/样本/断言依据见 [机器可读矩阵](format-capability-matrix.json)。'];fs.writeFileSync('docs/formats/FORMAT-COVERAGE.md',lines.join('\n')+'\n');console.log(`${rows.length} actual format records; ${rows.filter(r=>r.capability_level).length} have executed evidence`);
 
