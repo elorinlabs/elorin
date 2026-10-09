@@ -646,6 +646,7 @@ export function PdfViewer({
             disabled={!engine.copyAllowed}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();if(hits.length){const next=(selected+(e.shiftKey?-1:1)+hits.length)%hits.length;setSelected(next);go(hits[next].page);}}}}
             placeholder={tr("Find in document")}
           />
           <label>
