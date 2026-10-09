@@ -1,0 +1,11 @@
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Cc: Carol <carol@example.com>
+Subject: =?utf-8?b?5Lit5paH6YKu5Lu2IGNhZsOpINmF2LHYrdio2Kc=?=
+Date: Thu, 08 Oct 2026 12:00:00 +0800
+Message-ID: <prism-fixture@example.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+
+5Lit5paH6YKu5Lu2IGNhZsOpINmF2LHYrdio2KcNCg==

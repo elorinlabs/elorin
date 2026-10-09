@@ -1,0 +1,1 @@
+export function formatBytes(size:number){if(size<1024)return `${size} B`;const units=['KB','MB','GB','TB'];let n=size/1024,i=0;while(n>=1024&&i<units.length-1){n/=1024;i++}return `${n<10?n.toFixed(1):Math.round(n)} ${units[i]}`}

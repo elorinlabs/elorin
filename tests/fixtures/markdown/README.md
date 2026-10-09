@@ -1,0 +1,3 @@
+# Markdown QA fixtures
+
+Open each file through Browser Preview or Tauri's Open File. Browser relative images/files gracefully report unavailable because a File does not grant sibling access. In Tauri, images.md resolves assets/sample.png through the constrained related-file adapter; missing, SVG, remote and traversal resources are unavailable. links.md opens chinese.md through App/Registry, not a Markdown navigation fork. External links open the system browser. malicious.md must never execute script or render raw HTML elements. Empty file is a normal document state. large.md has many headings/paragraphs for scrolling; source mode preserves original text. Unicode/duplicate anchors are exercised by chinese.md.

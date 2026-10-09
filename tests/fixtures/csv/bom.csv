@@ -1,0 +1,4 @@
+﻿id,name,city,active,revenue
+1,Alice,Tokyo,true,1284.42
+2,Bob,Osaka,false,892.10
+3,Carol,Kyoto,true,4218.00

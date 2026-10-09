@@ -1,0 +1,8 @@
+{
+  "identifier": "app.elorin.focus.batch1.qa",
+  "productName": "Elorin Focus QA",
+  "build": {
+    "beforeBuildCommand": "",
+    "frontendDist": "../docs/qa/focus-batch1/before-build"
+  }
+}

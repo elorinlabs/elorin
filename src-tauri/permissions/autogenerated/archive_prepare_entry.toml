@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-archive-prepare-entry"
+description = "Enables the archive_prepare_entry command without any pre-configured scope."
+commands.allow = ["archive_prepare_entry"]
+
+[[permission]]
+identifier = "deny-archive-prepare-entry"
+description = "Denies the archive_prepare_entry command without any pre-configured scope."
+commands.deny = ["archive_prepare_entry"]

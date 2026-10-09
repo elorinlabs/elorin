@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="80" onload="alert(1)"><script>alert(2)</script><foreignObject><div xmlns="http://www.w3.org/1999/xhtml">bad</div></foreignObject><image href="https://example.invalid/tracker"/><rect width="160" height="80" fill="red"/><use href="#recursive" id="recursive"/><path d="M0 0L80 80" style="stroke:url(file:///secret)"/></svg>

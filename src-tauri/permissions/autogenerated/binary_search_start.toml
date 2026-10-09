@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-binary-search-start"
+description = "Enables the binary_search_start command without any pre-configured scope."
+commands.allow = ["binary_search_start"]
+
+[[permission]]
+identifier = "deny-binary-search-start"
+description = "Denies the binary_search_start command without any pre-configured scope."
+commands.deny = ["binary_search_start"]

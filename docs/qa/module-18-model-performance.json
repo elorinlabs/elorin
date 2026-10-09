@@ -1,0 +1,38 @@
+{
+  "environment": "Current Windows host, Node; simulated range providers, not old i5 hardware",
+  "cacheBudget": 262144,
+  "records": [
+    {
+      "logicalSize": 128,
+      "jumps": 200,
+      "totalMs": 12.89709999999991,
+      "calls": 1,
+      "bytesRead": 128,
+      "peakCacheBytes": 128
+    },
+    {
+      "logicalSize": 104857600,
+      "jumps": 200,
+      "totalMs": 147.2464,
+      "calls": 200,
+      "bytesRead": 13107200,
+      "peakCacheBytes": 262144
+    },
+    {
+      "logicalSize": 1073741824,
+      "jumps": 200,
+      "totalMs": 136.45630000000006,
+      "calls": 200,
+      "bytesRead": 13107200,
+      "peakCacheBytes": 262144
+    },
+    {
+      "logicalSize": 5368709120,
+      "jumps": 200,
+      "totalMs": 194.4402,
+      "calls": 200,
+      "bytesRead": 13107200,
+      "peakCacheBytes": 262144
+    }
+  ]
+}

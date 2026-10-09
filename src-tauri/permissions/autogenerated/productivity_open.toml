@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-productivity-open"
+description = "Enables the productivity_open command without any pre-configured scope."
+commands.allow = ["productivity_open"]
+
+[[permission]]
+identifier = "deny-productivity-open"
+description = "Denies the productivity_open command without any pre-configured scope."
+commands.deny = ["productivity_open"]

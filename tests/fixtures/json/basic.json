@@ -1,0 +1,1 @@
+{"name":"Prism","version":"0.5.0","active":true,"modules":[{"id":1,"name":"Shell","complete":true},{"id":5,"name":"JSON Viewer","complete":false}],"metadata":{"language":"TypeScript","runtime":"Tauri"},"emptyObject":{},"emptyArray":[],"nothing":null}

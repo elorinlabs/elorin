@@ -1,0 +1,5 @@
+id,value
+1,"<script>alert(1)</script>"
+2,"=SUM(A1:A10)"
+3,"javascript:alert(1)"
+4,"<img src=x onerror=alert(1)>"

@@ -1,0 +1,12 @@
+const fs=require('fs'),path=require('path');
+const root=path.resolve('test-fixtures/productivity');
+for(const dir of ['tabs','search','compare','association','session','watcher','paths'])fs.mkdirSync(path.join(root,dir),{recursive:true});
+for(let i=0;i<100;i++)fs.writeFileSync(path.join(root,'tabs',`tab-${String(i).padStart(3,'0')}.txt`),`Tab ${i}\nshared needle\n`);
+for(const name of ['a & b.txt','中文 文件.txt','日本語.json','emoji🚀.md'])fs.writeFileSync(path.join(root,'paths',name),name.endsWith('.json')?'{}':`# ${name}\nshared needle`);
+fs.writeFileSync(path.join(root,'paths','windows-invalid-quote.txt'), 'Windows forbids literal double quotes in file names. Quote safety is covered by argument tests; no invalid fixture is claimed.');
+const longPath=path.join(root,'paths','long-'+ 'a'.repeat(110),'中文-'+ 'b'.repeat(110),'long-path.txt');
+fs.mkdirSync(path.dirname(longPath),{recursive:true});fs.writeFileSync(longPath,'long path Unicode works');
+fs.writeFileSync(path.join(root,'paths','long-path-reference.json'),JSON.stringify({path:longPath,length:longPath.length}));
+fs.writeFileSync(path.join(root,'compare','before.txt'),'same\nremoved\nold value\n');fs.writeFileSync(path.join(root,'compare','after.txt'),'same\nnew value\nadded\n');
+fs.writeFileSync(path.join(root,'session','corrupt.json'),'{bad');fs.writeFileSync(path.join(root,'watcher','watched.txt'),'original');
+console.log('Module 16 fixtures generated');

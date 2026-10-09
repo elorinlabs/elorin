@@ -1,0 +1,122 @@
+.has-document .viewer-scroll:has(.geometry-viewer),
+.has-document
+  .viewer-scroll:has(.geometry-viewer)
+  :is(.viewer-shell, .viewer-body, .viewer-content) {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+}
+.has-document .viewer-scroll:has(.geometry-viewer) .viewer-body {
+  flex-direction: row;
+}
+.geometry-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
+  outline: none;
+}
+.geometry-controls {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.geometry-controls button,
+.geometry-controls select,
+.geometry-structure input {
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 9px;
+}
+.geometry-content {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.geometry-viewport {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  max-height: calc(100dvh - 180px);
+  background: var(--viewer-bg, var(--surface));
+}
+.geometry-viewport canvas {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+.geometry-empty {
+  display: grid;
+  place-content: center;
+  height: 100%;
+  padding: 32px;
+  text-align: center;
+}
+.geometry-structure {
+  width: 260px;
+  min-width: 180px;
+  max-width: 40%;
+  resize: horizontal;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+}
+.geometry-structure input {
+  margin: 10px;
+}
+.geometry-tree {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.geometry-tree-row {
+  display: flex;
+  width: 100%;
+  gap: 4px;
+}
+.geometry-tree-row button {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.geometry-tree-row button:first-child {
+  flex: 1;
+  padding: 0 12px;
+}
+.geometry-tree-row button[aria-pressed="true"] {
+  background: var(--accent-soft, #6688aa33);
+}
+.geometry-viewer footer {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+.geometry-inspector dl > div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  margin: 6px 0;
+}
+.geometry-inspector dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.geometry-inspector p {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}

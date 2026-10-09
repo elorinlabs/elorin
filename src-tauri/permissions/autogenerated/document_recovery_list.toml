@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-document-recovery-list"
+description = "Enables the document_recovery_list command without any pre-configured scope."
+commands.allow = ["document_recovery_list"]
+
+[[permission]]
+identifier = "deny-document-recovery-list"
+description = "Denies the document_recovery_list command without any pre-configured scope."
+commands.deny = ["document_recovery_list"]

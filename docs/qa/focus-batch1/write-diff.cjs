@@ -1,0 +1,7 @@
+const fs=require('fs'),{spawnSync}=require('child_process');
+const paths=['src/pages/focus/FocusWindow.tsx','src/workspace/reference.css','src/viewer/components/ContextualStatus.tsx','src/viewer/components/ViewerShell.tsx','src/viewer/components/ViewerHost.tsx','src/viewer/plugins/pdf/PdfViewer.tsx'];
+let diff='';for(const file of paths){const baseline=file.endsWith('/PdfViewer.tsx')?'docs/qa/focus-batch1/baseline/PdfViewer.tsx':'docs/qa/focus-batch1/baseline/'+file;const r=spawnSync('git',['diff','--no-index','--no-ext-diff','--',baseline,file],{encoding:'utf8'});if(![0,1].includes(r.status))throw Error(r.stderr);diff+=r.stdout.replaceAll('a/'+baseline,'a/'+file);}
+for(const file of ['tests/focus-status.test.tsx','tests/focus-commands.test.tsx']){const lines=fs.readFileSync(file,'utf8').trimEnd().split(/\r?\n/);diff+=`diff --git a/${file} b/${file}\nnew file mode 100644\n--- /dev/null\n+++ b/${file}\n@@ -0,0 +1,${lines.length} @@\n`+lines.map(l=>'+'+l).join('\n')+'\n';}
+fs.writeFileSync('docs/qa/focus-batch1/runtime-changes.patch',diff);
+fs.writeFileSync('docs/qa/focus-batch1/changed-files.json',JSON.stringify({runtime:paths,tests:['tests/focus-status.test.tsx','tests/focus-commands.test.tsx'],scope:'Actual source diff against captured pre-edit files; no Git metadata/commit available'},null,2));
+console.log(paths.length+' runtime files; 2 test files; actual diff saved');

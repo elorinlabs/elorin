@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-release-media-source"
+description = "Enables the release_media_source command without any pre-configured scope."
+commands.allow = ["release_media_source"]
+
+[[permission]]
+identifier = "deny-release-media-source"
+description = "Denies the release_media_source command without any pre-configured scope."
+commands.deny = ["release_media_source"]

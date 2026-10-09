@@ -1,0 +1,10 @@
+{
+  "source": "Failures observed in actual command outputs during Module 21, summarized after repair; not a new test run",
+  "failures": [
+    {"test":"Module 13 glTF huge accessor count", "observed":"Expected message including count, received glTF accessor exceeds BufferView", "repair":"Validate count first; original assertion retained"},
+    {"test":"Module 21 DXF OCS bounds", "observed":"Expected 4, received 6", "repair":"Clone shared endpoints before transforming"},
+    {"test":"Module 21 DXF OCS Z bounds", "observed":"Expected 4, received 0", "repair":"Restore extrusion fields omitted by dxf-parser from raw codes"},
+    {"test":"Browser GPU context restore", "observed":"GPU context restore renders assertion failed", "repair":"Assert actual events and rebuilt geometry/triangles; renderer frame resets on restore"},
+    {"test":"Native idle rendering", "observed":"native idle frame stable assertion failed", "repair":"Ignore unchanged dimensions and constrain viewport; identical assertion subsequently passed"}
+  ]
+}

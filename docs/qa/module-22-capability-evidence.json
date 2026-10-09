@@ -1,0 +1,178 @@
+[
+  {
+    "format_id": "npy",
+    "fixture": "test-fixtures/advanced22/matrix.npy",
+    "fixture_sha256": "9a5dcbe87237f495d1e45e8129a526ee07bd47dab3e2225d61fd98747602753a",
+    "status": "passed",
+    "level": 2,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual multidimensional array slice equals expected bytes"
+    ]
+  },
+  {
+    "format_id": "srt",
+    "fixture": "test-fixtures/advanced22/example.srt",
+    "fixture_sha256": "8031e2cb6fab05672df8123939dd13a51de5220d0d3cc8720337fd998fbf7ff4",
+    "status": "passed",
+    "level": 2,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual cue start and nonempty content asserted"
+    ]
+  },
+  {
+    "format_id": "vtt",
+    "fixture": "test-fixtures/advanced22/example.vtt",
+    "fixture_sha256": "b6f69bcc44bd9498b93091f16ae20f663e0cef592b9047bf4b980546d2298926",
+    "status": "passed",
+    "level": 2,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual cue start and nonempty content asserted"
+    ]
+  },
+  {
+    "format_id": "ass",
+    "fixture": "test-fixtures/advanced22/example.ass",
+    "fixture_sha256": "2e6c08b47a4164feee95084f4a397ad0151bce92c2c068f4328ec699d0315ca9",
+    "status": "passed",
+    "level": 2,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual cue start and nonempty content asserted"
+    ]
+  },
+  {
+    "format_id": "sub",
+    "fixture": "test-fixtures/advanced22/example.sub",
+    "fixture_sha256": "002e2c096cf166d09998034de630e7613271c58b3416f2e0cf39841dc8ade5c9",
+    "status": "passed",
+    "level": 2,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual cue start and nonempty content asserted"
+    ]
+  },
+  {
+    "format_id": "wav",
+    "fixture": "test-fixtures/media/audio/basic.wav",
+    "fixture_sha256": "7760bdedc79a1d2374a9ff850ef7a482937c25c1bbb8f39263071cb053b56038",
+    "status": "passed",
+    "level": 1,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual metadata parser reports nonzero channels"
+    ]
+  },
+  {
+    "format_id": "mp3",
+    "fixture": "test-fixtures/media/audio/basic.mp3",
+    "fixture_sha256": "343757d80eebf1ff618c813cea7b0c08c32ae9c5b7dd107538e396b769f639d3",
+    "status": "passed",
+    "level": 1,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual metadata parser reports nonzero channels"
+    ]
+  },
+  {
+    "format_id": "flac",
+    "fixture": "test-fixtures/media/audio/basic.flac",
+    "fixture_sha256": "5a91c4fa1fb8570172f0e082cb2b70162acf4adcc796f44ca2e79438b5c04143",
+    "status": "passed",
+    "level": 1,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual metadata parser reports nonzero channels"
+    ]
+  },
+  {
+    "format_id": "ogg",
+    "fixture": "test-fixtures/media/audio/basic.ogg",
+    "fixture_sha256": "8bd83418e3b4bcb5e4bb346909386fe2e5fe4d4048315e692407a3106a2b4d6d",
+    "status": "passed",
+    "level": 1,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual metadata parser reports nonzero channels"
+    ]
+  },
+  {
+    "format_id": "opus",
+    "fixture": "test-fixtures/media/audio/basic.opus",
+    "fixture_sha256": "e1b534af6043df71115f79c3b11ed59b060af690bac06771167a51e7ad5fd496",
+    "status": "passed",
+    "level": 1,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual metadata parser reports nonzero channels"
+    ]
+  },
+  {
+    "format_id": "m4a",
+    "fixture": "test-fixtures/media/audio/basic.m4a",
+    "fixture_sha256": "ec9859aa48ddd6b800c15f32d8be47ea84e7e897eda39639fdc6db9a3c41a4a7",
+    "status": "passed",
+    "level": 1,
+    "flags": [
+      "metadata"
+    ],
+    "test_file": "tests/module-22-matrix.test.ts",
+    "assertions": [
+      "actual bytes detected by existing detector",
+      "actual adapter resolves registered Viewer",
+      "actual metadata parser reports nonzero channels"
+    ]
+  }
+]

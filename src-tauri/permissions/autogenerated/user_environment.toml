@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-user-environment"
+description = "Enables the user_environment command without any pre-configured scope."
+commands.allow = ["user_environment"]
+
+[[permission]]
+identifier = "deny-user-environment"
+description = "Denies the user_environment command without any pre-configured scope."
+commands.deny = ["user_environment"]

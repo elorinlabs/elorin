@@ -1,0 +1,164 @@
+{
+  "archive.zip": {
+    "bytes": 2298
+  },
+  "arrow\\basic.arrow": {
+    "bytes": 890
+  },
+  "arrow\\basic.feather": {
+    "bytes": 890
+  },
+  "arrow\\dictionary.arrow": {
+    "bytes": 762
+  },
+  "arrow\\large.arrow": {
+    "bytes": 32043602
+  },
+  "arrow\\nested.arrow": {
+    "bytes": 1738
+  },
+  "arrow\\precision.arrow": {
+    "bytes": 1266
+  },
+  "parquet\\basic.parquet": {
+    "bytes": 1540
+  },
+  "parquet\\compressed.parquet": {
+    "bytes": 1161
+  },
+  "parquet\\decimal.parquet": {
+    "bytes": 1683
+  },
+  "parquet\\dictionary.parquet": {
+    "bytes": 487
+  },
+  "parquet\\int64.parquet": {
+    "bytes": 1683
+  },
+  "parquet\\malformed.parquet": {
+    "bytes": 24
+  },
+  "parquet\\many-row-groups.parquet": {
+    "bytes": 549163
+  },
+  "parquet\\nested.parquet": {
+    "bytes": 1909
+  },
+  "parquet\\timestamps.parquet": {
+    "bytes": 1683
+  },
+  "parquet\\types.parquet": {
+    "bytes": 1683
+  },
+  "scientific\\basic.h5": {
+    "bytes": 8976
+  },
+  "scientific\\basic.mat": {
+    "bytes": 376
+  },
+  "scientific\\basic.nc": {
+    "bytes": 496
+  },
+  "scientific\\chunked.h5": {
+    "bytes": 8976
+  },
+  "scientific\\compound.h5": {
+    "bytes": 8976
+  },
+  "scientific\\compressed.h5": {
+    "bytes": 8976
+  },
+  "scientific\\datasets.h5": {
+    "bytes": 8976
+  },
+  "scientific\\dimensions.nc": {
+    "bytes": 496
+  },
+  "scientific\\groups.h5": {
+    "bytes": 8976
+  },
+  "scientific\\large.h5": {
+    "bytes": 9150
+  },
+  "scientific\\large.nc": {
+    "bytes": 524292364
+  },
+  "scientific\\links.h5": {
+    "bytes": 8976
+  },
+  "scientific\\malformed.h5": {
+    "bytes": 11
+  },
+  "scientific\\missing.nc": {
+    "bytes": 496
+  },
+  "scientific\\scaled.nc": {
+    "bytes": 496
+  },
+  "scientific\\v73.mat": {
+    "bytes": 2656
+  },
+  "scientific\\variables.nc": {
+    "bytes": 496
+  },
+  "security\\deep-groups.h5": {
+    "bytes": 42080
+  },
+  "security\\external-link.h5": {
+    "bytes": 8976
+  },
+  "security\\huge-dataset.nc": {
+    "bytes": 524292364
+  },
+  "security\\link-cycle.h5": {
+    "bytes": 8976
+  },
+  "security\\malformed.mat": {
+    "bytes": 29
+  },
+  "security\\unsupported-filter.h5": {
+    "bytes": 1400
+  },
+  "sqlite\\basic.sqlite": {
+    "bytes": 8192
+  },
+  "sqlite\\blob.sqlite": {
+    "bytes": 3010560
+  },
+  "sqlite\\composite-key.sqlite": {
+    "bytes": 12288
+  },
+  "sqlite\\corrupted.sqlite": {
+    "bytes": 150
+  },
+  "sqlite\\foreign-keys.sqlite": {
+    "bytes": 12288
+  },
+  "sqlite\\huge-blob.sqlite": {
+    "bytes": 8015872
+  },
+  "sqlite\\huge-string.sqlite": {
+    "bytes": 2007040
+  },
+  "sqlite\\indexes.sqlite": {
+    "bytes": 12288
+  },
+  "sqlite\\large.sqlite": {
+    "bytes": 25559040
+  },
+  "sqlite\\mixed-types.sqlite": {
+    "bytes": 8192
+  },
+  "sqlite\\multiple-tables.sqlite": {
+    "bytes": 12288
+  },
+  "sqlite\\triggers.sqlite": {
+    "bytes": 8192
+  },
+  "sqlite\\views.sqlite": {
+    "bytes": 8192
+  },
+  "sqlite\\without-rowid.sqlite": {
+    "bytes": 8192
+  }
+}

@@ -1,0 +1,687 @@
+[
+  {
+    "extension": "parquet",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "arrow",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "feather",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "h5",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "hdf5",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "nc",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "netcdf",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mat",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "stl",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "obj",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "ply",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "gltf",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "glb",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "step",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "stp",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "iges",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "igs",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "jt",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "skp",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "3dm",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "sldprt",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "sldasm",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "catpart",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "catproduct",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "fbx",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "dae",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "usd",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "usda",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "usdc",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "usdz",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "3ds",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "c4d",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "blend",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "max",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "dxf",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "dwg",
+    "category": "3D",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "txt",
+    "category": "Documents",
+    "recommendedDefault": true
+  },
+  {
+    "extension": "log",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "md",
+    "category": "Documents",
+    "recommendedDefault": true
+  },
+  {
+    "extension": "markdown",
+    "category": "Documents",
+    "recommendedDefault": true
+  },
+  {
+    "extension": "mdown",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mkd",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mkdn",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "json",
+    "category": "Data",
+    "recommendedDefault": true
+  },
+  {
+    "extension": "geojson",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "jsonl",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "ndjson",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "yaml",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "yml",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "xml",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "toml",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "js",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mjs",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "cjs",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "ts",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mts",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "cts",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "jsx",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "tsx",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "py",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "c",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "h",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "cpp",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "cc",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "cxx",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "hpp",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "java",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "go",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "rs",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "htm",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "html",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "css",
+    "category": "Code",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "csv",
+    "category": "Data",
+    "recommendedDefault": true
+  },
+  {
+    "extension": "tsv",
+    "category": "Data",
+    "recommendedDefault": true
+  },
+  {
+    "extension": "tab",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mp3",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "wav",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "flac",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "aac",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "m4a",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "ogg",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "opus",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "wma",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "aiff",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mp4",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "webm",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mov",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mkv",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "avi",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mpeg",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "m4v",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "epub",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "eml",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "msg",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "aif",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "mpg",
+    "category": "Media",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "xlsx",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "xlsm",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "xls",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "xlsb",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "ods",
+    "category": "Data",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "pptx",
+    "category": "Presentations",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "pptm",
+    "category": "Presentations",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "ppsx",
+    "category": "Presentations",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "potx",
+    "category": "Presentations",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "ppt",
+    "category": "Presentations",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "odp",
+    "category": "Presentations",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "pdf",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "docx",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "odt",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "rtf",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "doc",
+    "category": "Documents",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "png",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "jpg",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "jpeg",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "gif",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "webp",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "svg",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "avif",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "bmp",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "ico",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "tif",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "tiff",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "heic",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "heif",
+    "category": "Images",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "zip",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "tar",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "gz",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "tgz",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "7z",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "rar",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "bz2",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "xz",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "zst",
+    "category": "Archives",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "sqlite",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "sqlite3",
+    "category": "Scientific",
+    "recommendedDefault": false
+  },
+  {
+    "extension": "db",
+    "category": "Scientific",
+    "recommendedDefault": false
+  }
+]

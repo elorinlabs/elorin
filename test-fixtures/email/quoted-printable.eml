@@ -1,0 +1,11 @@
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Cc: Carol <carol@example.com>
+Subject: Quoted =?utf-8?q?caf=C3=A9?= = needle
+Date: Thu, 08 Oct 2026 12:00:00 +0800
+Message-ID: <prism-fixture@example.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Quoted caf=C3=A9 =3D needle

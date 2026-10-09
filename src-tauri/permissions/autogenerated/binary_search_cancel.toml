@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-binary-search-cancel"
+description = "Enables the binary_search_cancel command without any pre-configured scope."
+commands.allow = ["binary_search_cancel"]
+
+[[permission]]
+identifier = "deny-binary-search-cancel"
+description = "Denies the binary_search_cancel command without any pre-configured scope."
+commands.deny = ["binary_search_cancel"]

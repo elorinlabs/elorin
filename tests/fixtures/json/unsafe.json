@@ -1,0 +1,1 @@
+{"html":"<script>alert('xss')</script>","url":"javascript:alert(1)","markup":"<img src=x onerror=alert(1)>","__proto__":{"polluted":true},"constructor":"data only"}

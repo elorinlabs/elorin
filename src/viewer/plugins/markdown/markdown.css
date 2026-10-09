@@ -1,0 +1,322 @@
+/* Markdown consumes Prism tokens; it owns no theme state. */
+.markdown-viewer {
+  background: var(--surface);
+  color: var(--textPrimary);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  height: clamp(340px, 60vh, 750px);
+}
+.markdown-reader-pane,
+.markdown-source-pane {
+  overflow: auto;
+  min-width: 0;
+  flex: 1;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.markdown-reader {
+  max-width: 840px;
+  padding: 72px 44px 132px;
+  margin: 0 auto;
+  font: 17px/1.8 var(--font-body);
+  overflow-wrap: anywhere;
+  user-select: text;
+  color: var(--textSecondary);
+}
+.markdown-reader h1,
+.markdown-reader h2,
+.markdown-reader h3,
+.markdown-reader h4,
+.markdown-reader h5,
+.markdown-reader h6 {
+  color: var(--textPrimary);
+  scroll-margin-top: 28px;
+  line-height: 1.25;
+  font-weight: 500;
+  margin: 1.65em 0 0.6em;
+}
+.markdown-reader h1 {
+  font: 46px/1.12 var(--font-display);
+  letter-spacing: -1.2px;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.markdown-reader h2 {
+  font: 31px/1.25 var(--font-display);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+.markdown-reader h3 {
+  font-size: 23px;
+}
+.markdown-reader h4 {
+  font-size: 19px;
+}
+.markdown-reader p {
+  margin: 0 0 1.1em;
+}
+.markdown-reader strong {
+  font-weight: 650;
+  color: var(--textPrimary);
+}
+.markdown-reader a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.markdown-reader a:focus-visible,
+.markdown-outline a:focus-visible {
+  outline: 2px solid var(--accentStrong);
+  outline-offset: 4px;
+}
+.markdown-reader ul,
+.markdown-reader ol {
+  padding-inline-start: 26px;
+  margin: 0 0 24px;
+}
+.markdown-reader li {
+  padding-inline-start: 4px;
+  margin: 5px 0;
+}
+.markdown-reader li > p {
+  margin-bottom: 8px;
+}
+.markdown-reader blockquote {
+  margin: 28px 0;
+  padding: 0 0 0 22px;
+  border-left: 2px solid var(--border);
+  color: var(--textMuted);
+}
+.markdown-reader hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 44px 0;
+}
+.markdown-reader :not(pre) > code {
+  font:
+    0.85em/1.6 Consolas,
+    monospace;
+  background: var(--surfaceElevated);
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: var(--textPrimary);
+}
+.markdown-code-block {
+  margin: 26px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surfaceElevated);
+}
+.markdown-code-block pre {
+  font:
+    13px/1.75 Consolas,
+    monospace;
+  overflow-x: auto;
+  white-space: pre;
+  padding: 20px 24px;
+  margin: 0;
+  color: var(--textPrimary);
+}
+.markdown-code-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 14px;
+  font: 11px/1.5 var(--font-body);
+  color: var(--textMuted);
+  border-bottom: 1px solid var(--border);
+}
+.markdown-code-label button {
+  opacity: 0;
+  font-size: 11px;
+  padding: 3px 8px !important;
+  background: transparent !important;
+  color: var(--textSecondary) !important;
+  border-color: var(--border) !important;
+}
+.markdown-code-block:hover button,
+.markdown-code-block:focus-within button {
+  opacity: 1;
+}
+.markdown-table-scroll {
+  overflow: auto;
+  margin: 28px 0;
+  max-width: 100%;
+}
+.markdown-reader table {
+  border-collapse: collapse;
+  min-width: 100%;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.markdown-reader th,
+.markdown-reader td {
+  text-align: start;
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  min-width: 100px;
+  max-width: 360px;
+  overflow-wrap: anywhere;
+}
+.markdown-reader th {
+  font-weight: 550;
+  background: var(--surfaceElevated);
+  color: var(--textPrimary);
+}
+.markdown-reader img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto;
+  border-radius: 5px;
+}
+.markdown-reader input[type="checkbox"] {
+  accent-color: var(--accentStrong);
+  margin-inline-end: 8px;
+  cursor: default;
+}
+.markdown-reader .task-list-item {
+  list-style: none;
+}
+.markdown-source {
+  display: flex;
+  min-width: max-content;
+  padding: 28px 20px 100px;
+  gap: 24px;
+  line-height: 1.75;
+  font-size: 13px;
+}
+.markdown-source pre {
+  margin: 0;
+  line-height: 1.75;
+  font:
+    13px/1.75 Consolas,
+    monospace;
+  white-space: pre;
+}
+.markdown-line-numbers {
+  text-align: right;
+  color: var(--textMuted);
+  user-select: none;
+  border-right: 1px solid var(--border);
+  padding-right: 16px;
+}
+.markdown-source-text {
+  color: var(--textPrimary);
+  user-select: text;
+  outline-offset: 5px;
+}
+.markdown-split {
+  flex-direction: row;
+}
+.markdown-split .markdown-source-pane {
+  order: -1;
+  border-right: 1px solid var(--border);
+}
+.markdown-split .markdown-reader {
+  padding: 48px 30px 120px;
+  font-size: 15px;
+}
+.markdown-split .markdown-reader h1 {
+  font-size: 34px;
+}
+.markdown-outline {
+  font-size: 12px;
+  color: var(--textMuted);
+  padding: 14px 0;
+}
+.markdown-eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  color: var(--textMuted);
+  margin: 0 0 20px !important;
+}
+.markdown-outline a {
+  display: block;
+  color: var(--textSecondary);
+  text-decoration: none;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+.markdown-outline a[aria-current="location"] {
+  background: var(--accentSurface);
+  color: var(--accent);
+}
+.markdown-outline a:hover {
+  background: var(--surfaceElevated);
+}
+.markdown-inspector {
+  font-size: 13px;
+  color: var(--textSecondary);
+  padding: 14px 0;
+}
+.markdown-inspector h2 {
+  font: 22px/1.4 var(--font-display);
+  color: var(--textPrimary);
+  margin-bottom: 24px;
+}
+.markdown-inspector h3 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 32px 0 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+.markdown-inspector dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+}
+.markdown-inspector dd {
+  margin: 0;
+  color: var(--textPrimary);
+  font-variant-numeric: tabular-nums;
+}
+.markdown-image-unavailable {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px dashed var(--border);
+  padding: 22px;
+  margin: 20px 0;
+  color: var(--textMuted);
+  font-size: 12px;
+  max-width: 100%;
+}
+.markdown-inline-message {
+  display: block;
+  font: 12px/1.7 var(--font-body);
+  color: var(--danger);
+}
+.markdown-blocked-link {
+  color: var(--textMuted);
+}
+.markdown-empty {
+  color: var(--textMuted);
+}
+@media (max-width: 1100px) {
+  .markdown-reader {
+    padding: 56px 30px 120px;
+  }
+  .markdown-split {
+    flex-direction: column;
+  }
+  .markdown-split .markdown-reader-pane,
+  .markdown-split .markdown-source-pane {
+    flex-basis: 50%;
+    min-height: 0;
+  }
+  .markdown-split .markdown-source-pane {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .markdown-reader * {
+    scroll-behavior: auto;
+  }
+}

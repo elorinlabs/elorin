@@ -1,0 +1,16 @@
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Cc: Carol <carol@example.com>
+Subject: Prism Message
+Date: Thu, 08 Oct 2026 12:00:00 +0800
+Message-ID: <prism-fixture@example.com>
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<h1>Safe mail content</h1><script>window.unsafeExecuted=3Dtrue</script><img s=
+rc=3D"https://tracking.example/pixel" onerror=3D"alert(1)"/><a href=3D"javasc=
+ript:alert(1)">Unsafe</a><iframe src=3D"https://tracking.example/frame"></ifr=
+ame><style>@import "https://tracking.example/css"; body{position:fixed}</styl=
+e><p onclick=3D"alert(1)" style=3D"position:fixed;background:url(https://trac=
+king.example/css);color:red">Visible needle</p>

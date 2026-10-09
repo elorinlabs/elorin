@@ -1,0 +1,127 @@
+.office-viewer {
+  background: #e8e9ec;
+  min-height: 65vh;
+}
+.office-viewer:fullscreen {
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+}
+.office-viewer:fullscreen > .document-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.office-viewer .document-layout {
+  align-items: flex-start;
+}
+.office-paper {
+  background: #fff;
+  color: #242830;
+  max-width: 850px;
+  min-width: 0;
+  width: 100%;
+  margin: 24px auto;
+  padding: 48px 60px;
+  box-shadow: 0 2px 10px #0001;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.office-paper h1,
+.office-paper h2,
+.office-paper h3,
+.office-paper h4,
+.office-paper h5,
+.office-paper h6 {
+  color: #242830;
+  line-height: 1.4;
+}
+.office-paper p {
+  margin: 0 0 12px;
+}
+.office-paper :is(h1, h2, h3, h4, h5, h6) {
+  margin: 24px 0 10px;
+}
+.office-paper section:first-of-type :is(h1, h2) {
+  margin-top: 0;
+}
+.office-paper img {
+  max-width: 100%;
+  max-height: 650px;
+  object-fit: contain;
+  display: block;
+  margin: 16px auto;
+}
+.document-link {
+  border: 0;
+  background: transparent;
+  color: #2563a8;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: inherit;
+}
+.document-link span {
+  color: inherit !important;
+}
+.document-table {
+  overflow: auto;
+  margin: 20px 0;
+}
+.document-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.document-table td {
+  border: 1px solid #ccd0d7;
+  padding: 8px 12px;
+  min-width: 100px;
+  white-space: pre-wrap;
+}
+.document-warnings {
+  background: #f5f6f8;
+  border-radius: 7px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+.document-page-break {
+  border-top: 1px dashed #cbd0d6;
+  margin-top: 35px;
+  padding-top: 20px;
+}
+.office-paper mark {
+  background: #ffe38b;
+  color: inherit;
+}
+::highlight(prism-document-search) {
+  background: #ffa64d;
+  color: #111;
+}
+.document-active-result {
+  outline: 2px solid #ffc847;
+  outline-offset: 5px;
+}
+.document-more {
+  display: block;
+  margin: 24px auto;
+  padding: 10px 18px;
+}
+.office-viewer .document-sidebar {
+  position: sticky;
+  top: 0;
+  max-height: 60vh;
+}
+.document-bullet {
+  padding-right: 5px;
+}
+@media (max-width: 750px) {
+  .office-paper {
+    padding: 25px 20px;
+    margin: 10px auto;
+  }
+  .office-viewer .document-sidebar {
+    position: absolute;
+    z-index: 3;
+  }
+}

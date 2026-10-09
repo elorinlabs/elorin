@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-document-fingerprint"
+description = "Enables the document_fingerprint command without any pre-configured scope."
+commands.allow = ["document_fingerprint"]
+
+[[permission]]
+identifier = "deny-document-fingerprint"
+description = "Denies the document_fingerprint command without any pre-configured scope."
+commands.deny = ["document_fingerprint"]

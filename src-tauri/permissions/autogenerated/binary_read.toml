@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-binary-read"
+description = "Enables the binary_read command without any pre-configured scope."
+commands.allow = ["binary_read"]
+
+[[permission]]
+identifier = "deny-binary-read"
+description = "Denies the binary_read command without any pre-configured scope."
+commands.deny = ["binary_read"]

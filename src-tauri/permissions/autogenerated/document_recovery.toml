@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-document-recovery"
+description = "Enables the document_recovery command without any pre-configured scope."
+commands.allow = ["document_recovery"]
+
+[[permission]]
+identifier = "deny-document-recovery"
+description = "Denies the document_recovery command without any pre-configured scope."
+commands.deny = ["document_recovery"]

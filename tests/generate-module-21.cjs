@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path');const root='test-fixtures/3d/module21';fs.mkdirSync(root,{recursive:true});
+for(const count of [10000,100000,1000000]){const file=fs.openSync(path.join(root,`${count}.stl`),'w');const header=Buffer.alloc(84);header.writeUInt32LE(count,80);fs.writeSync(file,header);const batch=Buffer.alloc(50000);for(let at=0;at<count;at+=1000){for(let j=0;j<Math.min(1000,count-at);j++){const base=j*50,x=(at+j)%1000,y=Math.floor((at+j)/1000);batch.writeFloatLE(1,base+8);[[x,y,0],[x+1,y,0],[x,y+1,0]].forEach((p,v)=>p.forEach((n,k)=>batch.writeFloatLE(n,base+12+v*12+k*4)));}fs.writeSync(file,batch,0,Math.min(1000,count-at)*50);}fs.closeSync(file);}
+fs.writeFileSync(path.join(root,'concave.obj'),'v 0 0 0\nv 2 0 0\nv 2 2 0\nv 1 1 0\nv 0 2 0\nf -5 -4 -3 -2 -1\n');
+console.log('Generated bounded batches: 10k/100k/1M triangles and concave OBJ');

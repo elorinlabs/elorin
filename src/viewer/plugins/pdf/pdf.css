@@ -1,0 +1,225 @@
+.pdf-viewer {
+  height: clamp(340px, 60vh, 750px);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: #e5e7eb;
+  color: #242830;
+  outline: none;
+}
+.viewer-scroll:has(.pdf-viewer) {
+  overflow: hidden;
+}
+.pdf-viewer:fullscreen {
+  height: 100vh;
+  width: 100vw;
+  max-height: none;
+}
+.pdf-annotations {
+  z-index: 2;
+}
+.document-toolbar,
+.document-search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: var(--surface, #fff);
+  color: var(--textPrimary, #242830);
+  border-bottom: 1px solid var(--border, #ccc);
+}
+.document-toolbar button,
+.document-search button,
+.document-toolbar select {
+  padding: 5px 9px;
+  border: 1px solid var(--border, #c8cbd0);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+}
+.document-toolbar input[type="number"] {
+  width: 62px;
+  padding: 5px;
+}
+.document-search input:not([type="checkbox"]),
+.document-toolbar input {
+  color: var(--textPrimary, #242830);
+  background: var(--surfaceElevated, #fff);
+  border: 1px solid var(--border, #ccc);
+  border-radius: 5px;
+  padding: 5px 8px;
+}
+.document-toolbar select option {
+  background: var(--surface, #fff);
+  color: var(--textPrimary, #242830);
+}
+.document-layout {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+}
+.pdf-viewport {
+  overflow: auto;
+  flex: 1;
+  min-width: 0;
+  scrollbar-gutter: stable;
+}
+.pdf-stack {
+  position: relative;
+}
+.pdf-page {
+  position: relative;
+  background: white;
+  box-shadow: 0 2px 9px #0002;
+  color: #111;
+}
+.pdf-page canvas {
+  display: block;
+}
+.pdf-note {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 4;
+  max-width: 300px;
+  padding: 12px 18px;
+  white-space: pre-wrap;
+  background: #fff9dc;
+  box-shadow: 0 2px 12px #0002;
+  border-radius: 6px;
+}
+.document-sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  overflow: auto;
+  background: var(--surface, #fff);
+  padding: 10px;
+  color: var(--textPrimary, #242830);
+}
+.document-sidebar > button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  color: inherit;
+}
+.document-sidebar .pdf-page {
+  width: max-content;
+  margin: auto;
+}
+.document-message {
+  padding: 40px;
+  text-align: center;
+}
+.document-message input {
+  padding: 8px;
+  margin: 10px;
+}
+.pdf-annotations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.pdf-annotations > button,
+.pdf-annotations > span {
+  position: absolute;
+  pointer-events: auto;
+  border: 0;
+  background: transparent;
+}
+.pdf-annotations > button:hover {
+  background: #3683d833;
+  outline: 1px solid #3683d8;
+}
+.pdf-no-text {
+  position: absolute;
+  bottom: 6px;
+  left: 10px;
+  font-size: 11px;
+  color: #6b7280;
+  background: #fff9;
+}
+.document-inspector {
+  padding: 16px;
+}
+.document-inspector dd {
+  overflow-wrap: anywhere;
+  margin: 4px 0 12px;
+}
+.document-notice {
+  margin: 0;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.textLayer {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  line-height: 1;
+  text-align: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  transform-origin: 0 0;
+  z-index: 1;
+}
+.textLayer :is(span, br) {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0 0;
+}
+.textLayer > :not(.markedContent),
+.textLayer .markedContent span:not(.markedContent) {
+  z-index: 1;
+}
+.textLayer span.markedContent {
+  top: 0;
+  height: 0;
+}
+.textLayer span[role="img"] {
+  user-select: none;
+  cursor: default;
+}
+.textLayer ::selection {
+  background: #4d90fe55;
+}
+.textLayer .pdf-hit {
+  background: #ffda4780;
+}
+.textLayer mark {
+  background: #ffda4780;
+  color: transparent;
+  padding: 0;
+}
+.textLayer {
+  --min-font-size: 1;
+  --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size));
+  --min-font-size-inv: calc(1/var(--min-font-size));
+}
+.textLayer span {
+  font-size: calc(var(--text-scale-factor) * var(--font-height));
+  transform: rotate(var(--rotate, 0deg)) scaleX(var(--scale-x, 1))
+    scale(var(--min-font-size-inv));
+}
+.textLayer br {
+  user-select: none;
+}
+@media (max-width: 750px) {
+  .document-sidebar {
+    position: absolute;
+    z-index: 5;
+    max-height: 55vh;
+    box-shadow: 0 4px 16px #0004;
+  }
+  .document-toolbar {
+    gap: 5px;
+    padding: 6px;
+  }
+  .pdf-viewer {
+    height: calc(100vh - 190px);
+  }
+}

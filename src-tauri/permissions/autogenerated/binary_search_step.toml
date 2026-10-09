@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-binary-search-step"
+description = "Enables the binary_search_step command without any pre-configured scope."
+commands.allow = ["binary_search_step"]
+
+[[permission]]
+identifier = "deny-binary-search-step"
+description = "Denies the binary_search_step command without any pre-configured scope."
+commands.deny = ["binary_search_step"]

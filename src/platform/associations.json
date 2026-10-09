@@ -1,0 +1,1235 @@
+[
+  {
+    "extension": "parquet",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "parquet"
+  },
+  {
+    "extension": "arrow",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "arrow"
+  },
+  {
+    "extension": "feather",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "feather"
+  },
+  {
+    "extension": "h5",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "hdf5"
+  },
+  {
+    "extension": "hdf5",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "hdf5"
+  },
+  {
+    "extension": "nc",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "netcdf"
+  },
+  {
+    "extension": "netcdf",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "netcdf"
+  },
+  {
+    "extension": "mat",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "mat"
+  },
+  {
+    "extension": "stl",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "stl"
+  },
+  {
+    "extension": "obj",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "obj"
+  },
+  {
+    "extension": "ply",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "ply"
+  },
+  {
+    "extension": "gltf",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "gltf"
+  },
+  {
+    "extension": "glb",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "glb"
+  },
+  {
+    "extension": "step",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "step"
+  },
+  {
+    "extension": "stp",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "stp"
+  },
+  {
+    "extension": "iges",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "iges"
+  },
+  {
+    "extension": "igs",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "igs"
+  },
+  {
+    "extension": "jt",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "jt"
+  },
+  {
+    "extension": "skp",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "skp"
+  },
+  {
+    "extension": "3dm",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "3dm"
+  },
+  {
+    "extension": "sldprt",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "sldprt"
+  },
+  {
+    "extension": "sldasm",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "sldasm"
+  },
+  {
+    "extension": "catpart",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "catpart"
+  },
+  {
+    "extension": "catproduct",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "catproduct"
+  },
+  {
+    "extension": "fbx",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "fbx"
+  },
+  {
+    "extension": "dae",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "dae"
+  },
+  {
+    "extension": "usd",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "usd"
+  },
+  {
+    "extension": "usda",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "usda"
+  },
+  {
+    "extension": "usdc",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "usdc"
+  },
+  {
+    "extension": "usdz",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "usdz"
+  },
+  {
+    "extension": "3ds",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "3ds"
+  },
+  {
+    "extension": "c4d",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "c4d"
+  },
+  {
+    "extension": "blend",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "blend"
+  },
+  {
+    "extension": "max",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "max"
+  },
+  {
+    "extension": "dxf",
+    "category": "3D",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "dxf"
+  },
+  {
+    "extension": "dwg",
+    "category": "3D",
+    "canView": false,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "dwg"
+  },
+  {
+    "extension": "txt",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": true,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "text"
+  },
+  {
+    "extension": "log",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "text"
+  },
+  {
+    "extension": "md",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": true,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "markdown"
+  },
+  {
+    "extension": "markdown",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": true,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "markdown"
+  },
+  {
+    "extension": "mdown",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "markdown"
+  },
+  {
+    "extension": "mkd",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "markdown"
+  },
+  {
+    "extension": "mkdn",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "markdown"
+  },
+  {
+    "extension": "json",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": true,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "json"
+  },
+  {
+    "extension": "geojson",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "json"
+  },
+  {
+    "extension": "jsonl",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "json"
+  },
+  {
+    "extension": "ndjson",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "json"
+  },
+  {
+    "extension": "yaml",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "yaml"
+  },
+  {
+    "extension": "yml",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "yaml"
+  },
+  {
+    "extension": "xml",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "xml"
+  },
+  {
+    "extension": "toml",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "toml"
+  },
+  {
+    "extension": "js",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "javascript"
+  },
+  {
+    "extension": "mjs",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "javascript"
+  },
+  {
+    "extension": "cjs",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "javascript"
+  },
+  {
+    "extension": "ts",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "typescript"
+  },
+  {
+    "extension": "mts",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "typescript"
+  },
+  {
+    "extension": "cts",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "typescript"
+  },
+  {
+    "extension": "jsx",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "jsx"
+  },
+  {
+    "extension": "tsx",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "tsx"
+  },
+  {
+    "extension": "py",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "python"
+  },
+  {
+    "extension": "c",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "c"
+  },
+  {
+    "extension": "h",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "c"
+  },
+  {
+    "extension": "cpp",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "cpp"
+  },
+  {
+    "extension": "cc",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "cpp"
+  },
+  {
+    "extension": "cxx",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "cpp"
+  },
+  {
+    "extension": "hpp",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "cpp"
+  },
+  {
+    "extension": "java",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "java"
+  },
+  {
+    "extension": "go",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "go"
+  },
+  {
+    "extension": "rs",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "rust"
+  },
+  {
+    "extension": "htm",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "html"
+  },
+  {
+    "extension": "html",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "html"
+  },
+  {
+    "extension": "css",
+    "category": "Code",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "source",
+    "viewerType": "css"
+  },
+  {
+    "extension": "csv",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": true,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "csv"
+  },
+  {
+    "extension": "tsv",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": true,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "tsv"
+  },
+  {
+    "extension": "tab",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "tsv"
+  },
+  {
+    "extension": "mp3",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "mp3"
+  },
+  {
+    "extension": "wav",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "wav"
+  },
+  {
+    "extension": "flac",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "flac"
+  },
+  {
+    "extension": "aac",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "aac"
+  },
+  {
+    "extension": "m4a",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "m4a"
+  },
+  {
+    "extension": "ogg",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "ogg"
+  },
+  {
+    "extension": "opus",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "opus"
+  },
+  {
+    "extension": "wma",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "wma"
+  },
+  {
+    "extension": "aiff",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "aiff"
+  },
+  {
+    "extension": "aif",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "aiff"
+  },
+  {
+    "extension": "mp4",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "mp4"
+  },
+  {
+    "extension": "webm",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "webm"
+  },
+  {
+    "extension": "mov",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "mov"
+  },
+  {
+    "extension": "mkv",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "mkv"
+  },
+  {
+    "extension": "avi",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "avi"
+  },
+  {
+    "extension": "mpeg",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "mpeg"
+  },
+  {
+    "extension": "mpg",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "mpeg"
+  },
+  {
+    "extension": "m4v",
+    "category": "Media",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "m4v"
+  },
+  {
+    "extension": "epub",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "epub"
+  },
+  {
+    "extension": "eml",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "eml"
+  },
+  {
+    "extension": "msg",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "msg"
+  },
+  {
+    "extension": "xlsx",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "xlsx"
+  },
+  {
+    "extension": "xlsm",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "xlsm"
+  },
+  {
+    "extension": "xls",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "xls"
+  },
+  {
+    "extension": "xlsb",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "xlsb"
+  },
+  {
+    "extension": "ods",
+    "category": "Data",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "ods"
+  },
+  {
+    "extension": "pptx",
+    "category": "Presentations",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "pptx"
+  },
+  {
+    "extension": "pptm",
+    "category": "Presentations",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "pptm"
+  },
+  {
+    "extension": "ppsx",
+    "category": "Presentations",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "ppsx"
+  },
+  {
+    "extension": "potx",
+    "category": "Presentations",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "potx"
+  },
+  {
+    "extension": "ppt",
+    "category": "Presentations",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "ppt"
+  },
+  {
+    "extension": "odp",
+    "category": "Presentations",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "odp"
+  },
+  {
+    "extension": "pdf",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "pdf"
+  },
+  {
+    "extension": "docx",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "docx"
+  },
+  {
+    "extension": "odt",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "odt"
+  },
+  {
+    "extension": "rtf",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "rtf"
+  },
+  {
+    "extension": "doc",
+    "category": "Documents",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "doc"
+  },
+  {
+    "extension": "png",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "png"
+  },
+  {
+    "extension": "jpg",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "jpeg"
+  },
+  {
+    "extension": "jpeg",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "jpeg"
+  },
+  {
+    "extension": "gif",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "gif"
+  },
+  {
+    "extension": "webp",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "webp"
+  },
+  {
+    "extension": "svg",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "svg"
+  },
+  {
+    "extension": "avif",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "avif"
+  },
+  {
+    "extension": "bmp",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "bmp"
+  },
+  {
+    "extension": "ico",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "ico"
+  },
+  {
+    "extension": "tif",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "tiff"
+  },
+  {
+    "extension": "tiff",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "tiff"
+  },
+  {
+    "extension": "heic",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "heic"
+  },
+  {
+    "extension": "heif",
+    "category": "Images",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "heif"
+  },
+  {
+    "extension": "zip",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "zip"
+  },
+  {
+    "extension": "tar",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "tar"
+  },
+  {
+    "extension": "gz",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "gz"
+  },
+  {
+    "extension": "tgz",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "tgz"
+  },
+  {
+    "extension": "7z",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "sevenzip"
+  },
+  {
+    "extension": "rar",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "rar"
+  },
+  {
+    "extension": "bz2",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "bz2"
+  },
+  {
+    "extension": "xz",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "xz"
+  },
+  {
+    "extension": "zst",
+    "category": "Archives",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "zst"
+  },
+  {
+    "extension": "sqlite",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "sqlite"
+  },
+  {
+    "extension": "sqlite3",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "sqlite"
+  },
+  {
+    "extension": "db",
+    "category": "Scientific",
+    "canView": true,
+    "recommendedDefault": false,
+    "openWith": true,
+    "riskLevel": "data",
+    "viewerType": "sqlite"
+  }
+]

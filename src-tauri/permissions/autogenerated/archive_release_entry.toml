@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-archive-release-entry"
+description = "Enables the archive_release_entry command without any pre-configured scope."
+commands.allow = ["archive_release_entry"]
+
+[[permission]]
+identifier = "deny-archive-release-entry"
+description = "Denies the archive_release_entry command without any pre-configured scope."
+commands.deny = ["archive_release_entry"]

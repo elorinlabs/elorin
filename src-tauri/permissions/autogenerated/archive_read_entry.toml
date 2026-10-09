@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-archive-read-entry"
+description = "Enables the archive_read_entry command without any pre-configured scope."
+commands.allow = ["archive_read_entry"]
+
+[[permission]]
+identifier = "deny-archive-read-entry"
+description = "Denies the archive_read_entry command without any pre-configured scope."
+commands.deny = ["archive_read_entry"]

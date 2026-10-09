@@ -1,0 +1,51 @@
+{
+  "environment": "Current Windows host; Vitest/Node simulated range provider; no full-size disk allocation; not low-end hardware",
+  "records": [
+    {
+      "logicalBytes": 1048576,
+      "indexMs": 51.605899999999565,
+      "lines": 257,
+      "calls": 5,
+      "peakRangeBytes": 262144,
+      "checkpointCount": 2,
+      "checkpointPayloadBytes": 16
+    },
+    {
+      "logicalBytes": 20971520,
+      "indexMs": 499.3699999999999,
+      "lines": 5121,
+      "calls": 81,
+      "peakRangeBytes": 262144,
+      "checkpointCount": 21,
+      "checkpointPayloadBytes": 168
+    },
+    {
+      "logicalBytes": 104857600,
+      "indexMs": 2373.7506999999996,
+      "lines": 25601,
+      "calls": 401,
+      "peakRangeBytes": 262144,
+      "checkpointCount": 101,
+      "checkpointPayloadBytes": 808
+    },
+    {
+      "logicalBytes": 1073741824,
+      "indexMs": 22568.4865,
+      "lines": 262145,
+      "calls": 4097,
+      "peakRangeBytes": 262144,
+      "checkpointCount": 1025,
+      "checkpointPayloadBytes": 8200
+    }
+  ],
+  "millionLines": {
+    "lines": 1000001,
+    "checkpointCount": 3907
+  },
+  "indexBudget": {
+    "checkpoints": 32768,
+    "processedBytes": 16777216,
+    "totalBytes": 67108864,
+    "complete": false
+  }
+}

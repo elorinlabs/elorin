@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-file-revision"
+description = "Enables the file_revision command without any pre-configured scope."
+commands.allow = ["file_revision"]
+
+[[permission]]
+identifier = "deny-file-revision"
+description = "Denies the file_revision command without any pre-configured scope."
+commands.deny = ["file_revision"]

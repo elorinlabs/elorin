@@ -1,0 +1,340 @@
+{
+  "restored": [
+    {
+      "file": "tsconfig.json",
+      "recordTime": "2026-10-09T06:25:42.311Z",
+      "bytes": 505
+    },
+    {
+      "file": ".gitignore",
+      "recordTime": "2026-10-08T21:21:39.936Z",
+      "bytes": 1061
+    },
+    {
+      "file": "vite.config.ts",
+      "recordTime": "2026-10-08T21:40:13.491Z",
+      "bytes": 844
+    },
+    {
+      "file": "package.json",
+      "recordTime": "2026-10-09T06:26:05.438Z",
+      "bytes": 2468
+    },
+    {
+      "file": "index.html",
+      "recordTime": "2026-10-09T03:36:06.006Z",
+      "bytes": 345
+    },
+    {
+      "file": "README.md",
+      "recordTime": "2026-10-07T15:53:37.769Z",
+      "bytes": 1875
+    },
+    {
+      "file": "pnpm-workspace.yaml",
+      "recordTime": "2026-10-08T10:35:04.668Z",
+      "bytes": 80
+    },
+    {
+      "file": "docs/qa/module-01-checklist.md",
+      "recordTime": "2026-10-07T15:55:40.941Z",
+      "bytes": 2960
+    },
+    {
+      "file": "docs/qa/module-02-performance.md",
+      "recordTime": "2026-10-07T17:58:31.123Z",
+      "bytes": 1609
+    },
+    {
+      "file": "docs/architecture/module-02-file-loading.md",
+      "recordTime": "2026-10-07T17:58:31.123Z",
+      "bytes": 4756
+    },
+    {
+      "file": "docs/qa/module-02-checklist.md",
+      "recordTime": "2026-10-07T17:58:31.123Z",
+      "bytes": 5029
+    },
+    {
+      "file": "docs/architecture/markdown-viewer.md",
+      "recordTime": "2026-10-07T19:03:17.405Z",
+      "bytes": 9467
+    },
+    {
+      "file": "docs/qa/module-04-checklist.md",
+      "recordTime": "2026-10-07T19:04:33.570Z",
+      "bytes": 5256
+    },
+    {
+      "file": "docs/architecture/json-viewer.md",
+      "recordTime": "2026-10-07T19:41:49.558Z",
+      "bytes": 10831
+    },
+    {
+      "file": "docs/qa/module-05-checklist.md",
+      "recordTime": "2026-10-07T19:52:01.078Z",
+      "bytes": 6449
+    },
+    {
+      "file": "docs/architecture/csv-viewer.md",
+      "recordTime": "2026-10-07T20:37:50.323Z",
+      "bytes": 13428
+    },
+    {
+      "file": "docs/qa/module-06-checklist.md",
+      "recordTime": "2026-10-07T20:42:18.766Z",
+      "bytes": 8505
+    },
+    {
+      "file": "docs/architecture/text-viewer.md",
+      "recordTime": "2026-10-07T21:35:50.118Z",
+      "bytes": 12601
+    },
+    {
+      "file": "docs/qa/module-07-checklist.md",
+      "recordTime": "2026-10-07T21:36:59.131Z",
+      "bytes": 8961
+    },
+    {
+      "file": "module-08-tauri.local.json",
+      "recordTime": "2026-10-07T21:56:15.608Z",
+      "bytes": 37
+    },
+    {
+      "file": "docs/architecture/image-viewer.md",
+      "recordTime": "2026-10-07T22:19:31.619Z",
+      "bytes": 10133
+    },
+    {
+      "file": "docs/qa/module-08-checklist.md",
+      "recordTime": "2026-10-07T22:19:31.619Z",
+      "bytes": 2503
+    },
+    {
+      "file": "docs/architecture/document-viewer.md",
+      "recordTime": "2026-10-07T22:57:19.230Z",
+      "bytes": 8945
+    },
+    {
+      "file": "docs/architecture/spreadsheet-presentation-viewers.md",
+      "recordTime": "2026-10-08T06:12:10.110Z",
+      "bytes": 3505
+    },
+    {
+      "file": "docs/qa/module-10-checklist.md",
+      "recordTime": "2026-10-08T06:12:10.110Z",
+      "bytes": 11706
+    },
+    {
+      "file": "module-16-tauri.local.json",
+      "recordTime": "2026-10-08T12:11:02.345Z",
+      "bytes": 73
+    },
+    {
+      "file": "docs/architecture/productivity-os-integration.md",
+      "recordTime": "2026-10-08T12:49:04.632Z",
+      "bytes": 17433
+    },
+    {
+      "file": "docs/architecture/universal-format-adaptation.md",
+      "recordTime": "2026-10-08T13:28:23.029Z",
+      "bytes": 10999
+    },
+    {
+      "file": "docs/architecture/binary-hex-viewer.md",
+      "recordTime": "2026-10-08T14:22:25.401Z",
+      "bytes": 15356
+    },
+    {
+      "file": "docs/architecture/programming-framework-viewer.md",
+      "recordTime": "2026-10-08T15:03:20.210Z",
+      "bytes": 8445
+    },
+    {
+      "file": "docs/qa/module-19-verification.md",
+      "recordTime": "2026-10-08T15:10:01.385Z",
+      "bytes": 4032
+    },
+    {
+      "file": "docs/qa/module-20-verification.md",
+      "recordTime": "2026-10-08T16:08:15.302Z",
+      "bytes": 6545
+    },
+    {
+      "file": "docs/architecture/scientific-engineering-data-viewer.md",
+      "recordTime": "2026-10-08T16:07:42.974Z",
+      "bytes": 12742
+    },
+    {
+      "file": "docs/architecture/cad-3d-engineering-viewer-module-21.md",
+      "recordTime": "2026-10-08T16:38:32.732Z",
+      "bytes": 8732
+    },
+    {
+      "file": "docs/qa/module-21-verification.md",
+      "recordTime": "2026-10-08T16:39:02.971Z",
+      "bytes": 4034
+    },
+    {
+      "file": "docs/qa/module-21-failures.json",
+      "recordTime": "2026-10-08T16:39:02.971Z",
+      "bytes": 1043
+    },
+    {
+      "file": "module-22-tauri.local.json",
+      "recordTime": "2026-10-08T17:04:44.125Z",
+      "bytes": 106
+    },
+    {
+      "file": "docs/architecture/advanced-media-professional-formats-module-22.md",
+      "recordTime": "2026-10-08T17:25:11.198Z",
+      "bytes": 6939
+    },
+    {
+      "file": "docs/qa/module-22-verification.md",
+      "recordTime": "2026-10-08T17:26:39.475Z",
+      "bytes": 12093
+    },
+    {
+      "file": "docs/architecture/viewer-reliability-module-23.md",
+      "recordTime": "2026-10-08T18:04:26.756Z",
+      "bytes": 9758
+    },
+    {
+      "file": "docs/qa/module-23-verification.md",
+      "recordTime": "2026-10-08T18:10:33.380Z",
+      "bytes": 11353
+    },
+    {
+      "file": "docs/architecture/design-system-module-24.md",
+      "recordTime": "2026-10-08T18:48:13.858Z",
+      "bytes": 10883
+    },
+    {
+      "file": "docs/UI_AUDIT.md",
+      "recordTime": "2026-10-08T20:04:08.475Z",
+      "bytes": 23515
+    },
+    {
+      "file": "docs/UI_GAPS_AND_PRIORITY.md",
+      "recordTime": "2026-10-08T20:04:08.475Z",
+      "bytes": 2587
+    },
+    {
+      "file": "docs/UI_RUNTIME_MAP.md",
+      "recordTime": "2026-10-08T19:47:26.578Z",
+      "bytes": 5642
+    },
+    {
+      "file": "docs/UI_INTERACTION_SPEC.md",
+      "recordTime": "2026-10-08T19:51:17.207Z",
+      "bytes": 21354
+    },
+    {
+      "file": "docs/UI_IMPLEMENTATION_PLAN.md",
+      "recordTime": "2026-10-08T20:04:08.475Z",
+      "bytes": 13317
+    },
+    {
+      "file": "docs/ui-audit/build-matrix.cjs",
+      "recordTime": "2026-10-08T20:03:10.460Z",
+      "bytes": 57555
+    },
+    {
+      "file": "docs/ui-audit/validate-audit.cjs",
+      "recordTime": "2026-10-08T20:04:40.537Z",
+      "bytes": 5603
+    },
+    {
+      "file": "docs/UI_IMPLEMENTATION_PROGRESS.md",
+      "recordTime": "2026-10-08T21:05:38.518Z",
+      "bytes": 6238
+    },
+    {
+      "file": "docs/qa/uiux/BLACK_SCREEN_INCIDENT.md",
+      "recordTime": "2026-10-08T21:13:06.713Z",
+      "bytes": 2410
+    },
+    {
+      "file": "docs/ui-audit/current/augment-native.cjs",
+      "recordTime": "2026-10-08T21:37:48.420Z",
+      "bytes": 2447
+    },
+    {
+      "file": "docs/ui-audit/current/write-matrix.cjs",
+      "recordTime": "2026-10-08T21:41:28.084Z",
+      "bytes": 9932
+    },
+    {
+      "file": "docs/ui-audit/current/status-probe.cjs",
+      "recordTime": "2026-10-08T21:42:03.342Z",
+      "bytes": 1604
+    },
+    {
+      "file": "UI_FOCUS_FLOAT_SCROLL_STATUS_AUDIT.md",
+      "recordTime": "2026-10-08T21:44:24.961Z",
+      "bytes": 9424
+    },
+    {
+      "file": "UI_RUNTIME_MAP.md",
+      "recordTime": "2026-10-08T21:44:24.961Z",
+      "bytes": 7402
+    },
+    {
+      "file": "UI_SAFE_IMPLEMENTATION_PLAN.md",
+      "recordTime": "2026-10-08T21:44:24.961Z",
+      "bytes": 4316
+    },
+    {
+      "file": "UI_AUDIT.md",
+      "recordTime": "2026-10-08T21:46:04.186Z",
+      "bytes": 5682
+    },
+    {
+      "file": "docs/qa/focus-batch1/before-tauri.json",
+      "recordTime": "2026-10-08T21:54:16.136Z",
+      "bytes": 200
+    },
+    {
+      "file": "docs/qa/focus-batch1/FocusWindow.new.tsx",
+      "recordTime": "2026-10-08T21:56:11.906Z",
+      "bytes": 8923
+    },
+    {
+      "file": "docs/qa/focus-batch1/native-qa.cjs",
+      "recordTime": "2026-10-09T03:21:09.946Z",
+      "bytes": 11735
+    },
+    {
+      "file": "docs/qa/focus-batch1/after-tauri.json",
+      "recordTime": "2026-10-09T03:12:29.334Z",
+      "bytes": 261
+    },
+    {
+      "file": "docs/qa/focus-batch1/write-diff.cjs",
+      "recordTime": "2026-10-09T03:23:14.281Z",
+      "bytes": 1402
+    },
+    {
+      "file": "docs/qa/brand-update/native-qa.cjs",
+      "recordTime": "2026-10-09T03:37:25.806Z",
+      "bytes": 5574
+    },
+    {
+      "file": "docs/qa/new-file/native-qa.cjs",
+      "recordTime": "2026-10-09T04:02:16.722Z",
+      "bytes": 7083
+    },
+    {
+      "file": "docs/qa/i18n/RESULT.md",
+      "recordTime": "2026-10-09T05:44:47.729Z",
+      "bytes": 2981
+    }
+  ],
+  "unappliedHistoricalPatches": [
+    "README.md",
+    "tsconfig.json"
+  ],
+  "sourceBackup": "C:\\Users\\nanli\\.codex\\tmp\\elorin-recovery\\surviving-source.zip",
+  "note": "Existing source files were not replaced. Deleted binary screenshots and logs cannot be reconstructed from text change records."
+}

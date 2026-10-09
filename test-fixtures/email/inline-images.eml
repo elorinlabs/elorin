@@ -1,0 +1,40 @@
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Cc: Carol <carol@example.com>
+Subject: Inline image
+Date: Thu, 08 Oct 2026 12:00:00 +0800
+Message-ID: <prism-fixture@example.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============4307392634416949873=="
+
+--===============4307392634416949873==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Inline image plain
+
+--===============4307392634416949873==
+MIME-Version: 1.0
+Content-Type: multipart/related;
+ boundary="===============4869770034760681231=="
+
+--===============4869770034760681231==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<h1>Inline image</h1><img src="cid:picture1" alt="Mail image"/>
+
+--===============4869770034760681231==
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="picture.png"
+Content-ID: <picture1>
+MIME-Version: 1.0
+
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZ1cA
+AAAASUVORK5CYII=
+
+--===============4869770034760681231==--
+
+--===============4307392634416949873==--

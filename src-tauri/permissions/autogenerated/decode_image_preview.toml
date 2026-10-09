@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-decode-image-preview"
+description = "Enables the decode_image_preview command without any pre-configured scope."
+commands.allow = ["decode_image_preview"]
+
+[[permission]]
+identifier = "deny-decode-image-preview"
+description = "Denies the decode_image_preview command without any pre-configured scope."
+commands.deny = ["decode_image_preview"]

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-productivity-read"
+description = "Enables the productivity_read command without any pre-configured scope."
+commands.allow = ["productivity_read"]
+
+[[permission]]
+identifier = "deny-productivity-read"
+description = "Denies the productivity_read command without any pre-configured scope."
+commands.deny = ["productivity_read"]

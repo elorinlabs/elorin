@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-association-health"
+description = "Enables the association_health command without any pre-configured scope."
+commands.allow = ["association_health"]
+
+[[permission]]
+identifier = "deny-association-health"
+description = "Denies the association_health command without any pre-configured scope."
+commands.deny = ["association_health"]

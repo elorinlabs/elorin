@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-archive-close"
+description = "Enables the archive_close command without any pre-configured scope."
+commands.allow = ["archive_close"]
+
+[[permission]]
+identifier = "deny-archive-close"
+description = "Denies the archive_close command without any pre-configured scope."
+commands.deny = ["archive_close"]

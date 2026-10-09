@@ -1,0 +1,7670 @@
+[
+  {
+    "formatId": "parquet",
+    "name": "PARQUET",
+    "aliases": [],
+    "extensions": [
+      "parquet"
+    ],
+    "filenames": [],
+    "legacyType": "parquet",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "columnar",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing columnar backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Scientific"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "arrow",
+    "name": "ARROW",
+    "aliases": [],
+    "extensions": [
+      "arrow"
+    ],
+    "filenames": [],
+    "legacyType": "arrow",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "columnar",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing columnar backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Scientific"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "feather",
+    "name": "FEATHER",
+    "aliases": [],
+    "extensions": [
+      "feather"
+    ],
+    "filenames": [],
+    "legacyType": "feather",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "columnar",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing columnar backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Scientific"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "hdf5",
+    "name": "HDF5",
+    "aliases": [],
+    "extensions": [
+      "h5",
+      "hdf5"
+    ],
+    "filenames": [],
+    "legacyType": "hdf5",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scientific",
+        "projection": "ScientificDataset",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scientific backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Scientific"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "netcdf",
+    "name": "NETCDF",
+    "aliases": [],
+    "extensions": [
+      "nc",
+      "netcdf"
+    ],
+    "filenames": [],
+    "legacyType": "netcdf",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scientific",
+        "projection": "ScientificDataset",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scientific backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Scientific"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "mat",
+    "name": "MAT",
+    "aliases": [],
+    "extensions": [
+      "mat"
+    ],
+    "filenames": [],
+    "legacyType": "mat",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scientific",
+        "projection": "ScientificDataset",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scientific backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Scientific"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "stl",
+    "name": "STL",
+    "aliases": [],
+    "extensions": [
+      "stl"
+    ],
+    "filenames": [],
+    "legacyType": "stl",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "mesh",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing mesh backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "obj",
+    "name": "OBJ",
+    "aliases": [],
+    "extensions": [
+      "obj"
+    ],
+    "filenames": [],
+    "legacyType": "obj",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "mesh",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing mesh backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [
+      "local sibling resources"
+    ],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ply",
+    "name": "PLY",
+    "aliases": [],
+    "extensions": [
+      "ply"
+    ],
+    "filenames": [],
+    "legacyType": "ply",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "mesh",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing mesh backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "gltf",
+    "name": "GLTF",
+    "aliases": [],
+    "extensions": [
+      "gltf"
+    ],
+    "filenames": [],
+    "legacyType": "gltf",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "mesh",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing mesh backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [
+      "local sibling resources"
+    ],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "glb",
+    "name": "GLB",
+    "aliases": [],
+    "extensions": [
+      "glb"
+    ],
+    "filenames": [],
+    "legacyType": "glb",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "mesh",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing mesh backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "step",
+    "name": "STEP",
+    "aliases": [],
+    "extensions": [
+      "step"
+    ],
+    "filenames": [],
+    "legacyType": "step",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "stp",
+    "name": "STP",
+    "aliases": [],
+    "extensions": [
+      "stp"
+    ],
+    "filenames": [],
+    "legacyType": "stp",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "iges",
+    "name": "IGES",
+    "aliases": [],
+    "extensions": [
+      "iges"
+    ],
+    "filenames": [],
+    "legacyType": "iges",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "igs",
+    "name": "IGS",
+    "aliases": [],
+    "extensions": [
+      "igs"
+    ],
+    "filenames": [],
+    "legacyType": "igs",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "jt",
+    "name": "JT",
+    "aliases": [],
+    "extensions": [
+      "jt"
+    ],
+    "filenames": [],
+    "legacyType": "jt",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "skp",
+    "name": "SKP",
+    "aliases": [],
+    "extensions": [
+      "skp"
+    ],
+    "filenames": [],
+    "legacyType": "skp",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "3dm",
+    "name": "3DM",
+    "aliases": [],
+    "extensions": [
+      "3dm"
+    ],
+    "filenames": [],
+    "legacyType": "3dm",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "sldprt",
+    "name": "SLDPRT",
+    "aliases": [],
+    "extensions": [
+      "sldprt"
+    ],
+    "filenames": [],
+    "legacyType": "sldprt",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "sldasm",
+    "name": "SLDASM",
+    "aliases": [],
+    "extensions": [
+      "sldasm"
+    ],
+    "filenames": [],
+    "legacyType": "sldasm",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "catpart",
+    "name": "CATPART",
+    "aliases": [],
+    "extensions": [
+      "catpart"
+    ],
+    "filenames": [],
+    "legacyType": "catpart",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "catproduct",
+    "name": "CATPRODUCT",
+    "aliases": [],
+    "extensions": [
+      "catproduct"
+    ],
+    "filenames": [],
+    "legacyType": "catproduct",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "fbx",
+    "name": "FBX",
+    "aliases": [],
+    "extensions": [
+      "fbx"
+    ],
+    "filenames": [],
+    "legacyType": "fbx",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "dae",
+    "name": "DAE",
+    "aliases": [],
+    "extensions": [
+      "dae"
+    ],
+    "filenames": [],
+    "legacyType": "dae",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "usd",
+    "name": "USD",
+    "aliases": [],
+    "extensions": [
+      "usd"
+    ],
+    "filenames": [],
+    "legacyType": "usd",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "usda",
+    "name": "USDA",
+    "aliases": [],
+    "extensions": [
+      "usda"
+    ],
+    "filenames": [],
+    "legacyType": "usda",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "usdc",
+    "name": "USDC",
+    "aliases": [],
+    "extensions": [
+      "usdc"
+    ],
+    "filenames": [],
+    "legacyType": "usdc",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "usdz",
+    "name": "USDZ",
+    "aliases": [],
+    "extensions": [
+      "usdz"
+    ],
+    "filenames": [],
+    "legacyType": "usdz",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "3ds",
+    "name": "3DS",
+    "aliases": [],
+    "extensions": [
+      "3ds"
+    ],
+    "filenames": [],
+    "legacyType": "3ds",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "c4d",
+    "name": "C4D",
+    "aliases": [],
+    "extensions": [
+      "c4d"
+    ],
+    "filenames": [],
+    "legacyType": "c4d",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "blend",
+    "name": "BLEND",
+    "aliases": [],
+    "extensions": [
+      "blend"
+    ],
+    "filenames": [],
+    "legacyType": "blend",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "max",
+    "name": "MAX",
+    "aliases": [],
+    "extensions": [
+      "max"
+    ],
+    "filenames": [],
+    "legacyType": "max",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scene",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing scene backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "dxf",
+    "name": "DXF",
+    "aliases": [],
+    "extensions": [
+      "dxf"
+    ],
+    "filenames": [],
+    "legacyType": "dxf",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad-drawing",
+        "projection": "GeometryDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad-drawing backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "dwg",
+    "name": "DWG",
+    "aliases": [],
+    "extensions": [
+      "dwg"
+    ],
+    "filenames": [],
+    "legacyType": "dwg",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "cad-drawing",
+        "projection": "GeometryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing cad-drawing backend"
+    ],
+    "limitations": [
+      "Recognized only; no specialized parser is implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "3D"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "text",
+    "name": "TEXT",
+    "aliases": [],
+    "extensions": [
+      "txt",
+      "log"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": true,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "markdown",
+    "name": "MARKDOWN",
+    "aliases": [],
+    "extensions": [
+      "md",
+      "markdown",
+      "mdown",
+      "mkd",
+      "mkdn"
+    ],
+    "filenames": [],
+    "legacyType": "markdown",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-structure",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "markdown",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing markdown backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": true,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "json",
+    "name": "JSON",
+    "aliases": [],
+    "extensions": [
+      "json",
+      "geojson",
+      "jsonl",
+      "ndjson"
+    ],
+    "filenames": [],
+    "legacyType": "json",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-structure",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "json",
+        "projection": "StructuredDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing json backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "worker",
+    "association": {
+      "allowed": true,
+      "recommended": true,
+      "category": "Data"
+    },
+    "sourceLanguage": "json",
+    "detectionRules": {
+      "backend": "existing-bounded-detector",
+      "mimeTypes": [
+        "application/json"
+      ]
+    }
+  },
+  {
+    "formatId": "yaml",
+    "name": "YAML",
+    "aliases": [],
+    "extensions": [
+      "yaml",
+      "yml"
+    ],
+    "filenames": [],
+    "legacyType": "yaml",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "yaml",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "xml",
+    "name": "XML",
+    "aliases": [],
+    "extensions": [
+      "xml"
+    ],
+    "filenames": [],
+    "legacyType": "xml",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "xml",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "toml",
+    "name": "TOML",
+    "aliases": [],
+    "extensions": [
+      "toml"
+    ],
+    "filenames": [],
+    "legacyType": "toml",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "ini",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "javascript",
+    "name": "JAVASCRIPT",
+    "aliases": [],
+    "extensions": [
+      "js",
+      "mjs",
+      "cjs"
+    ],
+    "filenames": [],
+    "legacyType": "javascript",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "javascript",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "typescript",
+    "name": "TYPESCRIPT",
+    "aliases": [],
+    "extensions": [
+      "ts",
+      "mts",
+      "cts"
+    ],
+    "filenames": [],
+    "legacyType": "typescript",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "typescript",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "jsx",
+    "name": "JSX",
+    "aliases": [],
+    "extensions": [
+      "jsx"
+    ],
+    "filenames": [],
+    "legacyType": "jsx",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "jsx",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "tsx",
+    "name": "TSX",
+    "aliases": [],
+    "extensions": [
+      "tsx"
+    ],
+    "filenames": [],
+    "legacyType": "tsx",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "tsx",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "python",
+    "name": "PYTHON",
+    "aliases": [],
+    "extensions": [
+      "py",
+      "pyw"
+    ],
+    "filenames": [],
+    "legacyType": "python",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "python",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "c",
+    "name": "C",
+    "aliases": [],
+    "extensions": [
+      "c",
+      "h"
+    ],
+    "filenames": [],
+    "legacyType": "c",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "c",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "cpp",
+    "name": "CPP",
+    "aliases": [],
+    "extensions": [
+      "cpp",
+      "cc",
+      "cxx",
+      "hpp"
+    ],
+    "filenames": [],
+    "legacyType": "cpp",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "cpp",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "java",
+    "name": "JAVA",
+    "aliases": [],
+    "extensions": [
+      "java"
+    ],
+    "filenames": [],
+    "legacyType": "java",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "java",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "go",
+    "name": "GO",
+    "aliases": [],
+    "extensions": [
+      "go"
+    ],
+    "filenames": [],
+    "legacyType": "go",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "go",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "rust",
+    "name": "RUST",
+    "aliases": [],
+    "extensions": [
+      "rs"
+    ],
+    "filenames": [],
+    "legacyType": "rust",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "rust",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "html",
+    "name": "HTML",
+    "aliases": [],
+    "extensions": [
+      "htm",
+      "html"
+    ],
+    "filenames": [],
+    "legacyType": "html",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "xml",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "css",
+    "name": "CSS",
+    "aliases": [],
+    "extensions": [
+      "css"
+    ],
+    "filenames": [],
+    "legacyType": "css",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "css",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "csv",
+    "name": "CSV",
+    "aliases": [],
+    "extensions": [
+      "csv"
+    ],
+    "filenames": [],
+    "legacyType": "csv",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-structure",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "csv",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing csv backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "worker",
+    "association": {
+      "allowed": true,
+      "recommended": true,
+      "category": "Data"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "tsv",
+    "name": "TSV",
+    "aliases": [],
+    "extensions": [
+      "tsv",
+      "tab"
+    ],
+    "filenames": [],
+    "legacyType": "tsv",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-structure",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "csv",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": true,
+    "canSave": true,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing csv backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "worker",
+    "association": {
+      "allowed": true,
+      "recommended": true,
+      "category": "Data"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "mp3",
+    "name": "MP3",
+    "aliases": [],
+    "extensions": [
+      "mp3"
+    ],
+    "filenames": [],
+    "legacyType": "mp3",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "wav",
+    "name": "WAV",
+    "aliases": [],
+    "extensions": [
+      "wav"
+    ],
+    "filenames": [],
+    "legacyType": "wav",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "flac",
+    "name": "FLAC",
+    "aliases": [],
+    "extensions": [
+      "flac"
+    ],
+    "filenames": [],
+    "legacyType": "flac",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "aac",
+    "name": "AAC",
+    "aliases": [],
+    "extensions": [
+      "aac"
+    ],
+    "filenames": [],
+    "legacyType": "aac",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "m4a",
+    "name": "M4A",
+    "aliases": [],
+    "extensions": [
+      "m4a"
+    ],
+    "filenames": [],
+    "legacyType": "m4a",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ogg",
+    "name": "OGG",
+    "aliases": [],
+    "extensions": [
+      "ogg"
+    ],
+    "filenames": [],
+    "legacyType": "ogg",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "opus",
+    "name": "OPUS",
+    "aliases": [],
+    "extensions": [
+      "opus"
+    ],
+    "filenames": [],
+    "legacyType": "opus",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "wma",
+    "name": "WMA",
+    "aliases": [],
+    "extensions": [
+      "wma"
+    ],
+    "filenames": [],
+    "legacyType": "wma",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "aiff",
+    "name": "AIFF",
+    "aliases": [],
+    "extensions": [
+      "aiff",
+      "aif"
+    ],
+    "filenames": [],
+    "legacyType": "aiff",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "audio",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing audio backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "mp4",
+    "name": "MP4",
+    "aliases": [],
+    "extensions": [
+      "mp4"
+    ],
+    "filenames": [],
+    "legacyType": "mp4",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "video",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing video backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "webm",
+    "name": "WEBM",
+    "aliases": [],
+    "extensions": [
+      "webm"
+    ],
+    "filenames": [],
+    "legacyType": "webm",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "video",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing video backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "mov",
+    "name": "MOV",
+    "aliases": [],
+    "extensions": [
+      "mov"
+    ],
+    "filenames": [],
+    "legacyType": "mov",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "video",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing video backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "mkv",
+    "name": "MKV",
+    "aliases": [],
+    "extensions": [
+      "mkv"
+    ],
+    "filenames": [],
+    "legacyType": "mkv",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "video",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing video backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "avi",
+    "name": "AVI",
+    "aliases": [],
+    "extensions": [
+      "avi"
+    ],
+    "filenames": [],
+    "legacyType": "avi",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "video",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing video backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "mpeg",
+    "name": "MPEG",
+    "aliases": [],
+    "extensions": [
+      "mpeg",
+      "mpg"
+    ],
+    "filenames": [],
+    "legacyType": "mpeg",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "video",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing video backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "m4v",
+    "name": "M4V",
+    "aliases": [],
+    "extensions": [
+      "m4v"
+    ],
+    "filenames": [],
+    "legacyType": "m4v",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "video",
+        "projection": "TimelineDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing video backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Media"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "epub",
+    "name": "EPUB",
+    "aliases": [],
+    "extensions": [
+      "epub"
+    ],
+    "filenames": [],
+    "legacyType": "epub",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "ebook",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing ebook backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector",
+      "containerEntries": [
+        "mimetype",
+        "META-INF/container.xml"
+      ]
+    }
+  },
+  {
+    "formatId": "eml",
+    "name": "EML",
+    "aliases": [],
+    "extensions": [
+      "eml"
+    ],
+    "filenames": [],
+    "legacyType": "eml",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "email",
+        "projection": "StructuredDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing email backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "msg",
+    "name": "MSG",
+    "aliases": [],
+    "extensions": [
+      "msg"
+    ],
+    "filenames": [],
+    "legacyType": "msg",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "email",
+        "projection": "StructuredDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing email backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "xlsx",
+    "name": "XLSX",
+    "aliases": [],
+    "extensions": [
+      "xlsx"
+    ],
+    "filenames": [],
+    "legacyType": "xlsx",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "spreadsheet",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing spreadsheet backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Data"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "xlsm",
+    "name": "XLSM",
+    "aliases": [],
+    "extensions": [
+      "xlsm"
+    ],
+    "filenames": [],
+    "legacyType": "xlsm",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "spreadsheet",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing spreadsheet backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Data"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "xls",
+    "name": "XLS",
+    "aliases": [],
+    "extensions": [
+      "xls"
+    ],
+    "filenames": [],
+    "legacyType": "xls",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "spreadsheet",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing spreadsheet backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Data"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "xlsb",
+    "name": "XLSB",
+    "aliases": [],
+    "extensions": [
+      "xlsb"
+    ],
+    "filenames": [],
+    "legacyType": "xlsb",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "spreadsheet",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing spreadsheet backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Data"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ods",
+    "name": "ODS",
+    "aliases": [],
+    "extensions": [
+      "ods"
+    ],
+    "filenames": [],
+    "legacyType": "ods",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "spreadsheet",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing spreadsheet backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Data"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "pptx",
+    "name": "PPTX",
+    "aliases": [],
+    "extensions": [
+      "pptx"
+    ],
+    "filenames": [],
+    "legacyType": "pptx",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "presentation",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing presentation backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Presentations"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "pptm",
+    "name": "PPTM",
+    "aliases": [],
+    "extensions": [
+      "pptm"
+    ],
+    "filenames": [],
+    "legacyType": "pptm",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "presentation",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing presentation backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Presentations"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ppsx",
+    "name": "PPSX",
+    "aliases": [],
+    "extensions": [
+      "ppsx"
+    ],
+    "filenames": [],
+    "legacyType": "ppsx",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "presentation",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing presentation backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Presentations"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "potx",
+    "name": "POTX",
+    "aliases": [],
+    "extensions": [
+      "potx"
+    ],
+    "filenames": [],
+    "legacyType": "potx",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "presentation",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing presentation backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Presentations"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ppt",
+    "name": "PPT",
+    "aliases": [],
+    "extensions": [
+      "ppt"
+    ],
+    "filenames": [],
+    "legacyType": "ppt",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "presentation",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing presentation backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Presentations"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "odp",
+    "name": "ODP",
+    "aliases": [],
+    "extensions": [
+      "odp"
+    ],
+    "filenames": [],
+    "legacyType": "odp",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "presentation",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing presentation backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Presentations"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "pdf",
+    "name": "PDF",
+    "aliases": [],
+    "extensions": [
+      "pdf"
+    ],
+    "filenames": [],
+    "legacyType": "pdf",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "pdf",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing pdf backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "worker",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector",
+      "mimeTypes": [
+        "application/pdf"
+      ],
+      "magic": [
+        {
+          "offset": 0,
+          "bytes": [
+            37,
+            80,
+            68,
+            70,
+            45
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "formatId": "docx",
+    "name": "DOCX",
+    "aliases": [],
+    "extensions": [
+      "docx"
+    ],
+    "filenames": [],
+    "legacyType": "docx",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "office-document",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing office-document backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector",
+      "containerEntries": [
+        "[Content_Types].xml",
+        "word/document.xml"
+      ]
+    }
+  },
+  {
+    "formatId": "odt",
+    "name": "ODT",
+    "aliases": [],
+    "extensions": [
+      "odt"
+    ],
+    "filenames": [],
+    "legacyType": "odt",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "office-document",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing office-document backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "rtf",
+    "name": "RTF",
+    "aliases": [],
+    "extensions": [
+      "rtf"
+    ],
+    "filenames": [],
+    "legacyType": "rtf",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "office-document",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing office-document backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "doc",
+    "name": "DOC",
+    "aliases": [],
+    "extensions": [
+      "doc"
+    ],
+    "filenames": [],
+    "legacyType": "doc",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "office-document",
+        "projection": "DocumentPages",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing office-document backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Documents"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "png",
+    "name": "PNG",
+    "aliases": [],
+    "extensions": [
+      "png"
+    ],
+    "filenames": [],
+    "legacyType": "png",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector",
+      "mimeTypes": [
+        "image/png"
+      ],
+      "magic": [
+        {
+          "offset": 0,
+          "bytes": [
+            137,
+            80,
+            78,
+            71,
+            13,
+            10,
+            26,
+            10
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "formatId": "jpeg",
+    "name": "JPEG",
+    "aliases": [],
+    "extensions": [
+      "jpg",
+      "jpeg"
+    ],
+    "filenames": [],
+    "legacyType": "jpeg",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "gif",
+    "name": "GIF",
+    "aliases": [],
+    "extensions": [
+      "gif"
+    ],
+    "filenames": [],
+    "legacyType": "gif",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "webp",
+    "name": "WEBP",
+    "aliases": [],
+    "extensions": [
+      "webp"
+    ],
+    "filenames": [],
+    "legacyType": "webp",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "svg",
+    "name": "SVG",
+    "aliases": [],
+    "extensions": [
+      "svg"
+    ],
+    "filenames": [],
+    "legacyType": "svg",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "avif",
+    "name": "AVIF",
+    "aliases": [],
+    "extensions": [
+      "avif"
+    ],
+    "filenames": [],
+    "legacyType": "avif",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "bmp",
+    "name": "BMP",
+    "aliases": [],
+    "extensions": [
+      "bmp"
+    ],
+    "filenames": [],
+    "legacyType": "bmp",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ico",
+    "name": "ICO",
+    "aliases": [],
+    "extensions": [
+      "ico"
+    ],
+    "filenames": [],
+    "legacyType": "ico",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "tiff",
+    "name": "TIFF",
+    "aliases": [],
+    "extensions": [
+      "tif",
+      "tiff"
+    ],
+    "filenames": [],
+    "legacyType": "tiff",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "heic",
+    "name": "HEIC",
+    "aliases": [],
+    "extensions": [
+      "heic"
+    ],
+    "filenames": [],
+    "legacyType": "heic",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "heif",
+    "name": "HEIF",
+    "aliases": [],
+    "extensions": [
+      "heif"
+    ],
+    "filenames": [],
+    "legacyType": "heif",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "image",
+        "projection": "ImageDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": false,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing image backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Images"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "zip",
+    "name": "ZIP",
+    "aliases": [],
+    "extensions": [
+      "zip"
+    ],
+    "filenames": [],
+    "legacyType": "zip",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector",
+      "mimeTypes": [
+        "application/zip"
+      ],
+      "magic": [
+        {
+          "offset": 0,
+          "bytes": [
+            80,
+            75,
+            3,
+            4
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "formatId": "tar",
+    "name": "TAR",
+    "aliases": [],
+    "extensions": [
+      "tar"
+    ],
+    "filenames": [],
+    "legacyType": "tar",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "gz",
+    "name": "GZ",
+    "aliases": [],
+    "extensions": [
+      "gz"
+    ],
+    "filenames": [],
+    "legacyType": "gz",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "tgz",
+    "name": "TGZ",
+    "aliases": [],
+    "extensions": [
+      "tgz"
+    ],
+    "filenames": [],
+    "legacyType": "tgz",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "sevenzip",
+    "name": "SEVENZIP",
+    "aliases": [],
+    "extensions": [
+      "7z"
+    ],
+    "filenames": [],
+    "legacyType": "sevenzip",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "rar",
+    "name": "RAR",
+    "aliases": [],
+    "extensions": [
+      "rar"
+    ],
+    "filenames": [],
+    "legacyType": "rar",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "bz2",
+    "name": "BZ2",
+    "aliases": [],
+    "extensions": [
+      "bz2"
+    ],
+    "filenames": [],
+    "legacyType": "bz2",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "xz",
+    "name": "XZ",
+    "aliases": [],
+    "extensions": [
+      "xz"
+    ],
+    "filenames": [],
+    "legacyType": "xz",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "zst",
+    "name": "ZST",
+    "aliases": [],
+    "extensions": [
+      "zst"
+    ],
+    "filenames": [],
+    "legacyType": "zst",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Archives"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "sqlite",
+    "name": "SQLITE",
+    "aliases": [],
+    "extensions": [
+      "sqlite",
+      "sqlite3",
+      "db"
+    ],
+    "filenames": [],
+    "legacyType": "sqlite",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "database",
+        "projection": "TabularDataProvider",
+        "label": "Primary view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing database backend"
+    ],
+    "limitations": [
+      "Existing viewer limits apply; recognition does not validate the entire document."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": true,
+      "recommended": false,
+      "category": "Scientific"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "srt",
+    "name": "SRT",
+    "aliases": [],
+    "extensions": [
+      "srt"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "subtitle",
+        "projection": "TimelineDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Plain subtitle text/timing preview; no ASS effects. MicroDVD requires declared FPS; VobSub is unsupported."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "vtt",
+    "name": "VTT",
+    "aliases": [],
+    "extensions": [
+      "vtt"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "subtitle",
+        "projection": "TimelineDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Plain subtitle text/timing preview; no ASS effects. MicroDVD requires declared FPS; VobSub is unsupported."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ass",
+    "name": "ASS",
+    "aliases": [],
+    "extensions": [
+      "ass"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "subtitle",
+        "projection": "TimelineDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Plain subtitle text/timing preview; no ASS effects. MicroDVD requires declared FPS; VobSub is unsupported."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ssa",
+    "name": "SSA",
+    "aliases": [],
+    "extensions": [
+      "ssa"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "subtitle",
+        "projection": "TimelineDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Plain subtitle text/timing preview; no ASS effects. MicroDVD requires declared FPS; VobSub is unsupported."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "sub",
+    "name": "SUB",
+    "aliases": [],
+    "extensions": [
+      "sub"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "subtitle",
+        "projection": "TimelineDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source text"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Plain subtitle text/timing preview; no ASS effects. MicroDVD requires declared FPS; VobSub is unsupported."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "npy",
+    "name": "NumPy array",
+    "aliases": [],
+    "extensions": [
+      "npy"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "scientific",
+        "projection": "ScientificDataset",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Numeric/scalar/array preview only; object/pickle and structured dtype are disabled."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "npz",
+    "name": "NumPy ZIP collection",
+    "aliases": [],
+    "extensions": [
+      "npz"
+    ],
+    "filenames": [],
+    "legacyType": "zip",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Safe archive navigation; contained numeric NPY entries use scientific preview."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "psd",
+    "name": "PSD",
+    "aliases": [],
+    "extensions": [
+      "psd"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "psb",
+    "name": "PSB",
+    "aliases": [],
+    "extensions": [
+      "psb"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "exr",
+    "name": "EXR",
+    "aliases": [],
+    "extensions": [
+      "exr"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "eps",
+    "name": "EPS",
+    "aliases": [],
+    "extensions": [
+      "eps"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ai",
+    "name": "AI",
+    "aliases": [],
+    "extensions": [
+      "ai"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "fig",
+    "name": "FIG",
+    "aliases": [],
+    "extensions": [
+      "fig"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "sketch",
+    "name": "SKETCH",
+    "aliases": [],
+    "extensions": [
+      "sketch"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "lottie",
+    "name": "LOTTIE",
+    "aliases": [],
+    "extensions": [
+      "lottie"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "bigtiff",
+    "name": "BIGTIFF",
+    "aliases": [],
+    "extensions": [
+      "btf",
+      "bigtiff"
+    ],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Specialized decoder/rendering is not implemented; recognition or embedded thumbnails do not imply full fidelity."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "typescript-declaration",
+    "name": "TypeScript declaration",
+    "aliases": [],
+    "extensions": [
+      "d.ts"
+    ],
+    "filenames": [],
+    "legacyType": "typescript",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "typescript",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "kotlin-script",
+    "name": "Kotlin script",
+    "aliases": [],
+    "extensions": [
+      "gradle.kts",
+      "kts"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "kotlin",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "blade-template",
+    "name": "Blade template",
+    "aliases": [],
+    "extensions": [
+      "blade.php"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "xml",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "dockerfile",
+    "name": "Dockerfile",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      "Dockerfile"
+    ],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "dockerfile",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "cmake",
+    "name": "CMake",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      "CMakeLists.txt"
+    ],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "cmake",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "go-module",
+    "name": "Go module",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      "go.mod"
+    ],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "go",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "cargo-manifest",
+    "name": "Cargo manifest",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      "Cargo.toml"
+    ],
+    "legacyType": "toml",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "ini",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "gitignore",
+    "name": "Git ignore",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      ".gitignore"
+    ],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "plaintext",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "environment",
+    "name": "Environment configuration",
+    "aliases": [],
+    "extensions": [
+      "env.local"
+    ],
+    "filenames": [
+      ".env",
+      ".env.local"
+    ],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "ini",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "matlab-source",
+    "name": "MATLAB source",
+    "aliases": [],
+    "extensions": [
+      "m"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "matlab",
+    "ambiguityGroup": "m-source",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "objective-c",
+    "name": "Objective-C source",
+    "aliases": [],
+    "extensions": [
+      "m"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "objectivec",
+    "ambiguityGroup": "m-source",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "makefile",
+    "name": "Makefile",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      "Makefile",
+      "GNUmakefile"
+    ],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "makefile",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "package-manifest",
+    "name": "Package manifest",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      "package.json"
+    ],
+    "legacyType": "json",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-structure",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "json",
+        "projection": "StructuredDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing json backend"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "worker",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "json",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "tsconfig",
+    "name": "TypeScript configuration",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      "tsconfig.json"
+    ],
+    "legacyType": "json",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing json backend"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "worker",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "jsonc",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "pyproject",
+    "name": "Python project configuration",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      "pyproject.toml"
+    ],
+    "legacyType": "toml",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "ini",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "editorconfig",
+    "name": "EditorConfig",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [
+      ".editorconfig"
+    ],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "ini",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "gradle",
+    "name": "Gradle source",
+    "aliases": [],
+    "extensions": [
+      "gradle"
+    ],
+    "filenames": [
+      "build.gradle"
+    ],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "groovy",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "jsonc",
+    "name": "JSON with comments",
+    "aliases": [],
+    "extensions": [
+      "jsonc"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "jsonc",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "json5",
+    "name": "JSON5 source",
+    "aliases": [],
+    "extensions": [
+      "json5"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "javascript",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "ini",
+    "name": "INI source",
+    "aliases": [],
+    "extensions": [
+      "ini"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "ini",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "vue",
+    "name": "Vue source",
+    "aliases": [],
+    "extensions": [
+      "vue"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "xml",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "svelte",
+    "name": "Svelte source",
+    "aliases": [],
+    "extensions": [
+      "svelte"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "xml",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "astro",
+    "name": "Astro source",
+    "aliases": [],
+    "extensions": [
+      "astro"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "xml",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "perl-source",
+    "name": "Perl source",
+    "aliases": [],
+    "extensions": [
+      "pl",
+      "perl"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "ambiguityGroup": "pl-source",
+    "sourceLanguage": "perl",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "prolog-source",
+    "name": "Prolog source",
+    "aliases": [],
+    "extensions": [
+      "pl"
+    ],
+    "filenames": [],
+    "legacyType": "text",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-text",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "ambiguityGroup": "pl-source",
+    "sourceLanguage": "prolog",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "nifti-gzip",
+    "name": "Compressed NIfTI",
+    "aliases": [],
+    "extensions": [
+      "nii.gz"
+    ],
+    "filenames": [],
+    "legacyType": "gz",
+    "detectionStatus": "implemented",
+    "previewLevel": "detection-only",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.binary-fallback",
+        "projection": "BinaryDocument",
+        "label": "Format information"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Compression signature cannot confirm the inner NIfTI format. Medical preview is not implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "tar-zstd",
+    "name": "Zstandard TAR",
+    "aliases": [],
+    "extensions": [
+      "tar.zst"
+    ],
+    "filenames": [],
+    "legacyType": "zst",
+    "detectionStatus": "implemented",
+    "previewLevel": "partial",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "archive",
+        "projection": "ContainerDocument",
+        "label": "Source view"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing archive backend"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Container name is a hint; decompression support is determined by the existing archive backend."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "notebook-json",
+    "name": "Notebook JSON source",
+    "aliases": [],
+    "extensions": [
+      "ipynb"
+    ],
+    "filenames": [],
+    "legacyType": "json",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-structure",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "json",
+        "projection": "StructuredDocument",
+        "label": "JSON structure"
+      },
+      {
+        "id": "source",
+        "viewerId": "core.text-fallback",
+        "projection": "TextDocument",
+        "label": "JSON source"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing json backend"
+    ],
+    "limitations": [
+      "No code, build script, or embedded command is executed.",
+      "Notebook viewer and kernel execution are not implemented."
+    ],
+    "resourceDependencies": [],
+    "isolation": "worker",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Code"
+    },
+    "sourceLanguage": "json",
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  },
+  {
+    "formatId": "unknown",
+    "name": "Unknown format",
+    "aliases": [],
+    "extensions": [],
+    "filenames": [],
+    "legacyType": "unknown",
+    "detectionStatus": "implemented",
+    "previewLevel": "basic-structure",
+    "supportedViews": [
+      {
+        "id": "primary",
+        "viewerId": "core.binary-fallback",
+        "projection": "BinaryDocument",
+        "label": "Binary / Hex"
+      },
+      {
+        "id": "hex",
+        "viewerId": "hex",
+        "projection": "BinaryDocument",
+        "label": "Raw bytes / Hex (read only)"
+      }
+    ],
+    "canInspect": true,
+    "canSearch": true,
+    "canEdit": false,
+    "canSave": false,
+    "supportsVirtualSource": true,
+    "supportsRandomAccess": true,
+    "dependencies": [
+      "existing text/binary viewer"
+    ],
+    "limitations": [
+      "Raw byte viewing does not identify or validate the original format."
+    ],
+    "resourceDependencies": [],
+    "isolation": "in-process",
+    "association": {
+      "allowed": false,
+      "recommended": false,
+      "category": "Unknown"
+    },
+    "detectionRules": {
+      "backend": "existing-bounded-detector"
+    }
+  }
+]

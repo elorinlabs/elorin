@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-register-media-source"
+description = "Enables the register_media_source command without any pre-configured scope."
+commands.allow = ["register_media_source"]
+
+[[permission]]
+identifier = "deny-register-media-source"
+description = "Denies the register_media_source command without any pre-configured scope."
+commands.deny = ["register_media_source"]

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-scientific-close"
+description = "Enables the scientific_close command without any pre-configured scope."
+commands.allow = ["scientific_close"]
+
+[[permission]]
+identifier = "deny-scientific-close"
+description = "Denies the scientific_close command without any pre-configured scope."
+commands.deny = ["scientific_close"]

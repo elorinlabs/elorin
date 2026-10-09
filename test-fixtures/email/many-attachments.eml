@@ -1,0 +1,216 @@
+From: Alice <alice@example.com>
+To: Bob <bob@example.com>
+Cc: Carol <carol@example.com>
+Subject: Many attachments
+Date: Thu, 08 Oct 2026 12:00:00 +0800
+Message-ID: <prism-fixture@example.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============7052596393464985517=="
+
+--===============7052596393464985517==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Twenty-five attachments
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-0.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAw
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-1.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAx
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-2.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAy
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-3.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAz
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-4.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCA0
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-5.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCA1
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-6.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCA2
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-7.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCA3
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-8.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCA4
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-9.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCA5
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-10.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxMA==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-11.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxMQ==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-12.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxMg==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-13.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxMw==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-14.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxNA==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-15.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxNQ==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-16.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxNg==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-17.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxNw==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-18.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxOA==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-19.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAxOQ==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-20.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAyMA==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-21.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAyMQ==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-22.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAyMg==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-23.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAyMw==
+
+--===============7052596393464985517==
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="file-24.txt"
+MIME-Version: 1.0
+
+QXR0YWNobWVudCAyNA==
+
+--===============7052596393464985517==--

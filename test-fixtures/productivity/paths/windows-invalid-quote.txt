@@ -1,0 +1,1 @@
+Windows forbids literal double quotes in file names. Quote safety is covered by argument tests; no invalid fixture is claimed.

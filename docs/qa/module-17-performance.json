@@ -1,0 +1,15 @@
+{
+  "environment": "Vitest Node on current Windows host; not old i5 hardware",
+  "manifestDefinitions": 155,
+  "indexRules": 2000,
+  "indexInitializationMs": 8.899200000000064,
+  "lookupCount": 100000,
+  "lookupTotalMs": 132.54420000000005,
+  "largeLogicalBytes": 34359738368,
+  "largeProbeBytes": 65536,
+  "largeProbeCalls": 1,
+  "largeDetectionMs": 6.551199999999881,
+  "smallDetectionCount": 100,
+  "smallDetectionTotalMs": 8.376399999999876,
+  "largeFormat": "text"
+}

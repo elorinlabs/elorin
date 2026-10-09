@@ -1,0 +1,32 @@
+import { describe,it,expect,vi } from 'vitest';
+import { File as NodeFile } from 'node:buffer';
+import { render,screen,fireEvent } from '@testing-library/react';
+import { CommandRegistry,fuzzyScore } from '../src/commands/registry';
+import { Palette } from '../src/commands/Palette';
+import { ViewerSessionStore } from '../src/viewer/core/session';
+import { workspaceManifest,validManifest,physicalIdentity,closableTabs,type TabSession } from '../src/workspace/workspace';
+import { BrowserFileSource } from '../src/services/fileSource';
+import { fileLoader } from '../src/services/fileLoader';
+import { DocumentSession,documentSessions } from '../src/document/session';
+import { diffLines } from 'diff';
+import catalogue from '../src/platform/associations.json';
+import installerHooks from '../src-tauri/installer/hooks.nsh?raw';
+const File = NodeFile as unknown as typeof globalThis.File;
+describe('Module 16 productivity',()=>{
+  it('generates concrete owned ProgID keys and preserves Windows defaults',()=>{
+    expect(installerHooks).toContain('Software\\Classes\\Elorin.File.Documents');
+    expect(installerHooks).not.toContain('${id}');
+    expect(installerHooks).not.toContain('UserChoice');
+    expect(installerHooks).toContain('Software\\RegisteredApplications');
+    expect(catalogue.find(r=>r.extension==='pptx')?.category).toBe('Presentations');
+    expect(catalogue.find(r=>r.extension==='xz')?.category).toBe('Archives');
+  });
+  it('searches commands by subsequence and never executes disabled or hidden commands',()=>{const run=vi.fn();const r=new CommandRegistry([{id:'inspect',title:'Toggle Inspector',scope:'Viewer',execute:run},{id:'off',title:'Off',enabled:false,scope:'Edit',execute:run},{id:'hidden',title:'Hidden',visible:false,scope:'Global',execute:run}]);expect(r.search('togins')[0].id).toBe('inspect');r.execute('off');r.execute('hidden');expect(run).not.toHaveBeenCalled();r.execute('inspect');expect(run).toHaveBeenCalledOnce();expect(fuzzyScore('zzzzz','Toggle Inspector')).toBe(-1);});
+  it('operates command palette with keyboard and restores focus',()=>{const run=vi.fn(),close=vi.fn();const prior=document.createElement('button');document.body.append(prior);prior.focus();const view=render(<Palette title="Command Palette" commands={[{id:'open',title:'Open File',scope:'Global',execute:run}]} close={close} onError={vi.fn()}/>);fireEvent.keyDown(screen.getByRole('combobox'),{key:'Enter'});expect(run).toHaveBeenCalledOnce();expect(close).toHaveBeenCalledOnce();view.unmount();expect(document.activeElement).toBe(prior);prior.remove();});
+  it('round trips opaque viewer state including sets and maps without sharing source identity',()=>{const store=new ViewerSessionStore(),a={},b={};const states={text:{textScroll:480},pdf:{page:17},json:{jsonSelected:9,jsonExpanded:new Set([0,2])},image:{zoom:2},csv:{csvSelection:{kind:'cell',row:90,column:3}},mesh:{camera:[1,2,3],target:[4,5,6]}};for(const [id,metadata]of Object.entries(states))store.update(a,id,{mode:'read',metadata});store.restore(b,store.serialize(a));for(const[id,metadata]of Object.entries(states))expect(store.get(b,id).metadata).toEqual(metadata);expect(store.get({},'pdf').metadata).toEqual({});});
+  it('rejects malformed and future manifests but accepts 100 reference-only tabs',async()=>{const file=await fileLoader.loadBrowserFile(new File(['base'],'a.txt'));const tabs:TabSession[]=Array.from({length:100},(_,i)=>({id:`t${i}`,file:{...file,path:`C:\\fixtures\\${i}.txt`},source:new BrowserFileSource(new File(['secret content'],'a.txt'))}));const manifest=workspaceManifest(tabs,37,true);expect(validManifest(manifest)).toBe(true);expect(manifest.activeTabId).toBe('t37');expect(JSON.stringify(manifest)).not.toContain('secret content');expect(validManifest({...manifest,version:9})).toBe(false);expect(validManifest({...manifest,tabs:[{id:'bad',path:null}]})).toBe(false);expect(closableTabs(tabs,37,'right')).toHaveLength(62);expect(closableTabs(tabs,37,'others')).toHaveLength(99);});
+  it('takes dirty state from DocumentSession and keeps independent tab IDs',async()=>{const file=await fileLoader.loadBrowserFile(new File(['base'],'a.txt'));const source=new BrowserFileSource(new File(['base'],'a.txt'));const session=new DocumentSession('base','text','C:\\a.txt');documentSessions.set(source,session);session.modify('changed');expect(session.dirty).toBe(true);expect(physicalIdentity('C:/A/中文.txt')).toBe(physicalIdentity('c:\\a\\中文.txt'));expect(physicalIdentity('/A')).not.toBe(physicalIdentity('/a'));documentSessions.delete(source);expect(file.name).toBe('a.txt');});
+  it.each(['# Markdown\n','{"large":900719925474099312345,"a":1,"a":2}\n','id,name\n00123,test\n'])('compares exact source preserving precision and leading zeros',source=>{const parts=diffLines(source,source+'added\n',{timeout:100,maxEditLength:100});expect(parts?.filter(p=>!p.added).map(p=>p.value).join('')).toBe(source);expect(parts?.some(p=>p.added)).toBe(true);});
+  it('guards high complexity diffs through bounded Myers options',()=>{expect(diffLines('a\n'.repeat(100),'b\n'.repeat(100),{maxEditLength:10})).toBeUndefined();});
+  it('association catalogue excludes executables and never recommends source or media defaults',()=>{for(const ext of ['exe','dll','sys','bat','cmd','ps1','lnk','msi'])expect(catalogue.some(r=>r.extension===ext)).toBe(false);expect(catalogue.filter(r=>['Code','Media','3D','Scientific'].includes(r.category)).every(r=>!r.recommendedDefault)).toBe(true);expect(catalogue.find(r=>r.extension==='pdf')?.openWith).toBe(true);});
+});

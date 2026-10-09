@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-document-create-locations"
+description = "Enables the document_create_locations command without any pre-configured scope."
+commands.allow = ["document_create_locations"]
+
+[[permission]]
+identifier = "deny-document-create-locations"
+description = "Denies the document_create_locations command without any pre-configured scope."
+commands.deny = ["document_create_locations"]

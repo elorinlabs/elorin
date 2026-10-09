@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-scientific-begin"
+description = "Enables the scientific_begin command without any pre-configured scope."
+commands.allow = ["scientific_begin"]
+
+[[permission]]
+identifier = "deny-scientific-begin"
+description = "Denies the scientific_begin command without any pre-configured scope."
+commands.deny = ["scientific_begin"]

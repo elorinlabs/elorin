@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-scientific-stats"
+description = "Enables the scientific_stats command without any pre-configured scope."
+commands.allow = ["scientific_stats"]
+
+[[permission]]
+identifier = "deny-scientific-stats"
+description = "Denies the scientific_stats command without any pre-configured scope."
+commands.deny = ["scientific_stats"]

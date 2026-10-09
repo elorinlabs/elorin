@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Elorin",
+  "version": "0.1.0",
+  "identifier": "app.prism.desktop",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Elorin",
+        "width": 1440,
+        "height": 1000,
+        "minWidth": 900,
+        "minHeight": 650,
+        "dragDropEnabled": true,
+        "decorations": false,
+        "fullscreen": false,
+        "alwaysOnTop": false,
+        "additionalBrowserArgs": "--disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection --disable-gpu --disable-gpu-compositing"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; font-src 'self' blob: data:; img-src 'self' data: blob:; media-src prism-vfs: http://prism-vfs.localhost https://prism-vfs.localhost 'self' blob: prism-media: http://prism-media.localhost https://prism-media.localhost; connect-src prism-science: http://prism-science.localhost https://prism-science.localhost 'self' blob: prism-media: http://prism-media.localhost https://prism-media.localhost prism-vfs: http://prism-vfs.localhost https://prism-vfs.localhost ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "windows": { "nsis": { "installMode": "currentUser", "installerHooks": "installer/hooks.nsh" } },
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico",
+      "icons/icon.icns"
+    ]
+  }
+}
+
+

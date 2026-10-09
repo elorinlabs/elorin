@@ -1,0 +1,258 @@
+.csv-viewer {
+  color: var(--textPrimary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+  padding: 14px;
+}
+.csv-toolbar,
+.csv-surface {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.csv-toolbar {
+  font-size: 12px;
+}
+.csv-toolbar > span {
+  margin-right: auto;
+  color: var(--textSecondary);
+}
+.csv-toolbar label {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.csv-viewer button,
+.csv-viewer select,
+.csv-viewer input:not([type="checkbox"]) {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--surfaceElevated);
+  color: var(--textPrimary);
+  padding: 6px 9px;
+  font: inherit;
+  min-width: 0;
+}
+.csv-viewer button:disabled {
+  opacity: 0.45;
+}
+.csv-viewer :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.csv-surface {
+  padding: 10px;
+  background: var(--surface);
+  border-radius: 9px;
+  font-size: 12px;
+}
+.csv-surface input {
+  flex: 1;
+  min-width: 120px !important;
+}
+.csv-surface small,
+.csv-status {
+  font-size: 11px;
+  color: var(--textMuted);
+}
+.csv-diagnostics {
+  font-size: 12px;
+  color: var(--textSecondary);
+}
+.csv-panes {
+  display: flex;
+  min-width: 0;
+  gap: 12px;
+  height: clamp(340px, 60vh, 750px);
+}
+.csv-panes > * {
+  flex: 1;
+  min-width: 0;
+}
+.csv-split > * {
+  width: 50%;
+}
+.csv-grid {
+  overflow: auto;
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  font-size: 12px;
+  contain: layout paint;
+}
+.csv-grid-header {
+  height: 32px;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--surfaceElevated);
+  border-bottom: 1px solid var(--border);
+}
+.csv-column {
+  position: absolute;
+  top: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+.csv-column button {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+}
+.csv-column small {
+  font-size: 9px;
+  color: var(--textMuted);
+  margin-left: 8px;
+}
+.csv-column [role="separator"] {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  bottom: 5px;
+  width: 7px;
+  border-right: 1px solid var(--border);
+  cursor: col-resize;
+  touch-action: none;
+}
+.csv-grid-row {
+  position: absolute;
+  left: 0;
+  height: 32px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent);
+}
+.csv-cell {
+  position: absolute;
+  top: 0;
+  height: 32px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-right: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
+  cursor: default;
+  unicode-bidi: plaintext;
+}
+.csv-cell.selected,
+.csv-column[aria-selected="true"],
+.csv-row-number[aria-selected="true"] {
+  background: var(--accentSurface);
+  color: var(--accent);
+}
+.csv-row-number {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 52px !important;
+  height: 32px;
+  background: var(--surfaceElevated) !important;
+  color: var(--textMuted) !important;
+  text-align: center;
+  border: 0 !important;
+  border-radius: 0 !important;
+  font-size: 11px !important;
+  display: block;
+  padding: 8px !important;
+}
+.csv-corner {
+  z-index: 4;
+}
+.csv-source {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  font:
+    12px/22px Consolas,
+    monospace;
+}
+.csv-source pre {
+  margin: 0;
+  padding: 16px;
+  width: max-content;
+  min-width: 100%;
+  user-select: text;
+}
+.csv-source p {
+  font: 12px var(--font-body);
+  padding: 8px 12px;
+  margin: 0;
+  background: var(--surfaceElevated);
+}
+.csv-empty {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  color: var(--textMuted);
+}
+.csv-inspector {
+  font-size: 12px;
+  max-width: 320px;
+}
+.csv-inspector h3 {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--textMuted);
+}
+.csv-inspector dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.csv-inspector dt {
+  color: var(--textMuted);
+}
+.csv-inspector dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
+  max-width: 65%;
+}
+.csv-inspector pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 350px;
+  overflow: auto;
+  font:
+    12px/1.6 Consolas,
+    monospace;
+}
+.csv-inspector li {
+  margin-bottom: 8px;
+}
+.viewer-scroll:has(.csv-viewer) > .viewer-shell,
+.viewer-scroll:has(.csv-viewer) .viewer-body {
+  min-width: 0;
+  width: 100%;
+}
+.viewer-scroll:has(.csv-viewer) .viewer-right {
+  max-height: clamp(340px, 60vh, 750px);
+  overflow: auto;
+}
+@media (max-width: 1100px) {
+  .csv-split {
+    flex-direction: column;
+  }
+  .csv-split > * {
+    width: 100%;
+    min-height: 150px;
+  }
+  .csv-toolbar {
+    gap: 6px;
+  }
+}

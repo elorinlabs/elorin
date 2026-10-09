@@ -1,0 +1,17 @@
+export const DATA_LIMITS = {
+  pageRows: 128,
+  pageColumns: 16,
+  cachePages: 8,
+  cacheBytes: 16 * 1024 * 1024,
+  pageBytes: 1024 * 1024,
+  chunkBytes: 32 * 1024 * 1024,
+  metadataBytes: 8 * 1024 * 1024,
+  previewChars: 8192,
+  blobBytes: 64,
+  browserSqliteBytes: 64 * 1024 * 1024,
+  arrowBatchBytes: 32 * 1024 * 1024,
+  nodes: 10000,
+  dimensions: 32,
+  sampleElements: 10000,
+  timeoutMs: 30000,
+} as const;

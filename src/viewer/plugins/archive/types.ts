@@ -1,0 +1,6 @@
+import type {FileSource} from '../../../services/fileSource';
+import type {VirtualMetadata} from '../../../vfs/types';
+export interface ArchiveEntry extends VirtualMetadata {id:number;path:string;kind:'file'|'directory'|'symlink'|'hardlink'|'special';offset?:number;dataOffset?:number;unsafe?:string}
+export interface ArchiveInfo {format:string;size:number;encrypted:boolean;comment?:string;diagnostics:string[];complete:boolean;entries:number;capabilities:{list:boolean;read:boolean;extract:boolean;password:boolean;streaming:boolean};error?:string}
+export interface ArchiveBackend {id:string;info:ArchiveInfo;listEntries(signal:AbortSignal):AsyncGenerator<ArchiveEntry[]>;openSource(entry:ArchiveEntry,password?:string):Promise<FileSource>;close():void;native?:boolean;extract?(ids:number[]|null,policy:string,password?:string):Promise<string>;cancelExtract?(operation:string):Promise<void>;extractionStatus?(operation:string):Promise<ExtractionStatus>;resolveConflict?(operation:string,policy:string,applyAll:boolean):Promise<void>}
+export interface ExtractionStatus {state:'running'|'conflict'|'complete'|'cancelled'|'error';files:number;bytes:number;totalFiles:number;totalBytes:number;skipped:number;path?:string;error?:string;warnings:string[]}

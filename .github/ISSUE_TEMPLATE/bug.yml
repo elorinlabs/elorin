@@ -1,0 +1,39 @@
+name: Frozen candidate defect
+description: Report a reproducible defect from an identified Windows test package
+title: "[BUG] "
+body:
+  - type: input
+    id: candidate
+    attributes:
+      label: Candidate ID and installer SHA-256
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Verified source commit or UNKNOWN
+    validations:
+      required: true
+  - type: input
+    id: case
+    attributes:
+      label: Test case ID and severity
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps, expected result and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Windows VM version, language, region, architecture and clean configuration
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots and sanitized logs
+      description: Do not attach credentials or personal files.

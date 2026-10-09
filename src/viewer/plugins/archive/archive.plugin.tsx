@@ -1,0 +1,2 @@
+import type {ViewerPlugin} from '../../core/types';import {loadArchive,type ArchiveModel} from './archive-model';import {ArchiveViewer,ArchiveInspector} from './ArchiveViewer';import './archive.css';
+export const archiveViewerPlugin:ViewerPlugin<ArchiveModel,ArchiveModel>={id:'archive',name:'Archive',supportedTypes:['zip','tar','gz','tgz','sevenzip','rar','bz2','xz','zst'],capabilities:{search:true,inspect:true},load:loadArchive,render:p=><ArchiveViewer {...p}/>,inspect:m=>m,renderInspection:m=><ArchiveInspector model={m}/>};

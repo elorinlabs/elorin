@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-binary-close"
+description = "Enables the binary_close command without any pre-configured scope."
+commands.allow = ["binary_close"]
+
+[[permission]]
+identifier = "deny-binary-close"
+description = "Denies the binary_close command without any pre-configured scope."
+commands.deny = ["binary_close"]

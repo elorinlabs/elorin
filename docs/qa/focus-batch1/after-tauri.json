@@ -1,0 +1,8 @@
+{
+  "identifier": "app.elorin.focus.batch1.qa",
+  "productName": "Elorin Focus QA",
+  "build": {
+    "beforeBuildCommand": "pnpm exec vite build --outDir docs/qa/focus-batch1/after-build",
+    "frontendDist": "../docs/qa/focus-batch1/after-build"
+  }
+}

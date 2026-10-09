@@ -1,0 +1,149 @@
+.data-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--textPrimary);
+}
+.data-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.data-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.data-content .csv-grid {
+  flex: 1;
+  min-height: 0;
+  max-height: calc(100dvh - 240px);
+}
+.data-navigation {
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  padding: 8px;
+  min-height: 0;
+}
+.data-tree {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.data-node {
+  display: flex;
+  gap: 4px;
+}
+.data-node > button:first-child {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 0;
+  background: transparent;
+  padding: 4px 8px;
+}
+.data-node small {
+  margin-left: 8px;
+  opacity: 0.55;
+}
+.data-node.selected {
+  background: var(--surface-hover, rgba(100, 150, 200, 0.14));
+}
+.data-filter,
+.data-status,
+.data-slice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+.data-status {
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+}
+.data-status > span:first-child {
+  flex: 1;
+}
+.data-status input,
+.data-slice input {
+  width: 100px;
+}
+.data-error {
+  padding: 12px;
+  color: var(--danger, #db856d);
+}
+.data-placeholder {
+  padding: 20px;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+.data-inspector {
+  padding: 12px;
+  overflow-wrap: anywhere;
+}
+.data-inspector pre {
+  white-space: pre-wrap;
+  max-height: 300px;
+  overflow: auto;
+  font-size: 12px;
+}
+.data-inspector dt {
+  opacity: 0.65;
+}
+.data-inspector dd {
+  margin: 4px 0 12px;
+}
+.data-navigation input {
+  width: 100%;
+}
+
+.viewer-host:has(.data-viewer) .viewer-scroll,
+.viewer-host:has(.data-viewer) .viewer-shell,
+.viewer-host:has(.data-viewer) .viewer-content {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.data-viewer {
+  flex: 1;
+  width: 100%;
+}
+.data-viewer button,
+.data-viewer input,
+.data-viewer select {
+  font: inherit;
+  color: var(--textPrimary);
+  background: var(--surfaceElevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+}
+
+.viewer-host:has(.data-viewer) .viewer-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  width: 100%;
+}
+.viewer-host:has(.data-viewer) .viewer-content {
+  min-width: 0;
+  width: 100%;
+  flex-direction: column;
+}
+.data-preview { flex: 0 0 auto; max-height: 210px; overflow: auto; padding: 8px 14px; border-top: 1px solid var(--border-color, #333); }
+.data-preview p { margin: 0; font-size: 12px; }
+.data-preview svg { display: block; width: 100%; height: 150px; }

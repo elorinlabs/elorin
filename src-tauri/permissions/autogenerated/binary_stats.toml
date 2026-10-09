@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-binary-stats"
+description = "Enables the binary_stats command without any pre-configured scope."
+commands.allow = ["binary_stats"]
+
+[[permission]]
+identifier = "deny-binary-stats"
+description = "Denies the binary_stats command without any pre-configured scope."
+commands.deny = ["binary_stats"]

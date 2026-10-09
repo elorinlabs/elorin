@@ -1,0 +1,24 @@
+{
+  "candidateId": "legacy-0.1.0-20261009",
+  "installerName": "Elorin_0.1.0_x64-setup.exe",
+  "installerSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+  "sourceCommit": null,
+  "sourceProvenance": "UNKNOWN: installer predates Git import; no proven source mapping",
+  "registeredAt": "2026-10-09T06:43:04.779Z",
+  "buildDate": "2026-10-09T13:44:55+08:00",
+  "buildConfiguration": {
+    "reportedCommand": "pnpm tauri build --config docs/qa/i18n/tauri-package.json",
+    "verification": "Historical session records only; original override/log unavailable",
+    "productName": "Elorin",
+    "architecture": "x64",
+    "bundle": "nsis",
+    "identifier": "app.prism.desktop"
+  },
+  "testEnvironment": "Independent Windows 11 x64 VM with isolated clean application data",
+  "limitations": [
+    "Not formal release acceptance",
+    "Do not overwrite the frozen installer",
+    "Fill build metadata only from verified build evidence"
+  ],
+  "buildDateEvidence": "Observed installer file timestamp; original build logs were lost during accidental deletion"
+}

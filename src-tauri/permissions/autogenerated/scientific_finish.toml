@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-scientific-finish"
+description = "Enables the scientific_finish command without any pre-configured scope."
+commands.allow = ["scientific_finish"]
+
+[[permission]]
+identifier = "deny-scientific-finish"
+description = "Denies the scientific_finish command without any pre-configured scope."
+commands.deny = ["scientific_finish"]

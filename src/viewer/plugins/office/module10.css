@@ -1,0 +1,335 @@
+.m10-viewer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--textPrimary);
+}
+.viewer-host .viewer-scroll:has(.m10-viewer),
+.viewer-host
+  .viewer-scroll:has(.m10-viewer)
+  :is(.viewer-shell, .viewer-body, .viewer-content) {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.viewer-host .viewer-scroll:has(.m10-viewer) .viewer-body {
+  flex-direction: row;
+}
+.m10-controls,
+.m10-search,
+.m10-tabs,
+.m10-status,
+.m10-objects {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+.m10-controls form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.m10-controls input {
+  width: 80px;
+}
+.m10-controls button,
+.m10-search button,
+.m10-tabs button,
+.m10-inspector button,
+.m10-rail button,
+.m10-results button,
+.m10-objects button {
+  background: var(--surface);
+  color: var(--textPrimary);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 5px 9px;
+  cursor: pointer;
+}
+.m10-viewer input,
+.m10-viewer select {
+  background: var(--surface);
+  color: var(--textPrimary);
+  border: 1px solid var(--border);
+  padding: 5px;
+  border-radius: 4px;
+}
+.m10-viewer button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.m10-formula {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.m10-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+.m10-grid {
+  overflow: auto;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  outline: none;
+}
+.m10-grid:focus {
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.m10-grid-space {
+  position: relative;
+}
+.m10-cell,
+.m10-row-head,
+.m10-col-head {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  font-size: 12px;
+  padding: 5px 7px;
+  background: var(--surface);
+}
+.m10-row-head,
+.m10-col-head {
+  background: var(--surfaceElevated);
+  text-align: center;
+  color: var(--textSecondary);
+  cursor: pointer;
+}
+.m10-row-head {
+  width: 48px;
+}
+.m10-col-head {
+  height: 28px;
+}
+.m10-corner {
+  width: 48px;
+  height: 28px;
+  position: absolute;
+  background: var(--surfaceElevated);
+  z-index: 10;
+}
+.m10-cell.selected {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  background: var(--accentSurface);
+}
+.comment-mark {
+  position: absolute;
+  right: 1px;
+  top: 0;
+  color: var(--accent);
+  font-size: 9px;
+}
+.m10-tabs {
+  overflow-x: auto;
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+}
+.m10-tabs button {
+  white-space: nowrap;
+}
+.m10-tabs button[aria-selected="true"],
+.m10-rail .selected {
+  border-color: var(--accent);
+  background: var(--accentSurface);
+}
+.m10-status {
+  color: var(--textMuted);
+  font-size: 11px;
+  border: 0;
+}
+.m10-inspector {
+  width: 300px;
+  flex-shrink: 0;
+  overflow: auto;
+  padding: 14px;
+  border-left: 1px solid var(--border);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.m10-inspector dl div {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+.m10-inspector dd {
+  margin: 0;
+  white-space: pre-wrap;
+}
+.m10-inspector dt {
+  color: var(--textMuted);
+}
+.m10-inspector pre {
+  white-space: pre-wrap;
+  font-size: 11px;
+}
+.m10-results {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  max-height: 140px;
+  flex-shrink: 0;
+  padding: 8px;
+  gap: 4px;
+}
+.m10-results button {
+  text-align: left;
+}
+.m10-message {
+  padding: 30px;
+}
+.m10-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+.m10-embedded-image {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+.m10-placeholder {
+  border: 1px dashed #888;
+  background: #8882;
+  padding: 6px;
+  overflow: hidden;
+  font-size: 12px;
+  color: inherit;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+}
+.m10-stage {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: var(--background);
+}
+.m10-slide {
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  container-type: inline-size;
+  color: #000;
+  box-shadow: 0 4px 20px #0003;
+  flex-shrink: 0;
+}
+.m10-shape {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+.m10-shape p {
+  margin: 0;
+  padding: 0 4px;
+}
+.m10-shape img,
+.m10-shape svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.m10-shape table {
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5cqw;
+  color: #000;
+  background: #fff;
+}
+.m10-shape td {
+  border: 1px solid #999;
+  padding: 3px;
+  white-space: pre-wrap;
+}
+.m10-shape-placeholder .m10-placeholder {
+  height: 100%;
+  font-size: 1.5cqw;
+}
+.m10-rail {
+  width: 190px;
+  flex-shrink: 0;
+  overflow: auto;
+  border-right: 1px solid var(--border);
+  padding: 8px;
+}
+.m10-rail .m10-slide {
+  height: auto;
+  width: 100%;
+}
+.m10-rail button {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 3px;
+}
+.m10-rail button span {
+  font-size: 10px;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.m10-thumbnail-placeholder {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  background: var(--surfaceElevated);
+  font-size: 26px;
+  color: var(--textMuted);
+}
+.m10-notes {
+  max-height: 160px;
+  flex-shrink: 0;
+  overflow: auto;
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  white-space: pre-wrap;
+  font-size: 12px;
+}
+.m10-focus {
+  height: 100dvh;
+  width: 100vw;
+}
+.m10-focus .m10-stage {
+  padding: 8px;
+}
+.viewer-scroll:has(.m10-viewer) {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+  padding: 0 !important;
+}

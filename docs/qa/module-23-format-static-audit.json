@@ -1,0 +1,5899 @@
+{
+  "record_count": 155,
+  "results": [
+    {
+      "extensions": [
+        "parquet"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "columnar",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "parquet",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "columnar",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "arrow"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "columnar",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "arrow",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "columnar",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "feather"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "columnar",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "feather",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "columnar",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "h5",
+        "hdf5"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scientific",
+          "projection": "ScientificDataset",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "hdf5",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scientific",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "nc",
+        "netcdf"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scientific",
+          "projection": "ScientificDataset",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "netcdf",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scientific",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "mat"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scientific",
+          "projection": "ScientificDataset",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "mat",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scientific",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "stl"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "mesh",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "stl",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "mesh",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "obj"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "mesh",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "obj",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "mesh",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ply"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "mesh",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "ply",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "mesh",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "gltf"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "mesh",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "gltf",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "mesh",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "glb"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "mesh",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "glb",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "mesh",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "step"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "step",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "stp"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "stp",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "iges"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "iges",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "igs"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "igs",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "jt"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "jt",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "skp"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "skp",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "3dm"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "3dm",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "sldprt"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "sldprt",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "sldasm"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "sldasm",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "catpart"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "catpart",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "catproduct"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "catproduct",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "fbx"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "fbx",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "dae"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "dae",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "usd"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "usd",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "usda"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "usda",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "usdc"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "usdc",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "usdz"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "usdz",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "3ds"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "3ds",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "c4d"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "c4d",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "blend"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "blend",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "max"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scene",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "max",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scene",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "dxf"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad-drawing",
+          "projection": "GeometryDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "dxf",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad-drawing",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "dwg"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "cad-drawing",
+          "projection": "GeometryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "dwg",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "cad-drawing",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "txt",
+        "log"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "text",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "md",
+        "markdown",
+        "mdown",
+        "mkd",
+        "mkdn"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "markdown",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-structure"
+      },
+      "format_id": "markdown",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "markdown",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "json",
+        "geojson",
+        "jsonl",
+        "ndjson"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector",
+        "mimeTypes": [
+          "application/json"
+        ]
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "json",
+          "projection": "StructuredDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-structure"
+      },
+      "format_id": "json",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "json",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "yaml",
+        "yml"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "yaml",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "xml"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "xml",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "toml"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "toml",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "js",
+        "mjs",
+        "cjs"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "javascript",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ts",
+        "mts",
+        "cts"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "typescript",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "jsx"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "jsx",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "tsx"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "tsx",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "py",
+        "pyw"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "python",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "c",
+        "h"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "c",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "cpp",
+        "cc",
+        "cxx",
+        "hpp"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "cpp",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "java"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "java",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "go"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "go",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "rs"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "rust",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "htm",
+        "html"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "html",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "css"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "css",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "csv"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "csv",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-structure"
+      },
+      "format_id": "csv",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "csv",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "tsv",
+        "tab"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "csv",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": true,
+        "save": true,
+        "previewLevel": "basic-structure"
+      },
+      "format_id": "tsv",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "csv",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "mp3"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "mp3",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": "L1"
+    },
+    {
+      "extensions": [
+        "wav"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "wav",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": "L1"
+    },
+    {
+      "extensions": [
+        "flac"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "flac",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": "L1"
+    },
+    {
+      "extensions": [
+        "aac"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "aac",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "m4a"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "m4a",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": "L1"
+    },
+    {
+      "extensions": [
+        "ogg"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "ogg",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": "L1"
+    },
+    {
+      "extensions": [
+        "opus"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "opus",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": "L1"
+    },
+    {
+      "extensions": [
+        "wma"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "wma",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "aiff",
+        "aif"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "audio",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "aiff",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "audio",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "mp4"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "video",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "mp4",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "video",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "webm"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "video",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "webm",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "video",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "mov"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "video",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "mov",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "video",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "mkv"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "video",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "mkv",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "video",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "avi"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "video",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "avi",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "video",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "mpeg",
+        "mpg"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "video",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "mpeg",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "video",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "m4v"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "video",
+          "projection": "TimelineDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "m4v",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "video",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "epub"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector",
+        "containerEntries": [
+          "mimetype",
+          "META-INF/container.xml"
+        ]
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "ebook",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "epub",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "ebook",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "eml"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "email",
+          "projection": "StructuredDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "eml",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "email",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "msg"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "email",
+          "projection": "StructuredDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "msg",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "email",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "xlsx"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "spreadsheet",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "xlsx",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "spreadsheet",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "xlsm"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "spreadsheet",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "xlsm",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "spreadsheet",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "xls"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "spreadsheet",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "xls",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "spreadsheet",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "xlsb"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "spreadsheet",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "xlsb",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "spreadsheet",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ods"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "spreadsheet",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "ods",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "spreadsheet",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "pptx"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "presentation",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "pptx",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "presentation",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "pptm"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "presentation",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "pptm",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "presentation",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ppsx"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "presentation",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "ppsx",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "presentation",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "potx"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "presentation",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "potx",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "presentation",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ppt"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "presentation",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "ppt",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "presentation",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "odp"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "presentation",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "odp",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "presentation",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "pdf"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector",
+        "mimeTypes": [
+          "application/pdf"
+        ],
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": [
+              37,
+              80,
+              68,
+              70,
+              45
+            ]
+          }
+        ]
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "pdf",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "pdf",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "pdf",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "docx"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector",
+        "containerEntries": [
+          "[Content_Types].xml",
+          "word/document.xml"
+        ]
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "office-document",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "docx",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "office-document",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "odt"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "office-document",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "odt",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "office-document",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "rtf"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "office-document",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "rtf",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "office-document",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "doc"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "office-document",
+          "projection": "DocumentPages",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "doc",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "office-document",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "png"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector",
+        "mimeTypes": [
+          "image/png"
+        ],
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": [
+              137,
+              80,
+              78,
+              71,
+              13,
+              10,
+              26,
+              10
+            ]
+          }
+        ]
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "png",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "jpg",
+        "jpeg"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "jpeg",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "gif"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "gif",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "webp"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "webp",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "svg"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "svg",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "avif"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "avif",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "bmp"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "bmp",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ico"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "ico",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "tif",
+        "tiff"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "tiff",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "heic"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "heic",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "heif"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "image",
+          "projection": "ImageDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": false,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "heif",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "image",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "zip"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector",
+        "mimeTypes": [
+          "application/zip"
+        ],
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": [
+              80,
+              75,
+              3,
+              4
+            ]
+          }
+        ]
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "zip",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "tar"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "tar",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "gz"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "gz",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "tgz"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "tgz",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "7z"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "sevenzip",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "rar"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "rar",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "bz2"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "bz2",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "xz"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "xz",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "zst"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "zst",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "sqlite",
+        "sqlite3",
+        "db"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "database",
+          "projection": "TabularDataProvider",
+          "label": "Primary view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "sqlite",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "database",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "srt"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "subtitle",
+          "projection": "TimelineDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "srt",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "subtitle",
+      "priority": 110,
+      "actual_capability_grade": "L2"
+    },
+    {
+      "extensions": [
+        "vtt"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "subtitle",
+          "projection": "TimelineDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "vtt",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "subtitle",
+      "priority": 110,
+      "actual_capability_grade": "L2"
+    },
+    {
+      "extensions": [
+        "ass"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "subtitle",
+          "projection": "TimelineDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "ass",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "subtitle",
+      "priority": 110,
+      "actual_capability_grade": "L2"
+    },
+    {
+      "extensions": [
+        "ssa"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "subtitle",
+          "projection": "TimelineDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "ssa",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "subtitle",
+      "priority": 110,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "sub"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "subtitle",
+          "projection": "TimelineDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source text"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "sub",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "subtitle",
+      "priority": 110,
+      "actual_capability_grade": "L2"
+    },
+    {
+      "extensions": [
+        "npy"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "scientific",
+          "projection": "ScientificDataset",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "npy",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "scientific",
+      "priority": 110,
+      "actual_capability_grade": "L2"
+    },
+    {
+      "extensions": [
+        "npz"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "npz",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "psd"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "psd",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "psb"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "psb",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "exr"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "exr",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "eps"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "eps",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ai"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "ai",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "fig"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "fig",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "sketch"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "sketch",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "lottie"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "lottie",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "btf",
+        "bigtiff"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "bigtiff",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "hex",
+      "priority": -900,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "d.ts"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "typescript-declaration",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "gradle.kts",
+        "kts"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "kotlin-script",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "blade.php"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "blade-template",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        "Dockerfile"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "dockerfile",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        "CMakeLists.txt"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "cmake",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        "go.mod"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "go-module",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        "Cargo.toml"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "cargo-manifest",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        ".gitignore"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "gitignore",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "env.local"
+      ],
+      "special_filenames": [
+        ".env",
+        ".env.local"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "environment",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "m"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "matlab-source",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "m"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "objective-c",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        "Makefile",
+        "GNUmakefile"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "makefile",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        "package.json"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "json",
+          "projection": "StructuredDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-structure"
+      },
+      "format_id": "package-manifest",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "json",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        "tsconfig.json"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "tsconfig",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        "pyproject.toml"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "pyproject",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [
+        ".editorconfig"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "editorconfig",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "gradle"
+      ],
+      "special_filenames": [
+        "build.gradle"
+      ],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "gradle",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "jsonc"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "jsonc",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "json5"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "json5",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ini"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "ini",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "vue"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "vue",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "svelte"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "svelte",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "astro"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "astro",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "pl",
+        "perl"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "perl-source",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "pl"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-text"
+      },
+      "format_id": "prolog-source",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.text-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "nii.gz"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.binary-fallback",
+          "projection": "BinaryDocument",
+          "label": "Format information"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "detection-only"
+      },
+      "format_id": "nifti-gzip",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.binary-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "tar.zst"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "archive",
+          "projection": "ContainerDocument",
+          "label": "Source view"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "partial"
+      },
+      "format_id": "tar-zstd",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "archive",
+      "priority": 90,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [
+        "ipynb"
+      ],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "json",
+          "projection": "StructuredDocument",
+          "label": "JSON structure"
+        },
+        {
+          "id": "source",
+          "viewerId": "core.text-fallback",
+          "projection": "TextDocument",
+          "label": "JSON source"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-structure"
+      },
+      "format_id": "notebook-json",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "json",
+      "priority": 100,
+      "actual_capability_grade": null
+    },
+    {
+      "extensions": [],
+      "special_filenames": [],
+      "detection_rules": {
+        "backend": "existing-bounded-detector"
+      },
+      "supported_views": [
+        {
+          "id": "primary",
+          "viewerId": "core.binary-fallback",
+          "projection": "BinaryDocument",
+          "label": "Binary / Hex"
+        },
+        {
+          "id": "hex",
+          "viewerId": "hex",
+          "projection": "BinaryDocument",
+          "label": "Raw bytes / Hex (read only)"
+        }
+      ],
+      "fallback": "hex",
+      "declared_capabilities": {
+        "inspect": true,
+        "search": true,
+        "edit": false,
+        "save": false,
+        "previewLevel": "basic-structure"
+      },
+      "format_id": "unknown",
+      "status": "passed",
+      "scope": "static registry/detector/capability audit; not content parsing",
+      "viewer": "core.binary-fallback",
+      "priority": -1000,
+      "actual_capability_grade": null
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+import { t as tr, useUiLanguage as useLocale, localizedError as uiError } from "../i18n";
+import { useEffect, useState } from 'react';
+import { platformIntegration, type PlatformCapabilities } from './integration';
+export function IntegrationSettings() {
+  useLocale();
+  const [cap,setCap]=useState<PlatformCapabilities>(),[health,setHealth]=useState<Awaited<ReturnType<typeof platformIntegration.associationHealth>>>(),[message,setMessage]=useState('');
+  useEffect(()=>{void platformIntegration.capabilities().then(setCap).catch(()=>setMessage(tr("Platform capabilities unavailable.")));},[]);
+  const check=async(repair=false)=>{try{setHealth(await platformIntegration.associationHealth(repair));setMessage(repair?tr("Elorin registration repaired. System defaults were not changed."):'');}catch(e){setMessage(uiError(e));}};
+  return <section className="integration-settings"><h1>{tr("Desktop Integration")}</h1><p>{cap?.portable?tr("Portable mode · system registration and login startup are off"):tr("Installed mode · per-user registration")}</p><p>{tr("Default application choices belong to you. Elorin never silently changes them.")}</p>{cap?.associations&&<><button onClick={()=>void platformIntegration.defaultApps().catch(e=>setMessage(uiError(e)))}>{tr("Open Default Apps Settings")}</button><button onClick={()=>void check()}>{tr("Check Association Health")}</button>{!cap.portable&&<button onClick={()=>void check(true)}>{tr("Repair Elorin Registration")}</button>}</>}{health&&[...new Set(health.entries.map(e=>e.category))].map(category=><details key={category}><summary>{category}</summary>{health.entries.filter(e=>e.category===category).map(e=><p key={e.extension}>.{e.extension} · {e.state} · {e.recommended?tr("Recommended"):tr("Open With only")}{e.default?tr(" · {v0}", { v0: e.default }):''}</p>)}</details>)}<p>{tr("Login startup: off. Background Agent, tray and global shortcuts are deferred.")}</p><p>{tr("User settings, Recent files and recovery remain local. Uninstall preserves user data and never restores an earlier default application.")}</p>{message&&<p role="status">{tr(message)}</p>}</section>;
+}

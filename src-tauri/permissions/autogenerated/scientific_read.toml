@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-scientific-read"
+description = "Enables the scientific_read command without any pre-configured scope."
+commands.allow = ["scientific_read"]
+
+[[permission]]
+identifier = "deny-scientific-read"
+description = "Denies the scientific_read command without any pre-configured scope."
+commands.deny = ["scientific_read"]

@@ -1,0 +1,460 @@
+/* Foundation Patch A: native surface and shared overlay/scroll tokens. */
+:root {
+  --layer-base: 0;
+  --layer-viewer: 1;
+  --layer-floating: 20;
+  --layer-titlebar: 30;
+  --layer-menu: 50;
+  --layer-modal: 60;
+  --scroll-thumb: color-mix(in srgb, var(--textSecondary) 28%, transparent);
+}
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--textSecondary);
+}
+*::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+.app-shell {
+  height: 100dvh;
+  min-height: 0;
+  padding-top: 38px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.prism-titlebar {
+  height: 38px;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--layer-titlebar);
+  display: flex;
+  background: var(--surface);
+  color: var(--textPrimary);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+.titlebar-drag {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 12px;
+}
+.titlebar-drag img {
+  width: 19px;
+  height: 19px;
+}
+.titlebar-context {
+  color: var(--textSecondary);
+  margin-left: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.window-controls {
+  display: flex;
+}
+.window-controls button {
+  width: 46px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  display: grid;
+  place-items: center;
+}
+.window-controls button:hover {
+  background: var(--accentSurface);
+}
+.window-controls .window-close:hover {
+  background: #c42b1c;
+  color: white;
+}
+.window-controls button:disabled {
+  opacity: 0.4;
+}
+.sidebar {
+  height: 100%;
+  min-height: 0;
+  top: 38px;
+}
+.workspace {
+  min-height: 0;
+  overflow: hidden;
+}
+.workspace main {
+  min-height: 0;
+  overflow: auto;
+}
+.has-document .global-bar {
+  height: 54px;
+  flex-shrink: 0;
+}
+.has-document main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 14px;
+}
+.has-document .runtime-mode,
+.has-document .file-inspector-details {
+  display: none;
+}
+.opened-file-actions {
+  flex-shrink: 0;
+  padding-bottom: 8px;
+}
+.has-document .viewer-host {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.has-document .viewer-scroll {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+}
+.viewer-header {
+  padding: 10px 16px;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.viewer-file-heading strong {
+  font-family: var(--font-body);
+  font-size: 15px;
+}
+.viewer-file-heading span {
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.viewer-more {
+  position: relative;
+}
+.viewer-more summary {
+  cursor: pointer;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.viewer-more-panel {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 5px;
+  width: 190px;
+  padding: 6px;
+  display: grid;
+  background: var(--surfaceElevated);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  box-shadow: 0 8px 24px #0003;
+  z-index: var(--layer-floating);
+}
+.viewer-host {
+  overflow: visible;
+}
+.viewer-more-panel button {
+  text-align: left;
+}
+.viewer-debug {
+  flex-shrink: 0;
+}
+.has-document .viewer-scroll:has(.pdf-viewer),
+.has-document
+  .viewer-scroll:has(.pdf-viewer)
+  :is(.viewer-shell, .viewer-body, .viewer-content) {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+.has-document .pdf-viewer {
+  height: 100%;
+  position: relative;
+}
+.pdf-viewer > .document-toolbar {
+  order: 4;
+  flex-shrink: 0;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+}
+
+.pdf-viewer .document-layout {
+  order: 2;
+}
+.pdf-viewer .document-search {
+  order: 1;
+}
+.prism-context-menu {
+  position: fixed;
+  z-index: var(--layer-menu);
+  min-width: 215px;
+  max-height: calc(100vh - 16px);
+  overflow: auto;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surfaceElevated);
+  color: var(--textPrimary);
+  box-shadow: 0 8px 28px #0004;
+}
+.prism-context-menu button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  border-radius: 5px;
+  padding: 8px 10px;
+  text-align: left;
+  font: inherit;
+  font-size: 12px;
+}
+.prism-context-menu button span {
+  flex: 1;
+}
+.prism-context-menu button:focus,
+.prism-context-menu button:hover {
+  background: var(--accentSurface);
+  outline: none;
+}
+.prism-context-menu button:disabled {
+  opacity: 0.4;
+}
+body:has(:fullscreen) .prism-titlebar {
+  display: none;
+}
+
+.pdf-floating-controls {
+  position: absolute;
+  bottom: 53px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--layer-floating);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 9px;
+  background: var(--surfaceElevated);
+  color: var(--textPrimary);
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 15px #0003;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s;
+}
+.pdf-viewer:hover .pdf-floating-controls,
+.pdf-floating-controls:focus-within {
+  opacity: 1;
+  pointer-events: auto;
+}
+.has-document
+  .viewer-scroll:has(
+    :is(
+      .json-viewer,
+      .csv-viewer,
+      .text-viewer,
+      .image-viewer,
+      .markdown-viewer
+    )
+  ) {
+  overflow: hidden;
+}
+.has-document
+  .viewer-scroll:has(
+    :is(
+      .json-viewer,
+      .csv-viewer,
+      .text-viewer,
+      .image-viewer,
+      .markdown-viewer
+    )
+  )
+  :is(.viewer-shell, .viewer-body, .viewer-content) {
+  height: 100%;
+  min-height: 0;
+}
+.has-document
+  :is(
+    .json-viewer,
+    .csv-viewer,
+    .text-viewer,
+    .image-viewer,
+    .markdown-viewer
+  ) {
+  height: 100%;
+  min-height: 0;
+}
+.has-document .csv-panes {
+  height: auto;
+  flex: 1;
+  min-height: 0;
+}
+.has-document .viewer-scroll:has(.image-viewer) {
+  min-height: 0;
+}
+.has-document .viewer-panel {
+  overflow: auto;
+  min-height: 0;
+}
+/* Chromium/WebView2's standard thin mode overrides ::-webkit-scrollbar, including arrows. */
+@supports selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+}
+.has-document .opened-files {
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  min-height: 42px;
+  padding-bottom: 4px;
+}
+.has-document .opened-files button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.prism-context-menu .menu-separator {
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+  border-radius: 0;
+}
+.prism-context-menu .danger {
+  color: #d65555;
+}
+:root {
+  --layer-resize: 31;
+}
+.window-resize {
+  position: fixed;
+  z-index: var(--layer-resize);
+}
+.window-resize-North {
+  top: 0;
+  left: 6px;
+  right: 6px;
+  height: 4px;
+  cursor: n-resize;
+}
+.window-resize-South {
+  bottom: 0;
+  left: 6px;
+  right: 6px;
+  height: 4px;
+  cursor: s-resize;
+}
+.window-resize-East {
+  right: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 4px;
+  cursor: e-resize;
+}
+.window-resize-West {
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 4px;
+  cursor: w-resize;
+}
+.window-resize-NorthEast {
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  cursor: ne-resize;
+}
+.window-resize-NorthWest {
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  cursor: nw-resize;
+}
+.window-resize-SouthEast {
+  bottom: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  cursor: se-resize;
+}
+.window-resize-SouthWest {
+  bottom: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  cursor: sw-resize;
+}
+@media (max-height: 800px) {
+  .sidebar {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .sidebar .brand {
+    padding-top: 8px;
+    padding-bottom: 18px;
+  }
+  .sidebar-item {
+    height: 40px;
+  }
+  .library-label {
+    margin-top: 16px;
+    margin-bottom: 12px;
+    padding-top: 14px;
+  }
+}
+.notice,
+.drop-overlay {
+  z-index: var(--layer-modal);
+}
+.tooltip {
+  z-index: var(--layer-floating);
+}
+.viewer-more-panel {
+  max-height: min(420px, calc(100dvh - 180px));
+  overflow: auto;
+}
+/* The shell never scrolls; sticky positioning would offset the rail inside its padding. */
+.sidebar {
+  position: relative;
+  top: auto;
+}
