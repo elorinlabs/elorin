@@ -502,6 +502,7 @@ export function PdfViewer({
         action: () => setPanel(panel === "outline" ? "" : "outline"),
       },
     ]),
+    [context.registerActions, engine, panel, effective, rotation, current, scroll, sizes],
   );
   if (engine.error)
     return (

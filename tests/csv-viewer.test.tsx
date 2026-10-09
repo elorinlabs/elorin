@@ -148,7 +148,7 @@ describe("CSV registry and surfaces", () => {
     expect(screen.getAllByRole("button", { name: /^name/ })).toHaveLength(2);
     expect(screen.getByRole("gridcell", { name: "A" })).toBeInTheDocument();
     expect(screen.getByRole("gridcell", { name: "extra" })).toBeInTheDocument();
-    expect(screen.getByText(/Duplicate column names/)).toBeInTheDocument();
+    expect(await screen.findByText(/Duplicate column names/)).toBeInTheDocument();
   });
   it("keyboard navigation uses one grid tab stop and resizes columns by keyboard", async () => {
     await open();

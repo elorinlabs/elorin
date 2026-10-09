@@ -4,9 +4,15 @@ import {useState} from 'react';
 import {FloatingPanel} from '../src/components/common/FloatingPanel';
 import {placeLayer} from '../src/components/common/layer-layout';
 import {scrollKey,intersectRect} from '../src/components/common/ScrollbarSystem';
-import {PageNavigator} from '../src/viewer/plugins/pdf/PdfViewer';
+import {PageNavigator,PdfViewer} from '../src/viewer/plugins/pdf/PdfViewer';
 afterEach(()=>vi.unstubAllGlobals());
 describe('Module 26 floating and scroll boundaries',()=>{
+ it('does not republish unchanged PDF commands when the host redraws',()=>{
+  const registerActions=vi.fn(()=>vi.fn()),engine={subscribe:()=>()=>{},snapshot:()=>0,cancelSearch:vi.fn(),firstSize:{width:600,height:800},copyAllowed:true};
+  const props={model:engine,context:{source:{},registerActions},session:{metadata:{}},updateSession:vi.fn()} as unknown as Parameters<typeof PdfViewer>[0];
+  const view=render(<PdfViewer {...props}/>);expect(registerActions).toHaveBeenCalledOnce();
+  view.rerender(<PdfViewer {...props} context={{...props.context}}/>);expect(registerActions).toHaveBeenCalledOnce();
+ });
  it('flips anchored content above the bottom edge and left of the right edge',()=>{expect(placeLayer({left:980,top:620,bottom:650},330,200,1000,700)).toEqual({left:662,top:414});});
  it('keeps scrollbar keyboard input on the intended axis',()=>{expect(scrollKey('ArrowDown',false,10,100,1000)).toBeUndefined();expect(scrollKey('ArrowRight',true,10,100,1000)).toBeUndefined();expect(scrollKey('ArrowRight',false,10,100,1000)).toBe(50);expect(scrollKey('End',true,10,100,1000)).toBe(1000);expect(scrollKey('PageUp',true,10,100,1000)).toBe(0);});
  it('clips nested overlays to the visible ancestor',()=>{expect(intersectRect({left:0,top:0,right:500,bottom:500},{left:40,top:100,right:300,bottom:400})).toEqual({left:40,top:100,right:300,bottom:400});});
