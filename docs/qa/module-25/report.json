@@ -1,0 +1,100 @@
+{
+  "checks": [
+    "Home, sidebar preferences and new-file modal keyboard/search",
+    "Real independent Focus: no hidden toolbar gap, true PDF navigation/zoom/search, keyboard and bottom status",
+    "Native fullscreen/Escape, independent minimize, window reuse and Focus close",
+    "Native measurable show/auto/hide differences",
+    "Minimum width, native maximize/restore, theme, text/image/CSV load and bounded tab overflow",
+    "Live language switch to Japanese and back preserves current sessions",
+    "Real new-file creation opens a document and removes the modal"
+  ],
+  "errors": [],
+  "started": "2026-10-09T07:46:47.586Z",
+  "pid": 4480,
+  "appData": "C:\\Users\\nanli\\AppData\\Local\\app.elorin.module25.qa",
+  "viewerHeaderHeight": 45.5,
+  "shown": {
+    "content": {
+      "x": 0,
+      "y": 34,
+      "width": 1200,
+      "height": 816,
+      "top": 34,
+      "right": 1200,
+      "bottom": 850,
+      "left": 0
+    },
+    "toolbar": {
+      "position": "fixed",
+      "visible": "true"
+    },
+    "status": "Read onlyPage 1 / 10Zoom 188%",
+    "heading": false,
+    "formatRows": 0
+  },
+  "hidden": {
+    "content": {
+      "x": 0,
+      "y": 34,
+      "width": 1200,
+      "height": 816,
+      "top": 34,
+      "right": 1200,
+      "bottom": 850,
+      "left": 0
+    },
+    "toolbar": {
+      "position": "fixed",
+      "visible": "false"
+    },
+    "status": "Read onlyPage 1 / 10Zoom 188%",
+    "heading": false,
+    "formatRows": 0
+  },
+  "modes": {
+    "show": {
+      "visible": "true",
+      "floating": false,
+      "text": "Read onlyPage 1 / 10Zoom 74%"
+    },
+    "auto": {
+      "visible": "false",
+      "floating": true,
+      "text": "Read onlyPage 1 / 10Zoom 74%"
+    },
+    "hide": {
+      "visible": null,
+      "floating": true,
+      "text": null
+    }
+  },
+  "narrow": {
+    "width": 900,
+    "overflow": false,
+    "content": 698
+  },
+  "tabs": {
+    "wrap": "nowrap",
+    "height": 36,
+    "scrollWidth": 657,
+    "width": 534
+  },
+  "idleCpuSeconds": 0.03125,
+  "idleLogicalCorePercent": 0.78125,
+  "processIds": [
+    4480,
+    22112,
+    2528,
+    8852,
+    15040,
+    11100,
+    5548,
+    13808
+  ],
+  "minimizedCpuSeconds": 0.34375,
+  "status": "passed",
+  "personalDataUnchanged": true,
+  "frozenInstallerUnchanged": true,
+  "frozenInstallerSha256": "61ec10318d431ff241508e41446bf15ef20bb4256e5a9fd61efe1820a38e6588",
+  "processesRemaining": []
+}

@@ -1,0 +1,5 @@
+{
+ "identifier":"app.elorin.module25.before.qa",
+ "productName":"Elorin Module25 Before QA",
+ "build":{"beforeBuildCommand":"","frontendDist":"../.qa-tools/module25/baseline-src/dist"}
+}
